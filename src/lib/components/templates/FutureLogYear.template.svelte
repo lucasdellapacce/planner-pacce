@@ -5,24 +5,10 @@
 
 	let { settings = {} as PlannerSettings, months = [] as Month[] } = $props();
 
-	const monthNames = [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December',
-	];
-
 	function getMonthName(index: number) {
 		if (months[index]) return months[index].nameLong;
-		return monthNames[index];
+		const date = new Date(Date.UTC(2026, index, 1));
+		return date.toLocaleString(settings?.design?.locale || 'pt-BR', { month: 'long', timeZone: 'UTC' });
 	}
 </script>
 

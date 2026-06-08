@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
 
@@ -9,14 +9,14 @@
 
 <Box class="event-planner">
 	<Box class="header-section">
-		<Field label="EVENT PLANNER" emoji="🎉" {showEmoji} class="title" />
-		<Field label="DATE / TIME" class="date" />
+		<Field label={tTemplate('event_planner', settings?.design?.locale)} emoji="🎉" {showEmoji} class="title" />
+		<Field label={tTemplate('date_time', settings?.design?.locale)} class="date" />
 	</Box>
 
 	<Box class="content-section">
 		<Box class="columns">
 			<Box class="column">
-				<Text class="label">GUEST LIST</Text>
+				<Text class="label">{tTemplate('guest_list', settings?.design?.locale)}</Text>
 				{#each Array(15) as _}
 					<Box class="check-row">
 						<Checkbox aria-label="Guest list check" />
@@ -25,7 +25,7 @@
 				{/each}
 			</Box>
 			<Box class="column">
-				<Text class="label">TO DO</Text>
+				<Text class="label">{tTemplate('todo', settings?.design?.locale).toUpperCase()}</Text>
 				{#each Array(15) as _}
 					<Box class="check-row">
 						<Checkbox aria-label="To do check" />
@@ -36,7 +36,7 @@
 		</Box>
 
 		<Box class="bottom-section">
-			<Text class="label">EXPENSES</Text>
+			<Text class="label">{tTemplate('expenses', settings?.design?.locale)}</Text>
 			<Box class="budget-grid">
 				{#each Array(6) as _}
 					<Box class="budget-row">

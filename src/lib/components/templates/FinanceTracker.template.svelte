@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 	import { Field } from '$molecules';
 
@@ -11,16 +11,16 @@
 <Box class="finance-tracker">
 	<Box class="header-section">
 		<Box class="balance-item">
-			<Text class="label">STARTING BALANCE</Text>
+			<Text class="label">{tTemplate('starting_balance', settings?.design?.locale)}</Text>
 			<Box class="line">
 				{#if showEmoji}
 					<Text tag="span" class="currency">💲</Text>
 				{/if}
 			</Box>
 		</Box>
-		<Field label="MONTH" class="title-block" />
+		<Field label={tTemplate('month', settings?.design?.locale)} class="title-block" />
 		<Box class="balance-item">
-			<Text class="label">ENDING BALANCE</Text>
+			<Text class="label">{tTemplate('ending_balance', settings?.design?.locale)}</Text>
 			<Box class="line">
 				{#if showEmoji}
 					<Text tag="span" class="currency">💰</Text>
@@ -31,26 +31,26 @@
 
 	<Box class="ledger">
 		<Box class="header">
-			<Box><Text>DATE</Text></Box>
-			<Box><Text>DESCRIPTION / PAYEE</Text></Box>
-			<Box><Text>CATEGORY</Text></Box>
+			<Box><Text>{tTemplate('date', settings?.design?.locale)}</Text></Box>
+			<Box><Text>{tTemplate('description_payee', settings?.design?.locale)}</Text></Box>
+			<Box><Text>{tTemplate('category', settings?.design?.locale)}</Text></Box>
 			<Box>
 				{#if showEmoji}
 					<Text tag="span" class="emoji">🤑</Text>
 				{/if}
-				<Text tag="span">+ Income</Text>
+				<Text tag="span">{tTemplate('income', settings?.design?.locale)}</Text>
 			</Box>
 			<Box>
 				{#if showEmoji}
 					<Text tag="span" class="emoji">💸</Text>
 				{/if}
-				<Text tag="span">- Expense</Text>
+				<Text tag="span">{tTemplate('expense', settings?.design?.locale)}</Text>
 			</Box>
 			<Box>
 				{#if showEmoji}
 					<Text tag="span" class="emoji">💵</Text>
 				{/if}
-				<Text tag="span">= Balance</Text>
+				<Text tag="span">{tTemplate('balance', settings?.design?.locale)}</Text>
 			</Box>
 		</Box>
 		{#each rows as _, i (i)}

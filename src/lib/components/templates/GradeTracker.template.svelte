@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 
 	let { settings = {} as PlannerSettings } = $props();
 	const showEmoji = $derived(!settings?.emojis?.disable);
@@ -9,16 +9,16 @@
 	<div class="header-section">
 		<div class="field title">
 			<div class="label">
-				{#if showEmoji}📊{/if} GRADE & ROSTER TRACKER
+				{#if showEmoji}📊{/if} {tTemplate('grade_roster_tracker', settings?.design?.locale)}
 			</div>
 			<div class="line"></div>
 		</div>
 		<div class="field class-name">
-			<div class="label">CLASS / PERIOD</div>
+			<div class="label">{tTemplate('class_period', settings?.design?.locale)}</div>
 			<div class="line"></div>
 		</div>
 		<div class="field term">
-			<div class="label">TERM / SEMESTER</div>
+			<div class="label">{tTemplate('term_semester', settings?.design?.locale)}</div>
 			<div class="line"></div>
 		</div>
 	</div>
@@ -27,11 +27,11 @@
 		<div class="roster-table">
 			<div class="table-header">
 				<span class="col-num">#</span>
-				<span class="col-student">STUDENT NAME</span>
+				<span class="col-student">{tTemplate('student_name', settings?.design?.locale)}</span>
 				{#each Array(8) as _, idx}
 					<span class="col-assign">A{idx + 1}</span>
 				{/each}
-				<span class="col-grade">GRADE</span>
+				<span class="col-grade">{tTemplate('grade', settings?.design?.locale).toUpperCase()}</span>
 			</div>
 			{#each Array(18) as _, sIdx}
 				<div class="table-row">
@@ -47,7 +47,7 @@
 
 		<div class="bottom-section">
 			<div class="column weights">
-				<div class="section-label">ASSIGNMENT KEY & WEIGHTS</div>
+				<div class="section-label">{tTemplate('assignment_key_weights', settings?.design?.locale)}</div>
 				<div class="weights-grid">
 					{#each Array(4) as _, idx}
 						<div class="weight-row">
@@ -60,7 +60,7 @@
 				</div>
 			</div>
 			<div class="column notes">
-				<div class="section-label">CLASS NOTES / REMINDERS</div>
+				<div class="section-label">{tTemplate('class_notes', settings?.design?.locale).toUpperCase()}</div>
 				{#each Array(4) as _}
 					<div class="line"></div>
 				{/each}

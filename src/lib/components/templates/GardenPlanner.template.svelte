@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Grid, Field } from '$molecules';
 	import { Box, Text, Checkbox } from '$atoms';
 
@@ -12,13 +12,13 @@
 	<Box class="header-section">
 		<Box class="field title-field">
 			<Text class="label">
-				{#if showEmoji}🌻{/if} GARDEN PLANNER & LOG
+				{#if showEmoji}🌻{/if} {tTemplate('garden_planner_log', settings?.design?.locale)}
 			</Text>
 			<Box class="line"></Box>
 		</Box>
 		<Box class="field date-field">
 			<Text class="label">
-				{#if showEmoji}📅{/if} SEASON / DATE
+				{#if showEmoji}📅{/if} {tTemplate('season_date', settings?.design?.locale)}
 			</Text>
 			<Box class="line"></Box>
 		</Box>
@@ -26,11 +26,11 @@
 
 	<Box class="plant-inventory">
 		<Box class="table-header">
-			<Box class="col-plant"><Text>PLANT NAME / VARIETY</Text></Box>
-			<Box class="col-date"><Text>SOW (IN)</Text></Box>
-			<Box class="col-date"><Text>SOW (OUT)</Text></Box>
-			<Box class="col-water"><Text>WATER</Text></Box>
-			<Box class="col-notes"><Text>NOTES</Text></Box>
+			<Box class="col-plant"><Text>{tTemplate('plant_name_variety', settings?.design?.locale)}</Text></Box>
+			<Box class="col-date"><Text>{tTemplate('sow_in', settings?.design?.locale)}</Text></Box>
+			<Box class="col-date"><Text>{tTemplate('sow_out', settings?.design?.locale)}</Text></Box>
+			<Box class="col-water"><Text>{tTemplate('garden_water', settings?.design?.locale)}</Text></Box>
+			<Box class="col-notes"><Text>{tTemplate('notes', settings?.design?.locale).toUpperCase()}</Text></Box>
 		</Box>
 		{#each plantRows as _, i (i)}
 			<Box class="table-row">
@@ -55,7 +55,7 @@
 
 	<Box class="layout-section">
 		<Text class="label">
-			{#if showEmoji}📐{/if} GARDEN LAYOUT SKETCH
+			{#if showEmoji}📐{/if} {tTemplate('garden_layout_sketch', settings?.design?.locale)}
 		</Text>
 		<Box class="sketch-area">
 			<Grid display="dotted" />

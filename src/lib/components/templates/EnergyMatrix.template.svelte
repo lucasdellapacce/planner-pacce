@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 
 	let { settings = {} as PlannerSettings } = $props();
 </script>
@@ -8,13 +8,13 @@
 	<div class="header-section">
 		<div class="field title-field">
 			<div class="label">
-				{#if !settings?.emojis?.disable}⚡{/if} ENERGY & MOOD MATRIX
+				{#if !settings?.emojis?.disable}⚡{/if} {tTemplate('energy_mood_matrix', settings?.design?.locale)}
 			</div>
 			<div class="line"></div>
 		</div>
 		<div class="field date-field">
 			<div class="label">
-				{#if !settings?.emojis?.disable}📅{/if} DATE
+				{#if !settings?.emojis?.disable}📅{/if} {tTemplate('date', settings?.design?.locale)}
 			</div>
 			<div class="line date-slashes">
 				<span>/</span>
@@ -27,10 +27,10 @@
 		<!-- High Energy -->
 		<div class="energy-section high-energy">
 			<div class="section-header">
-				{#if !settings?.emojis?.disable}🔥{/if} HIGH ENERGY
+				{#if !settings?.emojis?.disable}🔥{/if} {tTemplate('high_energy', settings?.design?.locale)}
 			</div>
 			<div class="quadrant high-energy-positive">
-				<div class="quadrant-label">Energized & Happy</div>
+				<div class="quadrant-label">{tTemplate('energized_happy', settings?.design?.locale)}</div>
 				<div class="input-area">
 					<div class="input-line"></div>
 					<div class="input-line"></div>
@@ -38,7 +38,7 @@
 				</div>
 			</div>
 			<div class="quadrant high-energy-negative">
-				<div class="quadrant-label">Stressed & Anxious</div>
+				<div class="quadrant-label">{tTemplate('stressed_anxious', settings?.design?.locale)}</div>
 				<div class="input-area">
 					<div class="input-line"></div>
 					<div class="input-line"></div>
@@ -50,10 +50,10 @@
 		<!-- Low Energy -->
 		<div class="energy-section low-energy">
 			<div class="section-header">
-				{#if !settings?.emojis?.disable}💤{/if} LOW ENERGY
+				{#if !settings?.emojis?.disable}💤{/if} {tTemplate('low_energy', settings?.design?.locale)}
 			</div>
 			<div class="quadrant low-energy-positive">
-				<div class="quadrant-label">Calm & Peaceful</div>
+				<div class="quadrant-label">{tTemplate('calm_peaceful', settings?.design?.locale)}</div>
 				<div class="input-area">
 					<div class="input-line"></div>
 					<div class="input-line"></div>
@@ -61,7 +61,7 @@
 				</div>
 			</div>
 			<div class="quadrant low-energy-negative">
-				<div class="quadrant-label">Tired & Sluggish</div>
+				<div class="quadrant-label">{tTemplate('tired_sluggish', settings?.design?.locale)}</div>
 				<div class="input-area">
 					<div class="input-line"></div>
 					<div class="input-line"></div>
@@ -73,7 +73,7 @@
 
 	<div class="tracking-section">
 		<div class="tracking-title">
-			{#if !settings?.emojis?.disable}📊{/if} Overall Energy Level
+			{#if !settings?.emojis?.disable}📊{/if} {tTemplate('overall_energy_level', settings?.design?.locale)}
 		</div>
 		<div class="energy-scale">
 			{#each [1, 2, 3, 4, 5] as level}
@@ -87,7 +87,7 @@
 
 	<div class="notes-section">
 		<div class="notes-title">
-			{#if !settings?.emojis?.disable}📝{/if} Notes & Observations
+			{#if !settings?.emojis?.disable}📝{/if} {tTemplate('notes_observations', settings?.design?.locale)}
 		</div>
 		<div class="notes-lines">
 			<div class="input-line"></div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 	import { Field, Row } from '$molecules';
 
@@ -11,12 +11,12 @@
 	<Box class="header-section">
 		<Field
 			class="title-field"
-			label="EISENHOWER MATRIX (PRIORITY PLANNER)"
+			label={tTemplate('eisenhower_matrix_title', settings?.design?.locale)}
 			emoji="🧠"
 			showEmoji={!settings?.emojis?.disable} />
 		<Field
 			class="date-field"
-			label="DATE"
+			label={tTemplate('date', settings?.design?.locale)}
 			emoji="📅"
 			showEmoji={!settings?.emojis?.disable}>
 			<Box class="date-slashes">
@@ -30,8 +30,8 @@
 		<!-- DO FIRST (Urgent & Important) -->
 		<Box class="quadrant q-do">
 			<Box class="q-header">
-				<Text tag="strong" class="q-title">DO FIRST</Text>
-				<Text tag="small" class="q-subtitle">Urgent & Important</Text>
+				<Text tag="strong" class="q-title">{tTemplate('do_first', settings?.design?.locale)}</Text>
+				<Text tag="small" class="q-subtitle">{tTemplate('urgent_important', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="q-body">
 				{#each rows as _, i (i)}
@@ -43,8 +43,8 @@
 		<!-- SCHEDULE (Not Urgent & Important) -->
 		<Box class="quadrant q-schedule">
 			<Box class="q-header">
-				<Text tag="strong" class="q-title">SCHEDULE</Text>
-				<Text tag="small" class="q-subtitle">Not Urgent & Important</Text>
+				<Text tag="strong" class="q-title">{tTemplate('schedule', settings?.design?.locale)}</Text>
+				<Text tag="small" class="q-subtitle">{tTemplate('not_urgent_important', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="q-body">
 				{#each rows as _, i (i)}
@@ -56,8 +56,8 @@
 		<!-- DELEGATE (Urgent & Not Important) -->
 		<Box class="quadrant q-delegate">
 			<Box class="q-header">
-				<Text tag="strong" class="q-title">DELEGATE</Text>
-				<Text tag="small" class="q-subtitle">Urgent & Not Important</Text>
+				<Text tag="strong" class="q-title">{tTemplate('delegate', settings?.design?.locale)}</Text>
+				<Text tag="small" class="q-subtitle">{tTemplate('urgent_not_important', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="q-body">
 				{#each rows as _, i (i)}
@@ -69,8 +69,8 @@
 		<!-- DON'T DO (Not Urgent & Not Important) -->
 		<Box class="quadrant q-drop">
 			<Box class="q-header">
-				<Text tag="strong" class="q-title">DON'T DO</Text>
-				<Text tag="small" class="q-subtitle">Not Urgent & Not Important</Text>
+				<Text tag="strong" class="q-title">{tTemplate('dont_do', settings?.design?.locale)}</Text>
+				<Text tag="small" class="q-subtitle">{tTemplate('not_urgent_not_important', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="q-body">
 				{#each rows as _, i (i)}

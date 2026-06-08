@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 
 	let { settings = {} as PlannerSettings } = $props();
 	const showEmoji = $derived(!settings?.emojis?.disable);
@@ -9,12 +9,12 @@
 	<div class="header-section">
 		<div class="field title">
 			<div class="label">
-				{#if showEmoji}🙏{/if} DEVOTIONAL & SCRIPTURE PAGE
+				{#if showEmoji}🙏{/if} {tTemplate('devotional_title', settings?.design?.locale)}
 			</div>
 			<div class="line"></div>
 		</div>
 		<div class="field date">
-			<div class="label">DATE</div>
+			<div class="label">{tTemplate('date', settings?.design?.locale)}</div>
 			<div class="line"></div>
 		</div>
 	</div>
@@ -22,7 +22,7 @@
 	<div class="meta-section">
 		<div class="meta-row">
 			<div class="field Scripture">
-				<div class="label">SCRIPTURE PASSAGE / REF / THEME</div>
+				<div class="label">{tTemplate('scripture_passage_ref_theme', settings?.design?.locale)}</div>
 				<div class="line"></div>
 			</div>
 		</div>
@@ -30,7 +30,7 @@
 
 	<div class="content-section">
 		<div class="key-verse-block">
-			<div class="section-label">KEY VERSE / FOCUS QUOTE</div>
+			<div class="section-label">{tTemplate('key_verse_focus_quote', settings?.design?.locale)}</div>
 			{#each Array(3) as _}
 				<div class="line"></div>
 			{/each}
@@ -38,19 +38,19 @@
 
 		<div class="notes-split">
 			<div class="column reflection">
-				<div class="section-label">REFLECTION & UNDERSTANDING</div>
+				<div class="section-label">{tTemplate('reflection_understanding', settings?.design?.locale)}</div>
 				{#each Array(10) as _}
 					<div class="line"></div>
 				{/each}
 			</div>
 
 			<div class="column application">
-				<div class="section-label">PRACTICAL LIFE APPLICATION</div>
+				<div class="section-label">{tTemplate('practical_life_application', settings?.design?.locale)}</div>
 				{#each Array(4) as _}
 					<div class="line"></div>
 				{/each}
 
-				<div class="section-label prayers-label">PRAYER REQUESTS & PRAISE REPORTS</div>
+				<div class="section-label prayers-label">{tTemplate('prayer_requests_praise_reports', settings?.design?.locale)}</div>
 				{#each Array(5) as _}
 					<div class="prayer-row">
 						<div class="bullet"></div>
