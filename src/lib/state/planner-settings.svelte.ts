@@ -8,6 +8,11 @@ import {
 } from '$lib';
 import { toast } from './toast.state.svelte';
 import type { PageTemplate } from './collection';
+import { globalI18n } from './i18n.svelte';
+
+function t(key: string, fallback: string): string {
+	return globalI18n ? globalI18n.t(key) : fallback;
+}
 
 const EVENT_EMOJIS: Record<string, string> = {
 	'new year': '🎊',
@@ -693,7 +698,7 @@ export class PlannerSettings {
 		const calendar = this.calendars[calendarIndex];
 		if (calendar.updating) return;
 		if (!calendar.url) {
-			toast.error(`Calendar URL not provided`);
+			toast.error(t('calendar_sync.url_not_provided', 'Calendar URL not provided'));
 			return;
 		}
 		calendar.updating = true;
@@ -711,27 +716,28 @@ export class PlannerSettings {
 				try {
 					const domain = new URL(calendar.url).hostname.replace(/^www\./, '');
 					if (rawError.includes('429')) {
-						errorMessage = `${domain} request limit reached. Please try again in an hour.`;
+						errorMessage = t('calendar_sync.error_429_domain', '{domain} request limit reached. Please try again in an hour.').replace('{domain}', domain);
 					} else if (rawError.includes('404')) {
-						errorMessage = 'Calendar not found. Make sure the URL is correct and public.';
+						errorMessage = t('calendar_sync.error_404', 'Calendar not found. Make sure the URL is correct and public.');
 					} else if (rawError.includes('403')) {
-						errorMessage = `Access denied by ${domain}. The calendar might not be fully public.`;
+						errorMessage = t('calendar_sync.error_403_domain', 'Access denied by {domain}. The calendar might not be fully public.').replace('{domain}', domain);
 					}
 				} catch (e) {
 					// Fallback if URL parsing fails
 					if (rawError.includes('429'))
-						errorMessage =
-							'Calendar API request limit reached. Please try again in an hour.';
+						errorMessage = t('calendar_sync.error_429_generic', 'Calendar API request limit reached. Please try again in an hour.');
 				}
-				toast.error(`Couldn't sync: ${errorMessage}`);
+				toast.error(t('calendar_sync.sync_failed', "Couldn't sync: {error}").replace('{error}', errorMessage));
 				calendar.updating = false;
 				return;
 			}
 			const { events } = await response.json();
 			if (!events?.length) {
-				toast(`Fetched ${calendar.name || 'calendar'}, but couldn't find any events`);
+				const calName = calendar.name || t('calendar_sync.default_calendar_name', 'calendar');
+				toast(t('calendar_sync.no_events', "Fetched {name}, but couldn't find any events").replace('{name}', calName));
 			} else {
-				toast(`Successfully imported ${events.length} ${calendar.name || 'events'}`);
+				const eventsName = calendar.name || t('calendar_sync.default_events_name', 'events');
+				toast(t('calendar_sync.success_imported', "Successfully imported {count} {name}").replace('{count}', events.length.toString()).replace('{name}', eventsName));
 				calendar.events = events.map((e: CalendarEvent & { isUTC?: boolean }) => {
 					if (e.isUTC && e.duration !== undefined) {
 						const d = new Date(e.start * 1000);
@@ -750,7 +756,7 @@ export class PlannerSettings {
 			}
 			calendar.lastUpdated = Date.now();
 		} catch (error) {
-			toast.error(`Couldn't fetch calendar events. Network error.`);
+			toast.error(t('calendar_sync.network_error', "Couldn't fetch calendar events. Network error."));
 		}
 		calendar.updating = false;
 	}

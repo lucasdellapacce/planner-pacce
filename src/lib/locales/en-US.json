@@ -102,7 +102,145 @@
 		},
 		"toast": {
 			"batch_success": "All {count} templates in \"{category}\" exported!",
-			"selected": "Selected template: {name}"
+			"selected": "Selected template: {name}",
+			"success": "Template \"{name}\" exported!",
+			"error": "Failed to export template image."
+		}
+	},
+	"preset_categories": {
+		"all": "Top Planners",
+		"essentials": "Essentials",
+		"work": "Work",
+		"academic": "Academic",
+		"lifestyle": "Lifestyle",
+		"wellness": "Wellness",
+		"hobbies": "Hobbies",
+		"my-presets": "My Presets"
+	},
+	"presets_library": {
+		"title": "Presets Library",
+		"loading_title": "Loading Preset",
+		"generating": "Generating {name}...",
+		"applying": "Applying settings and generating planner spreads...",
+		"search_placeholder": "Search 40+ presets...",
+		"subtitle_1": "Pick a starter planner to set up your layout instantly. ",
+		"subtitle_note": "Note: Loading a starter will replace your current design!",
+		"backup_link": "Click here to save a backup of your work first.",
+		"empty_title": "No matching presets found",
+		"empty_desc": "Try searching for a different keyword or choosing another category.",
+		"reset_filters": "Reset Filters",
+		"delete_confirm": "Are you sure you want to delete this custom preset?",
+		"delete_aria": "Delete preset",
+		"close_aria": "Close presets",
+		"clear_search_aria": "Clear search",
+		"wizard_intro": "Start with a pre-configured template or ",
+		"wizard_scratch": "build your layout from scratch"
+	},
+	"presets_page": {
+		"meta_title_all": "E-Ink Planner Presets Library — Remarkably Organized",
+		"meta_title_cat": "{category} Custom E-Ink Planner Presets — Remarkably Organized",
+		"meta_desc_all": "Browse our library of custom e-ink planner presets. Search and download configurations for minimalist, productivity, student, and mindfulness planners.",
+		"meta_desc_cat": "Browse our library of {category} custom e-ink planner presets. Search and download configurations for minimalist, productivity, student, and mindfulness planners.",
+		"toast_success": "Markdown list copied to clipboard! Ready to share.",
+		"toast_error": "Failed to copy to clipboard.",
+		"copy_clipboard": "Copy to clipboard",
+		"title": "E-Ink Planner Presets",
+		"subtitle_intro": "Pick a starter layout to customize, or use ",
+		"subtitle_wizard": "the Wizard",
+		"subtitle_outro": " to build your own.",
+		"planned_times": "Planned: {count} times"
+	},
+	"themes_gallery": {
+		"gallery_title": "Theme Gallery",
+		"gallery_subtitle": "Browse every theme in a paint-swatch gallery. Click any theme to apply it instantly.",
+		"close_aria": "Close themes",
+		"select_aria": "Select {name}",
+		"specimen_cover": "Cover",
+		"specimen_titles": "Titles",
+		"specimen_body": "Body"
+	},
+	"planner_page": {
+		"meta_title_default": "Custom E-Ink Planner Builder — Remarkably Organized",
+		"meta_title_preset": "{name} Custom E-Ink Planner — Remarkably Organized",
+		"meta_desc_default": "Design and export custom planners, calendars, habit trackers, and organizers for the reMarkable and other e-ink tablets.",
+		"meta_desc_preset": "Download a print-ready custom {name} planner for reMarkable and other e-ink tablets. {description}",
+		"toast_calendar_sync": "Calendar auto-sync is disabled to save API limits.\nClick the open book icon to sync events manually."
+	},
+	"backup": {
+		"save_success": "Configuration saved successfully!",
+		"save_error": "Failed to save configuration. Your browser storage might be full.",
+		"load_success": "Configuration loaded successfully!",
+		"load_not_found": "No saved configuration found.",
+		"load_error": "Failed to load configuration.",
+		"export_success": "Configuration exported successfully!",
+		"export_error": "Failed to export configuration.",
+		"import_success": "Configuration imported successfully!",
+		"import_invalid": "Invalid settings file format.",
+		"import_parse_error": "Failed to parse settings file.",
+		"reset_success": "Configuration reset to defaults."
+	},
+	"print": {
+		"export_success": "Page {index} exported successfully!",
+		"export_error": "Failed to export image."
+	},
+	"wizard_export": {
+		"toast_preset_saved": "Custom preset saved!",
+		"toast_downloaded": "Settings downloaded!",
+		"toast_link_copied": "Shareable link copied!",
+		"toast_reset": "Settings reset to default",
+		"reset_confirm": "Are you sure you want to reset all settings? This cannot be undone.",
+		"ready_to_plan": "Ready to Plan?",
+		"tagline": "Save your setup, generate your planner, or share your configuration with others.",
+		"save_title": "Save Custom Preset",
+		"preset_name_label": "Preset Name",
+		"placeholder_name": "My Awesome Planner",
+		"cancel": "Cancel",
+		"save_preset": "Save Preset",
+		"icon_label": "Icon",
+		"actions": {
+			"print_title": "Print Now",
+			"print_desc": "Generate and print your PDF.",
+			"save_title": "Save Preset",
+			"save_desc": "Save as a local custom preset.",
+			"link_title": "Copy Link",
+			"link_desc": "Copy a shareable URL of this setup.",
+			"download_title": "Download JSON",
+			"download_desc": "Export settings to a local file.",
+			"reset_title": "Reset All",
+			"reset_desc": "Clear everything and start over.",
+			"docs_title": "User Guide",
+			"docs_desc": "Learn how to use your new planner.",
+			"finish_title": "See the Magic",
+			"finish_desc": "See what your magic created!"
+		}
+	},
+	"calendar_sync": {
+		"url_not_provided": "Calendar URL not provided",
+		"sync_failed": "Couldn't sync: {error}",
+		"no_events": "Fetched {name}, but couldn't find any events",
+		"success_imported": "Successfully imported {count} {name}",
+		"network_error": "Couldn't fetch calendar events. Network error.",
+		"error_429_domain": "{domain} request limit reached. Please try again in an hour.",
+		"error_404": "Calendar not found. Make sure the URL is correct and public.",
+		"error_403_domain": "Access denied by {domain}. The calendar might not be fully public.",
+		"error_429_generic": "Calendar API request limit reached. Please try again in an hour.",
+		"default_calendar_name": "calendar",
+		"default_events_name": "events"
+	},
+	"landing": {
+		"meta_title": "Remarkably Organized — Custom Planner Builder for reMarkable & E-Ink Tablets",
+		"meta_desc": "Design and export beautiful custom planners, calendars, habit trackers, and organizers for the reMarkable series and other e-ink tablets. Print-ready PDF output.",
+		"hero_tagline": "Build beautiful, functional PDF planners for your e-ink tablet.",
+		"begin_wizard": "Begin the Wizard!",
+		"browse_presets": "Browse Our Free Preset Planner Library",
+		"free_badge": "100% FREE",
+		"templates_badge": "Now with {presets} Presets, {templates} Templates, and {themes} Themes!",
+		"stats": {
+			"visitors": "Visitors",
+			"planners": "Planners",
+			"prints": "Prints",
+			"shares": "Shares",
+			"total_time": "Total Time Creating"
 		}
 	}
 }

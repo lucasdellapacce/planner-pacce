@@ -175,10 +175,10 @@
 			link.download = `remarkably-organized-template-${templateValue}.png`;
 			link.href = dataUrl;
 			link.click();
-			toast.success(`Template "${templateValue}" exported!`);
+			toast.success(i18n.t('gallery.toast.success').replace('{name}', templateValue));
 		} catch (error) {
 			console.error(error);
-			toast.error('Failed to export template image.');
+			toast.error(i18n.t('gallery.toast.error'));
 		} finally {
 			exportingTemplateId = '';
 		}

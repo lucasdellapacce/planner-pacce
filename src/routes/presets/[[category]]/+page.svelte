@@ -8,6 +8,9 @@
 	import { trackEvent } from '$lib/analytics';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
+	import { useI18n } from '$state';
+
+	const i18n = useI18n();
 
 	let presetLoads = $state<Record<string, number>>({});
 
@@ -54,14 +57,14 @@
 
 	const pageTitle = $derived(
 		isDefaultCategory
-			? 'E-Ink Planner Presets Library — Remarkably Organized'
-			: `${activeCategoryInfo.name} Custom E-Ink Planner Presets — Remarkably Organized`,
+			? i18n.t('presets_page.meta_title_all')
+			: i18n.t('presets_page.meta_title_cat').replace('{category}', i18n.tPresetCategory(activeCategoryInfo.id, activeCategoryInfo.name)),
 	);
 
 	const pageDescription = $derived(
 		isDefaultCategory
-			? 'Browse our library of custom e-ink planner presets. Search and download configurations for minimalist, productivity, student, and mindfulness planners.'
-			: `Browse our library of ${activeCategoryInfo.name.toLowerCase()} custom e-ink planner presets. Search and download configurations for minimalist, productivity, student, and mindfulness planners.`,
+			? i18n.t('presets_page.meta_desc_all')
+			: i18n.t('presets_page.meta_desc_cat').replace('{category}', i18n.tPresetCategory(activeCategoryInfo.id, activeCategoryInfo.name).toLowerCase()),
 	);
 
 	const isAuthorSetupPreset = (p: Preset) => p.id === 'author-setup';
@@ -80,9 +83,13 @@
 		const hasNoSearchQuery = !searchTrimmed;
 		if (hasNoSearchQuery) return isCategoryMatch;
 
-		const isNameMatch = preset.name.toLowerCase().includes(searchTrimmed);
-		const isDescriptionMatch = preset.description.toLowerCase().includes(searchTrimmed);
-		const isCategoryTextMatch = preset.category?.toLowerCase().includes(searchTrimmed);
+		const name = i18n.tPreset(preset.id, 'name', preset.name);
+		const description = i18n.tPreset(preset.id, 'description', preset.description);
+		const categoryTranslated = i18n.tPresetCategory(preset.category || '', preset.category || '');
+
+		const isNameMatch = name.toLowerCase().includes(searchTrimmed);
+		const isDescriptionMatch = description.toLowerCase().includes(searchTrimmed);
+		const isCategoryTextMatch = categoryTranslated.toLowerCase().includes(searchTrimmed);
 
 		const isSearchMatch = isNameMatch || isDescriptionMatch || isCategoryTextMatch;
 		return isCategoryMatch && isSearchMatch;
@@ -109,9 +116,13 @@
 				return sortedOthers;
 			}
 
-			const isAuthorNameMatch = authorPreset.name.toLowerCase().includes(searchTrimmed);
-			const isAuthorDescMatch = authorPreset.description.toLowerCase().includes(searchTrimmed);
-			const isAuthorCatMatch = authorPreset.category?.toLowerCase().includes(searchTrimmed) ?? false;
+			const authorName = i18n.tPreset(authorPreset.id, 'name', authorPreset.name);
+			const authorDesc = i18n.tPreset(authorPreset.id, 'description', authorPreset.description);
+			const authorCat = i18n.tPresetCategory(authorPreset.category || '', authorPreset.category || '');
+
+			const isAuthorNameMatch = authorName.toLowerCase().includes(searchTrimmed);
+			const isAuthorDescMatch = authorDesc.toLowerCase().includes(searchTrimmed);
+			const isAuthorCatMatch = authorCat.toLowerCase().includes(searchTrimmed);
 			const isAuthorSearchMatch = isAuthorNameMatch || isAuthorDescMatch || isAuthorCatMatch;
 			const shouldIncludeAuthor = !hasSearchQuery || isAuthorSearchMatch;
 
@@ -154,7 +165,9 @@
 
 		const mapToMarkdownItem = (preset: Preset) => {
 			const url = getAbsolutePresetUrl(preset);
-			return `* ${preset.icon} [**${preset.name}**](${url}): ${preset.description}`;
+			const name = i18n.tPreset(preset.id, 'name', preset.name);
+			const description = i18n.tPreset(preset.id, 'description', preset.description);
+			return `* ${preset.icon} [**${name}**](${url}): ${description}`;
 		};
 
 		const isNotAllCategory = (cat: { id: string }) => cat.id !== 'all';
@@ -167,7 +180,8 @@
 			const isCategoryNotEmpty = categoryPresets.length > 0;
 			if (!isCategoryNotEmpty) return '';
 
-			const headerText = `### ${cat.icon} ${cat.name}\n`;
+			const catName = i18n.tPresetCategory(cat.id, cat.name);
+			const headerText = `### ${cat.icon} ${catName}\n`;
 			const itemsText = categoryPresets.map(mapToMarkdownItem).join('\n');
 			return `${headerText}${itemsText}\n`;
 		};
@@ -182,10 +196,10 @@
 		navigator.clipboard
 			.writeText(markdownText)
 			.then(() => {
-				toast.success('Markdown list copied to clipboard! Ready to share.');
+				toast.success(i18n.t('presets_page.toast_success'));
 			})
 			.catch(() => {
-				toast.error('Failed to copy to clipboard.');
+				toast.error(i18n.t('presets_page.toast_error'));
 			});
 	};
 </script>
@@ -199,33 +213,33 @@
 	<div class="glass-container">
 		<header class="page-header">
 			<button class="btn-markdown" onclick={copyMarkdownList}>
-				📋 Copy to clipboard
+				📋 {i18n.t('presets_page.copy_clipboard')}
 			</button>
 			<div class="search-box">
 				<span class="search-icon">🔎</span>
 				<input
 					type="text"
-					placeholder="Search presets..."
+					placeholder={i18n.t('presets_library.search_placeholder')}
 					bind:value={searchQuery}
 					class="search-input" />
 				{#if searchQuery}
 					<button
 						class="clear-search-btn"
 						onclick={() => (searchQuery = '')}
-						aria-label="Clear search">
+						aria-label={i18n.t('presets_library.clear_search_aria')}>
 						✕
 					</button>
 				{/if}
 			</div>
 			<div class="flex items-center gap-4">
 				<img src="/web-app-manifest-512x512.png" alt="Logo" class="w-16 h-16" />
-				<h1>E-Ink Planner Presets</h1>
+				<h1>{i18n.t('presets_page.title')}</h1>
 			</div>
 
 			<p class="subtitle">
-				Pick a starter layout to customize, or use
-				<a href="/planner" class="back-link">the Wizard</a>
-				to build your own.
+				{i18n.t('presets_page.subtitle_intro')}
+				<a href="/planner" class="back-link">{i18n.t('presets_page.subtitle_wizard')}</a>
+				{i18n.t('presets_page.subtitle_outro')}
 			</p>
 		</header>
 
@@ -239,7 +253,7 @@
 						class:active={activeCategory === cat.id}
 						onclick={() => trackEvent('preset_category_click', { category: cat.id })}>
 						<span class="cat-icon">{cat.icon}</span>
-						<span class="cat-name">{cat.name}</span>
+						<span class="cat-name">{i18n.tPresetCategory(cat.id, cat.name)}</span>
 						<span class="cat-count">{count}</span>
 					</a>
 				{/each}
@@ -255,14 +269,14 @@
 						onclick={() => trackEvent('preset_click', { preset_id: preset.id })}>
 						<div class="preset-icon">{preset.icon}</div>
 						<div class="preset-info">
-							<h3>{preset.name}</h3>
+							<h3>{i18n.tPreset(preset.id, 'name', preset.name)}</h3>
 							{#if preset.category}
-								<span class="category-tag">{preset.category}</span>
+								<span class="category-tag">{i18n.tPresetCategory(preset.category, preset.category)}</span>
 							{/if}
-							<p>{preset.description}</p>
+							<p>{i18n.tPreset(preset.id, 'description', preset.description)}</p>
 						</div>
 						<span class="load-count" style="position: absolute; bottom: 1rem; right: 1rem; font-size: 0.75rem; opacity: 0.7;">
-							Planned: {presetLoads[preset.id] || 0} times
+							{i18n.t('presets_page.planned_times').replace('{count}', (presetLoads[preset.id] || 0).toString())}
 						</span>
 					</a>
 				{/each}
@@ -270,15 +284,15 @@
 		{:else}
 			<div class="empty-presets-state">
 				<span class="empty-icon">🔍</span>
-				<h3>No matching presets found</h3>
-				<p>Try searching for a different keyword or choosing another category.</p>
+				<h3>{i18n.t('presets_library.empty_title')}</h3>
+				<p>{i18n.t('presets_library.empty_desc')}</p>
 				<a
 					href="/presets"
 					class="reset-filter-btn"
 					onclick={() => {
 						searchQuery = '';
 					}}>
-					Reset Filters
+					{i18n.t('presets_library.reset_filters')}
 				</a>
 			</div>
 		{/if}

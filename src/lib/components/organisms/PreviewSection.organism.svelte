@@ -5,6 +5,9 @@
 	import Link from '$atoms/Link.atom.svelte';
 	import Image from '$atoms/Image.atom.svelte';
 	import Badge from '$molecules/Badge.molecule.svelte';
+	import { useI18n } from '$state';
+
+	const i18n = useI18n();
 	interface Props {
 		shareUrl: string;
 		presetsLength: number;
@@ -124,11 +127,11 @@
 
 <Box tag="section" class="preview-section">
 	<Link href="/planner{shareUrl}" class="image-wrapper" onclick={handlePreviewClick}>
-		<Badge class="free-badge" icon={TrophyIcon} text="100% FREE" />
+		<Badge class="free-badge" icon={TrophyIcon} text={i18n.t('landing.free_badge')} />
 		<Badge
 			class="templates-badge"
 			icon={MagicIcon}
-			text="Now with {presetsLength} Presets, {templatesLength} Templates, and {themesLength} Themes!" />
+			text={i18n.t('landing.templates_badge').replace('{presets}', presetsLength.toString()).replace('{templates}', templatesLength.toString()).replace('{themes}', themesLength.toString())} />
 		<div class="hero-image-container">
 			{#key activeImage}
 				<div

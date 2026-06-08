@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { Box, Text, Input, Button } from '$atoms';
 	import { fade } from 'svelte/transition';
-	import { toast, type PlannerSettings } from '$state';
+	import { toast, type PlannerSettings, useI18n } from '$state';
+
+	const i18n = useI18n();
 	import SaveIcon from '~icons/fa/save';
 	import LinkIcon from '~icons/fa/link';
 	import DownloadIcon from '~icons/fa/download';
@@ -40,7 +42,7 @@
 		onSaveCustomPreset(newPreset);
 		showSaveConfirm = false;
 		newPresetName = '';
-		toast.success('Custom preset saved!');
+		toast.success(i18n.t('wizard_export.toast_preset_saved'));
 	}
 
 	function downloadJson() {
@@ -54,7 +56,7 @@
 		document.body.appendChild(downloadAnchorNode);
 		downloadAnchorNode.click();
 		downloadAnchorNode.remove();
-		toast.success('Settings downloaded!');
+		toast.success(i18n.t('wizard_export.toast_downloaded'));
 	}
 
 	function copyShareableLink() {
@@ -62,7 +64,7 @@
 		const url = new URL(document.location.href);
 		url.searchParams.set('settings', JSON.stringify(settings.serialize()));
 		navigator.clipboard.writeText(url.toString()).then(() => {
-			toast.success('Shareable link copied!');
+			toast.success(i18n.t('wizard_export.toast_link_copied'));
 		});
 	}
 
@@ -73,56 +75,56 @@
 
 	function handleReset() {
 		const isConfirmed = confirm(
-			'Are you sure you want to reset all settings? This cannot be undone.',
+			i18n.t('wizard_export.reset_confirm'),
 		);
 		if (isConfirmed) {
 			trackEvent('wizard_export_action', { action: 'reset' });
 			const defaultSettings = (settings.constructor as any).prototype.serialize?.() || {};
 			settings.deserialize(defaultSettings);
-			toast.info('Settings reset to default');
+			toast.info(i18n.t('wizard_export.toast_reset'));
 		}
 	}
 
-	const exportActions = [
+	const exportActions = $derived([
 		{
 			id: 'print',
-			title: 'Print Now',
-			description: 'Generate and print your PDF.',
+			title: i18n.t('wizard_export.actions.print_title'),
+			description: i18n.t('wizard_export.actions.print_desc'),
 			icon: PrintIcon,
 			handler: handlePrint,
 		},
 		{
 			id: 'save',
-			title: 'Save Preset',
-			description: 'Save as a local custom preset.',
+			title: i18n.t('wizard_export.actions.save_title'),
+			description: i18n.t('wizard_export.actions.save_desc'),
 			icon: SaveIcon,
 			handler: () => (showSaveConfirm = true),
 		},
 		{
 			id: 'link',
-			title: 'Copy Link',
-			description: 'Copy a shareable URL of this setup.',
+			title: i18n.t('wizard_export.actions.link_title'),
+			description: i18n.t('wizard_export.actions.link_desc'),
 			icon: LinkIcon,
 			handler: copyShareableLink,
 		},
 		{
 			id: 'download',
-			title: 'Download JSON',
-			description: 'Export settings to a local file.',
+			title: i18n.t('wizard_export.actions.download_title'),
+			description: i18n.t('wizard_export.actions.download_desc'),
 			icon: DownloadIcon,
 			handler: downloadJson,
 		},
 		{
 			id: 'reset',
-			title: 'Reset All',
-			description: 'Clear everything and start over.',
+			title: i18n.t('wizard_export.actions.reset_title'),
+			description: i18n.t('wizard_export.actions.reset_desc'),
 			icon: RefreshIcon,
 			handler: handleReset,
 		},
 		{
 			id: 'docs',
-			title: 'User Guide',
-			description: 'Learn how to use your new planner.',
+			title: i18n.t('wizard_export.actions.docs_title'),
+			description: i18n.t('wizard_export.actions.docs_desc'),
 			icon: BookIcon,
 			handler: () =>
 				window.open(
@@ -132,8 +134,8 @@
 		},
 		{
 			id: 'finish',
-			title: 'See the Magic',
-			description: 'See what your magic created!',
+			title: i18n.t('wizard_export.actions.finish_title'),
+			description: i18n.t('wizard_export.actions.finish_desc'),
 			icon: MagicIcon,
 			handler: () => {
 				trackEvent('wizard_finish');
@@ -141,16 +143,16 @@
 			},
 			primary: true,
 		},
-	];
+	]);
 </script>
 
 <Box class="step-content export-step" transition="fade" inDuration={150}>
 	<Box class="export-header">
 		<h2 class="welcome-headline">
-			<span class="welcome-headline-gradient">Ready to Plan?</span>
+			<span class="welcome-headline-gradient">{i18n.t('wizard_export.ready_to_plan')}</span>
 		</h2>
 		<Text tag="p" class="export-tagline">
-			Save your setup, generate your planner, or share your configuration with others.
+			{i18n.t('wizard_export.tagline')}
 		</Text>
 	</Box>
 
@@ -178,10 +180,10 @@
 			</Box>
 		{:else}
 			<Box class="save-confirm-box" transition="fade" inDuration={150}>
-				<Text tag="h4">Save Custom Preset</Text>
+				<Text tag="h4">{i18n.t('wizard_export.save_title')}</Text>
 				<Box class="input-group-row">
 					<Box class="input-group icon-input">
-						<Text tag="label" for="guide-preset-icon">Icon</Text>
+						<Text tag="label" for="guide-preset-icon">{i18n.t('wizard_export.icon_label')}</Text>
 						<Input
 							id="guide-preset-icon"
 							type="text"
@@ -189,24 +191,24 @@
 							bind:value={newPresetIcon} />
 					</Box>
 					<Box class="input-group name-input">
-						<Text tag="label" for="guide-preset-name">Preset Name</Text>
+						<Text tag="label" for="guide-preset-name">{i18n.t('wizard_export.preset_name_label')}</Text>
 						<Input
 							id="guide-preset-name"
 							type="text"
-							placeholder="My Awesome Planner"
+							placeholder={i18n.t('wizard_export.placeholder_name')}
 							bind:value={newPresetName}
 							onkeydown={(e: any) => e.key === 'Enter' && saveCustomPreset()} />
 					</Box>
 				</Box>
 				<Box class="save-actions">
 					<Button class="cancel-btn" onclick={() => (showSaveConfirm = false)}>
-						Cancel
+						{i18n.t('wizard_export.cancel')}
 					</Button>
 					<Button
 						class="save-btn"
 						onclick={saveCustomPreset}
 						disabled={!newPresetName.trim()}>
-						Save Preset
+						{i18n.t('wizard_export.save_preset')}
 					</Button>
 				</Box>
 			</Box>

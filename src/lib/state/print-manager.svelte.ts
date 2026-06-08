@@ -1,6 +1,6 @@
 import { tick } from 'svelte';
 import * as htmlToImage from 'html-to-image';
-import { toast } from '$state';
+import { toast, globalI18n } from '$state';
 import type { PlannerSettings } from '$lib';
 
 export class PrintManager {
@@ -92,10 +92,14 @@ export class PrintManager {
 			link.download = `remarkably-organized-${templateName}-${pageIndex}.png`;
 			link.href = dataUrl;
 			link.click();
-			toast.success(`Page ${pageIndex} exported successfully!`);
+			const msg = globalI18n
+				? globalI18n.t('print.export_success').replace('{index}', pageIndex.toString())
+				: `Page ${pageIndex} exported successfully!`;
+			toast.success(msg);
 		} catch (error) {
 			console.error(error);
-			toast.error('Failed to export image.');
+			const msg = globalI18n ? globalI18n.t('print.export_error') : 'Failed to export image.';
+			toast.error(msg);
 		} finally {
 			container?.remove();
 			this.isExportingImage = false;

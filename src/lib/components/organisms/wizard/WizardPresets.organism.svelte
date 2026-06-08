@@ -2,6 +2,9 @@
 	import { Box, Text, Input, Button } from '$atoms';
 	import { fade } from 'svelte/transition';
 	import { PRESETS, type Preset } from '$lib/data/presets';
+	import { useI18n } from '$state';
+
+	const i18n = useI18n();
 
 	let {
 		customPresets = [] as any[],
@@ -40,8 +43,10 @@
 		if (isSearchEmpty) return true;
 
 		const searchLow = searchQuery.toLowerCase();
-		const nameMatches = preset.name.toLowerCase().includes(searchLow);
-		const descriptionMatches = preset.description.toLowerCase().includes(searchLow);
+		const name = i18n.tPreset(preset.id, 'name', preset.name);
+		const description = i18n.tPreset(preset.id, 'description', preset.description);
+		const nameMatches = name.toLowerCase().includes(searchLow);
+		const descriptionMatches = description.toLowerCase().includes(searchLow);
 		return nameMatches || descriptionMatches;
 	};
 
@@ -73,24 +78,24 @@
 		<span class="search-icon">🔎</span>
 		<Input
 			type="text"
-			placeholder="Search presets..."
+			placeholder={i18n.t('presets_library.search_placeholder')}
 			bind:value={searchQuery}
 			class="search-input" />
 		{#if searchQuery}
 			<Button
 				class="clear-search-btn"
 				onclick={() => (searchQuery = '')}
-				aria-label="Clear search">
+				aria-label={i18n.t('presets_library.clear_search_aria')}>
 				✕
 			</Button>
 		{/if}
 	</Box>
-	<Text tag="h3" class="welcome-headline-gradient">Presets Library</Text>
+	<Text tag="h3" class="welcome-headline-gradient">{i18n.t('presets_library.title')}</Text>
 	<Text tag="p">
-		Start with a pre-configured template or <Button
+		{i18n.t('presets_library.wizard_intro')}<Button
 			class="text-link"
 			onclick={onStartFromScratch}>
-			build your layout from scratch
+			{i18n.t('presets_library.wizard_scratch')}
 		</Button>
 		.
 	</Text>
@@ -103,7 +108,7 @@
 					class="category-tab {activeCategory === cat.id ? 'active' : ''}"
 					onclick={() => (activeCategory = cat.id)}>
 					<span class="cat-icon">{cat.icon}</span>
-					<span class="cat-name">{cat.name}</span>
+					<span class="cat-name">{i18n.tPresetCategory(cat.id, cat.name)}</span>
 					<span class="cat-count">{count}</span>
 				</Button>
 			{/each}
@@ -117,10 +122,10 @@
 				<Button
 					class="preset-card tooltip-top {isSelected ? 'selected' : ''}"
 					onclick={() => onSelectPreset(preset)}
-					data-tooltip={preset.description}>
+					data-tooltip={i18n.tPreset(preset.id, 'description', preset.description)}>
 					<Box class="preset-icon">{preset.icon}</Box>
 					<Box class="preset-info">
-						<Text tag="h4">{preset.name}</Text>
+						<Text tag="h4">{i18n.tPreset(preset.id, 'name', preset.name)}</Text>
 					</Box>
 				</Button>
 			{/each}
@@ -141,11 +146,11 @@
 						class="delete-preset-btn"
 						onclick={(e: any) => {
 							e.stopPropagation();
-							if (confirm('Are you sure you want to delete this custom preset?')) {
+							if (confirm(i18n.t('presets_library.delete_confirm'))) {
 								onDeleteCustomPreset(preset.id);
 							}
 						}}
-						aria-label="Delete preset">
+						aria-label={i18n.t('presets_library.delete_aria')}>
 						✕
 					</Button>
 				</Box>
@@ -154,9 +159,9 @@
 	{:else}
 		<Box class="empty-presets-state">
 			<span class="empty-icon">🔍</span>
-			<Text tag="h3">No matching presets found</Text>
+			<Text tag="h3">{i18n.t('presets_library.empty_title')}</Text>
 			<Text tag="p">
-				Try searching for a different keyword or choosing another category.
+				{i18n.t('presets_library.empty_desc')}
 			</Text>
 			<Button
 				class="reset-filter-btn"
@@ -164,7 +169,7 @@
 					searchQuery = '';
 					activeCategory = 'essentials';
 				}}>
-				Reset Filters
+				{i18n.t('presets_library.reset_filters')}
 			</Button>
 		</Box>
 	{/if}

@@ -102,7 +102,337 @@
 		},
 		"toast": {
 			"batch_success": "Todos os {count} modelos em \"{category}\" foram exportados!",
-			"selected": "Modelo selecionado: {name}"
+			"selected": "Modelo selecionado: {name}",
+			"success": "Modelo \"{name}\" exportado!",
+			"error": "Falha ao exportar imagem do modelo."
+		}
+	},
+	"themes": {
+		"classic-e-ink": "E-Ink Clássico",
+		"minimalist-muji": "Muji Minimalista",
+		"paper-pro-accents": "Acentos Paper Pro",
+		"studio-noir": "Studio Noir",
+		"nordic-forest": "Floresta Nórdica",
+		"garden-chapter": "Capítulo do Jardim",
+		"meadow-memo": "Nota do Campo",
+		"chalkboard-atelier": "Ateliê do Quadro-Negro",
+		"sunset-studio": "Estúdio Pôr do Sol",
+		"vintage-cassette": "Cassete Vintage",
+		"library-loft": "Sótão da Biblioteca",
+		"coffee-shop": "Cafeteria",
+		"pastel-dreams": "Sonhos Pastel",
+		"rainbow-sherbert": "Sorvete de Arco-Íris",
+		"ocean-atelier": "Ateliê Oceânico",
+		"festival-folio": "Folio do Festival",
+		"stardust-notes": "Notas de Poeira Estelar",
+		"vaporwave-aesthetics": "Vaporwave",
+		"cyberpunk-city": "Cidade Cyberpunk",
+		"pixel-punk": "Pixel Punk",
+		"hall-of-the-gods": "Salão dos Deuses",
+		"midnight-nerd": "Nerd da Meia-Noite",
+		"worldwide-webwork": "Worldwide Webwork",
+		"neon-hacker": "Hacker Neon"
+	},
+	"presets": {
+		"astrologer": {
+			"name": "O Astrólogo",
+			"description": "Um estudo oculto das estrelas. Acompanhe as fases da lua, mapeie trânsitos e manifeste suas intenções com esta configuração cósmica."
+		},
+		"author-setup": {
+			"name": "A Configuração do Autor",
+			"description": "Configuração pessoal do XP com coleções personalizadas e modo escuro."
+		},
+		"book-club": {
+			"name": "O Clube do Livro",
+			"description": "Monitore metas de leitura, registre resenhas de livros e organize listas de leitura por gênero."
+		},
+		"financial-planner": {
+			"name": "O CFO",
+			"description": "Controle de orçamento, registros de investimentos, metas de economia e revisões mensais de despesas."
+		},
+		"sales-pipeline": {
+			"name": "O Negociador",
+			"description": "Funil de vendas, registros de prospecção, rastreamento de chamadas e metas de receita para profissionais de vendas."
+		},
+		"relationship-builder": {
+			"name": "O Conector",
+			"description": "Cultive suas conexões. Acompanhe relacionamentos com clientes, interações com amigos e datas importantes com uma abordagem sistemática para manter o contato."
+		},
+		"content-creator": {
+			"name": "O Criador de Conteúdo",
+			"description": "Planeje seu fluxo de produção de conteúdo, desde a ideia até a publicação em várias plataformas."
+		},
+		"daily-stoic": {
+			"name": "O Estóico Diário",
+			"description": "Intenções matinais, reflexões noturnas e gratidão — estruturado com base na filosofia estóica."
+		},
+		"prayer-devotion": {
+			"name": "O Devoto",
+			"description": "Leituras diárias das escrituras, listas de oração, notas de sermões e acompanhamento de crescimento espiritual."
+		},
+		"travel-nomad": {
+			"name": "O Nômade Digital",
+			"description": "Planejamento de viagens, listas de bagagem e roteiros para o viajante perpétuo."
+		},
+		"dreamweaver": {
+			"name": "O Tecedor de Sonhos",
+			"description": "Otimize sua higiene do sono, acompanhe os ciclos de sono e documente sonhos e percepções noturnas."
+		},
+		"teacher-educator": {
+			"name": "O Educador",
+			"description": "Planos de aula, listas de alunos, diários de classe e cronogramas de currículo para professores."
+		},
+		"software-engineer": {
+			"name": "O Engenheiro",
+			"description": "Planejamento de sprint, listas numeradas e notas de reunião para scrums diários."
+		},
+		"quarterly-strategist": {
+			"name": "O Executivo",
+			"description": "Focado na execução trimestral de 90 dias. Perfeito para fundadores, freelancers e planejadores focados em metas."
+		},
+		"parent-family": {
+			"name": "O Centro Familiar",
+			"description": "Coordene agendas familiares, eventos escolares, tarefas domésticas e preparo de refeições em um planejador compartilhado."
+		},
+		"dnd-game-master": {
+			"name": "O Mestre de Jogo",
+			"description": "Notas de campanha, registros de sessões, fichas de NPC e planos de encontro para mestres de RPG."
+		},
+		"gratitude-365": {
+			"name": "Gratidão 365",
+			"description": "Uma página por dia dedicada a gratidão, afirmações e micro-diários."
+		},
+		"green-thumb": {
+			"name": "O Dedo Verde",
+			"description": "Monitore os cuidados com as plantas, cronogramas de rega e planeje o layout do seu jardim."
+		},
+		"habit-architect": {
+			"name": "O Criador de Hábitos",
+			"description": "Inspirado em Hábitos Atômicos. Crie pilhas de hábitos, acompanhe sequências e desenhe seus sistemas diários."
+		},
+		"health-fitness": {
+			"name": "Saudável & Em Forma",
+			"description": "Acompanhe seus treinos diários, hábitos semanais e planejamento de refeições."
+		},
+		"wellness-master": {
+			"name": "O Ser Integral",
+			"description": "Acompanhamento holístico da saúde. Equilibre bem-estar físico, saúde mental, ciclos de sono e nutrição em um sistema integrado."
+		},
+		"homemaker": {
+			"name": "O Dono de Casa",
+			"description": "O centro de comando definitivo para gerenciar um lar. Jardim, refeições, orçamentos e animais de estimação."
+		},
+		"adhd-pro": {
+			"name": "O Hiperfocado",
+			"description": "Produtividade otimizada para TDAH. Usa a Matriz de Eisenhower para priorizar tarefas com uma interface limpa."
+		},
+		"the-lifelong-learner": {
+			"name": "O Aprendiz Eterno",
+			"description": "Para mentes curiousas. Acompanhe cursos autodidatas, listas de leitura, aquisição de habilidades e percepções pessoais."
+		},
+		"the-linguist": {
+			"name": "O Linguista",
+			"description": "Domine novos idiomas com registros de vocabulário, treinos de gramática e acompanhamento diário de imersão."
+		},
+		"marathon-trainer": {
+			"name": "O Maratonista",
+			"description": "Blocos de treinamento progressivo, calendários de corridas, registros de quilometragem e nutrição para corredores."
+		},
+		"minimalist": {
+			"name": "O Minimalista",
+			"description": "Uma tela limpa. Apenas visualizações de calendário, sem notas diárias ou semanais associadas."
+		},
+		"creative-writer": {
+			"name": "O Romancista",
+			"description": "Acompanhe o número de palavras, esboços de enredo, fichas de personagens e sprints de escrita para o seu manuscrito."
+		},
+		"side-quest-champion": {
+			"name": "O Conquistador",
+			"description": "Desenvolvimento pessoal gamificado. Acompanhe projetos paralelos, hobbies, atividades criativas e missões pessoais com níveis e conquistas."
+		},
+		"music-producer": {
+			"name": "O Produtor",
+			"description": "Acompanhe sessões, ideias de composição, cronogramas de lançamento e rotinas de prática."
+		},
+		"professional": {
+			"name": "O Profissional",
+			"description": "Inclui atas de reunião, rastreadores de hábitos e um controle de finanças."
+		},
+		"real-estate-agent": {
+			"name": "O Corretor",
+			"description": "Anúncios de imóveis, agendas de visitas, acompanhamento de clientes e controle de negociações."
+		},
+		"mindful-reflection": {
+			"name": "O Reflexivo",
+			"description": "Equilibre produtividade com bem-estar. Acompanhe gratidão, intenções e reflexões diárias."
+		},
+		"bullet-journal": {
+			"name": "O Artista do Esboço",
+			"description": "O sonho de quem ama grelhas de pontos. Uma tela aberta para criatividade máxima."
+		},
+		"social-media-manager": {
+			"name": "O Gestor Social",
+			"description": "Calendários de conteúdo, cronogramas de postagem, monitoramento de engajamento e planejamento de campanhas."
+		},
+		"freelancer": {
+			"name": "O Solopreneur",
+			"description": "Gerencie projetos de clientes, deadlines e finanças, tudo em um só lugar."
+		},
+		"standard": {
+			"name": "O Padrão",
+			"description": "A configuração padrão. Layouts equilibrados para gerenciar tarefas diárias e compromissos."
+		},
+		"the-student": {
+			"name": "O Estudante",
+			"description": "Acompanhe semestral com horários de aula, prazos de entrega de trabalhos e diários de notas."
+		},
+		"time-blocker": {
+			"name": "O Planejador de Tempo",
+			"description": "Para trabalho profundo e agendas produtivas. Estruturado em torno de blocos rígidos de tempo para proteger seu foco."
+		},
+		"wedding-planner": {
+			"name": "O Organizador de Casamentos",
+			"description": "Contatos de fornecedores, listas de convidados, marcos de cronograma e controle de orçamento para o grande dia."
+		},
+		"meditation-zen": {
+			"name": "O Mestre Zen",
+			"description": "Cronômetros de meditação, registros de respiração, sequências de atenção plena e prática de gratidão."
+		}
+	},
+	"preset_categories": {
+		"all": "Principais Planejadores",
+		"essentials": "Essenciais",
+		"work": "Trabalho",
+		"academic": "Acadêmico",
+		"lifestyle": "Estilo de Vida",
+		"wellness": "Bem-estar",
+		"hobbies": "Hobbies",
+		"my-presets": "Meus Presets"
+	},
+	"presets_library": {
+		"title": "Biblioteca de Modelos (Presets)",
+		"loading_title": "Carregando Modelo",
+		"generating": "Gerando {name}...",
+		"applying": "Aplicando configurações e gerando páginas do planner...",
+		"search_placeholder": "Buscar em mais de 40 modelos...",
+		"subtitle_1": "Escolha um modelo inicial para configurar seu layout instantaneamente. ",
+		"subtitle_note": "Nota: Carregar um modelo irá substituir o seu design atual!",
+		"backup_link": "Clique aqui para salvar um backup do seu trabalho primeiro.",
+		"empty_title": "Nenhum modelo correspondente encontrado",
+		"empty_desc": "Tente pesquisar por uma palavra-chave diferente ou escolher outra categoria.",
+		"reset_filters": "Redefinir Filtros",
+		"delete_confirm": "Tem certeza de que deseja excluir este modelo personalizado?",
+		"delete_aria": "Excluir modelo",
+		"close_aria": "Fechar modelos",
+		"clear_search_aria": "Limpar busca",
+		"wizard_intro": "Comece com um modelo pré-configurado ou ",
+		"wizard_scratch": "crie seu layout do zero"
+	},
+	"presets_page": {
+		"meta_title_all": "Biblioteca de Modelos para Planner E-Ink — Remarkably Organized",
+		"meta_title_cat": "Modelos de Planner E-Ink Personalizados {category} — Remarkably Organized",
+		"meta_desc_all": "Navegue pela nossa biblioteca de modelos personalizados de planner para e-ink. Pesquise e baixe configurações para planners minimalistas, de produtividade, de estudante e de atenção plena.",
+		"meta_desc_cat": "Navegue por nossa biblioteca de modelos personalizados de planner e-ink para {category}. Pesquise e baixe configurações para planners minimalistas, de produtividade, de estudante e de atenção plena.",
+		"toast_success": "Lista em Markdown copiada para a área de transferência! Pronta para compartilhar.",
+		"toast_error": "Falha ao copiar para a área de transferência.",
+		"copy_clipboard": "Copiar para área de transferência",
+		"title": "Modelos de Planner E-Ink",
+		"subtitle_intro": "Escolha um layout inicial para personalizar ou use o ",
+		"subtitle_wizard": "Assistente",
+		"subtitle_outro": " para criar o seu próprio.",
+		"planned_times": "Planejado: {count} vezes"
+	},
+	"themes_gallery": {
+		"gallery_title": "Galeria de Temas",
+		"gallery_subtitle": "Navegue por todos os temas da galeria. Clique em qualquer tema para aplicá-lo instantaneamente.",
+		"close_aria": "Fechar temas",
+		"select_aria": "Selecionar {name}",
+		"specimen_cover": "Capa",
+		"specimen_titles": "Títulos",
+		"specimen_body": "Corpo"
+	},
+	"planner_page": {
+		"meta_title_default": "Criador de Planner E-Ink Personalizado — Remarkably Organized",
+		"meta_title_preset": "Planner E-Ink Personalizado {name} — Remarkably Organized",
+		"meta_desc_default": "Crie e exporte planners, calendários, rastreadores de hábitos e organizadores personalizados para o reMarkable e outros tablets e-ink.",
+		"meta_desc_preset": "Baixe um planner personalizado {name} pronto para imprimir para o reMarkable e outros tablets e-ink. {description}",
+		"toast_calendar_sync": "A sincronização automática do calendário está desativada para economizar limites da API.\nClique no ícone de livro aberto para sincronizar eventos manualmente."
+	},
+	"backup": {
+		"save_success": "Configuração salva com sucesso!",
+		"save_error": "Falha ao salvar a configuração. O armazenamento do seu navegador pode estar cheio.",
+		"load_success": "Configuração carregada com sucesso!",
+		"load_not_found": "Nenhuma configuração salva encontrada.",
+		"load_error": "Falha ao carregar a configuração.",
+		"export_success": "Configuração exportada com sucesso!",
+		"export_error": "Falha ao exportar a configuração.",
+		"import_success": "Configuração importada com sucesso!",
+		"import_invalid": "Formato de arquivo de configurações inválido.",
+		"import_parse_error": "Falha ao analisar o arquivo de configurações.",
+		"reset_success": "Configuração redefinida para os padrões."
+	},
+	"print": {
+		"export_success": "Página {index} exportada com sucesso!",
+		"export_error": "Falha ao exportar a imagem."
+	},
+	"wizard_export": {
+		"toast_preset_saved": "Modelo personalizado salvo!",
+		"toast_downloaded": "Configurações baixadas!",
+		"toast_link_copied": "Link compartilhável copiado!",
+		"toast_reset": "Configurações redefinidas para o padrão",
+		"reset_confirm": "Tem certeza de que deseja redefinir todas as configurações? Isso não pode ser desfeito.",
+		"ready_to_plan": "Pronto para Organizar?",
+		"tagline": "Salve sua configuração, gere seu planner ou compartilhe sua configuração com outras pessoas.",
+		"save_title": "Salvar Modelo Personalizado",
+		"preset_name_label": "Nome do Modelo",
+		"placeholder_name": "Meu Planner Incrível",
+		"cancel": "Cancelar",
+		"save_preset": "Salvar Modelo",
+		"icon_label": "Ícone",
+		"actions": {
+			"print_title": "Imprimir Agora",
+			"print_desc": "Gere e imprima seu PDF.",
+			"save_title": "Salvar Modelo",
+			"save_desc": "Salve como um modelo personalizado local.",
+			"link_title": "Copiar Link",
+			"link_desc": "Copie a URL compartilhável desta configuração.",
+			"download_title": "Baixar JSON",
+			"download_desc": "Exporte as configurações para um arquivo local.",
+			"reset_title": "Redefinir Tudo",
+			"reset_desc": "Limpe tudo e comece de novo.",
+			"docs_title": "Guia do Usuário",
+			"docs_desc": "Aprenda a usar seu novo planner.",
+			"finish_title": "Ver a Mágica",
+			"finish_desc": "Veja o que sua mágica criou!"
+		}
+	},
+	"calendar_sync": {
+		"url_not_provided": "URL do calendário não fornecida",
+		"sync_failed": "Não foi possível sincronizar: {error}",
+		"no_events": "Lido {name}, mas nenhum evento foi encontrado",
+		"success_imported": "Importado com sucesso {count} eventos de {name}",
+		"network_error": "Não foi possível obter eventos do calendário. Erro de rede.",
+		"error_429_domain": "Limite de requisições de {domain} atingido. Tente novamente em uma hora.",
+		"error_404": "Calendário não encontrado. Certifique-se de que a URL está correta e é pública.",
+		"error_403_domain": "Acesso negado por {domain}. O calendário pode não ser totalmente público.",
+		"error_429_generic": "Limite de requisições da API atingido. Tente novamente em uma hora.",
+		"default_calendar_name": "calendário",
+		"default_events_name": "eventos"
+	},
+	"landing": {
+		"meta_title": "Remarkably Organized — Criador de Planner Personalizado para reMarkable & Tablets E-Ink",
+		"meta_desc": "Crie e exporte lindos planners personalizados, calendários, rastreadores de hábitos e organizadores para a série reMarkable e outros tablets e-ink. Saída em PDF pronta para impressão.",
+		"hero_tagline": "Crie planners em PDF lindos e funcionais para seu tablet e-ink.",
+		"begin_wizard": "Iniciar o Assistente!",
+		"browse_presets": "Navegue por nossa biblioteca gratuita de modelos",
+		"free_badge": "100% GRATUITO",
+		"templates_badge": "Agora com {presets} Modelos de Planner, {templates} Modelos de Página e {themes} Temas!",
+		"stats": {
+			"visitors": "Visitantes",
+			"planners": "Planners",
+			"prints": "Impressões",
+			"shares": "Compartilhados",
+			"total_time": "Tempo Total de Criação"
 		}
 	}
 }

@@ -11,6 +11,9 @@
 	import TrophyIcon from '~icons/fa/trophy';
 	import MagicIcon from '~icons/fa/magic';
 	import HatWizardIcon from '~icons/fa-solid/hat-wizard';
+	import { useI18n } from '$state';
+
+	const i18n = useI18n();
 
 	import LandingLayout from '$layouts/LandingLayout.layout.svelte';
 	import HeroSection from '$organisms/HeroSection.organism.svelte';
@@ -103,12 +106,8 @@
 </script>
 
 <svelte:head>
-	<title>
-		Remarkably Organized — Custom Planner Builder for reMarkable & E-Ink Tablets
-	</title>
-	<meta
-		name="description"
-		content="Design and export beautiful custom planners, calendars, habit trackers, and organizers for the reMarkable series and other e-ink tablets. Print-ready PDF output." />
+	<title>{i18n.t('landing.meta_title')}</title>
+	<meta name="description" content={i18n.t('landing.meta_desc')} />
 </svelte:head>
 
 {#snippet heroSnippet()}

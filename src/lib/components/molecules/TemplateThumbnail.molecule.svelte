@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Page } from '$layouts';
-	import { toast, type PlannerSettings, type PageTemplate } from '$state';
+	import { toast, type PlannerSettings, type PageTemplate, useI18n } from '$state';
 	import { browser } from '$app/environment';
 	import * as htmlToImage from 'html-to-image';
 	import { CloudDownloadIcon as DownloadIcon } from '$atoms';
@@ -34,6 +34,8 @@
 		children?: import('svelte').Snippet;
 		pageContent?: import('svelte').Snippet;
 	}>();
+
+	const i18n = useI18n();
 
 	let pageContainer = $state<HTMLElement | null>(null);
 	let isExporting = $state(false);
@@ -120,10 +122,13 @@
 			link.download = `remarkably-organized-template-${templateValue || 'template'}.png`;
 			link.href = dataUrl;
 			link.click();
-			toast.success(`Template "${templateName || templateValue}" exported!`);
+			toast.success(
+				i18n.t('gallery.toast.success')
+					.replace('{name}', templateName || templateValue)
+			);
 		} catch (error) {
 			console.error(error);
-			toast.error('Failed to export template image.');
+			toast.error(i18n.t('gallery.toast.error'));
 		} finally {
 			isExporting = false;
 		}

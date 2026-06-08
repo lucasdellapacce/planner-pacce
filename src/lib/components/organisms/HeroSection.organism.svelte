@@ -6,6 +6,9 @@
 	import Divider from '$atoms/Divider.atom.svelte';
 	import VersionBanner from '$molecules/VersionBanner.molecule.svelte';
 	import StatItem from '$molecules/StatItem.molecule.svelte';
+	import { useI18n } from '$state';
+
+	const i18n = useI18n();
 
 	interface Props {
 		majorMinorPatchVersion: string;
@@ -42,7 +45,7 @@
 	<Text tag="h1">
 		<Text tag="small"><Text tag="i">Remarkably Organized</Text></Text>
 		<Text class="title">PLANNER</Text>
-		<Text tag="p">Build beautiful, functional PDF planners for your e-ink tablet.</Text>
+		<Text tag="p">{i18n.t('landing.hero_tagline')}</Text>
 		<Box class="flex flex-row gap-1">
 			<VersionBanner version={majorMinorPatchVersion} />
 		</Box>
@@ -50,22 +53,22 @@
 
 	<Link href="/planner{shareUrl}" class="primary-cta" onclick={handlePrimaryCtaClick}>
 		<Icon><HatWizardIcon style="margin-right: .5rem;" /></Icon>
-		Begin the Wizard!
+		{i18n.t('landing.begin_wizard')}
 	</Link>
 	<Link href="/presets" class="secondary-link" onclick={handlePresetsClick}>
-		Browse Our Free Preset Planner Library
+		{i18n.t('landing.browse_presets')}
 	</Link>
 
 	<Box class="stats-container">
-		<StatItem number={formatNumber(visits)} label="Visitors" />
+		<StatItem number={formatNumber(visits)} label={i18n.t('landing.stats.visitors')} />
 		<Divider class="stat-divider" />
-		<StatItem number={formatNumber(created)} label="Planners" />
+		<StatItem number={formatNumber(created)} label={i18n.t('landing.stats.planners')} />
 		<Divider class="stat-divider" />
-		<StatItem number={formatNumber(printed)} label="Prints" />
+		<StatItem number={formatNumber(printed)} label={i18n.t('landing.stats.prints')} />
 		<Divider class="stat-divider" />
-		<StatItem number={formatNumber(shared)} label="Shares" />
+		<StatItem number={formatNumber(shared)} label={i18n.t('landing.stats.shares')} />
 		<Divider class="stat-divider" />
-		<StatItem number={formatTime(timeCreatingSeconds)} label="Total Time Creating" />
+		<StatItem number={formatTime(timeCreatingSeconds)} label={i18n.t('landing.stats.total_time')} />
 	</Box>
 </Box>
 

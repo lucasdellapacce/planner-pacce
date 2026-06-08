@@ -2,6 +2,9 @@
 	import { fade, scale } from 'svelte/transition';
 	import { THEMES, type Theme } from '$lib/data/themes';
 	import { getGoogleFontURL } from '$lib';
+	import { useI18n } from '$state';
+
+	const i18n = useI18n();
 
 	let {
 		onClose,
@@ -46,13 +49,12 @@
 	<div class="theme-modal-content" transition:scale={{ duration: 150 }}>
 		<header>
 			<div>
-				<h2>Theme Gallery</h2>
+				<h2>{i18n.t('themes_gallery.gallery_title')}</h2>
 				<p class="subtitle">
-					Browse every theme in a paint-swatch gallery. Click any theme to apply it
-					instantly.
+					{i18n.t('themes_gallery.gallery_subtitle')}
 				</p>
 			</div>
-			<button type="button" class="close-btn" aria-label="Close themes" onclick={onClose}>
+			<button type="button" class="close-btn" aria-label={i18n.t('themes_gallery.close_aria')} onclick={onClose}>
 				✕
 			</button>
 		</header>
@@ -64,7 +66,7 @@
 					class="theme-swatch-card"
 					class:nav-left={settings.sideNav.leftSide}
 					onclick={() => selectTheme(theme)}
-					aria-label={`Select ${theme.name}`}>
+					aria-label={i18n.t('themes_gallery.select_aria').replace('{name}', i18n.tTheme(theme.id, theme.name))}>
 					<!-- <div class="swatch-hole"></div> -->
 
 					<div class="swatch-layout">
@@ -75,7 +77,7 @@
 								class="vertical-label"
 								style="color: {theme.config.design.colorText}; font-family: '{theme.config
 									.sideNav.font}' !important;">
-								{getCleanThemeName(theme.name)}
+								{getCleanThemeName(i18n.tTheme(theme.id, theme.name))}
 							</span>
 						</div>
 
@@ -94,19 +96,19 @@
 											class="theme-specimen-line"
 											style="color: {theme.config.design.colorText}; font-family: '{theme
 												.config.coverPage.font}' !important;">
-											Cover
+											{i18n.t('themes_gallery.specimen_cover')}
 										</span>
 										<span
 											class="theme-specimen-line"
 											style="color: {theme.config.design.colorText}; font-family: '{theme
 												.config.design.fontDisplay}' !important;">
-											Titles
+											{i18n.t('themes_gallery.specimen_titles')}
 										</span>
 										<span
 											class="theme-specimen-line"
 											style="color: {theme.config.design.colorText}; font-family: '{theme
 												.config.design.font}' !important;">
-											Body
+											{i18n.t('themes.specimen_body')}
 										</span>
 									</div>
 								</div>

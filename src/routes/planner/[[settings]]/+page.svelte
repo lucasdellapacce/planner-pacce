@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import PlannerView from '$views/PlannerView.view.svelte';
+	import { useI18n } from '$state';
+
 	let { data } = $props();
+	const i18n = useI18n();
 
 	onMount(() => {
 		if (data.preset) {
@@ -14,14 +17,16 @@
 
 	const pageTitle = $derived(
 		data.preset
-			? `${data.preset.name} Custom E-Ink Planner — Remarkably Organized`
-			: 'Custom E-Ink Planner Builder — Remarkably Organized',
+			? i18n.t('planner_page.meta_title_preset').replace('{name}', i18n.tPreset(data.preset.id, 'name', data.preset.name))
+			: i18n.t('planner_page.meta_title_default'),
 	);
 
 	const pageDescription = $derived(
 		data.preset
-			? `Download a print-ready custom ${data.preset.name} planner for reMarkable and other e-ink tablets. ${data.preset.description}`
-			: 'Design and export custom planners, calendars, habit trackers, and organizers for the reMarkable and other e-ink tablets.',
+			? i18n.t('planner_page.meta_desc_preset')
+				.replace('{name}', i18n.tPreset(data.preset.id, 'name', data.preset.name))
+				.replace('{description}', i18n.tPreset(data.preset.id, 'description', data.preset.description))
+			: i18n.t('planner_page.meta_desc_default'),
 	);
 </script>
 

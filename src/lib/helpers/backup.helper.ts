@@ -1,8 +1,12 @@
 import { browser } from '$app/environment';
 import { replaceState } from '$app/navigation';
-import { toast } from '$state';
+import { toast, globalI18n } from '$state';
 import { trackEvent } from '$lib/analytics';
 import { PlannerSettings } from '$state/planner-settings.svelte';
+
+function t(key: string, fallback: string): string {
+	return globalI18n ? globalI18n.t(key) : fallback;
+}
 
 function safeReplaceState(url: URL) {
 	try {
@@ -17,9 +21,9 @@ export function saveConfig(settings: PlannerSettings) {
 	try {
 		localStorage.setItem('planner-config', JSON.stringify(settings.getEdits()));
 		trackEvent('preset_action', { action: 'save_local' });
-		toast.success('Configuration saved successfully!');
+		toast.success(t('backup.save_success', 'Configuration saved successfully!'));
 	} catch (e) {
-		toast.error('Failed to save configuration. Your browser storage might be full.');
+		toast.error(t('backup.save_error', 'Failed to save configuration. Your browser storage might be full.'));
 	}
 }
 
@@ -32,12 +36,12 @@ export function loadConfig(settings: PlannerSettings) {
 			settings.deserialize(defaultSettings);
 			settings.deserialize(JSON.parse(config));
 			trackEvent('preset_action', { action: 'load' });
-			toast.success('Configuration loaded successfully!');
+			toast.success(t('backup.load_success', 'Configuration loaded successfully!'));
 		} else {
-			toast.error('No saved configuration found.');
+			toast.error(t('backup.load_not_found', 'No saved configuration found.'));
 		}
 	} catch (e) {
-		toast.error('Failed to load configuration.');
+		toast.error(t('backup.load_error', 'Failed to load configuration.'));
 	}
 }
 
@@ -55,9 +59,9 @@ export function exportConfig(settings: PlannerSettings) {
 		document.body.removeChild(a);
 		URL.revokeObjectURL(url);
 		trackEvent('preset_action', { action: 'export' });
-		toast.success('Configuration exported successfully!');
+		toast.success(t('backup.export_success', 'Configuration exported successfully!'));
 	} catch (e) {
-		toast.error('Failed to export configuration.');
+		toast.error(t('backup.export_error', 'Failed to export configuration.'));
 	}
 }
 
@@ -77,12 +81,12 @@ export function importConfig(settings: PlannerSettings) {
 				settings.deserialize(defaultSettings);
 				settings.deserialize(parsed);
 				trackEvent('preset_action', { action: 'import' });
-				toast.success('Configuration imported successfully!');
+				toast.success(t('backup.import_success', 'Configuration imported successfully!'));
 			} else {
-				toast.error('Invalid settings file format.');
+				toast.error(t('backup.import_invalid', 'Invalid settings file format.'));
 			}
 		} catch (err) {
-			toast.error('Failed to parse settings file.');
+			toast.error(t('backup.import_parse_error', 'Failed to parse settings file.'));
 		}
 	};
 	input.click();
@@ -96,5 +100,5 @@ export function resetConfig(settings: PlannerSettings) {
 	settings.deserialize(defaultSettings);
 
 	trackEvent('preset_action', { action: 'reset' });
-	toast.success('Configuration reset to defaults.');
+	toast.success(t('backup.reset_success', 'Configuration reset to defaults.'));
 }

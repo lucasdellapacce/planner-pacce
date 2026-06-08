@@ -3,8 +3,10 @@
 	import { PRESETS, type Preset } from '$lib/data/presets';
 	import { browser } from '$app/environment';
 	import { replaceState } from '$app/navigation';
-	import { PlannerSettings } from '$state';
+	import { PlannerSettings, useI18n } from '$state';
 	import LoadingIcon from '~icons/eos-icons/bubble-loading';
+
+	const i18n = useI18n();
 
 	let {
 		onClose = (() => {}) as () => void,
@@ -44,8 +46,10 @@
 		if (isSearchEmpty) return true;
 
 		const searchLow = searchQuery.toLowerCase();
-		const nameMatches = preset.name.toLowerCase().includes(searchLow);
-		const descriptionMatches = preset.description.toLowerCase().includes(searchLow);
+		const name = i18n.tPreset(preset.id, 'name', preset.name);
+		const description = i18n.tPreset(preset.id, 'description', preset.description);
+		const nameMatches = name.toLowerCase().includes(searchLow);
+		const descriptionMatches = description.toLowerCase().includes(searchLow);
 		return nameMatches || descriptionMatches;
 	};
 
@@ -147,11 +151,11 @@
 							class="animated-gradient-icon"
 							style="margin: 0 auto 1rem;" />
 					</div>
-					<h3>Loading Preset</h3>
+					<h3>{i18n.t('presets_library.loading_title')}</h3>
 					{#if activePreset}
-						<p>Generating {activePreset.icon} {activePreset.name}...</p>
+						<p>{i18n.t('presets_library.generating').replace('{name}', activePreset.icon + ' ' + i18n.tPreset(activePreset.id, 'name', activePreset.name))}</p>
 					{:else}
-						<p>Applying settings and generating planner spreads...</p>
+						<p>{i18n.t('presets_library.applying')}</p>
 					{/if}
 				</div>
 			</div>
@@ -159,32 +163,32 @@
 
 		<header>
 
-			<button class="close-btn" aria-label="Close presets" onclick={onClose}>✕</button>
+			<button class="close-btn" aria-label={i18n.t('presets_library.close_aria')} onclick={onClose}>✕</button>
 			<div class="search-box">
 				<span class="search-icon">🔎</span>
 				<input
 					type="text"
-					placeholder="Search 40+ presets..."
+					placeholder={i18n.t('presets_library.search_placeholder')}
 					bind:value={searchQuery}
 					class="search-input" />
 				{#if searchQuery}
 					<button
 						class="clear-search-btn"
 						onclick={() => (searchQuery = '')}
-						aria-label="Clear search">
+						aria-label={i18n.t('presets_library.clear_search_aria')}>
 						✕
 					</button>
 				{/if}
 			</div>
-			<h2>Presets Library</h2>
+			<h2>{i18n.t('presets_library.title')}</h2>
 		</header>
 
 		<p class="subtitle">
-			Pick a starter planner to set up your layout instantly. <strong>
-				Note: Loading a starter will replace your current design!
+			{i18n.t('presets_library.subtitle_1')}<strong>
+				{i18n.t('presets_library.subtitle_note')}
 			</strong>
 			<button class="link-btn" onclick={onExport}>
-				Click here to save a backup of your work first.
+				{i18n.t('presets_library.backup_link')}
 			</button>
 		</p>
 
@@ -200,7 +204,7 @@
 						class:active={isActiveCategory}
 						onclick={() => (activeCategory = cat.id)}>
 						<span class="cat-icon">{cat.icon}</span>
-						<span class="cat-name">{cat.name}</span>
+						<span class="cat-name">{i18n.tPresetCategory(cat.id, cat.name)}</span>
 						<span class="cat-count">{count}</span>
 					</button>
 				{/each}
@@ -215,10 +219,10 @@
 						class="preset-card tooltip-bottom"
 						class:selected={isSelected}
 						onclick={() => loadPreset(preset)}
-						data-tooltip={preset.description}>
+						data-tooltip={i18n.tPreset(preset.id, 'description', preset.description)}>
 						<div class="preset-icon">{preset.icon}</div>
 						<div class="preset-info">
-							<h3>{preset.name}</h3>
+							<h3>{i18n.tPreset(preset.id, 'name', preset.name)}</h3>
 						</div>
 					</button>
 				{/each}
@@ -240,7 +244,7 @@
 							class="delete-preset-btn"
 							onclick={(e) => {
 								e.stopPropagation();
-								if (confirm('Are you sure you want to delete this custom preset?')) {
+								if (confirm(i18n.t('presets_library.delete_confirm'))) {
 									customPresets = customPresets.filter((p) => p.id !== preset.id);
 									localStorage.setItem(
 										'ro_custom_presets',
@@ -248,7 +252,7 @@
 									);
 								}
 							}}
-							aria-label="Delete preset">
+							aria-label={i18n.t('presets_library.delete_aria')}>
 							✕
 						</button>
 					</div>
@@ -257,15 +261,15 @@
 		{:else}
 			<div class="empty-presets-state">
 				<span class="empty-icon">🔍</span>
-				<h3>No matching presets found</h3>
-				<p>Try searching for a different keyword or choosing another category.</p>
+				<h3>{i18n.t('presets_library.empty_title')}</h3>
+				<p>{i18n.t('presets_library.empty_desc')}</p>
 				<button
 					class="reset-filter-btn"
 					onclick={() => {
 						searchQuery = '';
 						activeCategory = 'essentials';
 					}}>
-					Reset Filters
+					{i18n.t('presets_library.reset_filters')}
 				</button>
 			</div>
 		{/if}

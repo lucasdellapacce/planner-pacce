@@ -54,13 +54,22 @@ export class I18nManager {
 		return translated === key ? fallback : translated;
 	}
 
+	tPresetCategory(id: string, fallback: string): string {
+		const key = `preset_categories.${id}`;
+		const translated = this.t(key);
+		return translated === key ? fallback : translated;
+	}
+
 }
 
 const I18N_KEY = Symbol('i18n');
 
+export let globalI18n: I18nManager | null = null;
+
 export function initI18n(initialLocale = 'pt-BR') {
 	const manager = new I18nManager();
 	manager.currentLocale = initialLocale;
+	globalI18n = manager;
 	setContext(I18N_KEY, manager);
 	return manager;
 }

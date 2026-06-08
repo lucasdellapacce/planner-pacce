@@ -532,9 +532,7 @@
 			if (needsSync) {
 				promptedSync = true;
 				setTimeout(() => {
-					toast.info(
-						'Calendar auto-sync is disabled to save API limits.\nClick the open book icon to sync events manually.',
-					);
+					toast.info(i18n.t('planner_page.toast_calendar_sync'));
 				}, 2000);
 			}
 		}
