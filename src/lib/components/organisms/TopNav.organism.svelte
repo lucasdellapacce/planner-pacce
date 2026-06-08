@@ -170,9 +170,15 @@
 				<li>
 					<a href="#{year}-q{quarter}">
 						{settings.emojis.quarters[quarter - 1] || ''}
-						{!showWeekBreadcrumb && !showMonthBreadcrumb && !showDayBreadcrumb
-							? 'Quarter '
-							: 'Q'}{quarter}
+						{#if settings?.design?.locale === 'pt-BR'}
+							{!showWeekBreadcrumb && !showMonthBreadcrumb && !showDayBreadcrumb
+								? 'Trimestre '
+								: 'T'}{quarter}
+						{:else}
+							{!showWeekBreadcrumb && !showMonthBreadcrumb && !showDayBreadcrumb
+								? 'Quarter '
+								: 'Q'}{quarter}
+						{/if}
 					</a>
 				</li>
 			{/if}
@@ -180,7 +186,7 @@
 				<li>
 					<a href="#{year}-{month}">
 						{settings.emojis.months[month - 1] || ''}
-						{new Date(year, month - 1).toLocaleString('default', {
+						{new Date(year, month - 1).toLocaleString(settings?.design?.locale || 'pt-BR', {
 							month: !showWeekBreadcrumb && !showDayBreadcrumb ? 'long' : 'short',
 						})}
 					</a>
@@ -200,7 +206,7 @@
 							{new Date(
 								timeframe.weekYear || timeframe.year!,
 								(timeframe.weekMonth || timeframe.month!) - 1,
-							).toLocaleString('default', {
+							).toLocaleString(settings?.design?.locale || 'pt-BR', {
 								month:
 									!showDayBreadcrumb &&
 									(!timeframe.weekMonth || timeframe.weekMonth === timeframe.month) &&
@@ -209,7 +215,11 @@
 										: 'short',
 							})}
 						{/if}
-						{#if !showDayBreadcrumb}Week{:else}WK{/if}
+						{#if settings?.design?.locale === 'pt-BR'}
+							{#if !showDayBreadcrumb}Semana{:else}Sem{/if}
+						{:else}
+							{#if !showDayBreadcrumb}Week{:else}WK{/if}
+						{/if}
 						{settings.weekPage.useWeekSinceYear
 							? timeframe.weekSinceYear
 							: timeframe.weekSinceMonth}
@@ -219,15 +229,19 @@
 			{#if showDayBreadcrumb && !isDayDimmed}
 				<li>
 					<a href="#{timeframe.year}-{timeframe.month}-{timeframe.daySinceMonth}">
-						{timeframe.start.toLocaleString('default', {
+						{timeframe.start.toLocaleString(settings?.design?.locale || 'pt-BR', {
 							weekday: 'short',
 							timeZone: 'UTC',
 						})}
-						the
-						{@html formatToString(timeframe.daySinceMonth, {
-							type: 'ordinal',
-							html: true,
-						})}
+						{#if settings?.design?.locale === 'pt-BR'}
+							, {timeframe.daySinceMonth}
+						{:else}
+							the
+							{@html formatToString(timeframe.daySinceMonth, {
+								type: 'ordinal',
+								html: true,
+							})}
+						{/if}
 					</a>
 				</li>
 			{/if}

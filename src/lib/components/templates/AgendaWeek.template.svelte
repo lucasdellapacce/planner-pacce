@@ -110,7 +110,7 @@
 			moonEmoji={moonEvent ? (getMoonEmoji(moonEvent.name) ?? '') : ''}>
 			<Text>
 				{tTemplate(['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'][date.getUTCDay()], settings?.design?.locale)}
-				{@html formatToString(date.getUTCDate(), { type: 'ordinal', html: true })}
+				{@html formatToString(date.getUTCDate(), { type: 'ordinal', html: true, locale: settings?.design?.locale })}
 			</Text>
 			{#if allDayEvents.length > 0}
 				<Box

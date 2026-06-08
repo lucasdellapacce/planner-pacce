@@ -266,7 +266,9 @@
 				{#if tabs === 'weeks-this-year' || tabs === 'weeks-this-month'}
 					{#if tabs === 'weeks-this-month' && prevMonthFirstWeek}
 						<li class="nav-arrow">
-							<a href="#{prevMonthFirstWeek.id}{pageSuffix}">Last Month</a>
+							<a href="#{prevMonthFirstWeek.id}{pageSuffix}">
+								{settings?.design?.locale === 'pt-BR' ? 'Mês Ant.' : 'Last Month'}
+							</a>
 						</li>
 					{/if}
 					{#each weeks as week, i (week.id)}
@@ -297,7 +299,7 @@
 								<small>
 									{settings.weekPage.useWeekNumbersInSideNav
 										? 'WK'
-										: week.start.toLocaleString('default', {
+										: week.start.toLocaleString(settings?.design?.locale || 'pt-BR', {
 												month: 'short',
 												timeZone: 'UTC',
 											})}
@@ -312,14 +314,18 @@
 					{/each}
 					{#if tabs === 'weeks-this-month' && nextMonthFirstWeek}
 						<li class="nav-arrow">
-							<a href="#{nextMonthFirstWeek.id}{pageSuffix}">Next Month</a>
+							<a href="#{nextMonthFirstWeek.id}{pageSuffix}">
+								{settings?.design?.locale === 'pt-BR' ? 'Próx. Mês' : 'Next Month'}
+							</a>
 						</li>
 					{/if}
 				{/if}
 				{#if tabs === 'days-this-year' || tabs === 'days-this-month' || tabs === 'days-this-week'}
 					{#if tabs === 'days-this-week' && prevDayTarget}
 						<li class="nav-arrow">
-							<a href="#{prevDayTarget.id}{pageSuffix}">Last Week</a>
+							<a href="#{prevDayTarget.id}{pageSuffix}">
+								{settings?.design?.locale === 'pt-BR' ? 'Sem. Ant.' : 'Last Week'}
+							</a>
 						</li>
 					{/if}
 					{#each days as day, i (day.id)}
@@ -340,7 +346,7 @@
 								class:highlight-start={highlightStart}
 								class:highlight-end={highlighEnd}>
 								<span class="weekday">
-									{day.start.toLocaleString('default', {
+									{day.start.toLocaleString(settings?.design?.locale || 'pt-BR', {
 										weekday: 'short',
 										timeZone: 'UTC',
 									})}
@@ -351,7 +357,9 @@
 					{/each}
 					{#if tabs === 'days-this-week' && nextDayTarget}
 						<li class="nav-arrow">
-							<a href="#{nextDayTarget.id}{pageSuffix}">Next Week</a>
+							<a href="#{nextDayTarget.id}{pageSuffix}">
+								{settings?.design?.locale === 'pt-BR' ? 'Próx. Sem.' : 'Next Week'}
+							</a>
 						</li>
 					{/if}
 				{/if}

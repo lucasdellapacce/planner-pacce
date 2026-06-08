@@ -84,7 +84,7 @@
 				</Box>
 				<Box class="date">
 					<Text>
-						{@html formatToString(date.getUTCDate(), { type: 'ordinal', html: true })}
+						{@html formatToString(date.getUTCDate(), { type: 'ordinal', html: true, locale: settings?.design?.locale })}
 					</Text>
 				</Box>
 			</Link>
@@ -137,7 +137,7 @@
 				</Box>
 				<Box class="date">
 					<Text>
-						{@html formatToString(date.getUTCDate(), { type: 'ordinal', html: true })}
+						{@html formatToString(date.getUTCDate(), { type: 'ordinal', html: true, locale: settings?.design?.locale })}
 					</Text>
 				</Box>
 			</Link>
