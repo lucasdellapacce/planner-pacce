@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Timeframe } from '$lib';
+	import { tTemplate, type PlannerSettings, type Timeframe } from '$lib';
 	import { Box, Text } from '$atoms';
 
-	let { timeframe = {} as Timeframe } = $props();
+	let { timeframe = {} as Timeframe, settings = {} as PlannerSettings } = $props();
 
 	// timeframe.month is 1-12
 	const monthStr = $derived(timeframe.month ? timeframe.month.toString() : '');
@@ -10,18 +10,18 @@
 
 <Box class="task-progress">
 	<Box class="header">
-		<Box><Text tag="strong">Due</Text></Box>
-		<Box><Text tag="strong">Tasks</Text></Box>
+		<Box><Text tag="strong">{tTemplate('due', settings?.design?.locale)}</Text></Box>
+		<Box><Text tag="strong">{tTemplate('tasks', settings?.design?.locale)}</Text></Box>
 		<Box>
-			<Text tag="strong">Priority</Text>
+			<Text tag="strong">{tTemplate('priority', settings?.design?.locale)}</Text>
 			<Box class="priority-labels">
-				<Text tag="span">MUST</Text>
-				<Text tag="span">SHOULD</Text>
-				<Text tag="span">COULD</Text>
-				<Text tag="span">WON'T</Text>
+				<Text tag="span">{tTemplate('moscow_must', settings?.design?.locale)}</Text>
+				<Text tag="span">{tTemplate('moscow_should', settings?.design?.locale)}</Text>
+				<Text tag="span">{tTemplate('moscow_could', settings?.design?.locale)}</Text>
+				<Text tag="span">{tTemplate('moscow_wont', settings?.design?.locale)}</Text>
 			</Box>
 		</Box>
-		<Box><Text tag="strong">Progress</Text></Box>
+		<Box><Text tag="strong">{tTemplate('progress', settings?.design?.locale)}</Text></Box>
 	</Box>
 	{#each new Array(25) as _, i (i)}
 		<Box class="row">
@@ -33,10 +33,10 @@
 			</Box>
 			<Box class="task"></Box>
 			<Box class="priority">
-				<input type="radio" name="priority-{i}" aria-label="Must have" />
-				<input type="radio" name="priority-{i}" aria-label="Should have" />
-				<input type="radio" name="priority-{i}" aria-label="Could have" />
-				<input type="radio" name="priority-{i}" aria-label="Wont have" />
+				<input type="radio" name="priority-{i}" aria-label={tTemplate('moscow_must', settings?.design?.locale)} />
+				<input type="radio" name="priority-{i}" aria-label={tTemplate('moscow_should', settings?.design?.locale)} />
+				<input type="radio" name="priority-{i}" aria-label={tTemplate('moscow_could', settings?.design?.locale)} />
+				<input type="radio" name="priority-{i}" aria-label={tTemplate('moscow_wont', settings?.design?.locale)} />
 			</Box>
 			<Box class="progress-percent"><Text>%</Text></Box>
 		</Box>

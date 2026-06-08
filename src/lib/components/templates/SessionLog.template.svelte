@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 
 	let { settings = {} as PlannerSettings } = $props();
 	const showEmoji = $derived(!settings?.emojis?.disable);
@@ -9,12 +9,12 @@
 	<div class="header-section">
 		<div class="field title">
 			<div class="label">
-				{#if showEmoji}🎛️{/if} STUDIO SESSION LOG
+				{#if showEmoji}🎛️{/if} {tTemplate('studio_session_log', settings?.design?.locale)}
 			</div>
 			<div class="line"></div>
 		</div>
 		<div class="field date">
-			<div class="label">DATE</div>
+			<div class="label">{tTemplate('date', settings?.design?.locale)}</div>
 			<div class="line"></div>
 		</div>
 	</div>
@@ -22,11 +22,11 @@
 	<div class="meta-section">
 		<div class="meta-row">
 			<div class="field project">
-				<div class="label">PROJECT / SONG</div>
+				<div class="label">{tTemplate('project_song', settings?.design?.locale)}</div>
 				<div class="line"></div>
 			</div>
 			<div class="field tempo">
-				<div class="label">TEMPO / KEY</div>
+				<div class="label">{tTemplate('tempo_key', settings?.design?.locale)}</div>
 				<div class="line"></div>
 			</div>
 		</div>
@@ -34,17 +34,17 @@
 
 	<div class="content-section">
 		<div class="column left">
-			<div class="section-label">GEAR & SIGNAL CHAIN / SETUP</div>
+			<div class="section-label">{tTemplate('gear_signal_chain', settings?.design?.locale)}</div>
 			{#each Array(5) as _}
 				<div class="line"></div>
 			{/each}
 
-			<div class="section-label notes-label">TAKES & AUDIO TRACKS</div>
+			<div class="section-label notes-label">{tTemplate('takes_audio_tracks', settings?.design?.locale)}</div>
 			<div class="takes-table">
 				<div class="table-header">
-					<span class="col-take">TK</span>
-					<span class="col-desc">DESCRIPTION / SETTINGS</span>
-					<span class="col-rating">RATE</span>
+					<span class="col-take">{tTemplate('tk', settings?.design?.locale)}</span>
+					<span class="col-desc">{tTemplate('desc_settings', settings?.design?.locale)}</span>
+					<span class="col-rating">{tTemplate('rate', settings?.design?.locale)}</span>
 				</div>
 				{#each Array(5) as _}
 					<div class="table-row">
@@ -61,12 +61,12 @@
 		</div>
 
 		<div class="column right">
-			<div class="section-label">SESSION NOTES / OBSERVATIONS</div>
+			<div class="section-label">{tTemplate('session_notes', settings?.design?.locale)}</div>
 			{#each Array(7) as _}
 				<div class="line"></div>
 			{/each}
 
-			<div class="section-label steps-label">NEXT STEPS / MIX PLAN</div>
+			<div class="section-label steps-label">{tTemplate('next_steps_mix_plan', settings?.design?.locale)}</div>
 			{#each Array(5) as _}
 				<div class="todo-row">
 					<div class="todo-box"></div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
 
@@ -12,17 +12,17 @@
 	<Box class="header-section">
 		<Box class="top-row">
 			<Field
-				label="SPRINT NAME / NUMBER"
+				label={tTemplate('sprint_name_number', settings?.design?.locale)}
 				emoji="🏃"
 				{showEmoji}
 				class="sprint-name-field" />
-			<Field label="START DATE" emoji="📅" {showEmoji} class="date-field">
+			<Field label={tTemplate('start_date', settings?.design?.locale)} emoji="📅" {showEmoji} class="date-field">
 				<Box class="date-slashes">
 					<Text tag="span">/</Text>
 					<Text tag="span">/</Text>
 				</Box>
 			</Field>
-			<Field label="END DATE" emoji="📅" {showEmoji} class="date-field">
+			<Field label={tTemplate('end_date', settings?.design?.locale)} emoji="📅" {showEmoji} class="date-field">
 				<Box class="date-slashes">
 					<Text tag="span">/</Text>
 					<Text tag="span">/</Text>
@@ -30,7 +30,7 @@
 			</Field>
 		</Box>
 		<Box class="bottom-row">
-			<Field label="SPRINT GOAL" emoji="🥅" {showEmoji} class="goal-field" />
+			<Field label={tTemplate('sprint_goal', settings?.design?.locale)} emoji="🥅" {showEmoji} class="goal-field" />
 		</Box>
 	</Box>
 
@@ -39,61 +39,61 @@
 			<Box>
 				{#if showEmoji}<Text tag="span">🚨</Text>
 				{/if}
-				<Text tag="span">PRIORITY</Text>
+				<Text tag="span">{tTemplate('priority', settings?.design?.locale)}</Text>
 				<Box class="priority-labels">
-					<Text tag="span">MUST</Text>
-					<Text tag="span">SHOULD</Text>
-					<Text tag="span">COULD</Text>
-					<Text tag="span">WON'T</Text>
+					<Text tag="span">{tTemplate('moscow_must', settings?.design?.locale)}</Text>
+					<Text tag="span">{tTemplate('moscow_should', settings?.design?.locale)}</Text>
+					<Text tag="span">{tTemplate('moscow_could', settings?.design?.locale)}</Text>
+					<Text tag="span">{tTemplate('moscow_wont', settings?.design?.locale)}</Text>
 				</Box>
 			</Box>
 			<Box>
 				{#if showEmoji}<Text>🎫</Text>
 					<br />{/if}
-				<Text>TICKET #</Text>
+				<Text>{tTemplate('ticket_num', settings?.design?.locale)}</Text>
 			</Box>
 			<Box>
 				{#if showEmoji}<Text>📝</Text>
 					<br />{/if}
-				<Text>TASK DESCRIPTION</Text>
+				<Text>{tTemplate('task_description', settings?.design?.locale)}</Text>
 			</Box>
 			<Box>
 				{#if showEmoji}<Text>⏱️</Text>
 					<br />{/if}
-				<Text>EST</Text>
+				<Text>{tTemplate('est', settings?.design?.locale)}</Text>
 			</Box>
 			<Box>
 				{#if showEmoji}<Text>👤</Text>
 					<br />{/if}
-				<Text>ASSIGNEE</Text>
+				<Text>{tTemplate('assignee', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="status-header">
 				{#if showEmoji}<Text tag="span">🚦</Text>
 				{/if}
-				<Text tag="span">STATUS</Text>
+				<Text tag="span">{tTemplate('status', settings?.design?.locale)}</Text>
 				<Box class="status-labels">
-					<Text tag="span">TO DO</Text>
-					<Text tag="span">DOING</Text>
-					<Text tag="span">DONE</Text>
+					<Text tag="span">{tTemplate('todo', settings?.design?.locale).toUpperCase()}</Text>
+					<Text tag="span">{tTemplate('doing', settings?.design?.locale).toUpperCase()}</Text>
+					<Text tag="span">{tTemplate('done', settings?.design?.locale).toUpperCase()}</Text>
 				</Box>
 			</Box>
 		</Box>
 		{#each rows as _, i (i)}
 			<Box class="row">
 				<Box class="col priority">
-					<input type="radio" name="priority-{i}" aria-label="Must have" />
-					<input type="radio" name="priority-{i}" aria-label="Should have" />
-					<input type="radio" name="priority-{i}" aria-label="Could have" />
-					<input type="radio" name="priority-{i}" aria-label="Wont have" />
+					<input type="radio" name="priority-{i}" aria-label={tTemplate('moscow_must', settings?.design?.locale)} />
+					<input type="radio" name="priority-{i}" aria-label={tTemplate('moscow_should', settings?.design?.locale)} />
+					<input type="radio" name="priority-{i}" aria-label={tTemplate('moscow_could', settings?.design?.locale)} />
+					<input type="radio" name="priority-{i}" aria-label={tTemplate('moscow_wont', settings?.design?.locale)} />
 				</Box>
 				<Box class="col ticket"></Box>
 				<Box class="col description"></Box>
 				<Box class="col points"></Box>
 				<Box class="col assignee"></Box>
 				<Box class="col status">
-					<Checkbox aria-label="To Do" />
-					<Checkbox aria-label="Doing" />
-					<Checkbox aria-label="Done" />
+					<Checkbox aria-label={tTemplate('todo', settings?.design?.locale)} />
+					<Checkbox aria-label={tTemplate('doing', settings?.design?.locale)} />
+					<Checkbox aria-label={tTemplate('done', settings?.design?.locale)} />
 				</Box>
 			</Box>
 		{/each}

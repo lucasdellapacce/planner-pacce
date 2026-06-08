@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { PlannerSettings, type Week } from '$lib';
+	import { tTemplate, type PlannerSettings, type Week } from '$lib';
 	import { Page } from '$layouts';
 	import { SideNav, TopNav } from '$organisms';
 	import { LazyPage } from '$atoms';
@@ -10,6 +10,7 @@
 		isPreparingPrint = false,
 	} = $props();
 </script>
+
 
 <LazyPage
 	id={week.id}
@@ -49,7 +50,7 @@
 			<TopNav
 				{settings}
 				timeframe={week}
-				breadcrumbs={[{ href: `#${week.id}-pg${i + 2}`, name: `Page ${i + 2}` }]} />
+				breadcrumbs={[{ href: `#${week.id}-pg${i + 2}`, name: `${tTemplate('page', settings?.design?.locale)} ${i + 2}` }]} />
 			<Page
 				display={settings.weekPage.notePagesTemplate}
 				columns={settings.weekPage.notePagesColumns}

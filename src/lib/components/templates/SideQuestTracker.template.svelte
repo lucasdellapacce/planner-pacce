@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
 
@@ -10,10 +10,10 @@
 
 <Box class="side-quest-tracker">
 	<Box class="header-section">
-		<Field label="SIDE QUEST TRACKER" emoji="🎮" {showEmoji} class="title-field" />
+		<Field label={tTemplate('side_quest_tracker', settings?.design?.locale)} emoji="🎮" {showEmoji} class="title-field" />
 		<Box class="field date-field">
 			<Text class="label">
-				{#if showEmoji}📅{/if} DATE
+				{#if showEmoji}📅{/if} {tTemplate('date', settings?.design?.locale)}
 			</Text>
 			<Box class="line date-slashes">
 				<Text tag="span">/</Text>
@@ -26,18 +26,18 @@
 		<Box class="table-header">
 			<Box class="col col-quest">
 				{#if showEmoji}<Text tag="span">⚔️</Text>{/if}
-				<Text tag="span">Quest</Text>
+				<Text tag="span">{tTemplate('quest', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="col col-xp">
 				{#if showEmoji}<Text tag="span">⭐</Text>{/if}
-				<Text tag="span">XP</Text>
+				<Text tag="span">{tTemplate('xp', settings?.design?.locale)}</Text>
 			</Box>
-			<Box class="col col-difficulty"><Text>Difficulty</Text></Box>
+			<Box class="col col-difficulty"><Text>{tTemplate('difficulty', settings?.design?.locale)}</Text></Box>
 			<Box class="col col-progress">
 				{#if showEmoji}<Text tag="span">📊</Text>{/if}
-				<Text tag="span">Progress</Text>
+				<Text tag="span">{tTemplate('progress', settings?.design?.locale)}</Text>
 			</Box>
-			<Box class="col col-complete"><Text>Done</Text></Box>
+			<Box class="col col-complete"><Text>{tTemplate('done', settings?.design?.locale)}</Text></Box>
 		</Box>
 
 		{#each rows as _, i (i)}
@@ -50,9 +50,9 @@
 				</Box>
 				<Box class="col col-difficulty">
 					<Box class="difficulty-badges">
-						<Text tag="span" class="badge easy">E</Text>
-						<Text tag="span" class="badge medium">M</Text>
-						<Text tag="span" class="badge hard">H</Text>
+						<Text tag="span" class="badge easy">{tTemplate('difficulty_easy_char', settings?.design?.locale)}</Text>
+						<Text tag="span" class="badge medium">{tTemplate('difficulty_medium_char', settings?.design?.locale)}</Text>
+						<Text tag="span" class="badge hard">{tTemplate('difficulty_hard_char', settings?.design?.locale)}</Text>
 					</Box>
 				</Box>
 				<Box class="col col-progress">
@@ -68,7 +68,7 @@
 	<Box class="stats-section">
 		<Box class="stat-box">
 			<Text class="stat-label">
-				{#if showEmoji}👤{/if} CURRENT LEVEL
+				{#if showEmoji}👤{/if} {tTemplate('current_level', settings?.design?.locale)}
 			</Text>
 			<Box class="stat-value">
 				<Box class="input-line"></Box>
@@ -76,7 +76,7 @@
 		</Box>
 		<Box class="stat-box">
 			<Text class="stat-label">
-				{#if showEmoji}💪{/if} TOTAL XP
+				{#if showEmoji}💪{/if} {tTemplate('total_xp', settings?.design?.locale)}
 			</Text>
 			<Box class="stat-value">
 				<Box class="input-line"></Box>
@@ -84,7 +84,7 @@
 		</Box>
 		<Box class="stat-box">
 			<Text class="stat-label">
-				{#if showEmoji}🏆{/if} ACHIEVEMENTS
+				{#if showEmoji}🏆{/if} {tTemplate('achievements', settings?.design?.locale)}
 			</Text>
 			<Box class="stat-value">
 				<Box class="input-line"></Box>
@@ -94,7 +94,7 @@
 
 	<Box class="rewards-section">
 		<Text class="rewards-title">
-			{#if showEmoji}🎁{/if} QUEST REWARDS
+			{#if showEmoji}🎁{/if} {tTemplate('quest_rewards', settings?.design?.locale)}
 		</Text>
 		<Box class="reward-lines">
 			{#each [1, 2, 3] as _}

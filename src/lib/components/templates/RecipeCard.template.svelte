@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 
 	let { settings = {} as PlannerSettings } = $props();
 </script>
@@ -8,12 +8,12 @@
 	<div class="header-section">
 		<div class="field title">
 			<div class="label">
-				{#if !settings?.emojis?.disable}🥘{/if} RECIPE NAME
+				{#if !settings?.emojis?.disable}🥘{/if} {tTemplate('recipe_name', settings?.design?.locale)}
 			</div>
 			<div class="line"></div>
 		</div>
 		<div class="field time">
-			<div class="label">PREP / COOK TIME</div>
+			<div class="label">{tTemplate('prep_cook_time', settings?.design?.locale)}</div>
 			<div class="line"></div>
 		</div>
 	</div>
@@ -21,7 +21,7 @@
 	<div class="content-section">
 		<div class="columns">
 			<div class="column">
-				<div class="label">INGREDIENTS</div>
+				<div class="label">{tTemplate('ingredients', settings?.design?.locale)}</div>
 				{#each Array(15) as _}
 					<div class="check-row">
 						<div class="box"></div>
@@ -30,7 +30,7 @@
 				{/each}
 			</div>
 			<div class="column">
-				<div class="label">DIRECTIONS</div>
+				<div class="label">{tTemplate('directions', settings?.design?.locale)}</div>
 				{#each Array(15) as _}
 					<div class="line"></div>
 				{/each}
@@ -38,7 +38,7 @@
 		</div>
 
 		<div class="bottom-section">
-			<div class="label">NOTES / NUTRITION</div>
+			<div class="label">{tTemplate('nutrition_notes', settings?.design?.locale).toUpperCase()}</div>
 			<div class="lines">
 				{#each Array(3) as _}
 					<div class="line"></div>

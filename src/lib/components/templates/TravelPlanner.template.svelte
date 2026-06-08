@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 	import { Field, Row } from '$molecules';
 
@@ -9,20 +9,20 @@
 
 <Box class="travel-planner">
 	<Box class="header-section">
-		<Field label="TRAVEL ITINERARY" emoji="✈️" {showEmoji} class="title" />
-		<Field label="DATES" class="dates" />
+		<Field label={tTemplate('travel_itinerary', settings?.design?.locale)} emoji="✈️" {showEmoji} class="title" />
+		<Field label={tTemplate('dates', settings?.design?.locale)} class="dates" />
 	</Box>
 
 	<Box class="content-section">
 		<Box class="flight-info">
-			<Text tag="strong" class="label">DEPARTURE / ARRIVAL</Text>
+			<Text tag="strong" class="label">{tTemplate('departure_arrival', settings?.design?.locale)}</Text>
 			<Box class="line"></Box>
 			<Box class="line"></Box>
 		</Box>
 
 		<Box class="columns">
 			<Box class="column">
-				<Text tag="strong" class="label">ITINERARY</Text>
+				<Text tag="strong" class="label">{tTemplate('itinerary', settings?.design?.locale)}</Text>
 				{#each Array(10) as _}
 					<Box class="time-row">
 						<Box class="time-box"></Box>
@@ -31,7 +31,7 @@
 				{/each}
 			</Box>
 			<Box class="column">
-				<Text tag="strong" class="label">PACKING LIST</Text>
+				<Text tag="strong" class="label">{tTemplate('packing_list', settings?.design?.locale)}</Text>
 				{#each Array(10) as _}
 					<Row />
 				{/each}

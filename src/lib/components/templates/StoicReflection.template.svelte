@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 	import { Field, SectionHeader } from '$molecules';
 
@@ -9,21 +9,21 @@
 
 <Box class="stoic-reflection">
 	<Box class="header-section">
-		<Field label="STOIC AM/PM JOURNAL" emoji="🏛️" {showEmoji} class="title" />
-		<Field label="DATE" class="date" />
+		<Field label={tTemplate('stoic_journal', settings?.design?.locale)} emoji="🏛️" {showEmoji} class="title" />
+		<Field label={tTemplate('date', settings?.design?.locale)} class="date" />
 	</Box>
 
 	<Box class="content-section">
 		<Box class="half-section morning">
-			<SectionHeader label="MORNING PREPARATION" />
+			<SectionHeader label={tTemplate('morning_preparation', settings?.design?.locale)} />
 			<Box class="prompt-block">
-				<Text class="prompt-label">What is within my control today? What is not?</Text>
+				<Text class="prompt-label">{tTemplate('stoic_morning_prompt1', settings?.design?.locale)}</Text>
 				{#each Array(4) as _}
 					<Box class="line"></Box>
 				{/each}
 			</Box>
 			<Box class="prompt-block">
-				<Text class="prompt-label">Setting intention & anticipating obstacles:</Text>
+				<Text class="prompt-label">{tTemplate('stoic_morning_prompt2', settings?.design?.locale)}</Text>
 				{#each Array(4) as _}
 					<Box class="line"></Box>
 				{/each}
@@ -31,15 +31,15 @@
 		</Box>
 
 		<Box class="half-section evening">
-			<SectionHeader label="EVENING REVIEW" />
+			<SectionHeader label={tTemplate('evening_review', settings?.design?.locale)} />
 			<Box class="prompt-block">
-				<Text class="prompt-label">Did I act in accordance with my values?</Text>
+				<Text class="prompt-label">{tTemplate('stoic_evening_prompt1', settings?.design?.locale)}</Text>
 				{#each Array(3) as _}
 					<Box class="line"></Box>
 				{/each}
 			</Box>
 			<Box class="prompt-block">
-				<Text class="prompt-label">Where did I falter, and what could I do better?</Text>
+				<Text class="prompt-label">{tTemplate('stoic_evening_prompt2', settings?.design?.locale)}</Text>
 				{#each Array(3) as _}
 					<Box class="line"></Box>
 				{/each}
@@ -47,11 +47,11 @@
 		</Box>
 
 		<Box class="virtues-section">
-			<SectionHeader label="VIRTUES CHECK-IN" />
+			<SectionHeader label={tTemplate('virtues_checkin', settings?.design?.locale)} />
 			<Box class="virtues-grid">
-				{#each ['Wisdom', 'Courage', 'Justice', 'Temperance'] as virtue}
+				{#each ['virtue_wisdom', 'virtue_courage', 'virtue_justice', 'virtue_temperance'] as virtueKey}
 					<Box class="virtue-row">
-						<Text class="virtue-name">{virtue}</Text>
+						<Text class="virtue-name">{tTemplate(virtueKey, settings?.design?.locale)}</Text>
 						<Box class="virtue-boxes">
 							{#each Array(5) as _, idx}
 								<Box class="dot-box"></Box>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 
 	let { settings = {} as PlannerSettings } = $props();
@@ -10,11 +10,11 @@
 	<Box class="header-section">
 		<Box class="title-block">
 			<Text class="label">
-				{#if showEmoji}🃏{/if} DAILY TAROT DRAW
+				{#if showEmoji}🃏{/if} {tTemplate('daily_tarot_draw', settings?.design?.locale)}
 			</Text>
 		</Box>
 		<Box class="date-line">
-			<Text class="date-label">Date:</Text>
+			<Text class="date-label">{tTemplate('date', settings?.design?.locale)}:</Text>
 			<Box class="line"></Box>
 		</Box>
 	</Box>
@@ -22,7 +22,7 @@
 	<Box class="cards-container">
 		<Box class="card-slot">
 			<Box class="card-outline">
-				<Text class="card-title">Past / Situation</Text>
+				<Text class="card-title">{tTemplate('tarot_past_situation', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="notes-lines">
 				{#each Array(4) as _}
@@ -33,7 +33,7 @@
 
 		<Box class="card-slot">
 			<Box class="card-outline">
-				<Text class="card-title">Present / Action</Text>
+				<Text class="card-title">{tTemplate('tarot_present_action', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="notes-lines">
 				{#each Array(4) as _}
@@ -44,7 +44,7 @@
 
 		<Box class="card-slot">
 			<Box class="card-outline">
-				<Text class="card-title">Future / Outcome</Text>
+				<Text class="card-title">{tTemplate('tarot_future_outcome', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="notes-lines">
 				{#each Array(4) as _}
@@ -55,7 +55,7 @@
 	</Box>
 
 	<Box class="interpretation-section">
-		<Text class="label">Synthesis & Interpretation</Text>
+		<Text class="label">{tTemplate('synthesis_interpretation', settings?.design?.locale)}</Text>
 		<Box class="dotted-area">
 			<!-- CSS grid of dots for writing -->
 			<Box class="dots-bg"></Box>

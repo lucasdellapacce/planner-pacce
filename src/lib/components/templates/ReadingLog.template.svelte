@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 
 	let { settings = {} as PlannerSettings } = $props();
@@ -9,16 +9,16 @@
 <Box class="reading-log">
 	<Box class="header-section">
 		<Text class="label">
-			{#if showEmoji}📚{/if} READING LOG
+			{#if showEmoji}📚{/if} {tTemplate('reading_log', settings?.design?.locale)}
 		</Text>
 		<Box class="line"></Box>
 	</Box>
 
 	<Box class="content-section">
 		<Box class="table-header">
-			<Box class="col-title"><Text>BOOK TITLE & AUTHOR</Text></Box>
-			<Box class="col-date"><Text>DATE</Text></Box>
-			<Box class="col-rating"><Text>RATING</Text></Box>
+			<Box class="col-title"><Text>{tTemplate('book_title_author', settings?.design?.locale)}</Text></Box>
+			<Box class="col-date"><Text>{tTemplate('date', settings?.design?.locale)}</Text></Box>
+			<Box class="col-rating"><Text>{tTemplate('rating', settings?.design?.locale)}</Text></Box>
 		</Box>
 		{#each Array(15) as _}
 			<Box class="table-row">
