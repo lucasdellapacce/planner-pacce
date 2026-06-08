@@ -9,6 +9,9 @@
 	import { onMount } from 'svelte';
 	import PrintToast from '$molecules/PrintToast.molecule.svelte';
 	import { pwaInfo } from 'virtual:pwa-info';
+	import { initI18n } from '$state';
+
+	const i18n = initI18n('pt-BR');
 
 	interface Props {
 		children?: any;

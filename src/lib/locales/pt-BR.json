@@ -1,0 +1,108 @@
+{
+	"wizard": {
+		"title": "Remarkably Organized Planner Wizard",
+		"hold_to_peek": "Segure para espiar",
+		"close_guide": "Fechar guia",
+		"close_wizard": "Fechar Assistente",
+		"back": "Voltar",
+		"show_magic": "Mostre-me a Mágica!",
+		"next_trick": "Próximo Truque",
+		"steps": {
+			"welcome": "Boas-vindas",
+			"presets": "Modelos",
+			"design": "Design",
+			"cover": "Capa",
+			"spreads": "Visões",
+			"calendars": "Calendários",
+			"notes": "Notas",
+			"collections": "Coleções",
+			"indexes": "Índices",
+			"events": "Eventos",
+			"export": "Exportar"
+		},
+		"welcome": {
+			"welcome_free": "Bem-vindo ao gratuito",
+			"tagline": "Crie planners em PDF lindos e funcionais para seu tablet e-ink.",
+			"hint": "💡 Segure o botão de espiar para ver as alterações em tempo real",
+			"descriptions": {
+				"presets": "Comece com um tema ou layout selecionado.",
+				"design": "Personalize fontes, cores e estilos.",
+				"cover": "Personalize a página de capa do seu planner.",
+				"spreads": "Escolha suas visões semanais e mensais.",
+				"calendars": "Configure suas páginas de calendário com datas.",
+				"cal_notes": "Adicione páginas de notas extras aos seus layouts.",
+				"collections": "Inclua rastreadores e registros especializados.",
+				"indexes": "Organize tudo com páginas de índice.",
+				"events": "Sincronize seu calendário digital e eventos.",
+				"export": "Gere e baixe seu PDF."
+			}
+		}
+	},
+	"categories": {
+		"calendar": {
+			"title": "Calendários",
+			"description": "Visualizações de calendário mensal, trimestral e anual."
+		},
+		"agenda": {
+			"title": "Agendas",
+			"description": "Role para baixo para ver todos os layouts de agenda diários e semanais."
+		},
+		"productivity": {
+			"title": "Produtividade",
+			"description": "Listas de tarefas, gestão de tarefas e ferramentas de foco."
+		},
+		"goals": {
+			"title": "Metas",
+			"description": "Rastreadores de hábitos, OKRs e planejamento de metas pessoais."
+		},
+		"health": {
+			"title": "Bem-estar",
+			"description": "Acompanhamento de atividades físicas, planejamento de refeições e diários de bem-estar mental."
+		},
+		"personal": {
+			"title": "Pessoal",
+			"description": "Reflexão, gratidão, astrologia e diários pessoais."
+		},
+		"home": {
+			"title": "Vida Doméstica",
+			"description": "Finanças, jardinagem, cuidados com pet e planejamento de eventos."
+		},
+		"education": {
+			"title": "Educação",
+			"description": "Rastreadores de estudo, planos de aula e diários de leitura."
+		},
+		"professional": {
+			"title": "Profissional",
+			"description": "Planejadores de projeto, rastreadores de clientes e ferramentas de carreira especializadas."
+		},
+		"notes": {
+			"title": "Notas",
+			"description": "Layouts de anotações pautados, numerados e estruturados."
+		},
+		"sketch": {
+			"title": "Esboços",
+			"description": "Grelhas de pontos, quadrados e telas em branco para criatividade livre."
+		}
+	},
+	"gallery": {
+		"title": "Galeria de Modelos",
+		"select_template": "Selecione um Modelo",
+		"search_placeholder": "Pesquisar modelos...",
+		"search": {
+			"results": "Resultados",
+			"found": "Encontrados {count} modelos correspondentes para \"{query}\".",
+			"none": "Nenhum modelo corresponde a \"{query}\"."
+		},
+		"btn": {
+			"back": "Voltar",
+			"next": "Próximo",
+			"finish": "Concluir",
+			"exporting": "Exportando {progress}...",
+			"download_all": "Baixar Todos"
+		},
+		"toast": {
+			"batch_success": "Todos os {count} modelos em \"{category}\" foram exportados!",
+			"selected": "Modelo selecionado: {name}"
+		}
+	}
+}

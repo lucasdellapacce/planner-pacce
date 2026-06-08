@@ -3,3 +3,4 @@ export * from './event';
 export * from './planner-settings.svelte';
 export * from './toast.state.svelte';
 export * from './print-manager.svelte';
+export * from './i18n.svelte';

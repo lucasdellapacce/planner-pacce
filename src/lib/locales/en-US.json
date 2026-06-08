@@ -1,0 +1,108 @@
+{
+	"wizard": {
+		"title": "Remarkably Organized Planner Wizard",
+		"hold_to_peek": "Hold to Peek",
+		"close_guide": "Close guide",
+		"close_wizard": "Close Wizard",
+		"back": "Back",
+		"show_magic": "Show me the Magic!",
+		"next_trick": "Next Trick",
+		"steps": {
+			"welcome": "Welcome",
+			"presets": "Presets",
+			"design": "Design",
+			"cover": "Cover",
+			"spreads": "Spreads",
+			"calendars": "Calendars",
+			"notes": "Notes",
+			"collections": "Collections",
+			"indexes": "Indexes",
+			"events": "Events",
+			"export": "Export"
+		},
+		"welcome": {
+			"welcome_free": "Welcome to the FREE to use",
+			"tagline": "Build beautiful, functional PDF planners for your e-ink tablet.",
+			"hint": "💡 Hold the peek button to preview changes in real time",
+			"descriptions": {
+				"presets": "Start with a curated theme or layout.",
+				"design": "Customize fonts, colors, and styling.",
+				"cover": "Personalize your planner front page.",
+				"spreads": "Choose your weekly and monthly views.",
+				"calendars": "Configure your dated calendar pages.",
+				"cal_notes": "Add extra note pages to your layouts.",
+				"collections": "Include specialized trackers and logs.",
+				"indexes": "Organize everything with index pages.",
+				"events": "Sync your digital calendar and events.",
+				"export": "Generate and download your PDF."
+			}
+		}
+	},
+	"categories": {
+		"calendar": {
+			"title": "Calendars",
+			"description": "Monthly, quarterly, and yearly calendar views."
+		},
+		"agenda": {
+			"title": "Agendas",
+			"description": "Be sure to scroll down to see all the Daily and weekly agenda layouts for scheduling and time management."
+		},
+		"productivity": {
+			"title": "Productivity",
+			"description": "To-do lists, task management, and focus tools."
+		},
+		"goals": {
+			"title": "Goals",
+			"description": "Habit trackers, OKRs, and personal goal planning."
+		},
+		"health": {
+			"title": "Wellness",
+			"description": "Fitness tracking, meal planning, and mental wellness journals."
+		},
+		"personal": {
+			"title": "Personal",
+			"description": "Reflection, gratitude, astrology, and personal logs."
+		},
+		"home": {
+			"title": "HomeLife",
+			"description": "Finance, gardening, pet care, and event planning."
+		},
+		"education": {
+			"title": "Education",
+			"description": "Study trackers, lesson plans, and reading logs."
+		},
+		"professional": {
+			"title": "Professional",
+			"description": "Project planners, client trackers, and specialized career tools."
+		},
+		"notes": {
+			"title": "Notes",
+			"description": "Lined, numbered, and structured note-taking layouts."
+		},
+		"sketch": {
+			"title": "Sketchpads",
+			"description": "Dot grids, square grids, and blank canvases for freeform creativity."
+		}
+	},
+	"gallery": {
+		"title": "Template Gallery",
+		"select_template": "Select a Template",
+		"search_placeholder": "Search templates...",
+		"search": {
+			"results": "Results",
+			"found": "Found {count} matching templates for \"{query}\".",
+			"none": "No templates matched \"{query}\"."
+		},
+		"btn": {
+			"back": "Back",
+			"next": "Next",
+			"finish": "Finish",
+			"exporting": "Exporting {progress}...",
+			"download_all": "Download All"
+		},
+		"toast": {
+			"batch_success": "All {count} templates in \"{category}\" exported!",
+			"selected": "Selected template: {name}"
+		}
+	}
+}
