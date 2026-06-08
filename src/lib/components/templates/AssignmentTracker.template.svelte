@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
 
@@ -10,8 +10,8 @@
 
 <Box class="assignment-tracker">
 	<Box class="header-section">
-		<Field label="ASSIGNMENT TRACKER" emoji="📚" {showEmoji} class="title-field" />
-		<Field label="SEMESTER / QUARTER" emoji="📅" {showEmoji} class="date-field" />
+		<Field label={tTemplate('assignment_tracker', settings?.design?.locale)} emoji="📚" {showEmoji} class="title-field" />
+		<Field label={tTemplate('semester_quarter', settings?.design?.locale)} emoji="📅" {showEmoji} class="date-field" />
 	</Box>
 
 	<Box class="ledger">
@@ -19,32 +19,32 @@
 			<Box class="col-class">
 				{#if showEmoji}<Text>🏫</Text>
 					<br />{/if}
-				<Text>CLASS / COURSE</Text>
+				<Text>{tTemplate('class_course', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="col-assignment">
 				{#if showEmoji}<Text>📝</Text>
 					<br />{/if}
-				<Text>ASSIGNMENT</Text>
+				<Text>{tTemplate('assignment', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="col-due">
 				{#if showEmoji}<Text>⏰</Text>
 					<br />{/if}
-				<Text>DUE DATE</Text>
+				<Text>{tTemplate('due_date', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="col-status">
 				{#if showEmoji}<Text tag="span">🚦</Text>
 				{/if}
-				<Text tag="span">STATUS</Text>
+				<Text tag="span">{tTemplate('status', settings?.design?.locale)}</Text>
 				<Box class="status-labels">
-					<Text tag="span">TO DO</Text>
-					<Text tag="span">DOING</Text>
-					<Text tag="span">DONE</Text>
+					<Text tag="span">{tTemplate('todo', settings?.design?.locale)}</Text>
+					<Text tag="span">{tTemplate('doing', settings?.design?.locale)}</Text>
+					<Text tag="span">{tTemplate('done', settings?.design?.locale)}</Text>
 				</Box>
 			</Box>
 			<Box class="col-grade">
 				{#if showEmoji}<Text>💯</Text>
 					<br />{/if}
-				<Text>GRADE</Text>
+				<Text>{tTemplate('grade', settings?.design?.locale)}</Text>
 			</Box>
 		</Box>
 		{#each rows as _, i (i)}
@@ -53,9 +53,9 @@
 				<Box class="col col-assignment"></Box>
 				<Box class="col col-due"></Box>
 				<Box class="col col-status">
-					<Checkbox aria-label="To Do" />
-					<Checkbox aria-label="Doing" />
-					<Checkbox aria-label="Done" />
+					<Checkbox aria-label={tTemplate('todo', settings?.design?.locale)} />
+					<Checkbox aria-label={tTemplate('doing', settings?.design?.locale)} />
+					<Checkbox aria-label={tTemplate('done', settings?.design?.locale)} />
 				</Box>
 				<Box class="col col-grade"></Box>
 			</Box>

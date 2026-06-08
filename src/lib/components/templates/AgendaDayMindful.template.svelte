@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { CalendarEvent, PlannerSettings, Timeframe } from '$lib';
+	import { tTemplate, type CalendarEvent, type PlannerSettings, type Timeframe } from '$lib';
 	import { AgendaDay } from '$templates';
 	import { Box, Text } from '$atoms';
 	import { Grid, SectionHeader } from '$molecules';
@@ -26,9 +26,9 @@
 			? 'border-r pr-3'
 			: 'border-l pl-3'}">
 		<Box class="flex flex-col pt-2 pl-4 pb-3">
-			<SectionHeader label="Morning Intention" emoji="☀️" {showEmoji} />
+			<SectionHeader label={tTemplate('morning_intention', settings?.design?.locale)} emoji="☀️" {showEmoji} />
 			<Text class="text-[0.75em] text-[var(--text-low)] italic mb-1 pl-1">
-				Today I will focus on...
+				{tTemplate('today_i_will_focus_on', settings?.design?.locale)}
 			</Text>
 			<Box class="flex flex-col gap-3 pt-1">
 				{#each new Array(3) as _}
@@ -38,7 +38,7 @@
 		</Box>
 
 		<Box class="flex flex-col pl-4 pb-3 border-b border-[var(--outline)]">
-			<SectionHeader label="Grateful For . . ." emoji="🙏" {showEmoji} />
+			<SectionHeader label={tTemplate('grateful_for', settings?.design?.locale)} emoji="🙏" {showEmoji} />
 			<Box class="flex flex-col gap-2 pt-1">
 				{#each new Array(3) as _, i}
 					<Box
@@ -65,19 +65,19 @@
 
 	<Box class="flex flex-col flex-1 h-full gap-6 pt-2">
 		<Box class="flex flex-col flex-1 min-h-0 [&_.lined]:!pb-[5px]">
-			<SectionHeader label="Today's Tasks" emoji="✅" {showEmoji} />
+			<SectionHeader label={tTemplate('todays_tasks', settings?.design?.locale)} emoji="✅" {showEmoji} />
 			<Box class="flex-1 min-h-0 flex flex-col relative overflow-hidden">
 				<Grid display="todo" columns={1} lines={15} />
 			</Box>
 		</Box>
 
 		<Box class="flex flex-col flex-none border-t border-b border-[var(--outline)] py-3">
-			<SectionHeader label="Wellness" emoji="💚" {showEmoji} />
+			<SectionHeader label={tTemplate('wellness', settings?.design?.locale)} emoji="💚" {showEmoji} />
 			<Box class="flex flex-col gap-[0.6rem]">
 				<Box class="flex items-center gap-3">
 					<Text
 						class="text-[0.75em] text-[var(--text-low)] font-bold uppercase tracking-[0.5px] w-14 shrink-0">
-						Water
+						{tTemplate('water', settings?.design?.locale)}
 					</Text>
 					<Box class="flex gap-[0.4rem]">
 						{#each new Array(8) as _}
@@ -90,7 +90,7 @@
 				<Box class="flex items-center gap-3">
 					<Text
 						class="text-[0.75em] text-[var(--text-low)] font-bold uppercase tracking-[0.5px] w-14 shrink-0">
-						Move
+						{tTemplate('move', settings?.design?.locale)}
 					</Text>
 					<Box class="flex gap-[0.4rem]">
 						{#each new Array(4) as _}
@@ -103,15 +103,15 @@
 				<Box class="flex items-center gap-3">
 					<Text
 						class="text-[0.75em] text-[var(--text-low)] font-bold uppercase tracking-[0.5px] w-14 shrink-0">
-						Meals
+						{tTemplate('meals', settings?.design?.locale)}
 					</Text>
 					<Box class="flex gap-[0.4rem]">
-						{#each ['Breakfast', 'Lunch', 'Dinner', 'Snack'] as meal}
+						{#each ['breakfast', 'lunch', 'dinner', 'snacks'] as mealKey}
 							<Box>
 								<Text
 									tag="span"
 									class="text-[0.75em] text-[var(--text-low)] font-bold tracking-[1px]">
-									{meal}
+									{tTemplate(mealKey, settings?.design?.locale)}
 								</Text>
 							</Box>
 						{/each}
@@ -120,15 +120,15 @@
 				<Box class="flex items-center gap-3">
 					<Text
 						class="text-[0.75em] text-[var(--text-low)] font-bold uppercase tracking-[0.5px] w-14 shrink-0">
-						Sleep
+						{tTemplate('sleep', settings?.design?.locale)}
 					</Text>
 					<Box class="flex-none w-12 border-b border-[var(--outline)] h-4"></Box>
-					<Text tag="span" class="text-[0.8em] text-[var(--text-low)]">Hours</Text>
+					<Text tag="span" class="text-[0.8em] text-[var(--text-low)]">{tTemplate('hours', settings?.design?.locale)}</Text>
 				</Box>
 				<Box class="flex items-center gap-3">
 					<Text
 						class="text-[0.75em] text-[var(--text-low)] font-bold uppercase tracking-[0.5px] w-14 shrink-0">
-						Energy
+						{tTemplate('energy', settings?.design?.locale)}
 					</Text>
 					<Box class="flex items-end gap-1 h-[1.2rem]">
 						{#each new Array(5) as _, i}
@@ -141,7 +141,7 @@
 				<Box class="flex items-center gap-3">
 					<Text
 						class="text-[0.75em] text-[var(--text-low)] font-bold uppercase tracking-[0.5px] w-14 shrink-0">
-						Mood
+						{tTemplate('mood', settings?.design?.locale)}
 					</Text>
 					<Box class="flex gap-[0.4rem]">
 						{#each ['😡', '😟', '😴', '😐', '🙂', '😊'] as emoji}
@@ -156,13 +156,13 @@
 		</Box>
 
 		<Box class="flex flex-col flex-none">
-			<SectionHeader label="Evening Reflection" emoji="🌙" {showEmoji} />
+			<SectionHeader label={tTemplate('evening_reflection', settings?.design?.locale)} emoji="🌙" {showEmoji} />
 			<Box class="flex flex-col gap-[0.6rem]">
 				<Box class="flex flex-col">
 					<Text
 						tag="span"
 						class="text-[0.75em] text-[var(--text-low)] italic pl-[0.15rem]">
-						Win of the day
+						{tTemplate('win_of_the_day', settings?.design?.locale)}
 					</Text>
 					<Box class="border-b border-[var(--outline)] h-[1.4rem]"></Box>
 				</Box>
@@ -170,7 +170,7 @@
 					<Text
 						tag="span"
 						class="text-[0.75em] text-[var(--text-low)] italic pl-[0.15rem]">
-						What I learned
+						{tTemplate('what_i_learned', settings?.design?.locale)}
 					</Text>
 					<Box class="border-b border-[var(--outline)] h-[1.4rem]"></Box>
 				</Box>
@@ -178,7 +178,7 @@
 					<Text
 						tag="span"
 						class="text-[0.75em] text-[var(--text-low)] italic pl-[0.15rem]">
-						Tomorrow I will
+						{tTemplate('tomorrow_i_will', settings?.design?.locale)}
 					</Text>
 					<Box class="border-b border-[var(--outline)] h-[1.4rem]"></Box>
 				</Box>

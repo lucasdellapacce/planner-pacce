@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { CalendarEvent, PlannerSettings, Timeframe } from '$lib';
+	import { tTemplate, type CalendarEvent, type PlannerSettings, type Timeframe } from '$lib';
 	import { Box, Text } from '$atoms';
 	import { Grid, SectionHeader } from '$molecules';
 	import { AgendaDay } from '$templates';
@@ -36,7 +36,7 @@
 	</Box>
 	<Box class="flex flex-col flex-1 h-full gap-6 pt-4">
 		<Box class="flex flex-col flex-none mb-2">
-			<SectionHeader label="Top Priorities" emoji="🎯" {showEmoji} />
+			<SectionHeader label={tTemplate('top_priorities', settings?.design?.locale)} emoji="🎯" {showEmoji} />
 			<Box class="flex flex-col gap-2 pt-1">
 				{#each [1, 2, 3] as num}
 					<Box class="flex items-end border-b border-[var(--outline)] h-8 pb-[0.2rem]">
@@ -46,13 +46,13 @@
 			</Box>
 		</Box>
 		<Box class="flex flex-col flex-1 min-h-0 [&_.lined]:!pb-[10px]">
-			<SectionHeader label="Action Items" emoji="✅" {showEmoji} />
+			<SectionHeader label={tTemplate('action_items', settings?.design?.locale)} emoji="✅" {showEmoji} />
 			<Box class="flex-1 min-h-0 flex flex-col relative overflow-hidden">
 				<Grid display="todo" columns={1} lines={14} />
 			</Box>
 		</Box>
 		<Box class="flex flex-col flex-[0.7] min-h-0">
-			<SectionHeader label="Notes" emoji="📝" {showEmoji} />
+			<SectionHeader label={tTemplate('notes', settings?.design?.locale)} emoji="📝" {showEmoji} />
 			<Box class="flex-1 min-h-0 flex flex-col relative overflow-hidden">
 				<Grid display="dotted" />
 			</Box>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getFirstDayOfWeek, type Timeframe, getDateHash } from '$lib';
+	import { tTemplate, getFirstDayOfWeek, type Timeframe, getDateHash } from '$lib';
 	import { Box, Text } from '$atoms';
 	import { SectionHeader, Field } from '$molecules';
 
@@ -18,9 +18,9 @@
 	<Box class="flex gap-8">
 		<Field
 			class="flex-[3]"
-			label="{!settings?.emojis?.disable ? '🎯 ' : ''}WEEKLY FOCUS & REVIEW"
+			label="{!settings?.emojis?.disable ? '🎯 ' : ''}{tTemplate('weekly_focus_review', settings?.design?.locale)}"
 			labelWeight="bold" />
-		<Field class="flex-1" label="WEEK OF" labelWeight="bold" />
+		<Field class="flex-1" label={tTemplate('week_of', settings?.design?.locale)} labelWeight="bold" />
 	</Box>
 
 	<Box class="flex flex-col gap-4 flex-1 min-h-0">
@@ -28,7 +28,7 @@
 		<Box class="flex gap-4 flex-1 min-h-0">
 			<Box
 				class="flex flex-col flex-1 border border-[var(--outline)] rounded overflow-hidden">
-				<SectionHeader title="WEEKLY FOCUS & INTENTION" />
+				<SectionHeader title={tTemplate('weekly_focus_intention', settings?.design?.locale)} />
 				<Box class="flex flex-col gap-[0.4rem] flex-1 justify-around p-2">
 					<Box class="border-b border-[var(--outline-low)] h-[1.2rem] flex-1"></Box>
 					<Box class="border-b border-[var(--outline-low)] h-[1.2rem] flex-1"></Box>
@@ -38,7 +38,7 @@
 
 			<Box
 				class="flex flex-col flex-1 border border-[var(--outline)] rounded overflow-hidden">
-				<SectionHeader title="ACTIVE PROJECTS" />
+				<SectionHeader title={tTemplate('active_projects', settings?.design?.locale)} />
 				<Box class="flex flex-col gap-[0.4rem] flex-1 justify-around p-2">
 					{#each Array(3) as _}
 						<Box class="flex items-center gap-2">
@@ -53,7 +53,7 @@
 		<!-- Mid Section: Daily Highlight Trackers -->
 		<Box
 			class="flex flex-col flex-[1.5] min-h-0 border border-[var(--outline)] rounded overflow-hidden">
-			<SectionHeader title="DAILY HIGHLIGHTS & DEEP WORK TRACKER" />
+			<SectionHeader title={tTemplate('daily_highlights_deep_work_tracker', settings?.design?.locale)} />
 			<Box class="flex flex-col gap-[0.4rem] flex-1 justify-between p-2">
 				{#each new Array(7) as _, i (i)}
 					{@const date = new Date(weekStart.getTime() + i * 86400000)}
@@ -63,7 +63,7 @@
 							class="no-underline color-[var(--text-low)] w-[3.5rem] text-[0.65rem] transition-colors duration-200 ease-in hover:text-[var(--text)]">
 							<Text weight="bold">
 								{date
-									.toLocaleString('default', { weekday: 'short', timeZone: 'UTC' })
+									.toLocaleString(settings?.design?.locale || 'pt-BR', { weekday: 'short', timeZone: 'UTC' })
 									.toUpperCase()}
 								{date.getUTCDate()}
 							</Text>
@@ -78,7 +78,7 @@
 		<Box class="flex gap-4 flex-1 min-h-0">
 			<Box
 				class="flex flex-col flex-1 border border-[var(--outline)] rounded overflow-hidden">
-				<SectionHeader title="WEEKLY WINS & SUCCESSES" />
+				<SectionHeader title={tTemplate('weekly_wins_successes', settings?.design?.locale)} />
 				<Box class="flex flex-col gap-[0.4rem] flex-1 justify-around p-2">
 					{#each Array(3) as _}
 						<Box class="flex items-center gap-2">
@@ -91,7 +91,7 @@
 
 			<Box
 				class="flex flex-col flex-1 border border-[var(--outline)] rounded overflow-hidden">
-				<SectionHeader title="REFLECTIONS & REVIEW NOTES" />
+				<SectionHeader title={tTemplate('reflections_notes', settings?.design?.locale)} />
 				<Box class="flex flex-col gap-[0.4rem] flex-1 justify-around p-2">
 					<Box class="border-b border-[var(--outline-low)] h-[1.2rem] flex-1"></Box>
 					<Box class="border-b border-[var(--outline-low)] h-[1.2rem] flex-1"></Box>

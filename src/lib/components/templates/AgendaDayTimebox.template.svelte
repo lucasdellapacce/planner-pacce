@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { CalendarEvent, PlannerSettings, Timeframe } from '$lib';
+	import { tTemplate, type CalendarEvent, type PlannerSettings, type Timeframe } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Grid, SectionHeader } from '$molecules';
 	import { AgendaDay } from '$templates';
@@ -26,18 +26,18 @@
 			? 'col-start-2'
 			: 'col-start-1'}">
 		<Box class="flex flex-col flex-1 min-h-0">
-			<SectionHeader label="Brain Dump" emoji="🧠" {showEmoji} />
+			<SectionHeader label={tTemplate('brain_dump', settings?.design?.locale)} emoji="🧠" {showEmoji} />
 			<Box class="flex-1 relative overflow-hidden flex flex-col">
 				<Grid display="dotted" />
 			</Box>
 		</Box>
 		<Box class="flex flex-col flex-[1.2] min-h-0">
-			<SectionHeader label="Timebox Focus" emoji="⏱️" {showEmoji} />
+			<SectionHeader label={tTemplate('timebox_focus', settings?.design?.locale)} emoji="⏱️" {showEmoji} />
 			<Box class="flex flex-col flex-1">
 				<Box
 					class="flex justify-between text-[0.8em] text-[var(--text-low)] font-bold tracking-[1px] px-2 pb-1 border-b border-[var(--outline)]">
-					<Text>Task</Text>
-					<Text class="text-right">25m Block Estimate</Text>
+					<Text>{tTemplate('task', settings?.design?.locale)}</Text>
+					<Text class="text-right">{tTemplate('block_estimate', settings?.design?.locale)}</Text>
 				</Box>
 				{#each new Array(14) as _, i}
 					<Box

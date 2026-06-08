@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {
+		tTemplate,
 		getFirstDayOfWeek,
 		type Timeframe,
 		type CalendarEvent,
@@ -44,7 +45,7 @@
 	<Box class="flex gap-8 px-6">
 		<Field
 			class="flex-1"
-			label="{!settings?.emojis?.disable ? '📅 ' : ''}WEEKLY TIME-BLOCKED AGENDA"
+			label="{!settings?.emojis?.disable ? '📅 ' : ''}{tTemplate('weekly_time_blocked_agenda', settings?.design?.locale)}"
 			labelWeight="bold" />
 	</Box>
 
@@ -68,7 +69,7 @@
 					: 'border-r'}">
 				<Text class="text-[0.6rem] text-[var(--text-low)]" weight="bold">
 					{date
-						.toLocaleString('default', { weekday: 'short', timeZone: 'UTC' })
+						.toLocaleString(settings?.design?.locale || 'pt-BR', { weekday: 'short', timeZone: 'UTC' })
 						.toUpperCase()}
 				</Text>
 				<Text class="text-[0.8rem] text-[var(--text)]" weight="bold">

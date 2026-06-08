@@ -4,6 +4,7 @@
 		type Timeframe,
 		type CalendarEvent,
 		getDateHash,
+		tTemplate,
 	} from '$lib';
 	import { Box, Text } from '$atoms';
 	import { SectionHeader, Field } from '$molecules';
@@ -25,16 +26,16 @@
 	<Box class="flex gap-8">
 		<Field
 			class="flex-[2]"
-			label="{!settings?.emojis?.disable ? '🏃 ' : ''}BI-WEEKLY PLANNER / SPRINT LOG"
+			label="{!settings?.emojis?.disable ? '🏃 ' : ''}{tTemplate('biweekly_planner_sprint_log', settings?.design?.locale)}"
 			labelWeight="bold" />
-		<Field class="flex-1" label="SPRINT CYCLE DATES" labelWeight="bold" />
+		<Field class="flex-1" label={tTemplate('sprint_cycle_dates', settings?.design?.locale)} labelWeight="bold" />
 	</Box>
 
 	<Box class="flex gap-6 flex-1">
 		<!-- Week 1 -->
 		<Box
 			class="flex-1 flex flex-col border border-[var(--outline)] rounded overflow-hidden">
-			<SectionHeader title="WEEK 1" center />
+			<SectionHeader title={tTemplate('week_1', settings?.design?.locale)} center />
 			<Box class="flex flex-col flex-1">
 				{#each new Array(7) as _, i (i)}
 					{@const date = new Date(week1Start.getTime() + i * 86400000)}
@@ -47,7 +48,7 @@
 							href={getDateHash(date)}
 							class="w-[2.5rem] border-r border-[var(--outline)] flex flex-col items-center justify-center bg-[var(--nav-bg-pdf)] p-1 no-underline text-inherit transition-colors duration-200 ease-in hover:bg-[var(--outline-low)]">
 							<Text class="text-[0.6rem] text-[var(--text-low)]" weight="bold">
-								{date.toLocaleString('default', { weekday: 'short', timeZone: 'UTC' })}
+								{date.toLocaleString(settings?.design?.locale || 'pt-BR', { weekday: 'short', timeZone: 'UTC' })}
 							</Text>
 							<Text class="text-[0.8rem] text-[var(--text)]" weight="bold">
 								{date.getUTCDate()}
@@ -69,7 +70,7 @@
 		<!-- Week 2 -->
 		<Box
 			class="flex-1 flex flex-col border border-[var(--outline)] rounded overflow-hidden">
-			<SectionHeader title="WEEK 2" center />
+			<SectionHeader title={tTemplate('week_2', settings?.design?.locale)} center />
 			<Box class="flex flex-col flex-1">
 				{#each new Array(7) as _, i (i)}
 					{@const date = new Date(week2Start.getTime() + i * 86400000)}
@@ -82,7 +83,7 @@
 							href={getDateHash(date)}
 							class="w-[2.5rem] border-r border-[var(--outline)] flex flex-col items-center justify-center bg-[var(--nav-bg-pdf)] p-1 no-underline text-inherit transition-colors duration-200 ease-in hover:bg-[var(--outline-low)]">
 							<Text class="text-[0.6rem] text-[var(--text-low)]" weight="bold">
-								{date.toLocaleString('default', { weekday: 'short', timeZone: 'UTC' })}
+								{date.toLocaleString(settings?.design?.locale || 'pt-BR', { weekday: 'short', timeZone: 'UTC' })}
 							</Text>
 							<Text class="text-[0.8rem] text-[var(--text)]" weight="bold">
 								{date.getUTCDate()}

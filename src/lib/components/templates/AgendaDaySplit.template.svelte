@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type CalendarEvent, type Timeframe } from '$lib';
+	import { tTemplate, type CalendarEvent, type Timeframe } from '$lib';
 	import { Box, Text } from '$atoms';
 
 	let {
@@ -65,7 +65,7 @@
 		<Box class="grid grid-cols-[2.5rem_1fr] w-full py-1 shrink-0">
 			<Box
 				class="flex items-center justify-center text-[0.6em] font-light text-[var(--text-low)] text-center">
-				<Text>All Day ➤</Text>
+				<Text>{tTemplate('all_day', settings?.design?.locale)} ➤</Text>
 			</Box>
 			<Box class="flex flex-wrap gap-2 px-2 items-center">
 				{#each allDayEvents as event}
