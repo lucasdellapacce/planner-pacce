@@ -6,6 +6,7 @@
 		isMoonEvent,
 		getMoonEmoji,
 		getDateHash,
+		tTemplate,
 	} from '$lib';
 	import { Box, Text, Dot } from '$atoms';
 	import { Grid, CalendarCell } from '$molecules';
@@ -58,7 +59,7 @@
 			<Box
 				class="flex items-end justify-center text-[0.8em] font-medium text-[var(--text)] pt-1 pb-2 tracking-[1px] font-display">
 				<Text>
-					{date.toLocaleString('default', { weekday: 'long', timeZone: 'UTC' })}
+					{date.toLocaleString(settings?.design?.locale || 'pt-BR', { weekday: 'long', timeZone: 'UTC' })}
 				</Text>
 			</Box>
 		{/each}
@@ -83,11 +84,12 @@
 						? 'bg-black/[0.015]'
 						: ''}">
 					{#if !useWeekSinceYear && week.year && week.month && week.month !== timeframe.month}
-						{new Date(Date.UTC(week.year, week.month)).toLocaleString('default', {
+						{new Date(Date.UTC(week.year, week.month - 1)).toLocaleString(settings?.design?.locale || 'pt-BR', {
 							month: 'short',
+							timeZone: 'UTC',
 						})}
 					{/if}
-					Week {useWeekSinceYear ? week.weekSinceYear : week.weekSinceMonth}
+					{tTemplate('week', settings?.design?.locale)} {useWeekSinceYear ? week.weekSinceYear : week.weekSinceMonth}
 				</a>
 			{/each}
 		{/if}
@@ -207,7 +209,7 @@
 	</Box>
 	{#if showNotes}
 		<Box class="text-center border-t border-[var(--outline)] w-full h-[50%] p-0">
-			<Text tag="h3" class="text-[0.9em] font-light my-[0.55rem]">Notes</Text>
+			<Text tag="h3" class="text-[0.9em] font-light my-[0.55rem]">{tTemplate('notes', settings?.design?.locale)}</Text>
 			<Grid display="dotted" />
 		</Box>
 	{/if}

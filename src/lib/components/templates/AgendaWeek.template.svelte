@@ -7,6 +7,7 @@
 		isMoonEvent,
 		getMoonEmoji,
 		getDateHash,
+		tTemplate,
 	} from '$lib';
 	import { Box, Text, Link } from '$atoms';
 	import { AgendaEvent, CalendarCell } from '$molecules';
@@ -108,7 +109,7 @@
 			style="grid-column: {isTimelineOnLeft ? i + 2 : i + 1}; grid-row: 1;"
 			moonEmoji={moonEvent ? (getMoonEmoji(moonEvent.name) ?? '') : ''}>
 			<Text>
-				{date.toLocaleString('default', { weekday: 'short', timeZone: 'UTC' })}
+				{tTemplate(['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'][date.getUTCDay()], settings?.design?.locale)}
 				{@html formatToString(date.getUTCDate(), { type: 'ordinal', html: true })}
 			</Text>
 			{#if allDayEvents.length > 0}

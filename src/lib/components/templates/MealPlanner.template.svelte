@@ -2,14 +2,15 @@
 	import type { PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
+	import { tTemplate } from '$lib';
 
 	let { startWeekOnSunday = false, settings = {} as PlannerSettings } = $props();
 	const showEmoji = $derived(!settings?.emojis?.disable);
 
 	const days = $derived(
 		startWeekOnSunday
-			? ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-			: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+			? ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => tTemplate(d, settings?.design?.locale))
+			: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(d => tTemplate(d, settings?.design?.locale)),
 	);
 </script>
 
@@ -19,29 +20,29 @@
 			<Box class="title-block">
 				<Text tag="strong" class="label">
 					{#if showEmoji}💡
-					{/if}MEAL IDEAS & PREP
+					{/if}{tTemplate('meal_ideas', settings?.design?.locale).toUpperCase()}
 				</Text>
 			</Box>
 		</Box>
 
 		<Box class="ledger">
 			<Box class="header">
-				<Box class="day-header"><Text>DAY</Text></Box>
+				<Box class="day-header"><Text>{tTemplate('day', settings?.design?.locale).toUpperCase()}</Text></Box>
 				<Box>
 					{#if showEmoji}<Text>🥞</Text>{/if}
-					<Text>Breakfast</Text>
+					<Text>{tTemplate('breakfast', settings?.design?.locale)}</Text>
 				</Box>
 				<Box>
 					{#if showEmoji}<Text>🥪</Text>{/if}
-					<Text>Lunch</Text>
+					<Text>{tTemplate('lunch', settings?.design?.locale)}</Text>
 				</Box>
 				<Box>
 					{#if showEmoji}<Text>🥘</Text>{/if}
-					<Text>Dinner</Text>
+					<Text>{tTemplate('dinner', settings?.design?.locale)}</Text>
 				</Box>
 				<Box>
 					{#if showEmoji}<Text>🍎</Text>{/if}
-					<Text>Snacks</Text>
+					<Text>{tTemplate('snacks', settings?.design?.locale)}</Text>
 				</Box>
 			</Box>
 			{#each days as day, i}
@@ -60,7 +61,7 @@
 
 	<Box class="grocery-side">
 		<Field
-			label="GROCERY BUDGET"
+			label={tTemplate('grocery_budget', settings?.design?.locale).toUpperCase()}
 			emoji="💰"
 			{showEmoji}
 			class="budget-header"
@@ -70,7 +71,7 @@
 			<Box class="title-block">
 				<Text tag="strong" class="label">
 					{#if showEmoji}🛒
-					{/if}GROCERY LIST
+					{/if}{tTemplate('grocery_list', settings?.design?.locale).toUpperCase()}
 				</Text>
 			</Box>
 		</Box>
@@ -88,7 +89,7 @@
 			<Box class="title-block">
 				<Text tag="strong" class="label">
 					{#if showEmoji}📦
-					{/if}CURRENT STOCK
+					{/if}{tTemplate('current_stock', settings?.design?.locale).toUpperCase()}
 				</Text>
 			</Box>
 		</Box>

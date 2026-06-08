@@ -20,7 +20,7 @@
 	import { TEMPLATE_CATEGORIES } from '$lib/data/template-categories';
 	import { Page } from '$layouts';
 	import { TemplateThumbnail } from '$molecules';
-	import { toast } from '$state';
+	import { toast, useI18n } from '$state';
 	import type { PlannerSettings, PageTemplate } from '$lib';
 
 	let {
@@ -31,6 +31,8 @@
 		onSelect = ((_val: string) => {}) as (value: string) => void,
 		currentTemplate = '',
 	} = $props();
+
+	const i18n = useI18n();
 
 	const CATEGORY_ICONS: Record<string, any> = {
 		calendar: CalendarIcon,
@@ -96,12 +98,12 @@
 
 			const resultsCat = {
 				id: 'results',
-				title: 'Results',
+				title: i18n.t('gallery.search.results'),
 				icon: '🔍',
 				description:
 					matchedTemplates.length > 0
-						? `Found ${matchedTemplates.length} matching templates for "${searchQuery}".`
-						: `No templates matched "${searchQuery}".`,
+						? i18n.t('gallery.search.found').replace('{count}', matchedTemplates.length.toString()).replace('{query}', searchQuery)
+						: i18n.t('gallery.search.none').replace('{query}', searchQuery),
 				templates: matchedTemplates,
 			};
 			return [...base, resultsCat];
@@ -201,7 +203,7 @@
 		batchProgress = '';
 		isBatchExporting = false;
 		toast.success(
-			`All ${totalTemplates} templates in "${activeCategory.title}" exported!`,
+			i18n.t('gallery.toast.batch_success').replace('{count}', totalTemplates.toString()).replace('{category}', i18n.tCategory(activeCategory.id, 'title', activeCategory.title)),
 		);
 	};
 
@@ -215,13 +217,13 @@
 <div class="gallery-modal no-print">
 	<div class="gallery" transition:scale={{ duration: 150 }}>
 		<header>
-			<h2>{pickerMode ? 'Select a Template' : 'Template Gallery'} ({TOTAL_TEMPLATES})</h2>
+			<h2>{pickerMode ? i18n.t('gallery.select_template') : i18n.t('gallery.title')} ({TOTAL_TEMPLATES})</h2>
 			<div class="header-right">
 				<div class="search-box">
 					<span class="search-icon">🔎</span>
 					<input
 						type="text"
-						placeholder="Search templates..."
+						placeholder={i18n.t('gallery.search_placeholder')}
 						bind:value={searchQuery}
 						class="search-input" />
 					{#if hasSearchQuery}
@@ -254,7 +256,7 @@
 						{/if}
 					</div>
 					<span class="step-label">
-						{category.title}
+						{i18n.tCategory(category.id, 'title', category.title)}
 						<br />
 						({category.templates.length})
 					</span>
@@ -271,7 +273,7 @@
 			{#key activeCategory.id}
 				<div class="category-section" in:fade={{ duration: 150 }}>
 					<div class="category-header">
-						<p class="category-description">{activeCategory.description}</p>
+						<p class="category-description">{i18n.tCategory(activeCategory.id, 'description', activeCategory.description)}</p>
 						{#if !pickerMode}
 							<button
 								class="batch-export-btn"
@@ -279,10 +281,10 @@
 								onclick={batchExportCategory}>
 								{#if isBatchExporting}
 									<LoadingIcon />
-									<span>Exporting {batchProgress}...</span>
+									<span>{i18n.t('gallery.btn.exporting').replace('{progress}', batchProgress)}</span>
 								{:else}
 									<DownloadIcon />
-									<span>Download All</span>
+									<span>{i18n.t('gallery.btn.download_all')}</span>
 								{/if}
 							</button>
 						{/if}
@@ -305,7 +307,7 @@
 											: settings.months[0]}
 							<TemplateThumbnail
 								templateValue={template.value}
-								templateName={template.name}
+								templateName={i18n.tTemplate(template.value, template.name)}
 								{settings}
 								timeframe={tf || {}}
 								isActive={pickerMode && currentTemplate === template.value}
@@ -315,7 +317,7 @@
 								onclick={() => {
 									if (pickerMode) {
 										onSelect(template.value);
-										toast.success(`Selected template: ${template.name}`);
+										toast.success(i18n.t('gallery.toast.selected').replace('{name}', i18n.tTemplate(template.value, template.name)));
 										onClose();
 									}
 								}}>
@@ -347,7 +349,7 @@
 
 		<footer class="gallery-footer">
 			<button class="btn-nav" disabled={activeStep === 0} onclick={() => activeStep--}>
-				Back
+				{i18n.t('gallery.btn.back')}
 			</button>
 			<div class="footer-center">
 				<div class="footer-dots">
@@ -357,9 +359,9 @@
 				</div>
 			</div>
 			{#if activeStep < displayCategories.length - 1}
-				<button class="btn-nav primary" onclick={() => activeStep++}>Next</button>
+				<button class="btn-nav primary" onclick={() => activeStep++}>{i18n.t('gallery.btn.next')}</button>
 			{:else}
-				<button class="btn-nav finish" onclick={onClose}>Finish</button>
+				<button class="btn-nav finish" onclick={onClose}>{i18n.t('gallery.btn.finish')}</button>
 			{/if}
 		</footer>
 	</div>

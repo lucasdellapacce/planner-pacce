@@ -5,6 +5,7 @@
 	import { PlannerSettings } from '$state';
 	import { fonts } from '$lib';
 	import { trackEvent } from '$lib/analytics';
+	import { useI18n } from '$state';
 
 	// Icons
 	import MagicIcon from '~icons/fa/magic';
@@ -55,6 +56,8 @@
 		settings = {} as PlannerSettings,
 		isLoading = false,
 	} = $props();
+
+	const i18n = useI18n();
 
 	function handleClose() {
 		const stepName = steps[activeStep]?.id;
@@ -117,19 +120,19 @@
 		}
 	}
 
-	const steps = [
-		{ id: 'welcome', title: 'Welcome', icon: WizardHatIcon },
-		{ id: 'presets', title: 'Presets', icon: MagicIcon },
-		{ id: 'design', title: 'Design', icon: FontIcon },
-		{ id: 'cover', title: 'Cover', icon: GalleryIcon },
-		{ id: 'spreads', title: 'Spreads', icon: CalendarIcon },
-		{ id: 'calendars', title: 'Calendars', icon: BookIcon },
-		{ id: 'cal-notes', title: 'Notes', icon: StickyNoteIcon },
-		{ id: 'collections', title: 'Collections', icon: BookOpenIcon },
-		{ id: 'indexes', title: 'Indexes', icon: ListIcon },
-		{ id: 'events', title: 'Events', icon: LinkIcon },
-		{ id: 'export', title: 'Export', icon: SaveIcon },
-	];
+	const steps = $derived([
+		{ id: 'welcome', title: i18n.t('wizard.steps.welcome'), icon: WizardHatIcon },
+		{ id: 'presets', title: i18n.t('wizard.steps.presets'), icon: MagicIcon },
+		{ id: 'design', title: i18n.t('wizard.steps.design'), icon: FontIcon },
+		{ id: 'cover', title: i18n.t('wizard.steps.cover'), icon: GalleryIcon },
+		{ id: 'spreads', title: i18n.t('wizard.steps.spreads'), icon: CalendarIcon },
+		{ id: 'calendars', title: i18n.t('wizard.steps.calendars'), icon: BookIcon },
+		{ id: 'cal-notes', title: i18n.t('wizard.steps.notes'), icon: StickyNoteIcon },
+		{ id: 'collections', title: i18n.t('wizard.steps.collections'), icon: BookOpenIcon },
+		{ id: 'indexes', title: i18n.t('wizard.steps.indexes'), icon: ListIcon },
+		{ id: 'events', title: i18n.t('wizard.steps.events'), icon: LinkIcon },
+		{ id: 'export', title: i18n.t('wizard.steps.export'), icon: SaveIcon },
+	]);
 
 	let isPeeking = $state(false);
 	let isLoadingPreset = $state(false);
@@ -265,17 +268,17 @@
 		class:overflow-visible={[5, 6, 7].includes(activeStep)}
 		transition:scale={{ duration: 150 }}>
 		<header>
-			<h2>Remarkably Organized Planner Wizard</h2>
+			<h2>{i18n.t('wizard.title')}</h2>
 			<div class="header-actions">
 				<button
 					class="peek-btn"
 					onpointerdown={() => (isPeeking = true)}
 					onpointerup={() => (isPeeking = false)}
 					onpointerleave={() => (isPeeking = false)}
-					title="Hold to Peek">
+					title={i18n.t('wizard.hold_to_peek')}>
 					👁️
 				</button>
-				<button class="close-btn" aria-label="Close guide" onclick={handleClose}>
+				<button class="close-btn" aria-label={i18n.t('wizard.close_guide')} onclick={handleClose}>
 					✕
 				</button>
 			</div>
@@ -349,9 +352,9 @@
 
 		<footer class="wizard-footer">
 			{#if activeStep === 0}
-				<button class="btn-nav" onclick={handleClose}>Close Wizard</button>
+				<button class="btn-nav" onclick={handleClose}>{i18n.t('wizard.close_wizard')}</button>
 			{:else}
-				<button class="btn-nav" onclick={() => activeStep--}>Back</button>
+				<button class="btn-nav" onclick={() => activeStep--}>{i18n.t('wizard.back')}</button>
 			{/if}
 			<div class="footer-center">
 				<div class="footer-dots">
@@ -366,14 +369,14 @@
 					<button
 						class="btn-nav primary welcome-cta-primary"
 						onclick={() => activeStep++}>
-						<span>Show me the Magic!</span>
+						<span>{i18n.t('wizard.show_magic')}</span>
 						<MagicIcon />
 					</button>
 				{:else}
 					<button
 						class="btn-nav primary welcome-cta-primary"
 						onclick={() => activeStep++}>
-						Next Trick
+						{i18n.t('wizard.next_trick')}
 						<MagicIcon />
 					</button>
 				{/if}

@@ -83,6 +83,7 @@ export function getTimeframe(
 	month = 1,
 	day = 1,
 	startWeekOnSunday = false,
+	locale = 'pt-BR',
 ): Timeframe {
 	const start = new Date(Date.UTC(year, month - 1, day));
 	const quarter = Math.floor((month - 1) / 3) + 1;
@@ -104,12 +105,12 @@ export function getTimeframe(
 		start,
 		end: start,
 		weekStart: start,
-		nameShort: start.toLocaleDateString('default', {
+		nameShort: start.toLocaleDateString(locale, {
 			timeZone: 'UTC',
 			month: 'short',
 			day: 'numeric',
 		}),
-		nameLong: start.toLocaleDateString('default', {
+		nameLong: start.toLocaleDateString(locale, {
 			timeZone: 'UTC',
 			month: 'long',
 			weekday: 'short',
@@ -123,7 +124,7 @@ export const getDateHash = (date: Date) =>
 	`#${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`;
 
 /** Returns the week timeframe info for the given date */
-export function getWeek(fromDate: Date | number | string, startWeekOnSunday = false) {
+export function getWeek(fromDate: Date | number | string, startWeekOnSunday = false, locale = 'pt-BR') {
 	const date = new Date(new Date(fromDate).setUTCHours(0, 0, 0, 0));
 	const start = new Date(getFirstDayOfWeek(date, startWeekOnSunday));
 	const end = new Date(start.getTime() + 86400000 * 6);
@@ -169,7 +170,7 @@ export function getWeek(fromDate: Date | number | string, startWeekOnSunday = fa
 		start,
 		end,
 		weekStart: start,
-		nameShort: `WK${weekSinceYear}`,
-		nameLong: `Week ${weekSinceYear}`,
+		nameShort: locale === 'pt-BR' ? `SEM${weekSinceYear}` : `WK${weekSinceYear}`,
+		nameLong: locale === 'pt-BR' ? `Semana ${weekSinceYear}` : `Week ${weekSinceYear}`,
 	} as Week;
 }

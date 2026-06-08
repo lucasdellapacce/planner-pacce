@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { formatToString, getFirstDayOfWeek, type Timeframe, getDateHash } from '$lib';
+	import { formatToString, getFirstDayOfWeek, type Timeframe, getDateHash, tTemplate } from '$lib';
 	import { Box, Text, Link } from '$atoms';
 
 	import type { PlannerSettings } from '$lib';
@@ -44,7 +44,7 @@
 					: ''}"
 				style="grid-column: {i + 1}; grid-row: 1;">
 				<Text>
-					{headerDate.toLocaleString('default', { weekday: 'short', timeZone: 'UTC' })}
+					{tTemplate(['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'][headerDate.getUTCDay()], settings?.design?.locale)}
 				</Text>
 			</Box>
 		{/each}
@@ -71,7 +71,7 @@
 						<Text>
 							{monthEmojis[
 								date
-									.toLocaleString('default', { month: 'long', timeZone: 'UTC' })
+									.toLocaleString('en-US', { month: 'long', timeZone: 'UTC' })
 									.toLowerCase() as keyof typeof monthEmojis
 							]}
 						</Text>
@@ -79,7 +79,7 @@
 				{/if}
 				<Box class="month">
 					<Text>
-						{date.toLocaleString('default', { month: 'short', timeZone: 'UTC' })}
+						{date.toLocaleString(settings?.design?.locale || 'pt-BR', { month: 'short', timeZone: 'UTC' })}
 					</Text>
 				</Box>
 				<Box class="date">
@@ -106,13 +106,13 @@
 					<Text>
 						{monthEmojis[
 							new Date(Date.UTC(2000, month))
-								.toLocaleString('default', { month: 'long', timeZone: 'UTC' })
+								.toLocaleString('en-US', { month: 'long', timeZone: 'UTC' })
 								.toLowerCase() as keyof typeof monthEmojis
 						]}
 					</Text>
 				</Box>
 				<Text tag="span" class="month-name">
-					{new Date(Date.UTC(2000, month)).toLocaleString('default', {
+					{new Date(Date.UTC(2000, month)).toLocaleString(settings?.design?.locale || 'pt-BR', {
 						month: 'short',
 						timeZone: 'UTC',
 					})}
@@ -132,7 +132,7 @@
 				style="grid-column: {date.getUTCMonth() + 1}; grid-row: {date.getUTCDate() + 1}">
 				<Box class="weekday">
 					<Text>
-						{date.toLocaleString('default', { weekday: 'short', timeZone: 'UTC' })}
+						{tTemplate(['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'][date.getUTCDay()], settings?.design?.locale)}
 					</Text>
 				</Box>
 				<Box class="date">

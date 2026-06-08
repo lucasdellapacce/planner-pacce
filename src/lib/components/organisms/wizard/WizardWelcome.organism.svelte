@@ -2,6 +2,7 @@
 	import { Box, Text, Input, Button } from '$atoms';
 	import { fade } from 'svelte/transition';
 	import type { PlannerSettings } from '$state';
+	import { useI18n } from '$state';
 
 	let {
 		onClose = (() => {}) as () => void,
@@ -10,20 +11,21 @@
 		onStepClick = ((_index: number) => {}) as (index: number) => void,
 	} = $props();
 
+	const i18n = useI18n();
 	const appVersion = __APP_VERSION__;
 
-	const stepDescriptions: Record<string, string> = {
-		presets: 'Start with a curated theme or layout.',
-		design: 'Customize fonts, colors, and styling.',
-		cover: 'Personalize your planner front page.',
-		spreads: 'Choose your weekly and monthly views.',
-		calendars: 'Configure your dated calendar pages.',
-		'cal-notes': 'Add extra note pages to your layouts.',
-		collections: 'Include specialized trackers and logs.',
-		indexes: 'Organize everything with index pages.',
-		events: 'Sync your digital calendar and events.',
-		export: 'Generate and download your PDF.',
-	};
+	const stepDescriptions = $derived<Record<string, string>>({
+		presets: i18n.t('wizard.welcome.descriptions.presets'),
+		design: i18n.t('wizard.welcome.descriptions.design'),
+		cover: i18n.t('wizard.welcome.descriptions.cover'),
+		spreads: i18n.t('wizard.welcome.descriptions.spreads'),
+		calendars: i18n.t('wizard.welcome.descriptions.calendars'),
+		'cal-notes': i18n.t('wizard.welcome.descriptions.cal_notes'),
+		collections: i18n.t('wizard.welcome.descriptions.collections'),
+		indexes: i18n.t('wizard.welcome.descriptions.indexes'),
+		events: i18n.t('wizard.welcome.descriptions.events'),
+		export: i18n.t('wizard.welcome.descriptions.export'),
+	});
 
 	const highlightSteps = $derived(steps.filter((s) => s.id !== 'welcome'));
 </script>
@@ -88,14 +90,14 @@
 		</Box>
 		<Box class="welcome-content">
 			<h2 class="welcome-headline">
-				<small>Welcome to the FREE to use</small>
+				<small>{i18n.t('wizard.welcome.welcome_free')}</small>
 				<br />
 				<span class="welcome-headline-gradient">Remarkably Organized</span>
-				Wizard
+				{i18n.t('wizard.steps.welcome')}
 			</h2>
 			<Box class="welcome-badge">v{appVersion}</Box>
 			<Text tag="p" class="welcome-tagline">
-				Build beautiful, functional PDF planners for your e-ink tablet.
+				{i18n.t('wizard.welcome.tagline')}
 			</Text>
 
 			<Box
@@ -118,7 +120,7 @@
 			</Box>
 
 			<small class="welcome-hint">
-				💡 Hold the peek button to preview changes in real time
+				{i18n.t('wizard.welcome.hint')}
 			</small>
 		</Box>
 	</Box>

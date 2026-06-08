@@ -8,8 +8,10 @@
 	import type { PlannerSettings } from '$state';
 	import { trackEvent } from '$lib/analytics';
 	import Toggle from '$atoms/Toggle.atom.svelte';
+	import { useI18n } from '$state';
 
 	let { settings } = $props<{ settings: PlannerSettings }>();
+	const i18n = useI18n();
 
 	let activeFontPicker = $state<
 		'font' | 'fontDisplay' | 'coverFont' | 'topNavFont' | 'sideNavFont' | null
@@ -492,6 +494,27 @@
 						</Box>
 					</Box>
 				{/if}
+			</Box>
+		</Box>
+
+		<!-- Language Selection -->
+		<Box class="design-row-item">
+			<Text tag="h4" style="margin-bottom: 0.5rem;">Language / Idioma</Text>
+			<Box class="colors-row" style="justify-content: flex-start; gap: 2rem;">
+				<Box class="color-picker-item" style="align-items: flex-start; flex: none;">
+					<Text tag="label" for="lang-select">Application Language</Text>
+					<select
+						id="lang-select"
+						class="language-select-box"
+						bind:value={settings.design.locale}
+						onchange={() => {
+							i18n.currentLocale = settings.design.locale;
+						}}
+						style="padding: 0.4rem 0.6rem; border-radius: 4px; border: 1px solid var(--outline); background: var(--bg); color: var(--text);">
+						<option value="pt-BR">Português (PT-BR)</option>
+						<option value="en-US">English (en-US)</option>
+					</select>
+				</Box>
 			</Box>
 		</Box>
 	</Box>

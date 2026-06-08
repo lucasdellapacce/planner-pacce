@@ -30,7 +30,7 @@
 	import { PRESETS, type Preset } from '$lib/data/presets';
 	import Toast from '$molecules/Toast.molecule.svelte';
 
-	import { toast, PrintManager } from '$state';
+	import { toast, PrintManager, useI18n } from '$state';
 	import pkg from '../../../../package.json';
 	import { trackEvent } from '$lib/analytics';
 	import LZString from 'lz-string';
@@ -49,6 +49,14 @@
 
 	const appVersion = pkg.version.split('.').slice(0, 2).join('.');
 	let { settings, preset }: { settings: PlannerSettings; preset?: Preset } = $props();
+
+	const i18n = useI18n();
+
+	$effect(() => {
+		if (settings.design.locale) {
+			i18n.currentLocale = settings.design.locale;
+		}
+	});
 
 	const visits = tweened(0, { duration: 2000, easing: cubicOut });
 	const created = tweened(0, { duration: 2200, easing: cubicOut });

@@ -175,6 +175,7 @@ export class PlannerSettings {
 			bottom: 0,
 			left: 0,
 		},
+		locale: 'pt-BR',
 	});
 
 	/** Settings for changing the dates of the planner (like start & end dates) */
@@ -473,8 +474,8 @@ export class PlannerSettings {
 					start,
 					end,
 					weekStart: new Date(getFirstDayOfWeek(start, this.date.startWeekOnSunday)),
-					nameShort: `Q${quarter}`,
-					nameLong: `Quarter ${quarter}`,
+					nameShort: this.design.locale === 'pt-BR' ? `T${quarter}` : `Q${quarter}`,
+					nameLong: this.design.locale === 'pt-BR' ? `Trimestre ${quarter}` : `Quarter ${quarter}`,
 				});
 			}
 			return acc;
@@ -498,11 +499,11 @@ export class PlannerSettings {
 					start,
 					end,
 					weekStart: new Date(getFirstDayOfWeek(start, this.date.startWeekOnSunday)),
-					nameShort: start.toLocaleDateString('default', {
+					nameShort: start.toLocaleDateString(this.design.locale, {
 						timeZone: 'UTC',
 						month: 'short',
 					}),
-					nameLong: start.toLocaleDateString('default', {
+					nameLong: start.toLocaleDateString(this.design.locale, {
 						timeZone: 'UTC',
 						month: 'long',
 					}),
@@ -525,6 +526,7 @@ export class PlannerSettings {
 				const week = getWeek(
 					firstWeekDayOfTimeframe + i * 604800000,
 					this.date.startWeekOnSunday,
+					this.design.locale,
 				);
 				const prevWeek = acc[acc.length - 1];
 				if (
@@ -548,7 +550,7 @@ export class PlannerSettings {
 				const start = new Date(firstDay + (day - 1) * 86400000);
 				const month = start.getUTCMonth() + 1;
 				const quarter = Math.floor((month - 1) / 3) + 1;
-				const week = getWeek(start, this.date.startWeekOnSunday);
+				const week = getWeek(start, this.date.startWeekOnSunday, this.design.locale);
 				acc.push({
 					id: `${year.year}-${month}-${start.getUTCDate()}`,
 					year: year.year,
@@ -566,12 +568,12 @@ export class PlannerSettings {
 					weekYear: week.year,
 					weekMonth: week.month,
 					weekQuarter: week.quarter,
-					nameShort: start.toLocaleDateString('default', {
+					nameShort: start.toLocaleDateString(this.design.locale, {
 						timeZone: 'UTC',
 						month: 'short',
 						day: 'numeric',
 					}),
-					nameLong: start.toLocaleDateString('default', {
+					nameLong: start.toLocaleDateString(this.design.locale, {
 						timeZone: 'UTC',
 						month: 'long',
 						weekday: 'short',
@@ -777,6 +779,7 @@ export class PlannerSettings {
 					bottom: this.design.margin.bottom,
 					left: this.design.margin.left,
 				},
+				locale: this.design.locale,
 			},
 			date: {
 				timezoneOffset: this.date.timezoneOffset,
@@ -930,6 +933,8 @@ export class PlannerSettings {
 			this.design.colorNavBg = state.design.colorNavBg;
 		if (state?.design?.colorText !== undefined)
 			this.design.colorText = state.design.colorText;
+		if (state?.design?.locale !== undefined)
+			this.design.locale = state.design.locale;
 
 		// Fallback for more specific colors
 		this.design.colorTextDisplay =

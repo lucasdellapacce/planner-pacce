@@ -30,6 +30,7 @@ const translations: Record<string, Record<string, string>> = {
 		nutrition_notes: 'Notes / Nutrition',
 		session_notes: 'Session Notes / Observations',
 		agenda_notes: 'Agenda & Notes',
+		week: 'Week',
 	},
 	'pt-BR': {
 		sun: 'Dom',
@@ -62,6 +63,7 @@ const translations: Record<string, Record<string, string>> = {
 		nutrition_notes: 'Notas / Nutrição',
 		session_notes: 'Notas de Sessão / Observações',
 		agenda_notes: 'Pauta e Notas',
+		week: 'Semana',
 	},
 };
 
