@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 
 	let { settings = {} as PlannerSettings } = $props();
@@ -8,7 +8,7 @@
 <Box class="okr-tracker">
 	<Box class="header-section">
 		<Text class="label">
-			{#if !settings?.emojis?.disable}🎯{/if} OBJECTIVES & KEY RESULTS
+			{#if !settings?.emojis?.disable}🎯{/if} {tTemplate('objectives_key_results', settings?.design?.locale)}
 		</Text>
 		<Box class="line"></Box>
 	</Box>
@@ -17,7 +17,7 @@
 		{#each Array(3) as _}
 			<Box class="objective-block">
 				<Box class="objective">
-					<Text class="label">OBJECTIVE</Text>
+					<Text class="label">{tTemplate('objective', settings?.design?.locale)}</Text>
 					<Box class="line"></Box>
 				</Box>
 				<Box class="key-results">

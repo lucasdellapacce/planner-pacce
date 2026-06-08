@@ -7,6 +7,7 @@
 		type CalendarEvent,
 		isMoonEvent,
 		getMoonEmoji,
+		tTemplate,
 	} from '$lib';
 	import { Box, Text } from '$atoms';
 	import { Grid } from '$molecules';
@@ -141,7 +142,7 @@
 			{/if}
 		{/each}
 		<Box class="day notes">
-			<Text>Notes</Text>
+			<Text>{tTemplate('notes', settings?.design?.locale)}</Text>
 		</Box>
 	</Box>
 </Box>

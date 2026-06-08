@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 
 	let { settings = {} as PlannerSettings } = $props();
@@ -8,17 +8,17 @@
 <Box class="pomodoro-tracker">
 	<Box class="header-section">
 		<Text class="label">
-			{#if !settings?.emojis?.disable}🍅{/if} POMODORO TRACKER
+			{#if !settings?.emojis?.disable}🍅{/if} {tTemplate('pomodoro_tracker', settings?.design?.locale)}
 		</Text>
 		<Box class="line"></Box>
 	</Box>
 
 	<Box class="content-section">
 		<Box class="table-header">
-			<Box class="col-task"><Text>TASK</Text></Box>
-			<Box class="col-est"><Text>EST</Text></Box>
-			<Box class="col-act"><Text>ACT</Text></Box>
-			<Box class="col-pomodoros"><Text>POMODOROS</Text></Box>
+			<Box class="col-task"><Text>{tTemplate('task', settings?.design?.locale).toUpperCase()}</Text></Box>
+			<Box class="col-est"><Text>{tTemplate('est', settings?.design?.locale)}</Text></Box>
+			<Box class="col-act"><Text>{tTemplate('act', settings?.design?.locale)}</Text></Box>
+			<Box class="col-pomodoros"><Text>{tTemplate('pomodoros', settings?.design?.locale)}</Text></Box>
 		</Box>
 		{#each Array(15) as _}
 			<Box class="table-row">

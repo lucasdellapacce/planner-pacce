@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 
 	let { settings = {} as PlannerSettings } = $props();
 	const showEmoji = $derived(!settings?.emojis?.disable);
@@ -9,12 +9,12 @@
 	<div class="header-section">
 		<div class="field title">
 			<div class="label">
-				{#if showEmoji}🏠{/if} PROPERTY LISTING SHEET
+				{#if showEmoji}🏠{/if} {tTemplate('property_listing_sheet', settings?.design?.locale)}
 			</div>
 			<div class="line"></div>
 		</div>
 		<div class="field status">
-			<div class="label">STATUS / DATE</div>
+			<div class="label">{tTemplate('status_date', settings?.design?.locale)}</div>
 			<div class="line"></div>
 		</div>
 	</div>
@@ -22,21 +22,21 @@
 	<div class="meta-section">
 		<div class="meta-row">
 			<div class="field address">
-				<div class="label">PROPERTY ADDRESS</div>
+				<div class="label">{tTemplate('property_address', settings?.design?.locale)}</div>
 				<div class="line"></div>
 			</div>
 			<div class="field price">
-				<div class="label">LIST PRICE</div>
+				<div class="label">{tTemplate('list_price', settings?.design?.locale)}</div>
 				<div class="line"></div>
 			</div>
 		</div>
 		<div class="meta-row second-row">
 			<div class="field specs">
-				<div class="label">BED / BATH / SQFT</div>
+				<div class="label">{tTemplate('bed_bath_sqft', settings?.design?.locale)}</div>
 				<div class="line"></div>
 			</div>
 			<div class="field school">
-				<div class="label">NEIGHBORHOOD / DISTRICT</div>
+				<div class="label">{tTemplate('neighborhood_district', settings?.design?.locale)}</div>
 				<div class="line"></div>
 			</div>
 		</div>
@@ -45,7 +45,7 @@
 	<div class="content-section">
 		<div class="top-row">
 			<div class="column details">
-				<div class="section-label">KEY FEATURES & AMENITIES</div>
+				<div class="section-label">{tTemplate('key_features_amenities', settings?.design?.locale)}</div>
 				{#each Array(5) as _}
 					<div class="bullet-row">
 						<div class="bullet"></div>
@@ -55,7 +55,7 @@
 			</div>
 
 			<div class="column costs">
-				<div class="section-label">UTILITIES & EXTRA COSTS</div>
+				<div class="section-label">{tTemplate('utilities_extra_costs', settings?.design?.locale)}</div>
 				{#each Array(5) as _}
 					<div class="bullet-row">
 						<div class="bullet"></div>
@@ -67,7 +67,7 @@
 
 		<div class="bottom-section">
 			<div class="column analysis">
-				<div class="section-label">PROS / ADVANTAGES</div>
+				<div class="section-label">{tTemplate('pros_advantages', settings?.design?.locale)}</div>
 				{#each Array(4) as _}
 					<div class="bullet-row">
 						<span class="plus">+</span>
@@ -76,7 +76,7 @@
 				{/each}
 			</div>
 			<div class="column analysis">
-				<div class="section-label">CONS / DISADVANTAGES</div>
+				<div class="section-label">{tTemplate('cons_disadvantages', settings?.design?.locale)}</div>
 				{#each Array(4) as _}
 					<div class="bullet-row">
 						<span class="minus">-</span>
@@ -87,7 +87,7 @@
 		</div>
 
 		<div class="feedback-section">
-			<div class="section-label">CLIENT FEEDBACK / REACTION</div>
+			<div class="section-label">{tTemplate('client_feedback_reaction', settings?.design?.locale)}</div>
 			{#each Array(3) as _}
 				<div class="line"></div>
 			{/each}

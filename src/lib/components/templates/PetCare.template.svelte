@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
 
@@ -9,14 +9,14 @@
 
 <Box class="pet-care">
 	<Box class="header-section">
-		<Field label="PET CARE LOG" emoji="🐾" {showEmoji} class="title" />
-		<Field label="DATE / WEEK" class="date" />
+		<Field label={tTemplate('pet_care_log', settings?.design?.locale)} emoji="🐾" {showEmoji} class="title" />
+		<Field label={tTemplate('date_week', settings?.design?.locale)} class="date" />
 	</Box>
 
 	<Box class="content-section">
 		<Box class="columns">
 			<Box class="column">
-				<Text class="label">FEEDING SCHEDULE</Text>
+				<Text class="label">{tTemplate('feeding_schedule', settings?.design?.locale)}</Text>
 				{#each Array(7) as _}
 					<Box class="check-row">
 						<Checkbox aria-label="Feeding schedule check" />
@@ -25,7 +25,7 @@
 				{/each}
 			</Box>
 			<Box class="column">
-				<Text class="label">WALKS / EXERCISE</Text>
+				<Text class="label">{tTemplate('walks_exercise', settings?.design?.locale)}</Text>
 				{#each Array(7) as _}
 					<Box class="check-row">
 						<Checkbox aria-label="Walks/Exercise check" />
@@ -36,7 +36,7 @@
 		</Box>
 
 		<Box class="bottom-section">
-			<Text class="label">VET NOTES & MEDICATION</Text>
+			<Text class="label">{tTemplate('vet_notes', settings?.design?.locale)}</Text>
 			<Box class="lines">
 				{#each Array(6) as _}
 					<Box class="line"></Box>

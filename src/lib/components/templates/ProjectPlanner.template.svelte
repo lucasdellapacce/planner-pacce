@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 
 	let { settings = {} as PlannerSettings } = $props();
 	let actionRows = new Array(16);
@@ -12,19 +12,19 @@
 		<div class="top-row">
 			<div class="field name-field">
 				<div class="label">
-					{#if !settings?.emojis?.disable}📁{/if} PROJECT NAME
+					{#if !settings?.emojis?.disable}📁{/if} {tTemplate('project_name', settings?.design?.locale)}
 				</div>
 				<div class="line"></div>
 			</div>
 			<div class="field client-field">
 				<div class="label">
-					{#if !settings?.emojis?.disable}🤝{/if} CLIENT / MANAGER
+					{#if !settings?.emojis?.disable}🤝{/if} {tTemplate('client_manager', settings?.design?.locale)}
 				</div>
 				<div class="line"></div>
 			</div>
 			<div class="field date-field">
 				<div class="label">
-					{#if !settings?.emojis?.disable}📅{/if} DEADLINE
+					{#if !settings?.emojis?.disable}📅{/if} {tTemplate('deadline', settings?.design?.locale)}
 				</div>
 				<div class="line date-slashes">
 					<span>/</span>
@@ -35,7 +35,7 @@
 		<div class="bottom-row">
 			<div class="field goal-field">
 				<div class="label">
-					{#if !settings?.emojis?.disable}🎯{/if} OBJECTIVES & DELIVERABLES
+					{#if !settings?.emojis?.disable}🎯{/if} {tTemplate('objectives_deliverables', settings?.design?.locale)}
 				</div>
 				<div class="line"></div>
 				<div class="line"></div>
@@ -46,7 +46,7 @@
 	<div class="content-body">
 		<div class="left-col">
 			<div class="section-title">
-				{#if !settings?.emojis?.disable}📝{/if} ACTION ITEMS
+				{#if !settings?.emojis?.disable}📝{/if} {tTemplate('action_items', settings?.design?.locale)}
 			</div>
 			<div class="action-list">
 				{#each actionRows as _, i (i)}
@@ -59,7 +59,7 @@
 		</div>
 		<div class="right-col">
 			<div class="section-title">
-				{#if !settings?.emojis?.disable}🚩{/if} MILESTONES & TIMELINE
+				{#if !settings?.emojis?.disable}🚩{/if} {tTemplate('milestones_timeline', settings?.design?.locale)}
 			</div>
 			<div class="milestone-list">
 				{#each milestoneRows as _, i (i)}
@@ -71,7 +71,7 @@
 			</div>
 
 			<div class="section-title resource-title">
-				{#if !settings?.emojis?.disable}💰{/if} RESOURCES / BUDGET
+				{#if !settings?.emojis?.disable}💰{/if} {tTemplate('resources_budget', settings?.design?.locale)}
 			</div>
 			<div class="resource-list">
 				{#each resourceRows as _, i (i)}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type PlannerSettings, type Quarter } from '$lib';
+	import { type PlannerSettings, type Quarter, tTemplate } from '$lib';
 	import { Page } from '$layouts';
 	import { SideNav, TopNav } from '$organisms';
 	import { LazyPage } from '$atoms';
@@ -40,7 +40,7 @@
 			<TopNav
 				{settings}
 				timeframe={quarter}
-				breadcrumbs={[{ href: `#${quarter.id}-pg{i + 2}`, name: `Page ${i + 2}` }]} />
+				breadcrumbs={[{ href: `#${quarter.id}-pg{i + 2}`, name: `${tTemplate('page', settings?.design?.locale)} ${i + 2}` }]} />
 			<Page
 				display={settings.quarterPage.notePagesTemplate}
 				columns={settings.quarterPage.notePagesColumns}

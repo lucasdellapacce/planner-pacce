@@ -34,18 +34,12 @@
 					<MonthEmoji {settings} {month} variant="watermark" />
 					<h2>{month.nameLong}</h2>
 					<div class="days">
-						{#if startWeekOnSunday}
-							<div class="label">Su</div>
-						{/if}
-						<div class="label">Mo</div>
-						<div class="label">Tu</div>
-						<div class="label">We</div>
-						<div class="label">Th</div>
-						<div class="label">Fr</div>
-						<div class="label">Sa</div>
-						{#if !startWeekOnSunday}
-							<div class="label">Su</div>
-						{/if}
+						{#each new Array(7) as _, i}
+							{@const date = new Date(Date.UTC(1970, 0, 4 + i + (startWeekOnSunday ? 0 : 1)))}
+							<div class="label">
+								{date.toLocaleString(settings?.design?.locale || 'pt-BR', { weekday: 'short', timeZone: 'UTC' }).slice(0, 2)}
+							</div>
+						{/each}
 						{#each new Array(month.end.getUTCDate()) as _, day}
 							<div
 								class="day"

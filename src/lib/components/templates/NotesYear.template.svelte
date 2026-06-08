@@ -35,7 +35,7 @@
 		{#each new Array(12) as _, i (i)}
 			<div class="month">
 				<h2>
-					{new Date(new Date().setMonth(i)).toLocaleString('default', { month: 'long' })}
+					{new Date(new Date().setMonth(i)).toLocaleString(settings?.design?.locale || 'pt-BR', { month: 'long' })}
 				</h2>
 			</div>
 		{/each}
