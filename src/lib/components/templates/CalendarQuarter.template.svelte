@@ -44,18 +44,12 @@
 					</Text>
 					<Box
 						class="grid grid-cols-7 grid-rows-6 justify-items-center items-center gap-y-[0.15rem] gap-x-[0.55rem]">
-						{#if startWeekOnSunday}
-							<Text class="text-calendar-day">Su</Text>
-						{/if}
-						<Text class="text-calendar-day">Mo</Text>
-						<Text class="text-calendar-day">Tu</Text>
-						<Text class="text-calendar-day">We</Text>
-						<Text class="text-calendar-day">Th</Text>
-						<Text class="text-calendar-day">Fr</Text>
-						<Text class="text-calendar-day">Sa</Text>
-						{#if !startWeekOnSunday}
-							<Text class="text-calendar-day">Su</Text>
-						{/if}
+						{#each new Array(7) as _, i}
+							{@const date = new Date(Date.UTC(1970, 0, 4 + i + (startWeekOnSunday ? 0 : 1)))}
+							<Text class="text-calendar-day">
+								{date.toLocaleString(settings?.design?.locale || 'pt-BR', { weekday: 'short', timeZone: 'UTC' }).slice(0, 2)}
+							</Text>
+						{/each}
 						{#each new Array((month.start.getUTCDay() - (startWeekOnSunday ? 0 : 1) + 7) % 7) as _}
 							<Box></Box>
 						{/each}

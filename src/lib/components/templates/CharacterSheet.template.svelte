@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 	import { Field, Row, SectionHeader } from '$molecules';
 
@@ -9,25 +9,25 @@
 
 <Box class="character-sheet">
 	<Box class="header-section">
-		<Field label="CHARACTER SHEET" emoji="🎭" {showEmoji} class="title" />
-		<Field label="ROLE / CLASS / TYPE" class="class-type" />
+		<Field label={tTemplate('character_sheet', settings?.design?.locale)} emoji="🎭" {showEmoji} class="title" />
+		<Field label={tTemplate('role_class_type', settings?.design?.locale)} class="class-type" />
 	</Box>
 
 	<Box class="meta-section">
 		<Box class="meta-row">
-			<Field label="NAME" class="name" />
-			<Field label="ARCHETYPE / BACKGROUND" class="archetype" />
+			<Field label={tTemplate('name', settings?.design?.locale)} class="name" />
+			<Field label={tTemplate('archetype_background', settings?.design?.locale)} class="archetype" />
 		</Box>
 	</Box>
 
 	<Box class="content-section">
 		<Box class="top-row">
 			<Box class="column attributes">
-				<SectionHeader label="ATTRIBUTES & ABILITIES" />
+				<SectionHeader label={tTemplate('attributes_abilities', settings?.design?.locale)} />
 				<Box class="attr-grid">
-					{#each ['Strength / Force', 'Agility / Speed', 'Intellect / Mind', 'Willpower / Soul', 'Presence / Charisma', 'Perception / Senses'] as attr}
+					{#each ['strength_force', 'agility_speed', 'intellect_mind', 'willpower_soul', 'presence_charisma', 'perception_senses'] as attrKey}
 						<Box class="attr-row">
-							<Text class="attr-name">{attr}</Text>
+							<Text class="attr-name">{tTemplate(attrKey, settings?.design?.locale)}</Text>
 							<Box class="attr-score"></Box>
 						</Box>
 					{/each}
@@ -35,7 +35,7 @@
 			</Box>
 
 			<Box class="column traits">
-				<SectionHeader label="TRAITS, FLAWS & MOTIVATIONS" />
+				<SectionHeader label={tTemplate('traits_flaws_motivations', settings?.design?.locale)} />
 				{#each Array(6) as _}
 					<Box class="line"></Box>
 				{/each}
@@ -44,14 +44,14 @@
 
 		<Box class="bottom-section">
 			<Box class="column gear">
-				<SectionHeader label="GEAR / INVENTORY / COMPANIONS" />
+				<SectionHeader label={tTemplate('gear_inventory_companions', settings?.design?.locale)} />
 				{#each Array(6) as _}
 					<Row />
 				{/each}
 			</Box>
 
 			<Box class="column history">
-				<SectionHeader label="HISTORY / NOTES / CAMPAIGN LOG" />
+				<SectionHeader label={tTemplate('history_notes', settings?.design?.locale)} />
 				{#each Array(6) as _}
 					<Box class="line"></Box>
 				{/each}

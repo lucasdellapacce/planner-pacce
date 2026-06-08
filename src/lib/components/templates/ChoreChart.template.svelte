@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 
 	let { settings = {} as PlannerSettings } = $props();
 </script>
@@ -8,21 +8,21 @@
 	<div class="header-section">
 		<div class="field title">
 			<div class="label">
-				{#if !settings?.emojis?.disable}🧹{/if} CHORE & MAINTENANCE CHART
+				{#if !settings?.emojis?.disable}🧹 {/if}{tTemplate('chore_chart', settings?.design?.locale)}
 			</div>
 			<div class="line"></div>
 		</div>
 		<div class="field date">
-			<div class="label">MONTH / YEAR</div>
+			<div class="label">{tTemplate('month_year', settings?.design?.locale)}</div>
 			<div class="line"></div>
 		</div>
 	</div>
 
 	<div class="content-section">
 		<div class="table-header">
-			<div class="col-task">TASK</div>
-			<div class="col-freq">FREQ</div>
-			<div class="col-done">DONE</div>
+			<div class="col-task">{tTemplate('task', settings?.design?.locale)}</div>
+			<div class="col-freq">{tTemplate('freq', settings?.design?.locale)}</div>
+			<div class="col-done">{tTemplate('done', settings?.design?.locale)}</div>
 		</div>
 		{#each Array(20) as _}
 			<div class="table-row">

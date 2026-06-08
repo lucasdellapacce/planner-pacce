@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
 
@@ -11,13 +11,13 @@
 <Box class="client-tracker">
 	<Box class="header-section">
 		<Field
-			label="CLIENT RELATIONSHIP TRACKER"
+			label={tTemplate('client_tracker', settings?.design?.locale)}
 			emoji="👥"
 			{showEmoji}
 			class="title-field" />
 		<Box class="field date-field">
 			<Text class="label">
-				{#if showEmoji}📅{/if} DATE
+				{#if showEmoji}📅 {/if}{tTemplate('date', settings?.design?.locale)}
 			</Text>
 			<Box class="line date-slashes">
 				<Text tag="span">/</Text>
@@ -30,15 +30,15 @@
 		<Box class="table-header">
 			<Box class="col col-name">
 				{#if showEmoji}<Text tag="span">👤</Text>{/if}
-				<Text tag="span">Client Name</Text>
+				<Text tag="span">{tTemplate('client_name', settings?.design?.locale)}</Text>
 			</Box>
-			<Box class="col col-contact"><Text>Contact Info</Text></Box>
-			<Box class="col col-status"><Text>Status</Text></Box>
+			<Box class="col col-contact"><Text>{tTemplate('contact_info', settings?.design?.locale)}</Text></Box>
+			<Box class="col col-status"><Text>{tTemplate('status', settings?.design?.locale)}</Text></Box>
 			<Box class="col col-next">
 				{#if showEmoji}<Text tag="span">📞</Text>{/if}
-				<Text tag="span">Next Touchpoint</Text>
+				<Text tag="span">{tTemplate('next_touchpoint', settings?.design?.locale)}</Text>
 			</Box>
-			<Box class="col col-notes"><Text>Notes</Text></Box>
+			<Box class="col col-notes"><Text>{tTemplate('notes', settings?.design?.locale)}</Text></Box>
 		</Box>
 
 		{#each rows as _, i (i)}
@@ -50,7 +50,7 @@
 					<Box class="input-line"></Box>
 				</Box>
 				<Box class="col col-status">
-					<Checkbox aria-label="Status" />
+					<Checkbox aria-label={tTemplate('status', settings?.design?.locale)} />
 				</Box>
 				<Box class="col col-next">
 					<Box class="input-line"></Box>
@@ -64,12 +64,12 @@
 
 	<Box class="action-items">
 		<Text class="action-title">
-			{#if showEmoji}✅{/if} ACTION ITEMS
+			{#if showEmoji}✅ {/if}{tTemplate('action_items', settings?.design?.locale)}
 		</Text>
 		<Box class="action-list">
 			{#each [1, 2, 3] as _}
 				<Box class="action-item">
-					<Checkbox aria-label="Action Item" />
+					<Checkbox aria-label={tTemplate('action_items', settings?.design?.locale)} />
 					<Box class="action-line"></Box>
 				</Box>
 			{/each}
@@ -78,7 +78,7 @@
 
 	<Box class="follow-up">
 		<Text class="follow-up-title">
-			{#if showEmoji}🔔{/if} Follow-up Reminders
+			{#if showEmoji}🔔 {/if}{tTemplate('followup_reminders', settings?.design?.locale)}
 		</Text>
 		<Box class="follow-up-lines">
 			<Box class="input-line"></Box>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 
 	let { settings = {} as PlannerSettings } = $props();
 	let rows = new Array(22);
@@ -9,13 +9,13 @@
 	<div class="header-section">
 		<div class="field title-field">
 			<div class="label">
-				{#if !settings?.emojis?.disable}🎥{/if} CONTENT CREATOR PLANNER & PIPELINE
+				{#if !settings?.emojis?.disable}🎥 {/if}{tTemplate('content_planner', settings?.design?.locale)}
 			</div>
 			<div class="line"></div>
 		</div>
 		<div class="field date-field">
 			<div class="label">
-				{#if !settings?.emojis?.disable}📅{/if} MONTH / WEEK
+				{#if !settings?.emojis?.disable}📅 {/if}{tTemplate('month_week', settings?.design?.locale)}
 			</div>
 			<div class="line"></div>
 		</div>
@@ -26,26 +26,26 @@
 			<div class="col-platform">
 				{#if !settings?.emojis?.disable}📱{/if}
 				<br />
-				PLATFORM
+				{tTemplate('platform', settings?.design?.locale)}
 			</div>
 			<div class="col-idea">
 				{#if !settings?.emojis?.disable}💡{/if}
 				<br />
-				CONTENT IDEA / TITLE
+				{tTemplate('content_idea_title', settings?.design?.locale)}
 			</div>
 			<div class="col-format">
 				{#if !settings?.emojis?.disable}🎬{/if}
 				<br />
-				FORMAT
+				{tTemplate('format', settings?.design?.locale)}
 			</div>
 			<div class="col-status">
-				{#if !settings?.emojis?.disable}🚦{/if} STATUS PIPELINE
+				{#if !settings?.emojis?.disable}🚦 {/if}{tTemplate('status_pipeline', settings?.design?.locale)}
 				<div class="status-labels">
-					<span>IDEA</span>
-					<span>SCRIPT</span>
-					<span>SHOOT</span>
-					<span>EDIT</span>
-					<span>POST</span>
+					<span>{tTemplate('idea', settings?.design?.locale)}</span>
+					<span>{tTemplate('script', settings?.design?.locale)}</span>
+					<span>{tTemplate('shoot', settings?.design?.locale)}</span>
+					<span>{tTemplate('edit', settings?.design?.locale)}</span>
+					<span>{tTemplate('post', settings?.design?.locale)}</span>
 				</div>
 			</div>
 		</div>
@@ -55,11 +55,11 @@
 				<div class="col col-idea"></div>
 				<div class="col col-format"></div>
 				<div class="col col-status">
-					<div class="checkbox" aria-label="Idea"></div>
-					<div class="checkbox" aria-label="Script"></div>
-					<div class="checkbox" aria-label="Shoot"></div>
-					<div class="checkbox" aria-label="Edit"></div>
-					<div class="checkbox" aria-label="Post"></div>
+					<div class="checkbox" aria-label={tTemplate('idea', settings?.design?.locale)}></div>
+					<div class="checkbox" aria-label={tTemplate('script', settings?.design?.locale)}></div>
+					<div class="checkbox" aria-label={tTemplate('shoot', settings?.design?.locale)}></div>
+					<div class="checkbox" aria-label={tTemplate('edit', settings?.design?.locale)}></div>
+					<div class="checkbox" aria-label={tTemplate('post', settings?.design?.locale)}></div>
 				</div>
 			</div>
 		{/each}

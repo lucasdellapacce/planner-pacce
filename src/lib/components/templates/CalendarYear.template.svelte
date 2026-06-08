@@ -34,20 +34,9 @@
 	}
 
 	function getDayShortName(offset = 0) {
-		const day = capitalizeFirstLetter(
-			formatToString(
-				new Date().setDate(new Date().getDate() - new Date().getDay() + offset),
-				{ type: 'date', weekday: 'short' },
-			),
-		);
-		if (day === 'Mon') return 'Mo';
-		if (day === 'Tue') return 'Tu';
-		if (day === 'Wed') return 'We';
-		if (day === 'Thu') return 'Th';
-		if (day === 'Fri') return 'Fr';
-		if (day === 'Sat') return 'Sa';
-		if (day === 'Sun') return 'Su';
-		return day;
+		const date = new Date(Date.UTC(1970, 0, 4 + offset));
+		const shortName = date.toLocaleString(settings?.design?.locale || 'pt-BR', { weekday: 'short', timeZone: 'UTC' });
+		return shortName.slice(0, 2);
 	}
 </script>
 

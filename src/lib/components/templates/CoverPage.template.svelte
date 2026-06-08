@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type PlannerSettings, stripEmojis } from '$lib';
+	import { type PlannerSettings, stripEmojis, tTemplate } from '$lib';
 	import { getFontInfo, getGoogleFontURL, getDateHash } from '$lib';
 	import { CoverBackground } from '$backgrounds';
 	import { LazyPage } from '$atoms';
@@ -50,7 +50,7 @@
 					style:font-weight={getFontInfo(settings.coverPage.font)?.boldWeight || 400}>
 					<div class="start">
 						<small>
-							{settings.years[0].start.toLocaleString('default', {
+							{settings.years[0].start.toLocaleString(settings?.design?.locale || 'pt-BR', {
 								month: 'long',
 								timeZone: 'UTC',
 							})}
@@ -60,7 +60,7 @@
 					<div class="separator">-</div>
 					<div class="end">
 						<small>
-							{settings.years[settings.years.length - 1].end.toLocaleString('default', {
+							{settings.years[settings.years.length - 1].end.toLocaleString(settings?.design?.locale || 'pt-BR', {
 								month: 'long',
 								timeZone: 'UTC',
 							})}
@@ -77,25 +77,27 @@
 			{/if}
 			{#if settings.date.today && settings.coverPage.showCurrentDay}
 				{@const quarter = Math.floor(settings.date.today.getUTCMonth() / 3) + 1}
-				{@const monthName = settings.date.today.toLocaleString('default', {
+				{@const monthName = settings.date.today.toLocaleString(settings?.design?.locale || 'pt-BR', {
 					month: 'long',
 					timeZone: 'UTC',
 				})}
-				{@const dayName = settings.date.today.toLocaleString('default', {
+				{@const dayName = settings.date.today.toLocaleString(settings?.design?.locale || 'pt-BR', {
 					weekday: 'long',
 					timeZone: 'UTC',
 				})}
 				{@const currentWeek = Math.ceil(settings.date.today.getUTCDate() / 7)}
 				{@const dateOrdinal =
-					settings.date.today.getUTCDate() > 0
-						? ['th', 'st', 'nd', 'rd'][
-								(settings.date.today.getUTCDate() > 3 &&
-									settings.date.today.getUTCDate() < 21) ||
-								settings.date.today.getUTCDate() > 23
-									? 0
-									: settings.date.today.getUTCDate() % 10
-							]
-						: ''}
+					settings?.design?.locale === 'pt-BR'
+						? ''
+						: settings.date.today.getUTCDate() > 0
+							? ['th', 'st', 'nd', 'rd'][
+									(settings.date.today.getUTCDate() > 3 &&
+										settings.date.today.getUTCDate() < 21) ||
+									settings.date.today.getUTCDate() > 23
+										? 0
+										: settings.date.today.getUTCDate() % 10
+								]
+							: ''}
 				<div class="actions">
 					<a href="#{settings.date.today.getUTCFullYear()}">
 						{settings.date.today.getUTCFullYear()}
@@ -126,7 +128,7 @@
 									? settings.emojis.disable
 										? stripEmojis(settings.dashboardPage.title || 'Dashboard')
 										: settings.dashboardPage.title || 'Dashboard'
-									: 'Planner'}
+									: tTemplate('planner', settings?.design?.locale)}
 							</a>
 						</div>
 					{/if}
