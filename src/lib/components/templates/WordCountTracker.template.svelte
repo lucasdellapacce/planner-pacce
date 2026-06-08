@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 
 	let { settings = {} as PlannerSettings } = $props();
 	const showEmoji = $derived(!settings?.emojis?.disable);
@@ -9,12 +9,12 @@
 	<div class="header-section">
 		<div class="field title">
 			<div class="label">
-				{#if showEmoji}✍️{/if} WORD COUNT TRACKER
+				{#if showEmoji}✍️{/if} {tTemplate('word_count_tracker', settings?.design?.locale)}
 			</div>
 			<div class="line"></div>
 		</div>
 		<div class="field date">
-			<div class="label">MONTH / PERIOD</div>
+			<div class="label">{tTemplate('month_period', settings?.design?.locale)}</div>
 			<div class="line"></div>
 		</div>
 	</div>
@@ -22,11 +22,11 @@
 	<div class="meta-section">
 		<div class="meta-row">
 			<div class="field project">
-				<div class="label">PROJECT / NOVEL TITLE</div>
+				<div class="label">{tTemplate('project_novel_title', settings?.design?.locale)}</div>
 				<div class="line"></div>
 			</div>
 			<div class="field target">
-				<div class="label">TOTAL TARGET WORD COUNT</div>
+				<div class="label">{tTemplate('total_target_word_count', settings?.design?.locale)}</div>
 				<div class="line"></div>
 			</div>
 		</div>
@@ -35,16 +35,16 @@
 	<div class="content-section">
 		<div class="tracker-layout">
 			<div class="days-column">
-				<div class="section-label">DAILY LOG</div>
+				<div class="section-label">{tTemplate('daily_log', settings?.design?.locale)}</div>
 				<div class="log-grid">
 					<div class="table-header">
-						<span class="col-day">DAY</span>
-						<span class="col-words">WORDS</span>
-						<span class="col-total">CUMULATIVE</span>
+						<span class="col-day">{tTemplate('day', settings?.design?.locale).toUpperCase()}</span>
+						<span class="col-words">{tTemplate('words', settings?.design?.locale)}</span>
+						<span class="col-total">{tTemplate('cumulative', settings?.design?.locale)}</span>
 					</div>
 					{#each Array(15) as _, idx}
 						<div class="table-row">
-							<span class="day-num">D{idx + 1}</span>
+							<span class="day-num">{tTemplate('day', settings?.design?.locale).toUpperCase().charAt(0)}{idx + 1}</span>
 							<div class="line small-line"></div>
 							<div class="line small-line"></div>
 						</div>
@@ -56,13 +56,13 @@
 				<div class="section-label">&nbsp;</div>
 				<div class="log-grid">
 					<div class="table-header">
-						<span class="col-day">DAY</span>
-						<span class="col-words">WORDS</span>
-						<span class="col-total">CUMULATIVE</span>
+						<span class="col-day">{tTemplate('day', settings?.design?.locale).toUpperCase()}</span>
+						<span class="col-words">{tTemplate('words', settings?.design?.locale)}</span>
+						<span class="col-total">{tTemplate('cumulative', settings?.design?.locale)}</span>
 					</div>
 					{#each Array(16) as _, idx}
 						<div class="table-row">
-							<span class="day-num">D{idx + 16}</span>
+							<span class="day-num">{tTemplate('day', settings?.design?.locale).toUpperCase().charAt(0)}{idx + 16}</span>
 							<div class="line small-line"></div>
 							<div class="line small-line"></div>
 						</div>
@@ -71,7 +71,7 @@
 			</div>
 
 			<div class="graph-column">
-				<div class="section-label">PROGRESS CHART (VISUAL TRACKER)</div>
+				<div class="section-label">{tTemplate('progress_chart_visual', settings?.design?.locale)}</div>
 				<div class="chart-box">
 					<div class="y-axis">
 						<span>100%</span>
@@ -80,6 +80,7 @@
 						<span>25%</span>
 						<span>0%</span>
 					</div>
+
 					<div class="chart-area">
 						<div class="grid-lines">
 							{#each Array(5) as _}
@@ -89,7 +90,7 @@
 					</div>
 				</div>
 
-				<div class="section-label ideas-label">IDEAS / BEATS / SCENE OUTLINES</div>
+				<div class="section-label ideas-label">{tTemplate('ideas_beats_outlines', settings?.design?.locale)}</div>
 				{#each Array(7) as _}
 					<div class="line"></div>
 				{/each}

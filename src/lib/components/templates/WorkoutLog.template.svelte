@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 	import { Field } from '$molecules';
 
@@ -10,13 +10,13 @@
 
 <Box class="workout-log">
 	<Box class="header-section">
-		<Field label="Date" emoji="📅" {showEmoji} class="title-block date-field" />
+		<Field label={tTemplate('date', settings?.design?.locale)} emoji="📅" {showEmoji} class="title-block date-field" />
 		<Field
-			label="Workout/Muscle Group"
+			label={tTemplate('workout_muscle_group', settings?.design?.locale)}
 			emoji="💪"
 			{showEmoji}
 			class="title-block workout-field" />
-		<Field label="Duration" emoji="⏱️" {showEmoji} class="title-block duration-field" />
+		<Field label={tTemplate('duration', settings?.design?.locale)} emoji="⏱️" {showEmoji} class="title-block duration-field" />
 	</Box>
 
 	<Box class="ledger">
@@ -24,13 +24,13 @@
 			<Box class="col exercise-header">
 				{#if showEmoji}<Text tag="span">🏋️‍♂️</Text>
 				{/if}
-				<Text tag="span">EXERCISE</Text>
+				<Text tag="span">{tTemplate('exercise', settings?.design?.locale)}</Text>
 			</Box>
-			<Box class="col set-header"><Text>SET 1</Text></Box>
-			<Box class="col set-header"><Text>SET 2</Text></Box>
-			<Box class="col set-header"><Text>SET 3</Text></Box>
-			<Box class="col set-header"><Text>SET 4</Text></Box>
-			<Box class="col set-header"><Text>SET 5</Text></Box>
+			<Box class="col set-header"><Text>{tTemplate('set', settings?.design?.locale)} 1</Text></Box>
+			<Box class="col set-header"><Text>{tTemplate('set', settings?.design?.locale)} 2</Text></Box>
+			<Box class="col set-header"><Text>{tTemplate('set', settings?.design?.locale)} 3</Text></Box>
+			<Box class="col set-header"><Text>{tTemplate('set', settings?.design?.locale)} 4</Text></Box>
+			<Box class="col set-header"><Text>{tTemplate('set', settings?.design?.locale)} 5</Text></Box>
 		</Box>
 		{#each rows as _, i (i)}
 			<Box class="row">

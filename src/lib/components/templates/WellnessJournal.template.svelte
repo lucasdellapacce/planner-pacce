@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 
 	let { settings = {} as PlannerSettings } = $props();
@@ -10,13 +10,13 @@
 	<Box class="header-section">
 		<Box class="field title-field">
 			<Text class="label">
-				{#if showEmoji}🧘{/if} WELLNESS JOURNAL
+				{#if showEmoji}🧘{/if} {tTemplate('wellness_journal', settings?.design?.locale)}
 			</Text>
 			<Box class="line"></Box>
 		</Box>
 		<Box class="field date-field">
 			<Text class="label">
-				{#if showEmoji}📅{/if} DATE
+				{#if showEmoji}📅{/if} {tTemplate('date', settings?.design?.locale)}
 			</Text>
 			<Box class="line date-slashes">
 				<Text tag="span">/</Text>
@@ -31,7 +31,7 @@
 				<Text tag="span" class="emoji">
 					{#if showEmoji}💪{/if}
 				</Text>
-				<Text tag="span" class="section-title">Physical Health</Text>
+				<Text tag="span" class="section-title">{tTemplate('physical_health', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="input-area">
 				<Box class="input-line"></Box>
@@ -44,7 +44,7 @@
 				<Text tag="span" class="emoji">
 					{#if showEmoji}🧠{/if}
 				</Text>
-				<Text tag="span" class="section-title">Mental & Emotional</Text>
+				<Text tag="span" class="section-title">{tTemplate('mental_emotional', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="input-area">
 				<Box class="input-line"></Box>
@@ -57,11 +57,11 @@
 				<Text tag="span" class="emoji">
 					{#if showEmoji}😴{/if}
 				</Text>
-				<Text tag="span" class="section-title">Sleep & Rest</Text>
+				<Text tag="span" class="section-title">{tTemplate('sleep_rest', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="input-area quality-tracker">
 				<Box class="row">
-					<Text tag="span" class="label">Quality:</Text>
+					<Text tag="span" class="label">{tTemplate('quality', settings?.design?.locale)}:</Text>
 					<Box class="stars">
 						<Text tag="span" class="star">★</Text>
 						<Text tag="span" class="star">★</Text>
@@ -71,7 +71,7 @@
 					</Box>
 				</Box>
 				<Box class="row">
-					<Text tag="span" class="label">Hours:</Text>
+					<Text tag="span" class="label">{tTemplate('hours', settings?.design?.locale)}:</Text>
 					<Box class="line hours-input"></Box>
 				</Box>
 			</Box>
@@ -82,7 +82,7 @@
 				<Text tag="span" class="emoji">
 					{#if showEmoji}🙏{/if}
 				</Text>
-				<Text tag="span" class="section-title">Gratitude & Reflections</Text>
+				<Text tag="span" class="section-title">{tTemplate('gratitude_reflections', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="input-area large">
 				<Box class="input-line"></Box>
@@ -96,7 +96,7 @@
 				<Text tag="span" class="emoji">
 					{#if showEmoji}⚡{/if}
 				</Text>
-				<Text tag="span" class="section-title">Energy Level</Text>
+				<Text tag="span" class="section-title">{tTemplate('energy_level', settings?.design?.locale)}</Text>
 			</Box>
 			<Box class="energy-gauge">
 				{#each [1, 2, 3, 4, 5] as level}

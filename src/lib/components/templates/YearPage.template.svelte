@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type PlannerSettings, type Year, getYearEmoji } from '$lib';
+	import { tTemplate, type PlannerSettings, type Year, getYearEmoji } from '$lib';
 	import { Page } from '$layouts';
 	import { SideNav, TopNav } from '$organisms';
 	import { Text, LazyPage } from '$atoms';
@@ -58,7 +58,7 @@
 			<TopNav
 				{settings}
 				timeframe={year}
-				breadcrumbs={[{ href: `#${year.year}-pg{i + 2}`, name: `Page ${i + 2}` }]} />
+				breadcrumbs={[{ href: `#${year.year}-pg${i + 2}`, name: `${tTemplate('page', settings?.design?.locale)} ${i + 2}` }]} />
 			<Page
 				display={settings.yearPage.notePagesTemplate}
 				columns={settings.yearPage.notePagesColumns}
