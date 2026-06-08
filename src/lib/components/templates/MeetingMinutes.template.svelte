@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
 
@@ -11,10 +11,10 @@
 <div class="meeting-minutes">
 	<Box class="header-section">
 		<Box class="top-row">
-			<Field class="subject-field" label="SUBJECT" />
+			<Field class="subject-field" label={tTemplate('subject', settings?.design?.locale)} />
 			<Field
 				class="date-field"
-				label="DATE"
+				label={tTemplate('date', settings?.design?.locale)}
 				emoji="📅"
 				showEmoji={!settings?.emojis?.disable}>
 				<Box class="date-slashes">
@@ -24,7 +24,7 @@
 			</Field>
 			<Field
 				class="time-field"
-				label="START TIME"
+				label={tTemplate('start_time', settings?.design?.locale)}
 				emoji="⏱️"
 				showEmoji={!settings?.emojis?.disable}>
 				<Box class="time-colon">
@@ -33,24 +33,24 @@
 			</Field>
 			<Field
 				class="time-field"
-				label="END TIME"
+				label={tTemplate('end_time', settings?.design?.locale)}
 				emoji="⏳"
 				showEmoji={!settings?.emojis?.disable}>
 				<Box class="time-colon">
 					<Text tag="span">:</Text>
 				</Box>
 			</Field>
-			<Field class="time-field" label="TOTAL MINS" />
+			<Field class="time-field" label={tTemplate('total_mins', settings?.design?.locale)} />
 		</Box>
 		<Box class="bottom-row">
 			<Field
 				class="attendees-field"
-				label="ATTENDEES"
+				label={tTemplate('attendees', settings?.design?.locale)}
 				emoji="👥"
 				showEmoji={!settings?.emojis?.disable} />
 			<Field
 				class="location-field"
-				label="LOCATION"
+				label={tTemplate('location', settings?.design?.locale)}
 				emoji="📍"
 				showEmoji={!settings?.emojis?.disable} />
 		</Box>
@@ -58,7 +58,7 @@
 
 	<Box class="agenda-section">
 		<Text tag="h2" class="section-title">
-			{#if !settings?.emojis?.disable}📝{/if} AGENDA & NOTES
+			{#if !settings?.emojis?.disable}📝{/if} {tTemplate('agenda_notes', settings?.design?.locale)}
 		</Text>
 		<Box class="lines">
 			{#each agendaRows as _, i (i)}
@@ -69,14 +69,14 @@
 
 	<Box class="action-section">
 		<Text tag="h2" class="section-title">
-			{#if !settings?.emojis?.disable}✅{/if} ACTION ITEMS
+			{#if !settings?.emojis?.disable}✅{/if} {tTemplate('action_items', settings?.design?.locale)}
 		</Text>
 		<Box class="action-grid">
 			<Box class="grid-header">
 				<Box class="check"></Box>
-				<Box class="task"><Text>TASK / DECISION</Text></Box>
-				<Box class="owner"><Text>OWNER</Text></Box>
-				<Box class="deadline"><Text>DEADLINE</Text></Box>
+				<Box class="task"><Text>{tTemplate('task_decision', settings?.design?.locale)}</Text></Box>
+				<Box class="owner"><Text>{tTemplate('owner', settings?.design?.locale)}</Text></Box>
+				<Box class="deadline"><Text>{tTemplate('deadline', settings?.design?.locale)}</Text></Box>
 			</Box>
 			{#each actionRows as _, i (i)}
 				<Box class="grid-row">

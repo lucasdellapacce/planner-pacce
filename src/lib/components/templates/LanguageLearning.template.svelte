@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 
 	let { settings = {} as PlannerSettings } = $props();
 </script>
@@ -8,12 +8,12 @@
 	<div class="header-section">
 		<div class="field title">
 			<div class="label">
-				{#if !settings?.emojis?.disable}🗣️{/if} LANGUAGE LEARNING
+				{#if !settings?.emojis?.disable}🗣️{/if} {tTemplate('language_learning', settings?.design?.locale)}
 			</div>
 			<div class="line"></div>
 		</div>
 		<div class="field date">
-			<div class="label">DATE / WEEK</div>
+			<div class="label">{tTemplate('date_week', settings?.design?.locale)}</div>
 			<div class="line"></div>
 		</div>
 	</div>
@@ -21,7 +21,7 @@
 	<div class="content-section">
 		<div class="columns">
 			<div class="column">
-				<div class="label">VOCABULARY</div>
+				<div class="label">{tTemplate('vocabulary', settings?.design?.locale)}</div>
 				{#each Array(12) as _}
 					<div class="vocab-row">
 						<div class="line"></div>
@@ -31,7 +31,7 @@
 				{/each}
 			</div>
 			<div class="column">
-				<div class="label">GRAMMAR / CONCEPTS</div>
+				<div class="label">{tTemplate('grammar_concepts', settings?.design?.locale)}</div>
 				{#each Array(12) as _}
 					<div class="line"></div>
 				{/each}
@@ -39,11 +39,11 @@
 		</div>
 
 		<div class="bottom-section">
-			<div class="label">PRACTICE TRACKER</div>
+			<div class="label">{tTemplate('practice_tracker', settings?.design?.locale)}</div>
 			<div class="practice-days">
-				{#each ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'] as day}
+				{#each ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as day}
 					<div class="day-box">
-						<div class="day-label">{day}</div>
+						<div class="day-label">{tTemplate(day, settings?.design?.locale).toUpperCase()}</div>
 						<div class="box"></div>
 					</div>
 				{/each}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 
 	let { settings = {} as PlannerSettings } = $props();
@@ -9,16 +9,16 @@
 <Box class="media-tracker">
 	<Box class="header-section">
 		<Text class="label">
-			{#if showEmoji}🎬{/if} MEDIA TRACKER
+			{#if showEmoji}🎬{/if} {tTemplate('media_tracker', settings?.design?.locale)}
 		</Text>
 		<Box class="line"></Box>
 	</Box>
 
 	<Box class="content-section">
 		<Box class="table-header">
-			<Box class="col-title"><Text>TITLE (MOVIES, SHOWS, GAMES)</Text></Box>
-			<Box class="col-genre"><Text>GENRE</Text></Box>
-			<Box class="col-rating"><Text>RATING</Text></Box>
+			<Box class="col-title"><Text>{tTemplate('title_media', settings?.design?.locale)}</Text></Box>
+			<Box class="col-genre"><Text>{tTemplate('genre', settings?.design?.locale)}</Text></Box>
+			<Box class="col-rating"><Text>{tTemplate('rating', settings?.design?.locale)}</Text></Box>
 		</Box>
 		{#each Array(15) as _}
 			<Box class="table-row">

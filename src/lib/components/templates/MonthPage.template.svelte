@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { type Month, type PlannerSettings } from '$lib';
+	import { type Month, type PlannerSettings, tTemplate } from '$lib';
 	import { Page } from '$layouts';
 	import { SideNav, TopNav } from '$organisms';
 	import { LazyPage } from '$atoms';
@@ -44,7 +44,7 @@
 			<TopNav
 				{settings}
 				timeframe={month}
-				breadcrumbs={[{ href: `#${month.id}-pg${i + 2}`, name: `Page ${i + 2}` }]} />
+				breadcrumbs={[{ href: `#${month.id}-pg${i + 2}`, name: `${tTemplate('page', settings?.design?.locale)} ${i + 2}` }]} />
 			<Page
 				display={settings.monthPage.notePagesTemplate}
 				columns={settings.monthPage.notePagesColumns}

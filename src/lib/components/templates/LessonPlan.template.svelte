@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 
 	let { settings = {} as PlannerSettings } = $props();
 	const showEmoji = $derived(!settings?.emojis?.disable);
@@ -9,12 +9,12 @@
 	<div class="header-section">
 		<div class="field title">
 			<div class="label">
-				{#if showEmoji}🍎{/if} LESSON PLAN
+				{#if showEmoji}🍎{/if} {tTemplate('lesson_plan', settings?.design?.locale)}
 			</div>
 			<div class="line"></div>
 		</div>
 		<div class="field date">
-			<div class="label">DATE / CLASS</div>
+			<div class="label">{tTemplate('date_class', settings?.design?.locale)}</div>
 			<div class="line"></div>
 		</div>
 	</div>
@@ -22,11 +22,11 @@
 	<div class="meta-section">
 		<div class="meta-row">
 			<div class="field subject">
-				<div class="label">SUBJECT / TOPIC</div>
+				<div class="label">{tTemplate('subject_topic', settings?.design?.locale)}</div>
 				<div class="line"></div>
 			</div>
 			<div class="field unit">
-				<div class="label">UNIT / CHAPTER</div>
+				<div class="label">{tTemplate('unit_chapter', settings?.design?.locale)}</div>
 				<div class="line"></div>
 			</div>
 		</div>
@@ -35,14 +35,14 @@
 	<div class="content-section">
 		<div class="top-row">
 			<div class="box-section objectives">
-				<div class="section-label">OBJECTIVES / LEARNING OUTCOMES</div>
+				<div class="section-label">{tTemplate('objectives_outcomes', settings?.design?.locale)}</div>
 				{#each Array(4) as _}
 					<div class="line"></div>
 				{/each}
 			</div>
 
 			<div class="box-section materials">
-				<div class="section-label">MATERIALS / RESOURCES</div>
+				<div class="section-label">{tTemplate('materials_resources', settings?.design?.locale)}</div>
 				{#each Array(4) as _}
 					<div class="line"></div>
 				{/each}
@@ -51,16 +51,16 @@
 
 		<div class="bottom-section">
 			<div class="column activities">
-				<div class="section-label">ACTIVITIES & TIMELINE</div>
+				<div class="section-label">{tTemplate('activities_timeline', settings?.design?.locale)}</div>
 				<div class="activity-row warm-up">
-					<span class="activity-tag">WARM-UP</span>
+					<span class="activity-tag">{tTemplate('warm_up', settings?.design?.locale)}</span>
 					<div class="activity-lines">
 						<div class="line"></div>
 						<div class="line"></div>
 					</div>
 				</div>
 				<div class="activity-row main">
-					<span class="activity-tag">MAIN ACT.</span>
+					<span class="activity-tag">{tTemplate('main_act', settings?.design?.locale)}</span>
 					<div class="activity-lines">
 						{#each Array(4) as _}
 							<div class="line"></div>
@@ -68,7 +68,7 @@
 					</div>
 				</div>
 				<div class="activity-row wrap-up">
-					<span class="activity-tag">WRAP-UP</span>
+					<span class="activity-tag">{tTemplate('wrap_up', settings?.design?.locale)}</span>
 					<div class="activity-lines">
 						<div class="line"></div>
 						<div class="line"></div>
@@ -77,12 +77,12 @@
 			</div>
 
 			<div class="column tracking">
-				<div class="section-label">ASSESSMENT & FEEDBACK</div>
+				<div class="section-label">{tTemplate('assessment_feedback', settings?.design?.locale)}</div>
 				{#each Array(4) as _}
 					<div class="line"></div>
 				{/each}
 
-				<div class="section-label homework-label">HOMEWORK / FOLLOW-UP</div>
+				<div class="section-label homework-label">{tTemplate('homework_followup', settings?.design?.locale)}</div>
 				{#each Array(3) as _}
 					<div class="line"></div>
 				{/each}

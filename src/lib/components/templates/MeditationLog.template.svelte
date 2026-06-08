@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
 
@@ -9,23 +9,23 @@
 
 <Box class="meditation-log">
 	<Box class="header-section">
-		<Field label="MEDITATION & BREATHWORK LOG" emoji="🧘" {showEmoji} class="title" />
-		<Field label="DATE / WEEK" class="date" />
+		<Field label={tTemplate('meditation_breathwork_log', settings?.design?.locale)} emoji="🧘" {showEmoji} class="title" />
+		<Field label={tTemplate('date_week', settings?.design?.locale)} class="date" />
 	</Box>
 
 	<Box class="content-section">
 		<Box class="sessions-block">
-			<Text class="section-label">DAILY SESSION TRACKER</Text>
+			<Text class="section-label">{tTemplate('daily_session_tracker', settings?.design?.locale)}</Text>
 			<Box class="sessions-header">
-				<Text tag="span" class="col-day">DAY</Text>
-				<Text tag="span" class="col-time">TIME</Text>
-				<Text tag="span" class="col-dur">DUR</Text>
-				<Text tag="span" class="col-tech">TECHNIQUE / FOCUS</Text>
-				<Text tag="span" class="col-state">STATE OF MIND (PRE / POST)</Text>
+				<Text tag="span" class="col-day">{tTemplate('day', settings?.design?.locale)}</Text>
+				<Text tag="span" class="col-time">{tTemplate('time', settings?.design?.locale)}</Text>
+				<Text tag="span" class="col-dur">{tTemplate('dur', settings?.design?.locale)}</Text>
+				<Text tag="span" class="col-tech">{tTemplate('technique_focus', settings?.design?.locale)}</Text>
+				<Text tag="span" class="col-state">{tTemplate('state_of_mind', settings?.design?.locale)}</Text>
 			</Box>
-			{#each ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'] as day}
+			{#each ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as day}
 				<Box class="session-row">
-					<Text tag="span" class="day-label">{day}</Text>
+					<Text tag="span" class="day-label">{tTemplate(day, settings?.design?.locale).toUpperCase()}</Text>
 					<Box class="line time-line"></Box>
 					<Box class="line dur-line"></Box>
 					<Box class="line tech-line"></Box>
@@ -36,14 +36,14 @@
 
 		<Box class="bottom-section">
 			<Box class="column observations">
-				<Text class="section-label">INSIGHTS / REVELATIONS / EXPERIENCES</Text>
+				<Text class="section-label">{tTemplate('insights_revelations', settings?.design?.locale)}</Text>
 				{#each Array(7) as _}
 					<Box class="line"></Box>
 				{/each}
 			</Box>
 
 			<Box class="column goals">
-				<Text class="section-label">WEEKLY MIND MINDFULNESS GOALS</Text>
+				<Text class="section-label">{tTemplate('weekly_mindfulness_goals', settings?.design?.locale)}</Text>
 				{#each Array(3) as _}
 					<Box class="todo-row">
 						<Checkbox aria-label="Goal check" />
@@ -51,13 +51,14 @@
 					</Box>
 				{/each}
 
-				<Text class="section-label habits-label">BREATHWORK & HABITS</Text>
+				<Text class="section-label habits-label">{tTemplate('breathwork_habits', settings?.design?.locale)}</Text>
 				<Box class="habits-check-grid">
-					{#each ['Box Breathing', 'Wim Hof Method', '4-7-8 Technique', 'Anapanasati / Focus'] as habit}
+					{#each ['box_breathing', 'wim_hof_method', 'four_seven_eight_technique', 'anapanasati_focus'] as habitKey}
 						<Box class="habit-check-row">
-							<Text tag="span" class="habit-name">{habit}</Text>
+							<Text tag="span" class="habit-name">{tTemplate(habitKey, settings?.design?.locale)}</Text>
 							<Box class="check-boxes">
-								{#each ['M', 'T', 'W', 'T', 'F', 'S', 'S'] as dayChar}
+								{#each ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as dayKey}
+									{@const dayChar = tTemplate(dayKey, settings?.design?.locale).charAt(0).toUpperCase()}
 									<Box class="check-day">
 										<Text tag="span" class="day-char">{dayChar}</Text>
 										<Checkbox aria-label="Day check" class="check-box" />

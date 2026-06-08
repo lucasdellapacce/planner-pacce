@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
 
@@ -9,13 +9,13 @@
 
 <Box class="gratitude-page">
 	<Box class="header-section">
-		<Field label="GRATITUDE & AFFIRMATIONS" emoji="💛" {showEmoji} class="title" />
-		<Field label="DATE" class="date" />
+		<Field label={tTemplate('gratitude_affirmations', settings?.design?.locale)} emoji="💛" {showEmoji} class="title" />
+		<Field label={tTemplate('date', settings?.design?.locale)} class="date" />
 	</Box>
 
 	<Box class="content-section">
 		<Box class="top-section">
-			<Text class="section-label">THINGS I AM GRATEFUL FOR TODAY</Text>
+			<Text class="section-label">{tTemplate('things_grateful_today', settings?.design?.locale)}</Text>
 			{#each Array(5) as _, idx}
 				<Box class="gratitude-row">
 					<Text tag="span" class="gratitude-num">{idx + 1}.</Text>
@@ -26,7 +26,7 @@
 
 		<Box class="split-section">
 			<Box class="column affirmations">
-				<Text class="section-label">DAILY POSITIVE AFFIRMATIONS</Text>
+				<Text class="section-label">{tTemplate('daily_positive_affirmations', settings?.design?.locale)}</Text>
 				{#each Array(4) as _}
 					<Box class="bullet-row">
 						<Text tag="span" class="heart">♥</Text>
@@ -36,7 +36,7 @@
 			</Box>
 
 			<Box class="column kindness">
-				<Text class="section-label">ACTS OF KINDNESS / CONNECTION</Text>
+				<Text class="section-label">{tTemplate('acts_kindness_connection', settings?.design?.locale)}</Text>
 				{#each Array(4) as _}
 					<Box class="bullet-row">
 						<Checkbox aria-label="Acts of kindness check" />
@@ -47,7 +47,7 @@
 		</Box>
 
 		<Box class="bottom-section">
-			<Text class="section-label">TODAY'S HIGHLIGHTS / MOMENTS OF JOY</Text>
+			<Text class="section-label">{tTemplate('todays_highlights', settings?.design?.locale)}</Text>
 			{#each Array(3) as _}
 				<Box class="line"></Box>
 			{/each}

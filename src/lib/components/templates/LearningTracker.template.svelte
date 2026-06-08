@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
 
@@ -10,10 +10,10 @@
 
 <Box class="learning-tracker">
 	<Box class="header-section">
-		<Field label="LEARNING LOG" emoji="📚" {showEmoji} class="title-field" />
+		<Field label={tTemplate('learning_log', settings?.design?.locale)} emoji="📚" {showEmoji} class="title-field" />
 		<Box class="field date-field">
 			<Text class="label">
-				{#if showEmoji}📅{/if} DATE
+				{#if showEmoji}📅{/if} {tTemplate('date', settings?.design?.locale)}
 			</Text>
 			<Box class="line date-slashes">
 				<Text tag="span">/</Text>
@@ -23,20 +23,20 @@
 	</Box>
 
 	<Box class="course-header">
-		<Field label="COURSE / SUBJECT" class="course-name" />
+		<Field label={tTemplate('course_subject', settings?.design?.locale)} class="course-name" />
 	</Box>
 
 	<Box class="tracker-table">
 		<Box class="table-header">
 			<Box class="col col-topic">
 				{#if showEmoji}<Text tag="span">💡</Text>{/if}
-				<Text tag="span">Topic</Text>
+				<Text tag="span">{tTemplate('topic', settings?.design?.locale)}</Text>
 			</Box>
-			<Box class="col col-progress"><Text>Done</Text></Box>
-			<Box class="col col-key"><Text>Key Takeaway</Text></Box>
+			<Box class="col col-progress"><Text>{tTemplate('done', settings?.design?.locale)}</Text></Box>
+			<Box class="col col-key"><Text>{tTemplate('key_takeaway', settings?.design?.locale)}</Text></Box>
 			<Box class="col col-time">
 				{#if showEmoji}<Text tag="span">⏱️</Text>{/if}
-				<Text tag="span">Time</Text>
+				<Text tag="span">{tTemplate('time', settings?.design?.locale)}</Text>
 			</Box>
 		</Box>
 
@@ -60,7 +60,7 @@
 
 	<Box class="reflection-section">
 		<Text class="reflection-title">
-			{#if showEmoji}✨{/if} Reflection & Next Steps
+			{#if showEmoji}✨{/if} {tTemplate('reflection_next_steps', settings?.design?.locale)}
 		</Text>
 		<Box class="reflection-lines">
 			<Box class="input-line"></Box>

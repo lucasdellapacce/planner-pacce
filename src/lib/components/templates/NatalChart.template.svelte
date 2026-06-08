@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PlannerSettings } from '$lib';
+	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text } from '$atoms';
 
 	let { settings = {} as PlannerSettings } = $props();
@@ -10,17 +10,17 @@
 	<Box class="header-section">
 		<Box class="title-block">
 			<Text class="label">
-				{#if showEmoji}✨{/if} NATAL CHART & TRANSITS
+				{#if showEmoji}✨{/if} {tTemplate('natal_chart_transits', settings?.design?.locale)}
 			</Text>
 		</Box>
 		<Box class="date-line">
-			<Text class="date-label">Name/Event:</Text>
+			<Text class="date-label">{tTemplate('name_event', settings?.design?.locale)}</Text>
 			<Box class="line"></Box>
 		</Box>
 		<Box class="date-line">
-			<Text class="date-label">Date/Time:</Text>
+			<Text class="date-label">{tTemplate('date_time_label', settings?.design?.locale)}</Text>
 			<Box class="line" style="flex: 0.6"></Box>
-			<Text class="date-label">Loc:</Text>
+			<Text class="date-label">{tTemplate('loc', settings?.design?.locale)}</Text>
 			<Box class="line"></Box>
 		</Box>
 	</Box>
@@ -68,10 +68,10 @@
 		<Box class="data-section">
 			<Box class="table-container">
 				<Box class="table-header">
-					<Text class="col">Planet</Text>
-					<Text class="col">Sign</Text>
-					<Text class="col">Degree</Text>
-					<Text class="col">House</Text>
+					<Text class="col">{tTemplate('planet', settings?.design?.locale)}</Text>
+					<Text class="col">{tTemplate('sign', settings?.design?.locale)}</Text>
+					<Text class="col">{tTemplate('degree', settings?.design?.locale)}</Text>
+					<Text class="col">{tTemplate('house', settings?.design?.locale)}</Text>
 				</Box>
 				{#each Array(10) as _}
 					<Box class="table-row">
@@ -84,7 +84,7 @@
 			</Box>
 
 			<Box class="aspects-container">
-				<Text class="label">Major Aspects</Text>
+				<Text class="label">{tTemplate('major_aspects', settings?.design?.locale)}</Text>
 				{#each Array(6) as _}
 					<Box class="aspect-row">
 						<Box class="dot"></Box>
@@ -96,7 +96,7 @@
 	</Box>
 
 	<Box class="notes-section">
-		<Text class="label">Interpretation Notes</Text>
+		<Text class="label">{tTemplate('interpretation_notes', settings?.design?.locale)}</Text>
 		<Box class="lined-area">
 			{#each Array(6) as _}
 				<Box class="line-row"></Box>
