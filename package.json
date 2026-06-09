@@ -1,7 +1,7 @@
 {
 	"name": "remarkably-organized",
 	"private": true,
-	"version": "26.6.8.555",
+	"version": "26.6.9.621",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
