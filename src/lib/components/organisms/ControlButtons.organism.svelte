@@ -8,6 +8,9 @@
 	import BookOpenIcon from '~icons/fa-solid/book-open';
 	import CameraIcon from '~icons/fa/camera';
 	import LoadingIcon from '~icons/eos-icons/bubble-loading';
+	import { useI18n } from '$lib/state/i18n.svelte';
+
+	const i18n = useI18n();
 
 	interface Props {
 		previewMode: 'list' | 'grid' | 'carousel';
@@ -46,7 +49,7 @@
 	<button
 		onclick={() => (isExportMode = !isExportMode)}
 		class="export-image-trigger no-print tooltip-bottom {isExportMode ? 'active' : ''}"
-		data-tooltip={isExportMode ? 'Click a page to export!' : 'Export Page Image'}>
+		data-tooltip={isExportMode ? i18n.t('ui.control_buttons.click_to_export') : i18n.t('ui.control_buttons.export_page_image')}>
 		{#if isExportingImage}
 			<LoadingIcon />
 		{:else}
@@ -57,13 +60,13 @@
 <button
 	onclick={handlePrint}
 	class="print-trigger no-print tooltip-bottom"
-	data-tooltip="Download / Print PDF">
+	data-tooltip={i18n.t('ui.control_buttons.download_print_pdf')}>
 	<PrintIcon />
 </button>
 <button
 	onclick={() => (showGalleryModal = true)}
 	class="gallery-trigger no-print tooltip-bottom"
-	data-tooltip="Template Gallery">
+	data-tooltip={i18n.t('ui.control_buttons.template_gallery')}>
 	<BookIcon />
 </button>
 <button
@@ -76,28 +79,28 @@
 		}
 	}}
 	class="config-trigger no-print tooltip-bottom"
-	data-tooltip="Backup & Restore">
+	data-tooltip={i18n.t('ui.control_buttons.backup_restore')}>
 	<SaveIcon />
 </button>
 <button
 	onclick={toggleCalendarMenu}
 	class="calendar-trigger no-print"
-	data-tooltip="Calendar Views">
+	data-tooltip={i18n.t('ui.control_buttons.calendar_views')}>
 	<CalendarIcon />
 </button>
 <button
 	onclick={toggleCollectionsEventsMenu}
 	class="collections-trigger no-print"
-	data-tooltip="Collections & Events">
+	data-tooltip={i18n.t('ui.control_buttons.collections_events')}>
 	<BookOpenIcon />
 </button>
-<button onclick={toggleMenu} class="menu-trigger no-print" data-tooltip="Design & Layout">
+<button onclick={toggleMenu} class="menu-trigger no-print" data-tooltip={i18n.t('ui.control_buttons.design_layout')}>
 	<MagicIcon />
 </button>
 <button
 	onclick={toggleHelp}
 	class="help-trigger no-print tooltip-bottom"
-	data-tooltip="Planner Wizard">
+	data-tooltip={i18n.t('ui.control_buttons.planner_wizard')}>
 	<HatWizardIcon />
 </button>
 

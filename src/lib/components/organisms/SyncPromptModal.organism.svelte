@@ -2,6 +2,9 @@
 	import { fade, scale } from 'svelte/transition';
 	import BookOpenIcon from '~icons/fa-solid/book-open';
 	import PrintIcon from '~icons/fa/print';
+	import { useI18n } from '$lib/state/i18n.svelte';
+
+	const i18n = useI18n();
 
 	let {
 		onSyncAndPrint = (() => {}) as () => void,
@@ -26,30 +29,30 @@
 				<div class="icon-gradient">
 					<BookOpenIcon />
 				</div>
-				Unsynced Events
+				{i18n.t('ui.sync_modal.title')}
 			</h2>
-			<button class="close-btn" aria-label="Close" onclick={onClose} disabled={isSyncing}>
+			<button class="close-btn" aria-label={i18n.t('ui.sync_modal.close')} onclick={onClose} disabled={isSyncing}>
 				✕
 			</button>
 		</header>
 
 		<div class="content">
-			<p>Wait! You have calendar events that haven't been updated yet.</p>
-			<p>Would you like to sync your events before downloading your PDF?</p>
+			<p>{i18n.t('ui.sync_modal.message_1')}</p>
+			<p>{i18n.t('ui.sync_modal.message_2')}</p>
 		</div>
 
 		<div class="actions">
 			<button class="btn-secondary" onclick={onPrintAnyway} disabled={isSyncing}>
-				Print Anyway
+				{i18n.t('ui.sync_modal.print_anyway')}
 			</button>
 			<button
 				class="btn-primary flex items-center"
 				onclick={onSyncAndPrint}
 				disabled={isSyncing}>
 				{#if isSyncing}
-					Syncing...
+					{i18n.t('ui.sync_modal.syncing')}
 				{:else}
-					<PrintIcon style="margin-right: 0.25rem;" /> Sync Now & Print
+					<PrintIcon style="margin-right: 0.25rem;" /> {i18n.t('ui.sync_modal.sync_and_print')}
 				{/if}
 			</button>
 		</div>

@@ -4,6 +4,9 @@
 	import ExportIcon from '~icons/fa/download';
 	import ImportIcon from '~icons/fa/upload';
 	import MagicIcon from '~icons/fa/magic';
+	import { useI18n } from '$lib/state/i18n.svelte';
+
+	const i18n = useI18n();
 
 	let {
 		onSave,
@@ -25,30 +28,30 @@
 <div class="panel-content">
 	<h2>
 		<span style="display: flex; align-items: baseline; gap: 0.5rem;">
-			Backup & Restore
+			{i18n.t('ui.backup_panel.title')}
 		</span>
 		<SaveIcon style="opacity: 0.5;" />
 	</h2>
 	<div class="config-buttons">
 		<button type="button" onclick={onSave}>
-			<SaveIcon /> Save Settings to Browser
+			<SaveIcon /> {i18n.t('ui.backup_panel.save_to_browser')}
 		</button>
 		<button type="button" onclick={onLoad}>
-			<LoadIcon /> Load Settings from Browser
+			<LoadIcon /> {i18n.t('ui.backup_panel.load_from_browser')}
 		</button>
 		<button type="button" onclick={onExport}>
-			<ExportIcon /> Export Settings to File
+			<ExportIcon /> {i18n.t('ui.backup_panel.export_to_file')}
 		</button>
 		<button type="button" onclick={onImport}>
-			<ImportIcon /> Import Settings from File
+			<ImportIcon /> {i18n.t('ui.backup_panel.import_from_file')}
 		</button>
-		<button type="button" class="btn-reset" onclick={onReset}>Reset to Defaults</button>
+		<button type="button" class="btn-reset" onclick={onReset}>{i18n.t('ui.backup_panel.reset_to_defaults')}</button>
 	</div>
 
 	<div class="presets-sticky">
 		<button type="button" class="presets-cta" onclick={onOpenPresets}>
 			<MagicIcon />
-			Load from Presets Library
+			{i18n.t('ui.backup_panel.load_from_presets')}
 		</button>
 	</div>
 </div>

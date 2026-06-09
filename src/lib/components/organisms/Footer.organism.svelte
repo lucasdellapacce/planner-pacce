@@ -3,6 +3,9 @@
 	import Text from '$atoms/Text.atom.svelte';
 	import Link from '$atoms/Link.atom.svelte';
 	import Divider from '$atoms/Divider.atom.svelte';
+	import { useI18n } from '$lib/state/i18n.svelte';
+
+	const i18n = useI18n();
 
 	interface Props {
 		fullVersion: string;
@@ -28,12 +31,12 @@
 			target="_blank"
 			rel="noopener noreferrer"
 			onclick={handleSupportTicketClick}>
-			Open support Ticket
+			{i18n.t('ui.footer.support_ticket')}
 		</Link>
 		<Divider tag="span" class="divider">|</Divider>
-		<Link href="/privacy">Privacy Policy</Link>
+		<Link href="/privacy">{i18n.t('ui.footer.privacy_policy')}</Link>
 		<Divider tag="span" class="divider">|</Divider>
-		<Link href="/terms">Terms of Service</Link>
+		<Link href="/terms">{i18n.t('ui.footer.terms_of_service')}</Link>
 		<Divider tag="span" class="divider">|</Divider>
 		<Text tag="span" class="copyright">
 			v{fullVersion} &copy; {currentYear}
@@ -45,7 +48,7 @@
 				onclick={handleHallOfTheGodsClick}>
 				Hall of the Gods Inc.
 			</Link>
-			Maintained by XP @
+			{i18n.t('ui.footer.maintained_by')}
 			<Link
 				href="https://mycompassconsulting.com"
 				target="_blank"
@@ -61,7 +64,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					style="color: inherit; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.3); text-underline-offset: 2px;">
-					Original core.
+					{i18n.t('ui.footer.original_core')}
 				</Link>
 			</Text>
 		</Text>

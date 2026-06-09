@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { type PlannerSettings, getYearEmoji, stripEmojis } from '$lib';
 	import { LazyPage } from '$atoms';
+	import { useI18n } from '$lib/state/i18n.svelte';
+
+	const i18n = useI18n();
 
 	let { settings = {} as PlannerSettings, isPreparingPrint = false } = $props();
 </script>
@@ -14,8 +17,8 @@
 	<header>
 		<h1 style:font-size="5rem" style:font-weight="bold">
 			{settings.emojis.disable
-				? stripEmojis(settings.dashboardPage.title || 'Dashboard')
-				: settings.dashboardPage.title || 'Dashboard'}
+				? stripEmojis(settings.dashboardPage.title || i18n.t('ui.dashboard.default_title'))
+				: settings.dashboardPage.title || i18n.t('ui.dashboard.default_title')}
 		</h1>
 		{#if !settings.customCollections.disable && settings.collections.length > 0}
 			<div class="links collections-grid">

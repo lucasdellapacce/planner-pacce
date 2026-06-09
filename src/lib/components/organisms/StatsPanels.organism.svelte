@@ -2,6 +2,9 @@
 	import HomeIcon from '~icons/fa/home';
 	import { stripEmojis, type PlannerSettings } from '$lib';
 	import { PAGE_TEMPLATES as pageTemplates } from '$lib/data/templates';
+	import { useI18n } from '$lib/state/i18n.svelte';
+
+	const i18n = useI18n();
 
 	interface Props {
 		settings: PlannerSettings;
@@ -52,59 +55,59 @@
 	<h3>
 		<a
 			href="/"
-			title="Back to Splash Page"
+			title={i18n.t('ui.stats_panel.back_to_home')}
 			style="display: inline-flex; align-items: center; justify-content: center;">
 			<HomeIcon style="font-size: 0.65em; margin-bottom: 2px;" />
 		</a>
 		<span style="opacity: 0.5;">›</span>
-		PLANNER
+		{i18n.t('ui.stats_panel.planner')}
 	</h3>
 	<ul>
 		{#if pageStats.cover > 0}
 			<li>
-				<a href="#cover">Cover</a>
+				<a href="#cover">{i18n.t('ui.stats_panel.cover')}</a>
 				<span>{pageStats.cover.toLocaleString()}</span>
 			</li>
 		{/if}
 		{#if pageStats.dashboard > 0}
 			<li>
-				<a href="#dashboard">Dashboard</a>
+				<a href="#dashboard">{i18n.t('ui.stats_panel.dashboard')}</a>
 				<span>{pageStats.dashboard.toLocaleString()}</span>
 			</li>
 		{/if}
 		{#if pageStats.year > 0}
 			<li>
-				<a href="#{settings.years[0]?.id}">Yearly Views</a>
+				<a href="#{settings.years[0]?.id}">{i18n.t('ui.stats_panel.yearly_views')}</a>
 				<span>{pageStats.year.toLocaleString()}</span>
 			</li>
 		{/if}
 		{#if pageStats.quarter > 0}
 			<li>
-				<a href="#{settings.quarters[0]?.id}">Quarterly Views</a>
+				<a href="#{settings.quarters[0]?.id}">{i18n.t('ui.stats_panel.quarterly_views')}</a>
 				<span>{pageStats.quarter.toLocaleString()}</span>
 			</li>
 		{/if}
 		{#if pageStats.month > 0}
 			<li>
-				<a href="#{settings.months[0]?.id}">Monthly Views</a>
+				<a href="#{settings.months[0]?.id}">{i18n.t('ui.stats_panel.monthly_views')}</a>
 				<span>{pageStats.month.toLocaleString()}</span>
 			</li>
 		{/if}
 		{#if pageStats.week > 0}
 			<li>
-				<a href="#{settings.weeks[0]?.id}">Weekly Views</a>
+				<a href="#{settings.weeks[0]?.id}">{i18n.t('ui.stats_panel.weekly_views')}</a>
 				<span>{pageStats.week.toLocaleString()}</span>
 			</li>
 		{/if}
 		{#if pageStats.day > 0}
 			<li>
-				<a href="#{settings.days[0]?.id}">Daily Views</a>
+				<a href="#{settings.days[0]?.id}">{i18n.t('ui.stats_panel.daily_views')}</a>
 				<span>{pageStats.day.toLocaleString()}</span>
 			</li>
 		{/if}
 		{#if pageStats.collections > 0}
 			<li>
-				<a href="#{settings.collections[0]?.id}">Collections</a>
+				<a href="#{settings.collections[0]?.id}">{i18n.t('ui.stats_panel.collections')}</a>
 				<span>{pageStats.collections.toLocaleString()}</span>
 			</li>
 			{#if settings.collections?.length > 0}
@@ -130,38 +133,38 @@
 	</ul>
 	<hr />
 	<strong style="color: white;">
-		<span>Total Pages</span>
+		<span>{i18n.t('ui.stats_panel.total_pages')}</span>
 		<span>{pageStats.total.toLocaleString()}</span>
 	</strong>
 </div>
 
 <div class="global-stats-panel no-print">
-	<h3>COMMUNITY</h3>
+	<h3>{i18n.t('ui.stats_panel.community')}</h3>
 	<ul>
 		<li>
-			<span>Visitors</span>
+			<span>{i18n.t('ui.stats_panel.visitors')}</span>
 			<span>{Math.floor(visits).toLocaleString()}</span>
 		</li>
 		<li>
-			<span>Templates</span>
+			<span>{i18n.t('ui.stats_panel.templates')}</span>
 			<span>{pageTemplates.length.toLocaleString()}</span>
 		</li>
 		<li>
-			<span>Planners</span>
+			<span>{i18n.t('ui.stats_panel.planners')}</span>
 			<span>{Math.floor(created).toLocaleString()}</span>
 		</li>
 		<li>
-			<span>Prints</span>
+			<span>{i18n.t('ui.stats_panel.prints')}</span>
 			<span>{Math.floor(printed).toLocaleString()}</span>
 		</li>
 		<li>
-			<span>Shares</span>
+			<span>{i18n.t('ui.stats_panel.shares')}</span>
 			<span>{Math.floor(shared).toLocaleString()}</span>
 		</li>
 	</ul>
 	<hr />
 	<strong style="color: white;">
-		<span>Total Time</span>
+		<span>{i18n.t('ui.stats_panel.total_time')}</span>
 		<span>{formatTime(timeCreatingSeconds)}</span>
 	</strong>
 </div>

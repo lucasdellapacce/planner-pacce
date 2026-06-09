@@ -9,6 +9,9 @@
 	import CarouselIcon from '~icons/fa/files-o';
 	import { ThemePickerModal } from '$organisms';
 	import { ColorPicker } from '$atoms';
+	import { useI18n } from '$lib/state/i18n.svelte';
+
+	const i18n = useI18n();
 
 	type FontEntry = (typeof fontsList)[number];
 	type ThemeEntry = (typeof THEMES)[number];
@@ -110,10 +113,10 @@
 				type="checkbox"
 				bind:checked={enableHighResolution}
 				id="enableHighResolution" />
-			<label for="enableHighResolution">Print in high resolution (bigger file)</label>
+			<label for="enableHighResolution">{i18n.t('ui.design_panel.high_resolution')}</label>
 		</div>
 		<fieldset>
-			<label for="visualTheme">Theme</label>
+			<label for="visualTheme">{i18n.t('ui.design_panel.theme_label')}</label>
 			<button
 				type="button"
 				class="theme-picker-button"
@@ -131,7 +134,7 @@
 							: 'Click to browse themes'}
 					</small>
 				{:else}
-					<span class="theme-current-preview">Pick a Theme</span>
+					<span class="theme-current-preview">{i18n.t('ui.design_panel.pick_a_theme')}</span>
 				{/if}
 			</button>
 		</fieldset>
@@ -145,7 +148,7 @@
 		{/if}
 
 		<details class="preview-details" ontoggle={handleDetailsToggle}>
-			<summary><h3>Planner Preview</h3></summary>
+			<summary><h3>{i18n.t('ui.design_panel.planner_preview')}</h3></summary>
 			<div class="layout-toggle">
 				<button
 					type="button"
@@ -172,9 +175,9 @@
 		</details>
 
 		<details ontoggle={handleDetailsToggle}>
-			<summary><h3>Font & Colors</h3></summary>
+			<summary><h3>{i18n.t('ui.design_panel.font_colors')}</h3></summary>
 			<fieldset>
-				<label for="designFont">Font (Body)</label>
+				<label for="designFont">{i18n.t('ui.design_panel.font_body')}</label>
 				<div style="display: flex; gap: 0.5rem; align-items: center;">
 					<select id="designFont" bind:value={settings.design.font} style="flex: 1;">
 						{#each fontsList as font (font.name)}
@@ -185,7 +188,7 @@
 				</div>
 			</fieldset>
 			<fieldset>
-				<label for="designFontDisplay">Display/Header Font</label>
+				<label for="designFontDisplay">{i18n.t('ui.design_panel.font_display')}</label>
 				<div style="display: flex; gap: 0.5rem; align-items: center;">
 					<select
 						id="designFontDisplay"
@@ -202,7 +205,7 @@
 				</div>
 			</fieldset>
 			<fieldset>
-				<label for="coverPageFont">Cover Page Font</label>
+				<label for="coverPageFont">{i18n.t('ui.design_panel.font_cover')}</label>
 				<div style="display: flex; gap: 0.5rem; align-items: center;">
 					<select
 						id="coverPageFont"
@@ -219,7 +222,7 @@
 				</div>
 			</fieldset>
 			<fieldset>
-				<label for="topNavFont">Topbar Font</label>
+				<label for="topNavFont">{i18n.t('ui.design_panel.font_topbar')}</label>
 				<div style="display: flex; gap: 0.5rem; align-items: center;">
 					<select id="topNavFont" bind:value={settings.topNav.font} style="flex: 1;">
 						{#each fonts as font (font.name)}
@@ -233,7 +236,7 @@
 				</div>
 			</fieldset>
 			<fieldset>
-				<label for="sideNavFont">Sidebar Font</label>
+				<label for="sideNavFont">{i18n.t('ui.design_panel.font_sidebar')}</label>
 				<div style="display: flex; gap: 0.5rem; align-items: center;">
 					<select id="sideNavFont" bind:value={settings.sideNav.font} style="flex: 1;">
 						{#each fonts as font (font.name)}
@@ -247,24 +250,24 @@
 				</div>
 			</fieldset>
 			<fieldset>
-				<label for="colorBg">Background Color (PDF)</label>
+				<label for="colorBg">{i18n.t('ui.design_panel.color_bg')}</label>
 				<ColorPicker id="colorBg" bind:value={settings.design.colorBg} />
 			</fieldset>
 			<fieldset>
-				<label for="colorNavBg">Sidebar Background</label>
+				<label for="colorNavBg">{i18n.t('ui.design_panel.color_nav_bg')}</label>
 				<ColorPicker id="colorNavBg" bind:value={settings.design.colorNavBg} />
 			</fieldset>
 			<fieldset>
-				<label for="linesColor">Lines/Border Color</label>
+				<label for="linesColor">{i18n.t('ui.design_panel.color_lines')}</label>
 				<ColorPicker id="linesColor" bind:value={settings.design.colorLines} />
 			</fieldset>
 			<fieldset>
-				<label for="dotsColor">Dots Color</label>
+				<label for="dotsColor">{i18n.t('ui.design_panel.color_dots')}</label>
 				<ColorPicker id="dotsColor" bind:value={settings.design.colorDots} />
 			</fieldset>
 		</details>
 		<details ontoggle={handleDetailsToggle}>
-			<summary><h3>Safe Margins</h3></summary>
+			<summary><h3>{i18n.t('ui.design_panel.safe_margins')}</h3></summary>
 			<p style="font-size: 0.85em; color: var(--text-low); margin: 0 0 1rem;">
 				Adjust margins (in inches) to prevent content from hiding under your device's
 				toolbar.
@@ -346,7 +349,7 @@
 						}}
 						onclick={(e) => e.stopPropagation()}
 						style="margin: 0; width: 1.25rem; height: 1.25rem; cursor: pointer;" />
-					<h3 style="margin: 0;">Emojis</h3>
+					<h3 style="margin: 0;">{i18n.t('ui.design_panel.emojis')}</h3>
 				</div>
 			</summary>
 			{#if !settings.emojis.disable}
@@ -362,7 +365,7 @@
 							style="width: 100%;" />
 					</fieldset>
 					<fieldset style="margin: 0; padding: 0.25rem;">
-						<label for="emoji-jan">Jan</label>
+						<label for="emoji-jan">{i18n.t('ui.design_panel.months_short.jan')}</label>
 						<input
 							type="text"
 							id="emoji-jan"
@@ -370,7 +373,7 @@
 							style="width: 100%;" />
 					</fieldset>
 					<fieldset style="margin: 0; padding: 0.25rem;">
-						<label for="emoji-feb">Feb</label>
+						<label for="emoji-feb">{i18n.t('ui.design_panel.months_short.feb')}</label>
 						<input
 							type="text"
 							id="emoji-feb"
@@ -378,7 +381,7 @@
 							style="width: 100%;" />
 					</fieldset>
 					<fieldset style="margin: 0; padding: 0.25rem;">
-						<label for="emoji-mar">Mar</label>
+						<label for="emoji-mar">{i18n.t('ui.design_panel.months_short.mar')}</label>
 						<input
 							type="text"
 							id="emoji-mar"
@@ -396,7 +399,7 @@
 							style="width: 100%;" />
 					</fieldset>
 					<fieldset style="margin: 0; padding: 0.25rem;">
-						<label for="emoji-apr">Apr</label>
+						<label for="emoji-apr">{i18n.t('ui.design_panel.months_short.apr')}</label>
 						<input
 							type="text"
 							id="emoji-apr"
@@ -404,7 +407,7 @@
 							style="width: 100%;" />
 					</fieldset>
 					<fieldset style="margin: 0; padding: 0.25rem;">
-						<label for="emoji-may">May</label>
+						<label for="emoji-may">{i18n.t('ui.design_panel.months_short.may')}</label>
 						<input
 							type="text"
 							id="emoji-may"
@@ -412,7 +415,7 @@
 							style="width: 100%;" />
 					</fieldset>
 					<fieldset style="margin: 0; padding: 0.25rem;">
-						<label for="emoji-jun">Jun</label>
+						<label for="emoji-jun">{i18n.t('ui.design_panel.months_short.jun')}</label>
 						<input
 							type="text"
 							id="emoji-jun"
@@ -430,7 +433,7 @@
 							style="width: 100%;" />
 					</fieldset>
 					<fieldset style="margin: 0; padding: 0.25rem;">
-						<label for="emoji-jul">Jul</label>
+						<label for="emoji-jul">{i18n.t('ui.design_panel.months_short.jul')}</label>
 						<input
 							type="text"
 							id="emoji-jul"
@@ -438,7 +441,7 @@
 							style="width: 100%;" />
 					</fieldset>
 					<fieldset style="margin: 0; padding: 0.25rem;">
-						<label for="emoji-aug">Aug</label>
+						<label for="emoji-aug">{i18n.t('ui.design_panel.months_short.aug')}</label>
 						<input
 							type="text"
 							id="emoji-aug"
@@ -446,7 +449,7 @@
 							style="width: 100%;" />
 					</fieldset>
 					<fieldset style="margin: 0; padding: 0.25rem;">
-						<label for="emoji-sep">Sep</label>
+						<label for="emoji-sep">{i18n.t('ui.design_panel.months_short.sep')}</label>
 						<input
 							type="text"
 							id="emoji-sep"
@@ -464,7 +467,7 @@
 							style="width: 100%;" />
 					</fieldset>
 					<fieldset style="margin: 0; padding: 0.25rem;">
-						<label for="emoji-oct">Oct</label>
+						<label for="emoji-oct">{i18n.t('ui.design_panel.months_short.oct')}</label>
 						<input
 							type="text"
 							id="emoji-oct"
@@ -472,7 +475,7 @@
 							style="width: 100%;" />
 					</fieldset>
 					<fieldset style="margin: 0; padding: 0.25rem;">
-						<label for="emoji-nov">Nov</label>
+						<label for="emoji-nov">{i18n.t('ui.design_panel.months_short.nov')}</label>
 						<input
 							type="text"
 							id="emoji-nov"
@@ -480,7 +483,7 @@
 							style="width: 100%;" />
 					</fieldset>
 					<fieldset style="margin: 0; padding: 0.25rem;">
-						<label for="emoji-dec">Dec</label>
+						<label for="emoji-dec">{i18n.t('ui.design_panel.months_short.dec')}</label>
 						<input
 							type="text"
 							id="emoji-dec"
@@ -509,32 +512,32 @@
 						}}
 						onclick={(e) => e.stopPropagation()}
 						style="margin: 0; width: 1.25rem; height: 1.25rem; cursor: pointer;" />
-					<h3 style="margin: 0;">Cover Page</h3>
+					<h3 style="margin: 0;">{i18n.t('ui.design_panel.cover_page')}</h3>
 				</div>
 			</summary>
 			{#if !settings.coverPage.disable}
 				<fieldset>
-					<label for="coverPageBackgroundStyle">Background Style</label>
+					<label for="coverPageBackgroundStyle">{i18n.t('ui.design_panel.bg_style')}</label>
 					<select
 						id="coverPageBackgroundStyle"
 						bind:value={settings.coverPage.backgroundStyle}>
-						<option value="none">None</option>
-						<option value="mesh">Mesh Gradient</option>
-						<option value="waves">Topographic Waves</option>
-						<option value="bauhaus">Bauhaus Art</option>
-						<option value="halftone">Kinetic Typography</option>
-						<option value="glassmorphism">Glassmorphism</option>
-						<option value="flower-of-life">Flower of Life</option>
-						<option value="emoji">Emoji Pattern</option>
-						<option value="fractals">Fractals</option>
-						<option value="platonic">Platonic Solids</option>
-						<option value="pokerface">Pokerface</option>
-						<option value="magician">Magician</option>
+						<option value="none">{i18n.t('ui.design_panel.bg_none')}</option>
+						<option value="mesh">{i18n.t('ui.design_panel.bg_mesh')}</option>
+						<option value="waves">{i18n.t('ui.design_panel.bg_waves')}</option>
+						<option value="bauhaus">{i18n.t('ui.design_panel.bg_bauhaus')}</option>
+						<option value="halftone">{i18n.t('ui.design_panel.bg_halftone')}</option>
+						<option value="glassmorphism">{i18n.t('ui.design_panel.bg_glassmorphism')}</option>
+						<option value="flower-of-life">{i18n.t('ui.design_panel.bg_flower')}</option>
+						<option value="emoji">{i18n.t('ui.design_panel.bg_emoji')}</option>
+						<option value="fractals">{i18n.t('ui.design_panel.bg_fractals')}</option>
+						<option value="platonic">{i18n.t('ui.design_panel.bg_platonic')}</option>
+						<option value="pokerface">{i18n.t('ui.design_panel.bg_pokerface')}</option>
+						<option value="magician">{i18n.t('ui.design_panel.bg_magician')}</option>
 					</select>
 				</fieldset>
 				{#if settings.coverPage.backgroundStyle !== 'none'}
 					<fieldset>
-						<label for="coverPageBackgroundSeed">Seed (Deterministic Layout)</label>
+						<label for="coverPageBackgroundSeed">{i18n.t('ui.design_panel.bg_seed')}</label>
 						<div style="display: flex; gap: 0.5rem; align-items: center;">
 							<input
 								type="number"
@@ -565,7 +568,7 @@
 							bind:value={settings.coverPage.backgroundComplexity} />
 					</fieldset>
 					<fieldset>
-						<span class="label-text">Color Palette</span>
+						<span class="label-text">{i18n.t('ui.design_panel.color_palette')}</span>
 						<div style="display: flex; gap: 0.5rem;">
 							<input type="color" bind:value={settings.coverPage.backgroundPalette[0]} />
 							<input type="color" bind:value={settings.coverPage.backgroundPalette[1]} />
@@ -574,7 +577,7 @@
 					</fieldset>
 				{/if}
 				<fieldset>
-					<label for="coverPageTitle">Cover Page Title</label>
+					<label for="coverPageTitle">{i18n.t('ui.design_panel.cover_title')}</label>
 					<input
 						type="text"
 						placeholder="Cover Page Title"
@@ -582,7 +585,7 @@
 						bind:value={settings.coverPage.title} />
 				</fieldset>
 				<fieldset>
-					<label for="name">Contact Name</label>
+					<label for="name">{i18n.t('ui.design_panel.contact_name')}</label>
 					<input
 						type="text"
 						placeholder="Name"
@@ -590,7 +593,7 @@
 						bind:value={settings.coverPage.name} />
 				</fieldset>
 				<fieldset>
-					<label for="email">Contact Email/Phone</label>
+					<label for="email">{i18n.t('ui.design_panel.contact_email')}</label>
 					<input
 						type="text"
 						placeholder="Contact Email/Phone"
@@ -598,7 +601,7 @@
 						bind:value={settings.coverPage.email} />
 				</fieldset>
 				<fieldset>
-					<label for="coverPageFont">Font</label>
+					<label for="coverPageFont">{i18n.t('ui.design_panel.font_label')}</label>
 					<select id="coverPageFont" bind:value={settings.coverPage.font}>
 						{#each fonts as font (font.name)}
 							<option value={font.name}>{font.name}</option>
@@ -610,14 +613,14 @@
 						type="checkbox"
 						bind:checked={settings.coverPage.showCollectionLinks}
 						id="coverPageShowCollectionLinks" />
-					<label for="coverPageShowCollectionLinks">Show Links to Collections</label>
+					<label for="coverPageShowCollectionLinks">{i18n.t('ui.design_panel.show_collection_links')}</label>
 				</div>
 				<div class="checkbox">
 					<input
 						type="checkbox"
 						bind:checked={settings.coverPage.darkBackground}
 						id="coverPageDarkBackground" />
-					<label for="coverPageDarkBackground">Dark Background</label>
+					<label for="coverPageDarkBackground">{i18n.t('ui.design_panel.dark_background')}</label>
 				</div>
 			{/if}
 		</details>
@@ -640,12 +643,12 @@
 						}}
 						onclick={(e) => e.stopPropagation()}
 						style="margin: 0; width: 1.25rem; height: 1.25rem; cursor: pointer;" />
-					<h3 style="margin: 0;">Dashboard Page</h3>
+					<h3 style="margin: 0;">{i18n.t('ui.design_panel.dashboard_page')}</h3>
 				</div>
 			</summary>
 			{#if !settings.dashboardPage.disable}
 				<div class="row">
-					<label for="dashboardPage-title">Title</label>
+					<label for="dashboardPage-title">{i18n.t('ui.design_panel.dashboard_title')}</label>
 					<input
 						type="text"
 						id="dashboardPage-title"
@@ -695,7 +698,7 @@
 						}}
 						onclick={(e) => e.stopPropagation()}
 						style="margin: 0; width: 1.25rem; height: 1.25rem; cursor: pointer;" />
-					<h3 style="margin: 0;">Topbar Navigation</h3>
+					<h3 style="margin: 0;">{i18n.t('ui.design_panel.topbar_nav')}</h3>
 				</div>
 			</summary>
 			{#if !settings.topNav.disable}
@@ -704,10 +707,10 @@
 						type="checkbox"
 						bind:checked={settings.topNav.showCollectionLinks}
 						id="topNavShowCollectionLinks" />
-					<label for="topNavShowCollectionLinks">Show Links to Collections</label>
+					<label for="topNavShowCollectionLinks">{i18n.t('ui.design_panel.show_collection_links')}</label>
 				</div>
 				<fieldset>
-					<label for="topNavFont">Font</label>
+					<label for="topNavFont">{i18n.t('ui.design_panel.font_label')}</label>
 					<select id="topNavFont" bind:value={settings.topNav.font}>
 						{#each fonts as font (font.name)}
 							<option value={font.name}>{font.name}</option>
@@ -735,7 +738,7 @@
 						}}
 						onclick={(e) => e.stopPropagation()}
 						style="margin: 0; width: 1.25rem; height: 1.25rem; cursor: pointer;" />
-					<h3 style="margin: 0;">Sidebar Navigation</h3>
+					<h3 style="margin: 0;">{i18n.t('ui.design_panel.sidebar_nav')}</h3>
 				</div>
 			</summary>
 			{#if !settings.sideNav.disable}
@@ -744,17 +747,17 @@
 						type="checkbox"
 						bind:checked={settings.sideNav.leftSide}
 						id="sideNavLeftSide" />
-					<label for="sideNavLeftSide">Show Sidebar on Left</label>
+					<label for="sideNavLeftSide">{i18n.t('ui.design_panel.show_sidebar_left')}</label>
 				</div>
 				<div class="checkbox">
 					<input
 						type="checkbox"
 						bind:checked={settings.sideNav.showCollectionLinks}
 						id="sideNavShowCollectionLinks" />
-					<label for="sideNavShowCollectionLinks">Show Links to Collections</label>
+					<label for="sideNavShowCollectionLinks">{i18n.t('ui.design_panel.show_collection_links')}</label>
 				</div>
 				<fieldset>
-					<label for="sideNavFont">Font</label>
+					<label for="sideNavFont">{i18n.t('ui.design_panel.font_label')}</label>
 					<select id="sideNavFont" bind:value={settings.sideNav.font}>
 						{#each fonts as font (font.name)}
 							<option value={font.name}>{font.name}</option>
