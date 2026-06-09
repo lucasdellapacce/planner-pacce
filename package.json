@@ -1,5 +1,6 @@
 {
-	"name": "xopherdeep/remarkably-organized",
+	"name": "remarkably-organized",
+	"private": true,
 	"version": "26.6.8.555",
 	"scripts": {
 		"dev": "vite dev",
@@ -39,7 +40,7 @@
 		"typescript": "^5.9.3",
 		"vite": "^6.4.3",
 		"vite-plugin-pwa": "^1.3.0",
-		"vitest": "^4.1.8"
+		"wrangler": "^3.28.4"
 	},
 	"type": "module",
 	"dependencies": {

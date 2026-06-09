@@ -16,13 +16,13 @@ export default defineConfig({
 		SvelteKitPWA({
 			registerType: 'autoUpdate',
 			workbox: {
-				globPatterns: ['**/*.{js,css,html,png,jpg,svg,webmanifest}'],
-				globIgnores: ['**/prerendered/**'],
+				globPatterns: ['**/*.{js,css,html,png,jpg,jpeg,svg,webmanifest,json,woff,woff2}'],
+				globIgnores: ['server/**', 'server/sw.js', 'server/workbox-*.js'],
 			},
 			manifest: {
-				name: 'Remarkably Organized Planner Wizard',
-				short_name: 'Wizard',
-				description: 'Personal organization and planner generator for e-ink tablets.',
+				name: 'Remarkably Organized',
+				short_name: 'Remarkably',
+				description: 'Gerador de planners em PDF e organização pessoal.',
 				theme_color: '#000000',
 				background_color: '#000000',
 				display: 'standalone',
