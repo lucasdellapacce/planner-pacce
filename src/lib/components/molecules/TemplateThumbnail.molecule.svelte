@@ -197,7 +197,7 @@
 		{/if}
 	</div>
 	<div class="thumbnail-footer">
-		<span class="template-name">{templateName || 'Select Template'}</span>
+		<span class="template-name">{i18n.tTemplate(templateValue, templateName) || i18n.t('ui.select_template')}</span>
 		{#if children}
 			{@render children()}
 		{/if}

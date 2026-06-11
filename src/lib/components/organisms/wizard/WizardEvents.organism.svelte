@@ -72,14 +72,14 @@
 <Box class="step-content events-step" transition="fade" inDuration={150}>
 	<Text tag="h3" class="welcome-headline-gradient">{i18n.t('wizard.events.title')}</Text>
 	<Text tag="p">
-		Automatically populate your spreads with real-world events via public ICS links.
+		{i18n.t('wizard.events.desc')}
 	</Text>
 
 	<Box class="events-config">
 		<Box class="add-event-row">
 			<Input
 				type="text"
-				placeholder="Name (e.g. Holidays)"
+				placeholder={i18n.t('wizard.events.name_placeholder')}
 				bind:value={newCalendarName} />
 			<Input
 				type="url"

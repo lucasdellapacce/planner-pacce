@@ -59,7 +59,9 @@
 			"desc": "Expanda seu planner com cadernos modulares e seções customizadas.",
 			"add": "+ Adicionar Coleção",
 			"cancel": "Cancelar",
-			"btn_add": "Adicionar"
+			"btn_add": "Adicionar",
+			"custom_collections": "Coleções Customizadas",
+			"pages_per_index": "Páginas por Link no Índice"
 		},
 		"cover": {
 			"labels": {
@@ -122,7 +124,9 @@
 			"title": "Sincronizar Eventos",
 			"add": "Adicionar",
 			"sync_label": "Sincronizar Calendário",
-			"delete_label": "Excluir Calendário"
+			"delete_label": "Excluir Calendário",
+			"desc": "Preencha automaticamente suas páginas com eventos reais usando links ICS públicos.",
+			"name_placeholder": "Nome (ex. Feriados)"
 		},
 		"export": {
 			"custom_preset_desc": "Preset customizado criado por você."
@@ -138,6 +142,12 @@
 			"end_date": "Data de Fim",
 			"enable": "Habilitar Páginas",
 			"nav_layout": "Navegação e Layout"
+		},
+		"indexes": {
+			"title": "Índices",
+			"configure": "Configure as páginas de índice para suas coleções.",
+			"pages": "Páginas de índice",
+			"pages_per_item": "Páginas por item"
 		}
 	},
 	"categories": {
@@ -689,7 +699,14 @@
 		},
 		"dashboard": {
 			"default_title": "Painel"
-		}
+		},
+		"calendar_views": "Visualizações de Calendário",
+		"yearly": "Anual",
+		"quarterly": "Trimestral",
+		"monthly": "Mensal",
+		"weekly": "Semanal",
+		"daily": "Diário",
+		"select_template": "Selecionar Template"
 	},
 	"landing": {
 		"meta_title": "Remarkably Organized — Criador de Planner Personalizado para reMarkable & Tablets E-Ink",
@@ -833,6 +850,15 @@
 			"day": "Check do dia",
 			"feeding": "Check de alimentação",
 			"complete": "Completar"
-		}
+		},
+		"calendar-year": "Calendário Anual",
+		"overview-quarter": "Visão Trimestral",
+		"calendar-month": "Calendário Mensal",
+		"agenda-week": "Agenda Semanal",
+		"agenda-day": "Agenda Diária",
+		"notes": "Anotações",
+		"lined-large": "Anotações - Pautado - Grande",
+		"collection-index": "Índice de Coleção",
+		"blank": "Página em Branco"
 	}
 }

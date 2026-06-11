@@ -153,7 +153,7 @@
 							<Text
 								tag="label"
 								style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;">
-								Pages per Index Link
+								{i18n.t('wizard.collections.pages_per_index')}
 								<Input
 									type="number"
 									min="1"

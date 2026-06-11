@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { Box, Text, Input, Button } from '$atoms';
 	import { fade } from 'svelte/transition';
 	import { stripEmojis } from '$lib/helpers/string.helper';
@@ -17,7 +20,7 @@
 		<Text tag="h3" class="welcome-headline-gradient">
 			Indexes
 			<small style="margin-left: 1rem;">
-				Configure index pages for your collections.
+				{i18n.t('wizard.indexes.configure')}
 			</small>
 		</Text>
 	</Box>

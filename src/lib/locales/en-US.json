@@ -59,7 +59,9 @@
 			"desc": "Extend your planner with modular notebooks and custom sections.",
 			"add": "+ Add Collection",
 			"cancel": "Cancel",
-			"btn_add": "Add"
+			"btn_add": "Add",
+			"custom_collections": "Custom Collections",
+			"pages_per_index": "Pages per Index Link"
 		},
 		"cover": {
 			"labels": {
@@ -122,7 +124,9 @@
 			"title": "Sync Calendar Events",
 			"add": "Add",
 			"sync_label": "Sync Calendar",
-			"delete_label": "Delete Calendar"
+			"delete_label": "Delete Calendar",
+			"desc": "Automatically populate your spreads with real-world events via public ICS links.",
+			"name_placeholder": "Name (e.g. Holidays)"
 		},
 		"export": {
 			"custom_preset_desc": "Custom preset created by you."
@@ -138,6 +142,12 @@
 			"end_date": "End Date",
 			"enable": "Enable Spreads",
 			"nav_layout": "Navigation & Layout"
+		},
+		"indexes": {
+			"title": "Indexes",
+			"configure": "Configure index pages for your collections.",
+			"pages": "Index pages",
+			"pages_per_item": "Pages per item"
 		}
 	},
 	"categories": {
@@ -497,7 +507,14 @@
 		},
 		"dashboard": {
 			"default_title": "Dashboard"
-		}
+		},
+		"calendar_views": "Calendar Views",
+		"yearly": "Yearly",
+		"quarterly": "Quarterly",
+		"monthly": "Monthly",
+		"weekly": "Weekly",
+		"daily": "Daily",
+		"select_template": "Select Template"
 	},
 	"landing": {
 		"meta_title": "Remarkably Organized — Custom Planner Builder for reMarkable & E-Ink Tablets",
@@ -641,6 +658,15 @@
 			"day": "Day check",
 			"feeding": "Feeding schedule check",
 			"complete": "Complete"
-		}
+		},
+		"calendar-year": "Year Calendar",
+		"overview-quarter": "Quarterly Overview",
+		"calendar-month": "Monthly Calendar",
+		"agenda-week": "Weekly Agenda",
+		"agenda-day": "Daily Agenda",
+		"notes": "Notes",
+		"lined-large": "Notes - Lined - Large",
+		"collection-index": "Collection Index",
+		"blank": "Blank Page"
 	}
 }
