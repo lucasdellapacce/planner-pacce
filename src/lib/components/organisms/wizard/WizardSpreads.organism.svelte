@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { Box, Text, Input, Button, Toggle } from '$atoms';
 	import { InteractivePlannerPreview } from '$molecules';
 	import { fade } from 'svelte/transition';
@@ -25,13 +28,13 @@
 <Box class="step-content spreads-step" transition="fade" inDuration={150}>
 	<Box class="spreads-wizard-layout">
 		<Box class="spreads-controls">
-			<Text tag="h3" class="welcome-headline-gradient">Spreads</Text>
-			<Text tag="p">Generate highly structured, interlinked chronological spreads.</Text>
+			<Text tag="h3" class="welcome-headline-gradient">{i18n.t('wizard.spreads.title')}</Text>
+			<Text tag="p">{i18n.t('wizard.spreads.desc')}</Text>
 
-			<Text tag="h4" style="margin-top: 1.5rem;">Date Range</Text>
+			<Text tag="h4" style="margin-top: 1.5rem;">{i18n.t('wizard.spreads.date_range')}</Text>
 			<Box class="date-row">
 				<Box class="date-field">
-					<Text tag="label" for="guide-date-start">Start Date</Text>
+					<Text tag="label" for="guide-date-start">{i18n.t('wizard.spreads.start_date')}</Text>
 					<Input
 						type="date"
 						id="guide-date-start"
@@ -40,7 +43,7 @@
 						onchange={(e: any) => updateDate('start', e)} />
 				</Box>
 				<Box class="date-field">
-					<Text tag="label" for="guide-date-end">End Date</Text>
+					<Text tag="label" for="guide-date-end">{i18n.t('wizard.spreads.end_date')}</Text>
 					<Input
 						type="date"
 						id="guide-date-end"
@@ -50,7 +53,7 @@
 				</Box>
 			</Box>
 
-			<!-- <Text tag="h4">Enable Spreads</Text> -->
+			<!-- <Text tag="h4">{i18n.t('wizard.spreads.enable')}</Text> -->
 			<Box class="toggles-grid">
 				<Text tag="label" class="toggle-label">
 					<Toggle
@@ -85,7 +88,7 @@
 				</Text>
 			</Box>
 
-			<Text tag="h4" style="margin-top: 1.5rem;">Navigation & Layout</Text>
+			<Text tag="h4" style="margin-top: 1.5rem;">{i18n.t('wizard.spreads.nav_layout')}</Text>
 			<Box class="toggles-grid">
 				<Text tag="label" class="toggle-label">
 					<Toggle

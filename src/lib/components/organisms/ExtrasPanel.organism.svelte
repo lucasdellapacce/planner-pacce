@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import type { PlannerSettings, PageTemplate } from '$lib';
 	import CaretUpIcon from '~icons/fa/caret-up';
 	import CaretDownIcon from '~icons/fa/caret-down';
@@ -79,7 +82,7 @@
 
 	const addCollection = () => {
 		settings.collections.push({
-			name: 'Notes',
+			name: i18n.t('panels.extras.notes'),
 			id: `${Date.now()}`,
 			total: 20,
 			type: 'blank',
@@ -188,7 +191,7 @@
 			{#if !settings.customCollections.disable}
 				<div
 					style="background: var(--surface-2); padding: 0.75rem 1rem; border-radius: var(--radius-2); font-size: 0.85em; margin-bottom: 1rem; border-left: 3px solid var(--action); color: var(--text-low);">
-					<strong>Tip:</strong>
+					<strong>{i18n.t('panels.extras.tip')}</strong>
 					Start a collection name with an emoji to display it in the top right corner of its
 					pages.
 				</div>
@@ -203,7 +206,7 @@
 										type="button"
 										disabled={i === 0}
 										onclick={() => moveCollectionUp(i)}
-										title="Move Up"
+										title={i18n.t('panels.extras.move_up')}
 										style="padding: 0.25rem 0.5rem; display: flex; align-items: center; justify-content: center;">
 										<CaretUpIcon />
 									</button>
@@ -211,15 +214,15 @@
 										type="button"
 										disabled={i === settings.collections.length - 1}
 										onclick={() => moveCollectionDown(i)}
-										title="Move Down"
+										title={i18n.t('panels.extras.move_down')}
 										style="padding: 0.25rem 0.5rem; display: flex; align-items: center; justify-content: center;">
 										<CaretDownIcon />
 									</button>
 								</div>
 							</div>
-							<input type="text" bind:value={collection.name} placeholder="Name" />
+							<input type="text" bind:value={collection.name} placeholder={i18n.t('panels.extras.name')} />
 							<fieldset style="margin-top: 1rem;">
-								<label for="collection-{collection.id}-type">Page Template</label>
+								<label for="collection-{collection.id}-type">{i18n.t('panels.extras.page_template')}</label>
 								<div style="display: flex; gap: 0.5rem; align-items: center;">
 									<select
 										id="collection-{collection.id}-type"
@@ -245,10 +248,10 @@
 							</fieldset>
 							{#if hasColumnsOption(collection.type)}
 								<fieldset style="margin-top: 1rem;">
-									<label for="collection-{collection.id}-columns">Columns</label>
+									<label for="collection-{collection.id}-columns">{i18n.t('panels.calendar.columns')}</label>
 									<input
 										type="number"
-										placeholder="Columns"
+										placeholder={i18n.t('panels.calendar.columns')}
 										id="collection-{collection.id}-columns"
 										min="1"
 										step="1"
@@ -257,7 +260,7 @@
 							{/if}
 							<fieldset style="margin-top: 1rem;">
 								<label for="collection-{collection.id}-indexColumns">
-									Index Columns <small>(Leave blank for auto)</small>
+									Index Columns <small>{i18n.t('panels.extras.index_columns_sub')}</small>
 								</label>
 								<input
 									type="number"
@@ -273,7 +276,7 @@
 								</label>
 								<input
 									type="number"
-									placeholder="Number of Index Pages"
+									placeholder={i18n.t('panels.extras.num_index_pages')}
 									id="collection-{collection.id}-numIndexPages"
 									min="0"
 									step="1"
@@ -285,7 +288,7 @@
 								</label>
 								<input
 									type="number"
-									placeholder="Number of Items Per Index Page"
+									placeholder={i18n.t('panels.extras.num_items_per_page')}
 									id="collection-{collection.id}-total"
 									min="1"
 									max="180"
@@ -298,7 +301,7 @@
 								</label>
 								<input
 									type="number"
-									placeholder="Number of Pages Per Item"
+									placeholder={i18n.t('panels.extras.num_pages_per_item')}
 									id="collection-{collection.id}-numPagesPerItem"
 									min="1"
 									step="1"
@@ -323,7 +326,7 @@
 			<summary>
 				<div
 					style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-					<h3 style="margin: 0;">Sync Calendar Events</h3>
+					<h3 style="margin: 0;">{i18n.t('wizard.events.title')}</h3>
 					<button
 						type="button"
 						class="help-btn"
@@ -346,7 +349,7 @@
 							</span>
 						{/if}
 						<fieldset style="margin-top: 0.5rem;">
-							<label for="calendar-{i}-name">Name</label>
+							<label for="calendar-{i}-name">{i18n.t('panels.extras.name')}</label>
 							<input
 								type="text"
 								id="calendar-{i}-name"
@@ -354,7 +357,7 @@
 								placeholder="Google Holidays, Personal..." />
 						</fieldset>
 						<fieldset style="margin-top: 0.5rem;">
-							<label for="calendar-{i}-url">ICS URL</label>
+							<label for="calendar-{i}-url">{i18n.t('panels.extras.url')}</label>
 							<input
 								type="text"
 								id="calendar-{i}-url"

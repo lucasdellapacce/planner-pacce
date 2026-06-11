@@ -24,13 +24,13 @@
 	let activeCategory = $state('essentials');
 
 	const categories = [
-		{ id: 'essentials', name: 'Essentials', icon: '✨' },
-		{ id: 'work', name: 'Work', icon: '💼' },
-		{ id: 'academic', name: 'Academic', icon: '🎓' },
-		{ id: 'lifestyle', name: 'Lifestyle', icon: '🏡' },
-		{ id: 'wellness', name: 'Wellness', icon: '🧘' },
-		{ id: 'hobbies', name: 'Hobbies', icon: '🎨' },
-		{ id: 'my-presets', name: 'My Presets', icon: '⭐️' },
+		{ id: 'essentials', name: i18n.t('routes.presets.essentials'), icon: '✨' },
+		{ id: 'work', name: i18n.t('routes.presets.work'), icon: '💼' },
+		{ id: 'academic', name: i18n.t('routes.presets.academic'), icon: '🎓' },
+		{ id: 'lifestyle', name: i18n.t('routes.presets.lifestyle'), icon: '🏡' },
+		{ id: 'wellness', name: i18n.t('routes.presets.wellness'), icon: '🧘' },
+		{ id: 'hobbies', name: i18n.t('routes.presets.hobbies'), icon: '🎨' },
+		{ id: 'my-presets', name: i18n.t('wizard.presets.my_presets'), icon: '⭐️' },
 	];
 
 	const checkCategoryMatch = (preset: Preset) => {

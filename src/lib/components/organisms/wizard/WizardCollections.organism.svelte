@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { Box, Text, Input, Button } from '$atoms';
 	import { fade, scale } from 'svelte/transition';
 	import { PAGE_TEMPLATES } from '$lib/data/templates';
@@ -56,7 +59,7 @@
 		<Text tag="h3" class="welcome-headline-gradient">
 			Custom Collections
 			<small style="margin-left: 1rem;">
-				Extend your planner with modular notebooks and custom sections.
+				{i18n.t('wizard.collections.desc')}
 			</small>
 		</Text>
 		<Button class="add-collection-btn" onclick={() => (showAddCollectionInput = true)}>
@@ -67,10 +70,10 @@
 	{#if showAddCollectionInput}
 		<div class="custom-prompt-overlay" transition:fade={{ duration: 150 }}>
 			<div class="custom-prompt-card" transition:scale={{ duration: 150 }}>
-				<Text tag="h4">New Collection</Text>
+				<Text tag="h4">{i18n.t('wizard.collections.new')}</Text>
 				<Input
 					type="text"
-					placeholder="Collection name..."
+					placeholder={i18n.t('wizard.collections.name_placeholder')}
 					bind:value={newCollectionPromptName}
 					onkeydown={(e: any) => e.key === 'Enter' && confirmAddCollection()} />
 				<Box class="prompt-actions">
@@ -103,13 +106,13 @@
 								type="text"
 								class="title-editor"
 								bind:value={collection.name}
-								placeholder="Collection name..."
-								title="Edit collection name" />
+								placeholder={i18n.t('wizard.collections.name_placeholder')}
+								title={i18n.t('wizard.collections.edit_title')} />
 							<Button
 								class="delete-btn-small"
 								onclick={() => (confirmDeleteId = collection.id)}
-								aria-label="Delete Collection"
-								title="Delete Collection">
+								aria-label={i18n.t('wizard.collections.delete_label')}
+								title={i18n.t('wizard.collections.delete_label')}>
 								✕
 							</Button>
 						</Box>
@@ -132,7 +135,7 @@
 							{#if confirmDeleteId === collection.id}
 								<div class="delete-confirm-overlay" transition:fade={{ duration: 100 }}>
 									<div class="confirm-card" transition:scale={{ duration: 100 }}>
-										<span>Remove?</span>
+										<span>{i18n.t('wizard.collections.remove')}</span>
 										<Box class="confirm-actions">
 											<Button class="no" onclick={() => (confirmDeleteId = null)}>
 												No
@@ -163,7 +166,7 @@
 				{/each}
 			</Box>
 		{:else}
-			<Text tag="p" class="empty-state">No custom collections yet.</Text>
+			<Text tag="p" class="empty-state">{i18n.t('wizard.collections.empty')}</Text>
 		{/if}
 	</Box>
 </Box>

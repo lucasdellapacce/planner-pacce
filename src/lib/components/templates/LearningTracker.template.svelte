@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
@@ -46,7 +49,7 @@
 					<Box class="cell-placeholder"></Box>
 				</Box>
 				<Box class="col col-progress">
-					<Checkbox aria-label="Done" />
+					<Checkbox aria-label={i18n.t('templates.checks.done')} />
 				</Box>
 				<Box class="col col-key">
 					<Box class="cell-placeholder"></Box>

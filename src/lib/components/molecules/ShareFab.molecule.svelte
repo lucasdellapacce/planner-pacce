@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { fade, fly } from 'svelte/transition';
 	import ShareIcon from '~icons/fa-solid/share-alt';
 	import FacebookIcon from '~icons/fa-brands/facebook-f';
@@ -43,7 +46,7 @@
 			<!-- Facebook -->
 			<a
 				class="child-fab tooltip-right"
-				aria-label="Share on Facebook"
+				aria-label={i18n.t('share.facebook')}
 				data-tooltip="Share on Facebook"
 				href="https://www.facebook.com/sharer/sharer.php"
 				onclick={(e) => {
@@ -57,7 +60,7 @@
 			<!-- LinkedIn -->
 			<a
 				class="child-fab tooltip-right"
-				aria-label="Share on LinkedIn"
+				aria-label={i18n.t('share.linkedin')}
 				data-tooltip="Share on LinkedIn"
 				href="https://www.linkedin.com/shareArticle?mini=true"
 				onclick={(e) => {
@@ -70,7 +73,7 @@
 			</a>
 			<a
 				class="child-fab tooltip-right"
-				aria-label="Share on X"
+				aria-label={i18n.t('share.x')}
 				data-tooltip="Share on X"
 				href="https://twitter.com/intent/tweet"
 				onclick={(e) => {
@@ -84,7 +87,7 @@
 			<!-- Copy Link -->
 			<button
 				class="child-fab tooltip-right"
-				aria-label="Copy Link"
+				aria-label={i18n.t('share.copy')}
 				data-tooltip="Copy Link"
 				onclick={() => {
 					navigator.clipboard.writeText(window.location.href);
@@ -103,7 +106,7 @@
 
 	<button
 		class="main-fab"
-		aria-label="Share"
+		aria-label={i18n.t('share.generic')}
 		onclick={() => {
 			isShareMenuOpen = !isShareMenuOpen;
 			if (isShareMenuOpen) trackEvent('share_fab_open');

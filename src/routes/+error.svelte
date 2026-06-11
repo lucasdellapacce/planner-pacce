@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { page } from '$app/state';
 
 	const error = $derived(page.error as { message?: string; stack?: string } | null);
@@ -24,7 +27,7 @@
 
 		<h1>{status || 500}</h1>
 
-		<h2>Something went wrong</h2>
+		<h2>{i18n.t('routes.error.title')}</h2>
 
 		<p class="subtitle">
 			{error?.message || 'An unexpected error occurred while rendering the planner.'}
@@ -32,13 +35,13 @@
 
 		{#if error?.stack}
 			<details class="debug-details">
-				<summary>Diagnostic Details</summary>
+				<summary>{i18n.t('routes.error.details')}</summary>
 				<pre><code>{error.stack}</code></pre>
 			</details>
 		{/if}
 
 		<div class="actions">
-			<a href="/" class="primary-btn">Return to Planner</a>
+			<a href="/" class="primary-btn">{i18n.t('routes.error.return')}</a>
 			<button type="button" onclick={resetSettings} class="danger-btn">
 				Reset Configuration
 			</button>

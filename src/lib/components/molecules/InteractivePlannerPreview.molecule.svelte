@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { type PlannerSettings } from '$state';
 	import { browser } from '$app/environment';
 	import YearPage from '$templates/YearPage.template.svelte';
@@ -94,7 +97,7 @@
 	const currentTemplateName = $derived.by(() => {
 		const templateVal = activeTemplateValue;
 		if (!templateVal) return '';
-		if (templateVal === 'collection-index') return 'Collection Index';
+		if (templateVal === 'collection-index') return i18n.t('preview.alerts.collection_index');
 		const matched = PAGE_TEMPLATES.find((t) => t.value === templateVal);
 		return matched ? matched.name : '';
 	});
@@ -146,7 +149,7 @@
 									(y: any) => y.id === currentHash || y.year.toString() === currentHash,
 								)} />
 						{:else}
-							<div class="empty-state">Year view disabled</div>
+							<div class="empty-state">{i18n.t('preview.alerts.year_disabled')}</div>
 						{/if}
 					{:else if settings.quarters.some((q: any) => q.id.toLowerCase() === currentHash.toLowerCase())}
 						{#if !settings.quarterPage.disable}
@@ -156,7 +159,7 @@
 									(q: any) => q.id.toLowerCase() === currentHash.toLowerCase(),
 								)} />
 						{:else}
-							<div class="empty-state">Quarter view disabled</div>
+							<div class="empty-state">{i18n.t('preview.alerts.quarter_disabled')}</div>
 						{/if}
 					{:else if settings.months.some((m: any) => m.id === currentHash)}
 						{#if !settings.monthPage.disable}
@@ -164,7 +167,7 @@
 								{settings}
 								month={settings.months.find((m: any) => m.id === currentHash)} />
 						{:else}
-							<div class="empty-state">Month view disabled</div>
+							<div class="empty-state">{i18n.t('preview.alerts.month_disabled')}</div>
 						{/if}
 					{:else if settings.weeks.some((w: any) => w.id.toLowerCase() === currentHash.toLowerCase() || `${w.year}-w${w.weekSinceYear}`.toLowerCase() === currentHash.toLowerCase())}
 						{#if !settings.weekPage.disable}
@@ -177,7 +180,7 @@
 											currentHash.toLowerCase(),
 								)} />
 						{:else}
-							<div class="empty-state">Week view disabled</div>
+							<div class="empty-state">{i18n.t('preview.alerts.week_disabled')}</div>
 						{/if}
 					{:else if settings.days.some((d: any) => d.id === currentHash)}
 						{#if !settings.dayPage.disable}
@@ -185,7 +188,7 @@
 								{settings}
 								day={settings.days.find((d: any) => d.id === currentHash)} />
 						{:else}
-							<div class="empty-state">Day view disabled</div>
+							<div class="empty-state">{i18n.t('preview.alerts.day_disabled')}</div>
 						{/if}
 					{:else if matchedCollection}
 						{#if !settings.customCollections.disable}
@@ -243,10 +246,10 @@
 								</LazyPage>
 							{/if}
 						{:else}
-							<div class="empty-state">Collections disabled</div>
+							<div class="empty-state">{i18n.t('preview.alerts.collections_disabled')}</div>
 						{/if}
 					{:else}
-						<div class="empty-state">Unsupported preview page</div>
+						<div class="empty-state">{i18n.t('preview.alerts.unsupported')}</div>
 					{/if}
 				{/if}
 			</div>

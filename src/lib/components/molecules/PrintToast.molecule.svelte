@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import Box from '$atoms/Box.atom.svelte';
 	import Text from '$atoms/Text.atom.svelte';
 
@@ -17,7 +20,7 @@
 	</Box>
 	<Box class="toast-content">
 		<Text tag="strong">Someone in {city}, {country}</Text>
-		<Text tag="span">just printed a planner!</Text>
+		<Text tag="span">{i18n.t('toast.printed')}</Text>
 	</Box>
 </Box>
 

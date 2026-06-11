@@ -202,7 +202,7 @@
 
 		trackEvent('wizard_preset_select', {
 			preset_id: 'scratch',
-			preset_name: 'Start from Scratch',
+			preset_name: i18n.t('modals.help.start_scratch'),
 			is_custom: false,
 		});
 

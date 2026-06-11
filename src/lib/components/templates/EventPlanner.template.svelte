@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
@@ -19,7 +22,7 @@
 				<Text class="label">{tTemplate('guest_list', settings?.design?.locale)}</Text>
 				{#each Array(15) as _}
 					<Box class="check-row">
-						<Checkbox aria-label="Guest list check" />
+						<Checkbox aria-label={i18n.t('templates.checks.guest')} />
 						<Box class="line"></Box>
 					</Box>
 				{/each}
@@ -28,7 +31,7 @@
 				<Text class="label">{tTemplate('todo', settings?.design?.locale).toUpperCase()}</Text>
 				{#each Array(15) as _}
 					<Box class="check-row">
-						<Checkbox aria-label="To do check" />
+						<Checkbox aria-label={i18n.t('templates.checks.todo')} />
 						<Box class="line"></Box>
 					</Box>
 				{/each}

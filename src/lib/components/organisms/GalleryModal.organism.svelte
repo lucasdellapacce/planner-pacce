@@ -230,12 +230,12 @@
 						<button
 							class="clear-search-btn"
 							onclick={() => (searchQuery = '')}
-							aria-label="Clear search">
+							aria-label={i18n.t('modals.gallery.clear')}>
 							✕
 						</button>
 					{/if}
 				</div>
-				<button class="close-btn" aria-label="Close gallery" onclick={onClose}>✕</button>
+				<button class="close-btn" aria-label={i18n.t('modals.gallery.close')} onclick={onClose}>✕</button>
 			</div>
 		</header>
 

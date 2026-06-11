@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { Box, Text, Input, Button } from '$atoms';
 	import { fade } from 'svelte/transition';
 	import { PAGE_TEMPLATES } from '$lib/data/templates';
@@ -21,8 +24,8 @@
 </script>
 
 <Box class="step-content calendars-step" transition="fade" inDuration={150}>
-	<Text tag="h3" class="welcome-headline-gradient">Calendar Views</Text>
-	<Text tag="p">Select templates for each of your primary calendar spreads.</Text>
+	<Text tag="h3" class="welcome-headline-gradient">{i18n.t('wizard.calendars.title')}</Text>
+	<Text tag="p">{i18n.t('wizard.calendars.desc')}</Text>
 
 	<Box class="calendars-config">
 		<Box class="template-previews">

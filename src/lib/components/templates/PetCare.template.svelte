@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
@@ -19,7 +22,7 @@
 				<Text class="label">{tTemplate('feeding_schedule', settings?.design?.locale)}</Text>
 				{#each Array(7) as _}
 					<Box class="check-row">
-						<Checkbox aria-label="Feeding schedule check" />
+						<Checkbox aria-label={i18n.t('templates.checks.feeding')} />
 						<Box class="line"></Box>
 					</Box>
 				{/each}

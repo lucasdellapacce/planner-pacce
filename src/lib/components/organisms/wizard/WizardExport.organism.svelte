@@ -36,7 +36,7 @@
 			id: `custom-${Date.now()}`,
 			name: newPresetName.trim(),
 			icon: newPresetIcon,
-			description: 'Custom preset created by you.',
+			description: i18n.t('wizard.export.custom_preset_desc'),
 			config: settings.serialize(),
 		};
 		onSaveCustomPreset(newPreset);

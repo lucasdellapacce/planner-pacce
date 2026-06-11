@@ -28,12 +28,12 @@
 	const activePreset = $derived(PRESETS.find((p) => p.id === selectedPresetId));
 
 	const categories = [
-		{ id: 'essentials', name: 'Essentials', icon: '✨' },
-		{ id: 'work', name: 'Work', icon: '💼' },
-		{ id: 'academic', name: 'Academic', icon: '🎓' },
-		{ id: 'lifestyle', name: 'Lifestyle', icon: '🏡' },
-		{ id: 'wellness', name: 'Wellness', icon: '🧘' },
-		{ id: 'hobbies', name: 'Hobbies', icon: '🎨' },
+		{ id: 'essentials', name: i18n.t('routes.presets.essentials'), icon: '✨' },
+		{ id: 'work', name: i18n.t('routes.presets.work'), icon: '💼' },
+		{ id: 'academic', name: i18n.t('routes.presets.academic'), icon: '🎓' },
+		{ id: 'lifestyle', name: i18n.t('routes.presets.lifestyle'), icon: '🏡' },
+		{ id: 'wellness', name: i18n.t('routes.presets.wellness'), icon: '🧘' },
+		{ id: 'hobbies', name: i18n.t('routes.presets.hobbies'), icon: '🎨' },
 	];
 
 	const checkCategoryMatch = (preset: Preset) => {

@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { Box, Text, Input, Button } from '$atoms';
 	import { fade } from 'svelte/transition';
 	import type { PlannerSettings } from '$state';
@@ -67,7 +70,7 @@
 </script>
 
 <Box class="step-content events-step" transition="fade" inDuration={150}>
-	<Text tag="h3" class="welcome-headline-gradient">Sync Calendar Events</Text>
+	<Text tag="h3" class="welcome-headline-gradient">{i18n.t('wizard.events.title')}</Text>
 	<Text tag="p">
 		Automatically populate your spreads with real-world events via public ICS links.
 	</Text>
@@ -83,7 +86,7 @@
 				placeholder="https://.../basic.ics"
 				bind:value={newCalendarUrl}
 				onkeydown={handleKeyDown} />
-			<Button class="add-btn" onclick={addCalendar}>Add</Button>
+			<Button class="add-btn" onclick={addCalendar}>{i18n.t('wizard.events.add')}</Button>
 		</Box>
 
 		{#if hasCalendars}
@@ -100,7 +103,7 @@
 							class="sync-btn {calendar.updating ? 'updating' : ''}"
 							disabled={calendar.updating}
 							onclick={createSyncHandler(index)}
-							aria-label="Sync Calendar">
+							aria-label={i18n.t('wizard.events.sync_label')}>
 							{#if calendar.updating}
 								Syncing...
 							{:else}
@@ -110,7 +113,7 @@
 						<Button
 							class="delete-btn"
 							onclick={createDeleteHandler(index)}
-							aria-label="Delete Calendar">
+							aria-label={i18n.t('wizard.events.delete_label')}>
 							✕
 						</Button>
 					</Box>

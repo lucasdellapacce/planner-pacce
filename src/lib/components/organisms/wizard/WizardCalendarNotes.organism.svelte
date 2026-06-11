@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { Box, Text, Input, Button } from '$atoms';
 	import { fade } from 'svelte/transition';
 	import { PAGE_TEMPLATES } from '$lib/data/templates';
@@ -22,7 +25,7 @@
 
 <Box class="step-content calendars-step" transition="fade" inDuration={150}>
 	<Box class="step-title-row">
-		<Text tag="h3" class="welcome-headline-gradient">Calendar Notes</Text>
+		<Text tag="h3" class="welcome-headline-gradient">{i18n.t('wizard.notes.title')}</Text>
 		<Text tag="p" style="margin: 0;">
 			Add optional note pages after each of your calendar views.
 		</Text>
@@ -31,7 +34,7 @@
 	<Box class="calendars-config">
 		<Box class="template-previews">
 			<Box class="preview-col">
-				<span class="col-label">Year Notes</span>
+				<span class="col-label">{i18n.t('wizard.notes.year')}</span>
 				<TemplateThumbnail
 					templateValue={settings.yearPage.notePagesTemplate}
 					templateName={PAGE_TEMPLATES.find(
@@ -64,7 +67,7 @@
 			</Box>
 
 			<Box class="preview-col">
-				<span class="col-label">Quarter Notes</span>
+				<span class="col-label">{i18n.t('wizard.notes.quarter')}</span>
 				<TemplateThumbnail
 					templateValue={settings.quarterPage.notePagesTemplate}
 					templateName={PAGE_TEMPLATES.find(
@@ -98,7 +101,7 @@
 			</Box>
 
 			<Box class="preview-col">
-				<span class="col-label">Month Notes</span>
+				<span class="col-label">{i18n.t('wizard.notes.month')}</span>
 				<TemplateThumbnail
 					templateValue={settings.monthPage.notePagesTemplate}
 					templateName={PAGE_TEMPLATES.find(
@@ -132,7 +135,7 @@
 			</Box>
 
 			<Box class="preview-col">
-				<span class="col-label">Week Notes</span>
+				<span class="col-label">{i18n.t('wizard.notes.week')}</span>
 				<TemplateThumbnail
 					templateValue={settings.weekPage.notePagesTemplate}
 					templateName={PAGE_TEMPLATES.find(
@@ -165,7 +168,7 @@
 			</Box>
 
 			<Box class="preview-col">
-				<span class="col-label">Day Notes</span>
+				<span class="col-label">{i18n.t('wizard.notes.day')}</span>
 				<TemplateThumbnail
 					templateValue={settings.dayPage.notePagesTemplate}
 					templateName={PAGE_TEMPLATES.find(

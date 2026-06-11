@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import type { PlannerSettings, PageTemplate } from '$lib';
 	import CalendarIcon from '~icons/fa/calendar';
 	import BookIcon from '~icons/fa/book';
@@ -94,10 +97,10 @@
 				bind:checked={settings.weekPage.use24HourClock}
 				id="{idPrefix}Use24HourClockWeek" />
 		{/if}
-		<label for="{idPrefix}Use24HourClockWeek">Use 24-hour clock</label>
+		<label for="{idPrefix}Use24HourClockWeek">{i18n.t('panels.calendar.use_24h')}</label>
 	</div>
 	<fieldset>
-		<label for="{idPrefix}WeekAgendaStartTime">Agenda Start Time</label>
+		<label for="{idPrefix}WeekAgendaStartTime">{i18n.t('panels.calendar.start_time')}</label>
 		{#if isNote}
 			<input
 				type="number"
@@ -119,7 +122,7 @@
 		{/if}
 	</fieldset>
 	<fieldset>
-		<label for="{idPrefix}WeekAgendaEndTime">Agenda End Time</label>
+		<label for="{idPrefix}WeekAgendaEndTime">{i18n.t('panels.calendar.end_time')}</label>
 		{#if isNote}
 			<input
 				type="number"
@@ -141,22 +144,22 @@
 		{/if}
 	</fieldset>
 	<fieldset>
-		<label for="{idPrefix}WeekAgendaInterval">Agenda Interval</label>
+		<label for="{idPrefix}WeekAgendaInterval">{i18n.t('panels.calendar.interval')}</label>
 		{#if isNote}
 			<select
 				id="{idPrefix}WeekAgendaInterval"
 				bind:value={settings.weekPage.notePagesAgendaInterval}>
-				<option value={60}>1 hour</option>
-				<option value={30}>30 minutes</option>
-				<option value={15}>15 minutes</option>
+				<option value={60}>{i18n.t('panels.calendar.1_hour')}</option>
+				<option value={30}>{i18n.t('panels.calendar.30_min')}</option>
+				<option value={15}>{i18n.t('panels.calendar.15_min')}</option>
 			</select>
 		{:else}
 			<select
 				id="{idPrefix}WeekAgendaInterval"
 				bind:value={settings.weekPage.agendaInterval}>
-				<option value={60}>1 hour</option>
-				<option value={30}>30 minutes</option>
-				<option value={15}>15 minutes</option>
+				<option value={60}>{i18n.t('panels.calendar.1_hour')}</option>
+				<option value={30}>{i18n.t('panels.calendar.30_min')}</option>
+				<option value={15}>{i18n.t('panels.calendar.15_min')}</option>
 			</select>
 		{/if}
 	</fieldset>
@@ -176,10 +179,10 @@
 				bind:checked={settings.dayPage.use24HourClock}
 				id="{idPrefix}Use24HourClockDay" />
 		{/if}
-		<label for="{idPrefix}Use24HourClockDay">Use 24-hour clock</label>
+		<label for="{idPrefix}Use24HourClockDay">{i18n.t('panels.calendar.use_24h')}</label>
 	</div>
 	<fieldset>
-		<label for="{idPrefix}DayAgendaStartTime">Agenda Start Time</label>
+		<label for="{idPrefix}DayAgendaStartTime">{i18n.t('panels.calendar.start_time')}</label>
 		{#if isNote}
 			<input
 				type="number"
@@ -201,7 +204,7 @@
 		{/if}
 	</fieldset>
 	<fieldset>
-		<label for="{idPrefix}DayAgendaEndTime">Agenda End Time</label>
+		<label for="{idPrefix}DayAgendaEndTime">{i18n.t('panels.calendar.end_time')}</label>
 		{#if isNote}
 			<input
 				type="number"
@@ -223,22 +226,22 @@
 		{/if}
 	</fieldset>
 	<fieldset>
-		<label for="{idPrefix}DayAgendaInterval">Agenda Interval</label>
+		<label for="{idPrefix}DayAgendaInterval">{i18n.t('panels.calendar.interval')}</label>
 		{#if isNote}
 			<select
 				id="{idPrefix}DayAgendaInterval"
 				bind:value={settings.dayPage.notePagesAgendaInterval}>
-				<option value={60}>1 hour</option>
-				<option value={30}>30 minutes</option>
-				<option value={15}>15 minutes</option>
+				<option value={60}>{i18n.t('panels.calendar.1_hour')}</option>
+				<option value={30}>{i18n.t('panels.calendar.30_min')}</option>
+				<option value={15}>{i18n.t('panels.calendar.15_min')}</option>
 			</select>
 		{:else}
 			<select
 				id="{idPrefix}DayAgendaInterval"
 				bind:value={settings.dayPage.agendaInterval}>
-				<option value={60}>1 hour</option>
-				<option value={30}>30 minutes</option>
-				<option value={15}>15 minutes</option>
+				<option value={60}>{i18n.t('panels.calendar.1_hour')}</option>
+				<option value={30}>{i18n.t('panels.calendar.30_min')}</option>
+				<option value={15}>{i18n.t('panels.calendar.15_min')}</option>
 			</select>
 		{/if}
 	</fieldset>
@@ -251,7 +254,7 @@
 	</h2>
 	<form>
 		<fieldset>
-			<label for="timeframeBasedOnYear">Year</label>
+			<label for="timeframeBasedOnYear">{i18n.t('panels.calendar.year')}</label>
 			<select
 				id="timeframeBasedOnYear"
 				value={isFullYear ? settings.date.start.getTime() : 0}
@@ -262,15 +265,15 @@
 						{date.getUTCFullYear()}
 					</option>
 				{/each}
-				<option value={0}>Custom Date Range</option>
+				<option value={0}>{i18n.t('panels.calendar.custom_date')}</option>
 			</select>
 		</fieldset>
 		{#if isCustomRange}
 			<fieldset>
-				<label for="start">Start Date</label>
+				<label for="start">{i18n.t('wizard.spreads.start_date')}</label>
 				<input
 					type="date"
-					placeholder="Start Date"
+					placeholder={i18n.t('wizard.spreads.start_date')}
 					id="start"
 					max={settings.date.end.toISOString().slice(0, 10)}
 					value={settings.date.start.toISOString().slice(0, 10)}
@@ -278,10 +281,10 @@
 					onchange={onStartDateChange} />
 			</fieldset>
 			<fieldset>
-				<label for="end">End Date</label>
+				<label for="end">{i18n.t('wizard.spreads.end_date')}</label>
 				<input
 					type="date"
-					placeholder="End Date"
+					placeholder={i18n.t('wizard.spreads.end_date')}
 					id="end"
 					min={settings.date.start.toISOString().slice(0, 10)}
 					value={settings.date.end.toISOString().slice(0, 10)}
@@ -294,7 +297,7 @@
 				type="checkbox"
 				bind:checked={settings.date.startWeekOnSunday}
 				id="startWeekOnSunday" />
-			<label for="startWeekOnSunday">Start Week on Sunday</label>
+			<label for="startWeekOnSunday">{i18n.t('panels.calendar.start_sunday')}</label>
 		</div>
 
 		<details ontoggle={handleDetailsToggle}>
@@ -332,7 +335,7 @@
 			</summary>
 			{#if !settings.yearPage.disable}
 				<fieldset>
-					<label for="yearPageTemplate">Year Page Template</label>
+					<label for="yearPageTemplate">{i18n.t('panels.calendar.year_template')}</label>
 					<div style="display: flex; gap: 0.5rem; align-items: center;">
 						<select
 							id="yearPageTemplate"
@@ -345,7 +348,7 @@
 						<button
 							class="picker-btn"
 							type="button"
-							aria-label="Select Template from Gallery"
+							aria-label={i18n.t('panels.calendar.select_template')}
 							onclick={() =>
 								openTemplatePicker(
 									getAvailablePageTemplates('year'),
@@ -357,10 +360,10 @@
 					</div>
 				</fieldset>
 				<fieldset>
-					<label for="yearNotePagesAmount">Additional Note Pages</label>
+					<label for="yearNotePagesAmount">{i18n.t('panels.calendar.add_notes')}</label>
 					<input
 						type="number"
-						placeholder="Additional Note Pages"
+						placeholder={i18n.t('panels.calendar.add_notes')}
 						id="yearNotePagesAmount"
 						min="0"
 						step="1"
@@ -368,7 +371,7 @@
 				</fieldset>
 				{#if settings.yearPage.notePagesAmount > 0}
 					<fieldset>
-						<label for="yearNotePagesTemplate">Additional Note Pages Template</label>
+						<label for="yearNotePagesTemplate">{i18n.t('panels.calendar.notes_template')}</label>
 						<div style="display: flex; gap: 0.5rem; align-items: center;">
 							<select
 								id="yearNotePagesTemplate"
@@ -381,7 +384,7 @@
 							<button
 								class="picker-btn"
 								type="button"
-								aria-label="Select Template from Gallery"
+								aria-label={i18n.t('panels.calendar.select_template')}
 								onclick={() =>
 									openTemplatePicker(
 										getAvailablePageTemplates('year'),
@@ -394,7 +397,7 @@
 					</fieldset>
 					{#if hasColumnsOption(settings.yearPage.notePagesTemplate)}
 						<fieldset>
-							<label for="yearNotePagesColumns">Columns</label>
+							<label for="yearNotePagesColumns">{i18n.t('panels.calendar.columns')}</label>
 							<input
 								type="number"
 								id="yearNotePagesColumns"
@@ -442,7 +445,7 @@
 			</summary>
 			{#if !settings.quarterPage.disable}
 				<fieldset>
-					<label for="quarterPageTemplate">Quarter Page Template</label>
+					<label for="quarterPageTemplate">{i18n.t('panels.calendar.quarter_template')}</label>
 					<div style="display: flex; gap: 0.5rem; align-items: center;">
 						<select
 							id="quarterPageTemplate"
@@ -455,7 +458,7 @@
 						<button
 							class="picker-btn"
 							type="button"
-							aria-label="Select Template from Gallery"
+							aria-label={i18n.t('panels.calendar.select_template')}
 							onclick={() =>
 								openTemplatePicker(
 									getAvailablePageTemplates('quarter'),
@@ -468,7 +471,7 @@
 				</fieldset>
 				{#if settings.quarterPage.template === 'goals-quarter'}
 					<fieldset>
-						<label for="quarterGoalsColumns">Goals Columns</label>
+						<label for="quarterGoalsColumns">{i18n.t('panels.calendar.goals_columns')}</label>
 						<select
 							id="quarterGoalsColumns"
 							bind:value={settings.quarterPage.goalsColumns}>
@@ -479,10 +482,10 @@
 					</fieldset>
 				{/if}
 				<fieldset>
-					<label for="quarterNotePagesAmount">Additional Note Pages</label>
+					<label for="quarterNotePagesAmount">{i18n.t('panels.calendar.add_notes')}</label>
 					<input
 						type="number"
-						placeholder="Additional Note Pages"
+						placeholder={i18n.t('panels.calendar.add_notes')}
 						id="quarterNotePagesAmount"
 						min="0"
 						step="1"
@@ -490,7 +493,7 @@
 				</fieldset>
 				{#if settings.quarterPage.notePagesAmount > 0}
 					<fieldset>
-						<label for="quarterNotePagesTemplate">Additional Note Pages Template</label>
+						<label for="quarterNotePagesTemplate">{i18n.t('panels.calendar.notes_template')}</label>
 						<div style="display: flex; gap: 0.5rem; align-items: center;">
 							<select
 								id="quarterNotePagesTemplate"
@@ -503,7 +506,7 @@
 							<button
 								class="picker-btn"
 								type="button"
-								aria-label="Select Template from Gallery"
+								aria-label={i18n.t('panels.calendar.select_template')}
 								onclick={() =>
 									openTemplatePicker(
 										getAvailablePageTemplates('quarter'),
@@ -517,7 +520,7 @@
 					</fieldset>
 					{#if hasColumnsOption(settings.quarterPage.notePagesTemplate)}
 						<fieldset>
-							<label for="quarterNotePagesColumns">Columns</label>
+							<label for="quarterNotePagesColumns">{i18n.t('panels.calendar.columns')}</label>
 							<input
 								type="number"
 								id="quarterNotePagesColumns"
@@ -565,7 +568,7 @@
 			</summary>
 			{#if !settings.monthPage.disable}
 				<fieldset>
-					<label for="monthPageTemplate">Month Page Template</label>
+					<label for="monthPageTemplate">{i18n.t('panels.calendar.month_template')}</label>
 					<div style="display: flex; gap: 0.5rem; align-items: center;">
 						<select
 							id="monthPageTemplate"
@@ -578,7 +581,7 @@
 						<button
 							class="picker-btn"
 							type="button"
-							aria-label="Select Template from Gallery"
+							aria-label={i18n.t('panels.calendar.select_template')}
 							onclick={() =>
 								openTemplatePicker(
 									getAvailablePageTemplates('month'),
@@ -591,7 +594,7 @@
 				</fieldset>
 				{#if hasColumnsOption(settings.monthPage.template)}
 					<fieldset>
-						<label for="monthPageColumns">Columns</label>
+						<label for="monthPageColumns">{i18n.t('panels.calendar.columns')}</label>
 						<input
 							type="number"
 							id="monthPageColumns"
@@ -601,10 +604,10 @@
 					</fieldset>
 				{/if}
 				<fieldset>
-					<label for="monthNotePagesAmount">Additional Note Pages</label>
+					<label for="monthNotePagesAmount">{i18n.t('panels.calendar.add_notes')}</label>
 					<input
 						type="number"
-						placeholder="Additional Note Pages"
+						placeholder={i18n.t('panels.calendar.add_notes')}
 						id="monthNotePagesAmount"
 						min="0"
 						step="1"
@@ -612,7 +615,7 @@
 				</fieldset>
 				{#if settings.monthPage.notePagesAmount > 0}
 					<fieldset>
-						<label for="monthNotePagesTemplate">Additional Note Pages Template</label>
+						<label for="monthNotePagesTemplate">{i18n.t('panels.calendar.notes_template')}</label>
 						<div style="display: flex; gap: 0.5rem; align-items: center;">
 							<select
 								id="monthNotePagesTemplate"
@@ -625,7 +628,7 @@
 							<button
 								class="picker-btn"
 								type="button"
-								aria-label="Select Template from Gallery"
+								aria-label={i18n.t('panels.calendar.select_template')}
 								onclick={() =>
 									openTemplatePicker(
 										getAvailablePageTemplates('month'),
@@ -638,7 +641,7 @@
 					</fieldset>
 					{#if hasColumnsOption(settings.monthPage.notePagesTemplate)}
 						<fieldset>
-							<label for="monthNotePagesColumns">Columns</label>
+							<label for="monthNotePagesColumns">{i18n.t('panels.calendar.columns')}</label>
 							<input
 								type="number"
 								id="monthNotePagesColumns"
@@ -690,10 +693,10 @@
 						type="checkbox"
 						bind:checked={settings.weekPage.useWeekSinceYear}
 						id="useWeekSinceYear" />
-					<label for="useWeekSinceYear">Use week number from start of year</label>
+					<label for="useWeekSinceYear">{i18n.t('panels.calendar.use_week_since_year')}</label>
 				</div>
 				<fieldset>
-					<label for="weekPageTemplate">Week Page Template</label>
+					<label for="weekPageTemplate">{i18n.t('panels.calendar.week_template')}</label>
 					<div style="display: flex; gap: 0.5rem; align-items: center;">
 						<select
 							id="weekPageTemplate"
@@ -706,7 +709,7 @@
 						<button
 							class="picker-btn"
 							type="button"
-							aria-label="Select Template from Gallery"
+							aria-label={i18n.t('panels.calendar.select_template')}
 							onclick={() =>
 								openTemplatePicker(
 									getAvailablePageTemplates('week'),
@@ -719,7 +722,7 @@
 				</fieldset>
 				{#if settings.weekPage.template.startsWith('agenda-week')}
 					<fieldset>
-						<span class="label-text">Align Day Text</span>
+						<span class="label-text">{i18n.t('panels.calendar.align_day_text')}</span>
 						<div style="display: flex; gap: 1rem; align-items: center; height: 35px;">
 							<label
 								style="display: flex; gap: 0.25rem; align-items: center; cursor: pointer; margin: 0; padding: 0; font-size: 0.9rem;">
@@ -757,7 +760,7 @@
 
 				{#if hasColumnsOption(settings.weekPage.template)}
 					<fieldset>
-						<label for="weekPageColumns">Columns</label>
+						<label for="weekPageColumns">{i18n.t('panels.calendar.columns')}</label>
 						<input
 							type="number"
 							id="weekPageColumns"
@@ -767,10 +770,10 @@
 					</fieldset>
 				{/if}
 				<fieldset>
-					<label for="weekNotePagesAmount">Additional Note Pages</label>
+					<label for="weekNotePagesAmount">{i18n.t('panels.calendar.add_notes')}</label>
 					<input
 						type="number"
-						placeholder="Additional Note Pages"
+						placeholder={i18n.t('panels.calendar.add_notes')}
 						id="weekNotePagesAmount"
 						min="0"
 						step="1"
@@ -778,7 +781,7 @@
 				</fieldset>
 				{#if settings.weekPage.notePagesAmount > 0}
 					<fieldset>
-						<label for="weekNotePagesTemplate">Additional Note Pages Template</label>
+						<label for="weekNotePagesTemplate">{i18n.t('panels.calendar.notes_template')}</label>
 						<div style="display: flex; gap: 0.5rem; align-items: center;">
 							<select
 								id="weekNotePagesTemplate"
@@ -791,7 +794,7 @@
 							<button
 								class="picker-btn"
 								type="button"
-								aria-label="Select Template from Gallery"
+								aria-label={i18n.t('panels.calendar.select_template')}
 								onclick={() =>
 									openTemplatePicker(
 										getAvailablePageTemplates('week'),
@@ -804,7 +807,7 @@
 					</fieldset>
 					{#if hasColumnsOption(settings.weekPage.notePagesTemplate)}
 						<fieldset>
-							<label for="weekNotePagesColumns">Columns</label>
+							<label for="weekNotePagesColumns">{i18n.t('panels.calendar.columns')}</label>
 							<input
 								type="number"
 								id="weekNotePagesColumns"
@@ -818,14 +821,14 @@
 					{/if}
 				{/if}
 				<fieldset>
-					<label for="weekSideNavDisplay">Sidebar Display</label>
+					<label for="weekSideNavDisplay">{i18n.t('panels.calendar.sidebar_display')}</label>
 					<select id="weekSideNavDisplay" bind:value={settings.weekPage.sideNavDisplay}>
-						<option value="days-this-week">Days of the Week</option>
-						<option value="days-this-month">Days of the Month</option>
-						<option value="weeks-this-year">Weeks of the Year</option>
-						<option value="weeks-this-month">Weeks of the Month</option>
-						<option value="months">Months</option>
-						<option value="none">None</option>
+						<option value="days-this-week">{i18n.t('panels.calendar.days_week')}</option>
+						<option value="days-this-month">{i18n.t('panels.calendar.days_month')}</option>
+						<option value="weeks-this-year">{i18n.t('panels.calendar.weeks_year')}</option>
+						<option value="weeks-this-month">{i18n.t('panels.calendar.weeks_month')}</option>
+						<option value="months">{i18n.t('panels.calendar.months')}</option>
+						<option value="none">{i18n.t('panels.calendar.none')}</option>
 					</select>
 				</fieldset>
 				{#if hasWeekNumbers}
@@ -834,7 +837,7 @@
 							type="checkbox"
 							bind:checked={settings.weekPage.useWeekNumbersInSideNav}
 							id="useWeekNumbersInSideNav" />
-						<label for="useWeekNumbersInSideNav">Show week numbers in side bar</label>
+						<label for="useWeekNumbersInSideNav">{i18n.t('panels.calendar.show_week_numbers')}</label>
 					</div>
 				{/if}
 			{/if}
@@ -875,7 +878,7 @@
 			</summary>
 			{#if !settings.dayPage.disable}
 				<fieldset>
-					<label for="dayPageTemplate">Day Page Template</label>
+					<label for="dayPageTemplate">{i18n.t('panels.calendar.day_template')}</label>
 					<div style="display: flex; gap: 0.5rem; align-items: center;">
 						<select
 							id="dayPageTemplate"
@@ -888,7 +891,7 @@
 						<button
 							class="picker-btn"
 							type="button"
-							aria-label="Select Template from Gallery"
+							aria-label={i18n.t('panels.calendar.select_template')}
 							onclick={() =>
 								openTemplatePicker(
 									getAvailablePageTemplates('day'),
@@ -904,7 +907,7 @@
 				{/if}
 				{#if hasColumnsOption(settings.dayPage.template)}
 					<fieldset>
-						<label for="dayPageColumns">Columns</label>
+						<label for="dayPageColumns">{i18n.t('panels.calendar.columns')}</label>
 						<input
 							type="number"
 							id="dayPageColumns"
@@ -914,10 +917,10 @@
 					</fieldset>
 				{/if}
 				<fieldset>
-					<label for="dayNotePagesAmount">Additional Note Pages</label>
+					<label for="dayNotePagesAmount">{i18n.t('panels.calendar.add_notes')}</label>
 					<input
 						type="number"
-						placeholder="Additional Note Pages"
+						placeholder={i18n.t('panels.calendar.add_notes')}
 						id="dayNotePagesAmount"
 						min="0"
 						step="1"
@@ -925,7 +928,7 @@
 				</fieldset>
 				{#if settings.dayPage.notePagesAmount > 0}
 					<fieldset>
-						<label for="dayNotePagesTemplate">Additional Note Pages Template</label>
+						<label for="dayNotePagesTemplate">{i18n.t('panels.calendar.notes_template')}</label>
 						<div style="display: flex; gap: 0.5rem; align-items: center;">
 							<select
 								id="dayNotePagesTemplate"
@@ -938,7 +941,7 @@
 							<button
 								class="picker-btn"
 								type="button"
-								aria-label="Select Template from Gallery"
+								aria-label={i18n.t('panels.calendar.select_template')}
 								onclick={() =>
 									openTemplatePicker(
 										getAvailablePageTemplates('day'),
@@ -951,7 +954,7 @@
 					</fieldset>
 					{#if hasColumnsOption(settings.dayPage.notePagesTemplate)}
 						<fieldset>
-							<label for="dayNotePagesColumns">Columns</label>
+							<label for="dayNotePagesColumns">{i18n.t('panels.calendar.columns')}</label>
 							<input
 								type="number"
 								id="dayNotePagesColumns"
@@ -965,15 +968,15 @@
 					{/if}
 				{/if}
 				<fieldset>
-					<label for="daySideNavDisplay">Sidebar Display</label>
+					<label for="daySideNavDisplay">{i18n.t('panels.calendar.sidebar_display')}</label>
 					<select id="daySideNavDisplay" bind:value={settings.dayPage.sideNavDisplay}>
-						<option value="days-this-week">Days of the Week</option>
-						<option value="days-this-month">Days of the Month</option>
-						<option value="days-this-year">Days of the Year</option>
-						<option value="weeks-this-year">Weeks of the Year</option>
-						<option value="weeks-this-month">Weeks of the Month</option>
-						<option value="months">Months</option>
-						<option value="none">None</option>
+						<option value="days-this-week">{i18n.t('panels.calendar.days_week')}</option>
+						<option value="days-this-month">{i18n.t('panels.calendar.days_month')}</option>
+						<option value="days-this-year">{i18n.t('panels.calendar.days_year')}</option>
+						<option value="weeks-this-year">{i18n.t('panels.calendar.weeks_year')}</option>
+						<option value="weeks-this-month">{i18n.t('panels.calendar.weeks_month')}</option>
+						<option value="months">{i18n.t('panels.calendar.months')}</option>
+						<option value="none">{i18n.t('panels.calendar.none')}</option>
 					</select>
 				</fieldset>
 			{/if}

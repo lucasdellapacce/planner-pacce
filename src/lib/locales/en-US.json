@@ -36,6 +36,108 @@
 				"events": "Sync your digital calendar and events.",
 				"export": "Generate and download your PDF."
 			}
+		},
+		"notes": {
+			"year": "Year Notes",
+			"quarter": "Quarter Notes",
+			"month": "Month Notes",
+			"week": "Week Notes",
+			"day": "Day Notes"
+		},
+		"calendars": {
+			"title": "Calendar Views",
+			"desc": "Select templates for each of your primary calendar spreads."
+		},
+		"collections": {
+			"new": "New Collection",
+			"name_placeholder": "Collection name...",
+			"edit_title": "Edit collection name",
+			"delete_label": "Delete Collection",
+			"remove": "Remove?",
+			"empty": "No custom collections yet.",
+			"title": "Custom Collections",
+			"desc": "Extend your planner with modular notebooks and custom sections.",
+			"add": "+ Add Collection",
+			"cancel": "Cancel",
+			"btn_add": "Add"
+		},
+		"cover": {
+			"labels": {
+				"none": "None",
+				"mesh": "Mesh Gradient",
+				"waves": "Topographic Waves",
+				"bauhaus": "Bauhaus Art",
+				"halftone": "Halftone Pattern",
+				"glassmorphism": "Glassmorphism",
+				"flower": "Flower of Life",
+				"emoji": "Emoji Pattern",
+				"fractals": "Fractals",
+				"platonic": "Platonic Solids",
+				"pokerface": "Pokerface",
+				"magician": "Magician"
+			},
+			"title": "Cover Page",
+			"desc": "Personalize your planner with your name, title, and background.",
+			"enable": "Enable",
+			"dark_mode": "Dark Mode",
+			"collection_links": "Collection Links",
+			"fields": {
+				"title": "Title",
+				"font": "Font",
+				"owner_name": "Owner Name",
+				"contact": "Contact / Email",
+				"bg_style": "Background Style",
+				"seed": "Seed",
+				"complexity": "Complexity"
+			},
+			"placeholders": {
+				"title": "Cover Page Title",
+				"name": "Your Name"
+			}
+		},
+		"design": {
+			"fonts": {
+				"body": "Body Font",
+				"display": "Display Font",
+				"cover": "Cover Font",
+				"topbar": "Topbar Font",
+				"sidebar": "Sidebar Font"
+			},
+			"load_theme": "Load Theme",
+			"title": "Design & Typography",
+			"theme_colors": "Theme Colors",
+			"colors": {
+				"bg": "Page Background",
+				"sidebar": "Sidebar",
+				"text": "Text",
+				"lines": "Lines",
+				"dots": "Dots"
+			},
+			"lang": {
+				"title": "Language / Idioma",
+				"label": "Application Language"
+			}
+		},
+		"events": {
+			"title": "Sync Calendar Events",
+			"add": "Add",
+			"sync_label": "Sync Calendar",
+			"delete_label": "Delete Calendar"
+		},
+		"export": {
+			"custom_preset_desc": "Custom preset created by you."
+		},
+		"presets": {
+			"my_presets": "My Presets"
+		},
+		"spreads": {
+			"title": "Spreads",
+			"desc": "Generate highly structured, interlinked chronological spreads.",
+			"date_range": "Date Range",
+			"start_date": "Start Date",
+			"end_date": "End Date",
+			"enable": "Enable Spreads",
+			"nav_layout": "Navigation & Layout"
 		}
 	},
 	"categories": {
@@ -411,6 +513,134 @@
 			"prints": "Prints",
 			"shares": "Shares",
 			"total_time": "Total Time Creating"
+		}
+	},
+	"routes": {
+		"404": {
+			"title": "Page Not Found",
+			"text": "This page doesn't exist.",
+			"back": "Back to Home"
+		},
+		"error": {
+			"title": "Something went wrong",
+			"details": "Diagnostic Details",
+			"return": "Return to Planner"
+		},
+		"presets": {
+			"top_planners": "Top Planners",
+			"essentials": "Essentials",
+			"work": "Work",
+			"academic": "Academic",
+			"lifestyle": "Lifestyle",
+			"wellness": "Wellness",
+			"hobbies": "Hobbies"
+		},
+		"privacy": {
+			"title": "Privacy Policy"
+		},
+		"terms": {
+			"title": "Terms of Service"
+		}
+	},
+	"panels": {
+		"calendar": {
+			"use_24h": "Use 24-hour clock",
+			"start_time": "Agenda Start Time",
+			"end_time": "Agenda End Time",
+			"interval": "Agenda Interval",
+			"1_hour": "1 hour",
+			"30_min": "30 minutes",
+			"15_min": "15 minutes",
+			"start_sunday": "Start Week on Sunday",
+			"add_notes": "Additional Note Pages",
+			"select_template": "Select Template from Gallery",
+			"columns": "Columns",
+			"goals_columns": "Goals Columns",
+			"year_template": "Year Page Template",
+			"quarter_template": "Quarter Page Template",
+			"month_template": "Month Page Template",
+			"week_template": "Week Page Template",
+			"day_template": "Day Page Template",
+			"notes_template": "Additional Note Pages Template",
+			"use_week_since_year": "Use week number from start of year",
+			"align_day_text": "Align Day Text",
+			"sidebar_display": "Sidebar Display",
+			"show_week_numbers": "Show week numbers in side bar",
+			"year": "Year",
+			"custom_date": "Custom Date Range",
+			"days_week": "Days of the Week",
+			"days_month": "Days of the Month",
+			"days_year": "Days of the Year",
+			"weeks_year": "Weeks of the Year",
+			"weeks_month": "Weeks of the Month",
+			"months": "Months",
+			"none": "None"
+		},
+		"design": {
+			"placeholders": {
+				"name": "Name",
+				"dashboard": "Dashboard"
+			}
+		},
+		"extras": {
+			"notes": "Notes",
+			"tip": "Tip:",
+			"move_up": "Move Up",
+			"move_down": "Move Down",
+			"page_template": "Page Template",
+			"index_columns": "Index Columns",
+			"index_columns_sub": "(Leave blank for auto)",
+			"num_index_pages": "Number of Index Pages",
+			"num_items_per_page": "Number of Items Per Index Page",
+			"num_pages_per_item": "Number of Pages Per Item",
+			"name": "Name",
+			"url": "ICS URL"
+		}
+	},
+	"modals": {
+		"gallery": {
+			"clear": "Clear search",
+			"close": "Close gallery"
+		},
+		"help": {
+			"start_scratch": "Start from Scratch"
+		}
+	},
+	"preview": {
+		"alerts": {
+			"collection_index": "Collection Index",
+			"year_disabled": "Year view disabled",
+			"quarter_disabled": "Quarter view disabled",
+			"month_disabled": "Month view disabled",
+			"week_disabled": "Week view disabled",
+			"day_disabled": "Day view disabled",
+			"collections_disabled": "Collections disabled",
+			"unsupported": "Unsupported preview page"
+		}
+	},
+	"toast": {
+		"printed": "just printed a planner!",
+		"undo": "Undo"
+	},
+	"share": {
+		"facebook": "Share on Facebook",
+		"linkedin": "Share on LinkedIn",
+		"x": "Share on X",
+		"copy": "Copy Link",
+		"generic": "Share"
+	},
+	"templates": {
+		"download": "Download template image",
+		"checks": {
+			"guest": "Guest list check",
+			"todo": "To do check",
+			"water": "Water check",
+			"kindness": "Acts of kindness check",
+			"done": "Done",
+			"goal": "Goal check",
+			"day": "Day check",
+			"feeding": "Feeding schedule check",
+			"complete": "Complete"
 		}
 	}
 }

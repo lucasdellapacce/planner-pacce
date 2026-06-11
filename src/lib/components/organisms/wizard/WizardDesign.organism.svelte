@@ -34,11 +34,11 @@
 		const isDisplay = activeFontPicker === 'fontDisplay';
 		const isCover = activeFontPicker === 'coverFont';
 		const isTopNav = activeFontPicker === 'topNavFont';
-		if (isBody) return 'Body Font';
-		if (isDisplay) return 'Display Font';
-		if (isCover) return 'Cover Font';
-		if (isTopNav) return 'Topbar Font';
-		return 'Sidebar Font';
+		if (isBody) return i18n.t('wizard.design.fonts.body');
+		if (isDisplay) return i18n.t('wizard.design.fonts.display');
+		if (isCover) return i18n.t('wizard.design.fonts.cover');
+		if (isTopNav) return i18n.t('wizard.design.fonts.topbar');
+		return i18n.t('wizard.design.fonts.sidebar');
 	});
 
 	const selectedFontName = $derived.by(() => {
@@ -141,7 +141,7 @@
 	transition="fade"
 	inDuration={150}>
 	<Box class="color-picker-item float-right">
-		<!-- <Text tag="label" for="guide-theme-btn">Load Theme</Text> -->
+		<!-- <Text tag="label" for="guide-theme-btn">{i18n.t('wizard.design.load_theme')}</Text> -->
 		<Button
 			id="guide-theme-btn"
 			type="button"
@@ -151,7 +151,7 @@
 			{THEMES.find((t) => t.id === settings.design.themeId)?.name || 'Choose a Theme'}
 		</Button>
 	</Box>
-	<Text tag="h3" class="welcome-headline-gradient">Design & Typography</Text>
+	<Text tag="h3" class="welcome-headline-gradient">{i18n.t('wizard.design.title')}</Text>
 	<Text tag="p">
 		Configure the aesthetics, fonts, and colors of your planner. Click the font text to
 		change font families.
@@ -159,38 +159,38 @@
 
 	<Box class="design-config design-rows">
 		<Box class="design-row-item">
-			<!-- <Text tag="h4">Theme Colors</Text> -->
+			<!-- <Text tag="h4">{i18n.t('wizard.design.theme_colors')}</Text> -->
 			<Box class="colors-row">
 				<Box class="color-picker-item">
-					<Text tag="label" for="guide-color-bg">Page Background</Text>
+					<Text tag="label" for="guide-color-bg">{i18n.t('wizard.design.colors.bg')}</Text>
 					<ColorPicker
 						id="guide-color-bg"
 						bind:value={settings.design.colorBg}
 						title={settings.design.colorBg} />
 				</Box>
 				<Box class="color-picker-item">
-					<Text tag="label" for="guide-color-nav">Sidebar</Text>
+					<Text tag="label" for="guide-color-nav">{i18n.t('wizard.design.colors.sidebar')}</Text>
 					<ColorPicker
 						id="guide-color-nav"
 						bind:value={settings.design.colorNavBg}
 						title={settings.design.colorNavBg} />
 				</Box>
 				<Box class="color-picker-item">
-					<Text tag="label" for="guide-color-text">Text</Text>
+					<Text tag="label" for="guide-color-text">{i18n.t('wizard.design.colors.text')}</Text>
 					<ColorPicker
 						id="guide-color-text"
 						bind:value={settings.design.colorText}
 						title={settings.design.colorText} />
 				</Box>
 				<Box class="color-picker-item">
-					<Text tag="label" for="guide-color-lines">Lines</Text>
+					<Text tag="label" for="guide-color-lines">{i18n.t('wizard.design.colors.lines')}</Text>
 					<ColorPicker
 						id="guide-color-lines"
 						bind:value={settings.design.colorLines}
 						title={settings.design.colorLines} />
 				</Box>
 				<Box class="color-picker-item">
-					<Text tag="label" for="guide-color-dots">Dots</Text>
+					<Text tag="label" for="guide-color-dots">{i18n.t('wizard.design.colors.dots')}</Text>
 					<ColorPicker
 						id="guide-color-dots"
 						bind:value={settings.design.colorDots}
@@ -499,10 +499,10 @@
 
 		<!-- Language Selection -->
 		<Box class="design-row-item">
-			<Text tag="h4" style="margin-bottom: 0.5rem;">Language / Idioma</Text>
+			<Text tag="h4" style="margin-bottom: 0.5rem;">{i18n.t('wizard.design.lang.title')}</Text>
 			<Box class="colors-row" style="justify-content: flex-start; gap: 2rem;">
 				<Box class="color-picker-item" style="align-items: flex-start; flex: none;">
-					<Text tag="label" for="lang-select">Application Language</Text>
+					<Text tag="label" for="lang-select">{i18n.t('wizard.design.lang.label')}</Text>
 					<select
 						id="lang-select"
 						class="language-select-box"

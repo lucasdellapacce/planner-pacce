@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { Box, Text, Input, Button, Checkbox } from '$atoms';
 	import { fade } from 'svelte/transition';
 	import type { PlannerSettings } from '$state';
@@ -13,18 +16,18 @@
 	let activeFontPicker = $state<boolean>(false);
 
 	const BACKGROUND_STYLES = [
-		{ id: 'none', label: 'None' },
-		{ id: 'mesh', label: 'Mesh Gradient' },
-		{ id: 'waves', label: 'Topographic Waves' },
-		{ id: 'bauhaus', label: 'Bauhaus Art' },
-		{ id: 'halftone', label: 'Halftone Pattern' },
-		{ id: 'glassmorphism', label: 'Glassmorphism' },
-		{ id: 'flower-of-life', label: 'Flower of Life' },
-		{ id: 'emoji', label: 'Emoji Pattern' },
-		{ id: 'fractals', label: 'Fractals' },
-		{ id: 'platonic', label: 'Platonic Solids' },
-		{ id: 'pokerface', label: 'Pokerface' },
-		{ id: 'magician', label: 'Magician' },
+		{ id: 'none', label: i18n.t('wizard.cover.labels.none') },
+		{ id: 'mesh', label: i18n.t('wizard.cover.labels.mesh') },
+		{ id: 'waves', label: i18n.t('wizard.cover.labels.waves') },
+		{ id: 'bauhaus', label: i18n.t('wizard.cover.labels.bauhaus') },
+		{ id: 'halftone', label: i18n.t('wizard.cover.labels.halftone') },
+		{ id: 'glassmorphism', label: i18n.t('wizard.cover.labels.glassmorphism') },
+		{ id: 'flower-of-life', label: i18n.t('wizard.cover.labels.flower') },
+		{ id: 'emoji', label: i18n.t('wizard.cover.labels.emoji') },
+		{ id: 'fractals', label: i18n.t('wizard.cover.labels.fractals') },
+		{ id: 'platonic', label: i18n.t('wizard.cover.labels.platonic') },
+		{ id: 'pokerface', label: i18n.t('wizard.cover.labels.pokerface') },
+		{ id: 'magician', label: i18n.t('wizard.cover.labels.magician') },
 	];
 
 	function handleFontSelect(fontName: string) {
@@ -36,22 +39,22 @@
 <Box class="step-content cover-step" transition="fade" inDuration={150}>
 	<Box class="cover-wizard-layout">
 		<Box class="cover-controls">
-			<Text tag="h3" class="welcome-headline-gradient">Cover Page</Text>
-			<Text tag="p">Personalize your planner with your name, title, and background.</Text>
+			<Text tag="h3" class="welcome-headline-gradient">{i18n.t('wizard.cover.title')}</Text>
+			<Text tag="p">{i18n.t('wizard.cover.desc')}</Text>
 
 			<Box class="control-group toggles-card">
 				<Text tag="label" class="toggle-label">
 					<Toggle
 						checked={!settings.coverPage.disable}
 						onchange={() => (settings.coverPage.disable = !settings.coverPage.disable)} />
-					<span>Enable</span>
+					<span>{i18n.t('wizard.cover.enable')}</span>
 				</Text>
 				<Text tag="label" class="toggle-label">
 					<Toggle
 						checked={settings.coverPage.darkBackground}
 						onchange={() =>
 							(settings.coverPage.darkBackground = !settings.coverPage.darkBackground)} />
-					<span>Dark Mode</span>
+					<span>{i18n.t('wizard.cover.dark_mode')}</span>
 				</Text>
 				<Text tag="label" class="toggle-label">
 					<Toggle
@@ -59,7 +62,7 @@
 						onchange={() =>
 							(settings.coverPage.showCollectionLinks =
 								!settings.coverPage.showCollectionLinks)} />
-					<span>Collection Links</span>
+					<span>{i18n.t('wizard.cover.collection_links')}</span>
 				</Text>
 			</Box>
 
@@ -68,7 +71,7 @@
 					<Box class="design-row-item">
 						<Box class="input-grid">
 							<Box class="input-field">
-								<Text tag="label" for="cover-title">Title</Text>
+								<Text tag="label" for="cover-title">{i18n.t('wizard.cover.fields.title')}</Text>
 								<Input
 									id="cover-title"
 									type="text"
@@ -76,7 +79,7 @@
 									placeholder={settings.years[0].year.toString()} />
 							</Box>
 							<Box class="font-field">
-								<span class="label">Font</span>
+								<span class="label">{i18n.t('wizard.cover.fields.font')}</span>
 								<Button
 									type="button"
 									class="font-name-link"
@@ -94,15 +97,15 @@
 					<Box class="design-row-item">
 						<Box class="input-grid">
 							<Box class="input-field">
-								<Text tag="label" for="cover-name">Owner Name</Text>
+								<Text tag="label" for="cover-name">{i18n.t('wizard.cover.fields.owner_name')}</Text>
 								<Input
 									id="cover-name"
 									type="text"
 									bind:value={settings.coverPage.name}
-									placeholder="Your Name" />
+									placeholder={i18n.t('wizard.cover.placeholders.name')} />
 							</Box>
 							<Box class="input-field">
-								<Text tag="label" for="cover-email">Contact / Email</Text>
+								<Text tag="label" for="cover-email">{i18n.t('wizard.cover.fields.contact')}</Text>
 								<Input
 									id="cover-email"
 									type="text"
@@ -115,7 +118,7 @@
 					<Box class="design-row-item">
 						<Box class="input-grid">
 							<Box class="select-field">
-								<Text tag="label" for="cover-bg-style">Background Style</Text>
+								<Text tag="label" for="cover-bg-style">{i18n.t('wizard.cover.fields.bg_style')}</Text>
 								<select
 									id="cover-bg-style"
 									bind:value={settings.coverPage.backgroundStyle}>
@@ -126,7 +129,7 @@
 							</Box>
 
 							<Box class="input-field">
-								<Text tag="label" for="cover-bg-seed">Seed</Text>
+								<Text tag="label" for="cover-bg-seed">{i18n.t('wizard.cover.fields.seed')}</Text>
 								<Box class="input-with-action">
 									<Input
 										id="cover-bg-seed"
@@ -150,7 +153,7 @@
 					{#if settings.coverPage.backgroundStyle !== 'none'}
 						<Box class="design-row-item" transition="fade">
 							<Box class="input-field complexity-row">
-								<Text tag="label" for="cover-complexity">Complexity</Text>
+								<Text tag="label" for="cover-complexity">{i18n.t('wizard.cover.fields.complexity')}</Text>
 								<Box class="slider-with-value">
 									<Input
 										id="cover-complexity"

@@ -185,7 +185,7 @@
 			<button
 				class="download-fab no-print"
 				class:is-exporting={isExporting}
-				aria-label="Download template image"
+				aria-label={i18n.t('templates.download')}
 				onclick={downloadImage}
 				disabled={isExporting}>
 				{#if isExporting}

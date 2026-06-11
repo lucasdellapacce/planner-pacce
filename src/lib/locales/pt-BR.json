@@ -36,6 +36,108 @@
 				"events": "Sincronize seu calendário digital e eventos.",
 				"export": "Gere e baixe seu PDF."
 			}
+		},
+		"notes": {
+			"year": "Anotações Anuais",
+			"quarter": "Anotações Trimestrais",
+			"month": "Anotações Mensais",
+			"week": "Anotações Semanais",
+			"day": "Anotações Diárias"
+		},
+		"calendars": {
+			"title": "Visualizações de Calendário",
+			"desc": "Selecione templates para cada uma das páginas do seu calendário."
+		},
+		"collections": {
+			"new": "Nova Coleção",
+			"name_placeholder": "Nome da coleção...",
+			"edit_title": "Editar nome da coleção",
+			"delete_label": "Excluir Coleção",
+			"remove": "Remover?",
+			"empty": "Nenhuma coleção customizada ainda.",
+			"title": "Coleções Customizadas",
+			"desc": "Expanda seu planner com cadernos modulares e seções customizadas.",
+			"add": "+ Adicionar Coleção",
+			"cancel": "Cancelar",
+			"btn_add": "Adicionar"
+		},
+		"cover": {
+			"labels": {
+				"none": "Nenhum",
+				"mesh": "Gradiente de Malha",
+				"waves": "Ondas Topográficas",
+				"bauhaus": "Arte Bauhaus",
+				"halftone": "Padrão Meio-tom",
+				"glassmorphism": "Glassmorfismo",
+				"flower": "Flor da Vida",
+				"emoji": "Padrão Emoji",
+				"fractals": "Fractais",
+				"platonic": "Sólidos Platônicos",
+				"pokerface": "Pokerface",
+				"magician": "Mágico"
+			},
+			"title": "Capa",
+			"desc": "Personalize seu planner com seu nome, título e plano de fundo.",
+			"enable": "Habilitar",
+			"dark_mode": "Modo Escuro",
+			"collection_links": "Links de Coleções",
+			"fields": {
+				"title": "Título",
+				"font": "Fonte",
+				"owner_name": "Nome do Proprietário",
+				"contact": "Contato / Email",
+				"bg_style": "Estilo do Fundo",
+				"seed": "Semente",
+				"complexity": "Complexidade"
+			},
+			"placeholders": {
+				"title": "Título da Capa",
+				"name": "Seu Nome"
+			}
+		},
+		"design": {
+			"fonts": {
+				"body": "Fonte do Corpo",
+				"display": "Fonte de Exibição",
+				"cover": "Fonte da Capa",
+				"topbar": "Fonte da Barra Superior",
+				"sidebar": "Fonte da Barra Lateral"
+			},
+			"load_theme": "Carregar Tema",
+			"title": "Design e Tipografia",
+			"theme_colors": "Cores do Tema",
+			"colors": {
+				"bg": "Fundo da Página",
+				"sidebar": "Barra Lateral",
+				"text": "Texto",
+				"lines": "Linhas",
+				"dots": "Pontos"
+			},
+			"lang": {
+				"title": "Language / Idioma",
+				"label": "Idioma do Aplicativo"
+			}
+		},
+		"events": {
+			"title": "Sincronizar Eventos",
+			"add": "Adicionar",
+			"sync_label": "Sincronizar Calendário",
+			"delete_label": "Excluir Calendário"
+		},
+		"export": {
+			"custom_preset_desc": "Preset customizado criado por você."
+		},
+		"presets": {
+			"my_presets": "Meus Presets"
+		},
+		"spreads": {
+			"title": "Páginas",
+			"desc": "Gere páginas cronológicas altamente estruturadas e interligadas.",
+			"date_range": "Intervalo de Datas",
+			"start_date": "Data de Início",
+			"end_date": "Data de Fim",
+			"enable": "Habilitar Páginas",
+			"nav_layout": "Navegação e Layout"
 		}
 	},
 	"categories": {
@@ -603,6 +705,134 @@
 			"prints": "Impressões",
 			"shares": "Compartilhados",
 			"total_time": "Tempo Total de Criação"
+		}
+	},
+	"routes": {
+		"404": {
+			"title": "Página Não Encontrada",
+			"text": "Esta página não existe.",
+			"back": "Voltar ao Início"
+		},
+		"error": {
+			"title": "Algo deu errado",
+			"details": "Detalhes do Diagnóstico",
+			"return": "Voltar ao Planner"
+		},
+		"presets": {
+			"top_planners": "Planners Populares",
+			"essentials": "Essenciais",
+			"work": "Trabalho",
+			"academic": "Acadêmico",
+			"lifestyle": "Estilo de Vida",
+			"wellness": "Bem-estar",
+			"hobbies": "Passatempos"
+		},
+		"privacy": {
+			"title": "Política de Privacidade"
+		},
+		"terms": {
+			"title": "Termos de Serviço"
+		}
+	},
+	"panels": {
+		"calendar": {
+			"use_24h": "Usar relógio de 24 horas",
+			"start_time": "Hora de Início da Agenda",
+			"end_time": "Hora de Fim da Agenda",
+			"interval": "Intervalo da Agenda",
+			"1_hour": "1 hora",
+			"30_min": "30 minutos",
+			"15_min": "15 minutos",
+			"start_sunday": "Começar a semana no domingo",
+			"add_notes": "Páginas de Notas Adicionais",
+			"select_template": "Selecionar Template da Galeria",
+			"columns": "Colunas",
+			"goals_columns": "Colunas de Metas",
+			"year_template": "Template do Ano",
+			"quarter_template": "Template do Trimestre",
+			"month_template": "Template do Mês",
+			"week_template": "Template da Semana",
+			"day_template": "Template do Dia",
+			"notes_template": "Template das Notas Adicionais",
+			"use_week_since_year": "Usar número da semana do início do ano",
+			"align_day_text": "Alinhar Texto do Dia",
+			"sidebar_display": "Exibição da Barra Lateral",
+			"show_week_numbers": "Mostrar número das semanas na barra lateral",
+			"year": "Ano",
+			"custom_date": "Intervalo de Datas Customizado",
+			"days_week": "Dias da Semana",
+			"days_month": "Dias do Mês",
+			"days_year": "Dias do Ano",
+			"weeks_year": "Semanas do Ano",
+			"weeks_month": "Semanas do Mês",
+			"months": "Meses",
+			"none": "Nenhum"
+		},
+		"design": {
+			"placeholders": {
+				"name": "Nome",
+				"dashboard": "Dashboard"
+			}
+		},
+		"extras": {
+			"notes": "Anotações",
+			"tip": "Dica:",
+			"move_up": "Mover para Cima",
+			"move_down": "Mover para Baixo",
+			"page_template": "Template da Página",
+			"index_columns": "Colunas do Índice",
+			"index_columns_sub": "(Deixe em branco para auto)",
+			"num_index_pages": "Número de Páginas de Índice",
+			"num_items_per_page": "Número de Itens por Página de Índice",
+			"num_pages_per_item": "Número de Páginas por Item",
+			"name": "Nome",
+			"url": "URL do ICS"
+		}
+	},
+	"modals": {
+		"gallery": {
+			"clear": "Limpar busca",
+			"close": "Fechar galeria"
+		},
+		"help": {
+			"start_scratch": "Começar do Zero"
+		}
+	},
+	"preview": {
+		"alerts": {
+			"collection_index": "Índice de Coleção",
+			"year_disabled": "Visão anual desabilitada",
+			"quarter_disabled": "Visão trimestral desabilitada",
+			"month_disabled": "Visão mensal desabilitada",
+			"week_disabled": "Visão semanal desabilitada",
+			"day_disabled": "Visão diária desabilitada",
+			"collections_disabled": "Coleções desabilitadas",
+			"unsupported": "Página de preview não suportada"
+		}
+	},
+	"toast": {
+		"printed": "acabou de imprimir um planner!",
+		"undo": "Desfazer"
+	},
+	"share": {
+		"facebook": "Compartilhar no Facebook",
+		"linkedin": "Compartilhar no LinkedIn",
+		"x": "Compartilhar no X",
+		"copy": "Copiar Link",
+		"generic": "Compartilhar"
+	},
+	"templates": {
+		"download": "Baixar imagem do template",
+		"checks": {
+			"guest": "Check da lista de convidados",
+			"todo": "Check da tarefa",
+			"water": "Check de água",
+			"kindness": "Check de atos de bondade",
+			"done": "Concluído",
+			"goal": "Check da meta",
+			"day": "Check do dia",
+			"feeding": "Check de alimentação",
+			"complete": "Completar"
 		}
 	}
 }

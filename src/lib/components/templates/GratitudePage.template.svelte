@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Box, Text, Checkbox } from '$atoms';
 	import { Field } from '$molecules';
@@ -39,7 +42,7 @@
 				<Text class="section-label">{tTemplate('acts_kindness_connection', settings?.design?.locale)}</Text>
 				{#each Array(4) as _}
 					<Box class="bullet-row">
-						<Checkbox aria-label="Acts of kindness check" />
+						<Checkbox aria-label={i18n.t('templates.checks.kindness')} />
 						<Box class="line"></Box>
 					</Box>
 				{/each}

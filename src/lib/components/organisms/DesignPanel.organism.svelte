@@ -580,7 +580,7 @@
 					<label for="coverPageTitle">{i18n.t('ui.design_panel.cover_title')}</label>
 					<input
 						type="text"
-						placeholder="Cover Page Title"
+						placeholder={i18n.t('wizard.cover.placeholders.title')}
 						id="coverPageTitle"
 						bind:value={settings.coverPage.title} />
 				</fieldset>
@@ -588,7 +588,7 @@
 					<label for="name">{i18n.t('ui.design_panel.contact_name')}</label>
 					<input
 						type="text"
-						placeholder="Name"
+						placeholder={i18n.t('panels.design.placeholders.name')}
 						id="name"
 						bind:value={settings.coverPage.name} />
 				</fieldset>
@@ -653,7 +653,7 @@
 						type="text"
 						id="dashboardPage-title"
 						bind:value={settings.dashboardPage.title}
-						placeholder="Dashboard" />
+						placeholder={i18n.t('panels.design.placeholders.dashboard')} />
 				</div>
 				<fieldset style="margin-top: 1rem;">
 					<label for="dashboardPage-fontSize">

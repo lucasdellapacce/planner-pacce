@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { flip } from 'svelte/animate';
 	import { scale } from 'svelte/transition';
 	import { backOut, backIn } from 'svelte/easing';
@@ -25,7 +28,7 @@
 				out:scale|global={{ easing: backIn, duration: 150, start: 0 }}>
 				<span>{toast.message}</span>
 				{#if toast.onUndo}
-					<button class="undo-btn" onclick={() => handleUndo(toast)}>Undo</button>
+					<button class="undo-btn" onclick={() => handleUndo(toast)}>{i18n.t('toast.undo')}</button>
 				{/if}
 			</output>
 		{/each}

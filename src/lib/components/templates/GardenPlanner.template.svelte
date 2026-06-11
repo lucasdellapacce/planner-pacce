@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import { tTemplate, type PlannerSettings } from '$lib';
 	import { Grid, Field } from '$molecules';
 	import { Box, Text, Checkbox } from '$atoms';
@@ -39,13 +42,13 @@
 				<Box class="col-date"><Box class="line"></Box></Box>
 				<Box class="col-water">
 					<Box class="checkboxes">
-						<Checkbox aria-label="Water check" class="box" />
-						<Checkbox aria-label="Water check" class="box" />
-						<Checkbox aria-label="Water check" class="box" />
-						<Checkbox aria-label="Water check" class="box" />
-						<Checkbox aria-label="Water check" class="box" />
-						<Checkbox aria-label="Water check" class="box" />
-						<Checkbox aria-label="Water check" class="box" />
+						<Checkbox aria-label={i18n.t('templates.checks.water')} class="box" />
+						<Checkbox aria-label={i18n.t('templates.checks.water')} class="box" />
+						<Checkbox aria-label={i18n.t('templates.checks.water')} class="box" />
+						<Checkbox aria-label={i18n.t('templates.checks.water')} class="box" />
+						<Checkbox aria-label={i18n.t('templates.checks.water')} class="box" />
+						<Checkbox aria-label={i18n.t('templates.checks.water')} class="box" />
+						<Checkbox aria-label={i18n.t('templates.checks.water')} class="box" />
 					</Box>
 				</Box>
 				<Box class="col-notes"><Box class="line"></Box></Box>

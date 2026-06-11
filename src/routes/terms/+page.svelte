@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+
 	import Footer from '$organisms/Footer.organism.svelte';
 	import pkg from '../../../package.json';
 	import { trackEvent } from '$lib/analytics';
@@ -16,12 +19,12 @@
 </script>
 
 <svelte:head>
-	<title>Terms of Service — Remarkably Organized</title>
+	<title>{i18n.t('routes.terms.title')} — Remarkably Organized</title>
 </svelte:head>
 
 <main class="legal-page">
 	<div class="glass-container">
-		<h1>Terms of Service</h1>
+		<h1>{i18n.t('routes.terms.title')}</h1>
 		<p>Last updated: June 2026</p>
 
 		<h2>1. Acceptance of Terms</h2>

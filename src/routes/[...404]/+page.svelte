@@ -1,11 +1,15 @@
+<script lang="ts">
+	import { useI18n } from '$state';
+	const i18n = useI18n();
+</script>
 <svelte:head>
-	<title>Page Not Found | Remarkably Organized</title>
+	<title>{i18n.t('routes.404.title')} | Remarkably Organized</title>
 </svelte:head>
 
 <main>
 	<h1>404</h1>
-	<p>This page doesn't exist.</p>
-	<a href="/">Back to Home</a>
+	<p>{i18n.t('routes.404.text')}</p>
+	<a href="/">{i18n.t('routes.404.back')}</a>
 </main>
 
 <style lang="scss">
