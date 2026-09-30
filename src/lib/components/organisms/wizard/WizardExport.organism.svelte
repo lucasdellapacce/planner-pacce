@@ -17,12 +17,12 @@
 		settings,
 		onSaveCustomPreset = (preset: any) => {},
 		onClose = () => {},
-		onPrint = () => {},
+		onPrint = (_options?: { profile?: 'standard' | 'goodnotes' }) => {},
 	} = $props<{
 		settings: PlannerSettings;
 		onSaveCustomPreset: Function;
 		onClose: () => void;
-		onPrint: () => void;
+		onPrint: (options?: { profile?: 'standard' | 'goodnotes' }) => void;
 	}>();
 
 	let showSaveConfirm = $state(false);
@@ -73,6 +73,11 @@
 		onPrint();
 	}
 
+	function handleGoodnotesPrint() {
+		trackEvent('wizard_export_action', { action: 'print_goodnotes' });
+		onPrint({ profile: 'goodnotes' });
+	}
+
 	function handleReset() {
 		const isConfirmed = confirm(
 			i18n.t('wizard_export.reset_confirm'),
@@ -92,6 +97,13 @@
 			description: i18n.t('wizard_export.actions.print_desc'),
 			icon: PrintIcon,
 			handler: handlePrint,
+		},
+		{
+			id: 'goodnotes',
+			title: i18n.t('wizard_export.actions.goodnotes_title'),
+			description: i18n.t('wizard_export.actions.goodnotes_desc'),
+			icon: PrintIcon,
+			handler: handleGoodnotesPrint,
 		},
 		{
 			id: 'save',

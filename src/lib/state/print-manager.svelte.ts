@@ -3,6 +3,8 @@ import * as htmlToImage from 'html-to-image';
 import { toast, globalI18n } from '$state';
 import type { PlannerSettings } from '$lib';
 
+type ExportProfile = 'standard' | 'goodnotes';
+
 export class PrintManager {
 	isPreparingPrint = $state(false);
 	printProgress = $state(0);
@@ -109,6 +111,37 @@ export class PrintManager {
 	private mountQueue: (() => void)[] = [];
 	private isMounting = false;
 
+	private validateHyperlinksInDocument(): {
+		total: number;
+		broken: number;
+		missingTargets: string[];
+	} {
+		const anchors = Array.from(
+			document.querySelectorAll<HTMLAnchorElement>('main a[href^="#"]'),
+		).filter((anchor) => anchor.getAttribute('href') !== '#');
+		const targets = new Set(
+			Array.from(document.querySelectorAll<HTMLElement>('[id]'))
+				.map((el) => el.id)
+				.filter(Boolean),
+		);
+
+		const missingTargets: string[] = [];
+		for (const anchor of anchors) {
+			const rawHref = anchor.getAttribute('href');
+			if (!rawHref) continue;
+			const targetId = decodeURIComponent(rawHref.slice(1));
+			if (!targetId || targets.has(targetId)) continue;
+			missingTargets.push(targetId);
+		}
+
+		const uniqueMissing = [...new Set(missingTargets)];
+		return {
+			total: anchors.length,
+			broken: uniqueMissing.length,
+			missingTargets: uniqueMissing.slice(0, 5),
+		};
+	}
+
 	registerMount(callback: () => void) {
 		this.mountQueue.push(callback);
 		if (this.isPreparingPrint && !this.isMounting) {
@@ -137,8 +170,13 @@ export class PrintManager {
 		this.isMounting = false;
 	}
 
-	async executePrint(sendTimeCreating: () => void) {
+	async executePrint(
+		sendTimeCreating: () => void,
+		options: { profile?: ExportProfile; validateHyperlinks?: boolean } = {},
+	) {
 		await tick();
+		const profile = options.profile ?? 'standard';
+		document.documentElement.setAttribute('data-export-profile', profile);
 
 		fetch('/api/stats', {
 			method: 'POST',
@@ -246,8 +284,31 @@ export class PrintManager {
 		// Extra buffer to let browser load internal images or fonts
 		await new Promise((r) => setTimeout(r, 1000));
 
+		if (options.validateHyperlinks !== false) {
+			const report = this.validateHyperlinksInDocument();
+			const hasBrokenLinks = report.broken > 0;
+			if (hasBrokenLinks) {
+				const fallbackWarning = `Found ${report.broken} missing link targets. PDF links may fail.`;
+				const warning = globalI18n
+					? globalI18n
+							.t('print.hyperlink_warning')
+							.replace('{broken}', report.broken.toString())
+					: fallbackWarning;
+				toast.info(warning);
+			} else {
+				const fallbackSuccess = `Validated ${report.total} internal links for PDF export.`;
+				const success = globalI18n
+					? globalI18n
+							.t('print.hyperlink_success')
+							.replace('{total}', report.total.toString())
+					: fallbackSuccess;
+				toast.success(success);
+			}
+		}
+
 		const onAfterPrint = () => {
 			this.isPreparingPrint = false;
+			document.documentElement.removeAttribute('data-export-profile');
 			window.removeEventListener('afterprint', onAfterPrint);
 		};
 

@@ -9,6 +9,7 @@ import {
 import { toast } from './toast.state.svelte';
 import type { PageTemplate } from './collection';
 import { globalI18n } from './i18n.svelte';
+import type { PlannerProductType } from '$lib/data/reusable-elements';
 
 function t(key: string, fallback: string): string {
 	return globalI18n ? globalI18n.t(key) : fallback;
@@ -251,6 +252,17 @@ export class PlannerSettings {
 		title: '👋 Welcome',
 		fontSize: 1.0,
 		homeNavigatesToDashboard: false,
+	});
+
+	/** Product structure profile to reuse templates across planner/notebook/agenda/kit modes */
+	product = $state({
+		type: 'planner' as PlannerProductType,
+	});
+
+	/** PDF export profile settings */
+	exportSettings = $state({
+		profile: 'standard' as 'standard' | 'goodnotes',
+		validateHyperlinks: true,
 	});
 
 	/** Settings for changing how the year pages should work */
@@ -827,6 +839,13 @@ export class PlannerSettings {
 				fontSize: this.dashboardPage.fontSize,
 				homeNavigatesToDashboard: this.dashboardPage.homeNavigatesToDashboard,
 			},
+			product: {
+				type: this.product.type,
+			},
+			exportSettings: {
+				profile: this.exportSettings.profile,
+				validateHyperlinks: this.exportSettings.validateHyperlinks,
+			},
 			yearPage: {
 				disable: this.yearPage.disable,
 				template: this.yearPage.template,
@@ -1031,6 +1050,14 @@ export class PlannerSettings {
 		if (state?.dashboardPage?.homeNavigatesToDashboard !== undefined)
 			this.dashboardPage.homeNavigatesToDashboard =
 				state.dashboardPage.homeNavigatesToDashboard;
+
+		// Product and Export Settings
+		if (state?.product?.type !== undefined) this.product.type = state.product.type;
+		if (state?.exportSettings?.profile !== undefined)
+			this.exportSettings.profile = state.exportSettings.profile;
+		if (state?.exportSettings?.validateHyperlinks !== undefined)
+			this.exportSettings.validateHyperlinks =
+				state.exportSettings.validateHyperlinks;
 
 		// Year Page Settings
 		if (state?.yearPage?.disable !== undefined)

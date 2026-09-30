@@ -114,12 +114,14 @@
 	let galleryOnSelect = $state<(value: string) => void>(() => {});
 	let galleryCurrentTemplate = $state('');
 	let showSyncPrompt = $state(false);
+	let pendingPrintOptions = $state<{ profile?: ExportProfile } | undefined>(undefined);
 
 	let isSyncingBeforePrint = $state(false);
 	let showMenu = $state(false);
 
 	const printManager = new PrintManager(() => settings);
 	setContext('printManager', printManager);
+	type ExportProfile = 'standard' | 'goodnotes';
 
 	$effect(() => {
 		if (previewMode !== 'grid') {
@@ -743,7 +745,23 @@
 		}
 	};
 
-	const handlePrint = () => {
+	const applyGoodnotesOptimizations = () => {
+		settings.exportSettings.profile = 'goodnotes';
+		settings.design.aspectRatio = 0.75;
+		settings.design.margin.top = 0;
+		settings.design.margin.right = 0;
+		settings.design.margin.bottom = 0;
+		settings.design.margin.left = 0;
+		settings.sideNav.showCollectionLinks = true;
+		settings.topNav.showCollectionLinks = true;
+		settings.coverPage.showCollectionLinks = true;
+	};
+
+	const handlePrint = (options?: { profile?: ExportProfile }) => {
+		pendingPrintOptions = options;
+		if (options?.profile === 'goodnotes') {
+			applyGoodnotesOptimizations();
+		}
 		const needsSync = settings.calendars.some(
 			(c) => c.url && !c.events.length && !c.lastUpdated,
 		);
@@ -751,16 +769,20 @@
 			showSyncPrompt = true;
 			return;
 		}
-		executePrint();
+		executePrint(options);
 	};
 
-	const executePrint = async () => {
+	const executePrint = async (options?: { profile?: ExportProfile }) => {
 		showSyncPrompt = false;
 		showHelp = false;
 		showPresetsModal = false;
 		showGalleryModal = false;
 		showMenu = false;
-		await printManager.executePrint(sendTimeCreating);
+		await printManager.executePrint(sendTimeCreating, {
+			profile: options?.profile ?? settings.exportSettings.profile,
+			validateHyperlinks: settings.exportSettings.validateHyperlinks,
+		});
+		pendingPrintOptions = undefined;
 	};
 
 	const handleSyncAndPrint = async () => {
@@ -779,7 +801,7 @@
 		showSyncPrompt = false;
 		await tick();
 		setTimeout(() => {
-			executePrint();
+			executePrint(pendingPrintOptions);
 		}, 500);
 	};
 
@@ -1085,7 +1107,7 @@
 			onClose={() => (showSyncPrompt = false)}
 			onPrintAnyway={() => {
 				showSyncPrompt = false;
-				executePrint();
+				executePrint(pendingPrintOptions);
 			}}
 			onSyncAndPrint={handleSyncAndPrint} />
 	{/if}

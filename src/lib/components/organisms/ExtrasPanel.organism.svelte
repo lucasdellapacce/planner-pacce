@@ -9,6 +9,12 @@
 	import HelpIcon from '~icons/fa/question-circle';
 	import GalleryIcon from '~icons/fa/image';
 	import { toast } from '$state';
+	import {
+		PRODUCT_TEMPLATE_STRUCTURES,
+		REUSABLE_COLLECTION_TEMPLATES,
+		REUSABLE_ELEMENTS_LIBRARY,
+		type PlannerProductType,
+	} from '$lib/data/reusable-elements';
 
 	let {
 		settings,
@@ -92,6 +98,76 @@
 		});
 	};
 
+	const addCollectionFromTemplate = (templateId: string) => {
+		const template = REUSABLE_COLLECTION_TEMPLATES.find((item) => item.id === templateId);
+		if (!template) return;
+		settings.collections.push({
+			name: template.name,
+			id: `${Date.now()}-${template.id}`,
+			total: template.defaultTotal,
+			type: template.pageTemplate,
+			numIndexPages: 1,
+			numPagesPerItem: 1,
+			columns: template.defaultColumns ?? 1,
+		});
+		toast.success(`${template.name} added to collections.`);
+	};
+
+	const applyProductStructure = (type: PlannerProductType) => {
+		settings.product.type = type;
+		if (type === 'notebook') {
+			settings.weekPage.disable = true;
+			settings.dayPage.disable = true;
+			settings.monthPage.disable = true;
+			settings.collections = [
+				{
+					name: i18n.t('panels.extras.notes'),
+					id: `${Date.now()}-notebook`,
+					total: 80,
+					type: 'lined',
+					numIndexPages: 1,
+					numPagesPerItem: 1,
+					columns: 1,
+				},
+			];
+		} else if (type === 'agenda') {
+			settings.weekPage.disable = false;
+			settings.dayPage.disable = false;
+			settings.weekPage.template = 'agenda-week';
+			settings.dayPage.template = 'agenda-day';
+		} else if (type === 'kit') {
+			settings.yearPage.disable = true;
+			settings.quarterPage.disable = true;
+			settings.monthPage.disable = true;
+			settings.weekPage.disable = true;
+			settings.dayPage.disable = true;
+			if (settings.collections.length === 0) {
+				addCollectionFromTemplate('notes-dotted');
+				addCollectionFromTemplate('project-kanban');
+			}
+		} else {
+			settings.yearPage.disable = false;
+			settings.monthPage.disable = false;
+			settings.weekPage.disable = false;
+			settings.dayPage.disable = false;
+		}
+	};
+
+	let draggedCollectionId = $state<string | null>(null);
+	const startCollectionDrag = (collectionId: string) => {
+		draggedCollectionId = collectionId;
+	};
+
+	const moveCollectionByDrag = (targetCollectionId: string) => {
+		if (!draggedCollectionId || draggedCollectionId === targetCollectionId) return;
+		const sourceIndex = settings.collections.findIndex((c) => c.id === draggedCollectionId);
+		const targetIndex = settings.collections.findIndex((c) => c.id === targetCollectionId);
+		if (sourceIndex < 0 || targetIndex < 0) return;
+		const [item] = settings.collections.splice(sourceIndex, 1);
+		settings.collections.splice(targetIndex, 0, item);
+		draggedCollectionId = null;
+	};
+
 	const addCalendar = () => {
 		settings.calendars.push({
 			events: [],
@@ -125,6 +201,21 @@
 		<BookOpenIcon style="opacity: 0.5;" />
 	</h2>
 
+	<div class="product-structure-box">
+		<label for="product-structure-select">{i18n.t('ui.extras_panel.product_structure')}</label>
+		<select
+			id="product-structure-select"
+			bind:value={settings.product.type}>
+			{#each Object.entries(PRODUCT_TEMPLATE_STRUCTURES) as [value, definition]}
+				<option value={value}>{definition.label}</option>
+			{/each}
+		</select>
+		<p>{PRODUCT_TEMPLATE_STRUCTURES[settings.product.type as PlannerProductType].description}</p>
+		<button type="button" class="btn-add" onclick={() => applyProductStructure(settings.product.type)}>
+			{i18n.t('ui.extras_panel.apply_structure')}
+		</button>
+	</div>
+
 	<dialog
 		bind:this={helpDialog}
 		class="help-dialog"
@@ -152,6 +243,38 @@
 	</dialog>
 
 	<form>
+		<details ontoggle={handleDetailsToggle}>
+			<summary>
+				<div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+					<h3 style="margin: 0;">{i18n.t('ui.extras_panel.reusable_library')}</h3>
+				</div>
+			</summary>
+			<div class="library-panel-content">
+				<div class="library-row">
+					<strong>{i18n.t('ui.extras_panel.collection_templates')}</strong>
+					<div class="chips">
+						{#each REUSABLE_COLLECTION_TEMPLATES as template}
+							<button
+								type="button"
+								class="chip-action"
+								onclick={() => addCollectionFromTemplate(template.id)}
+								title={template.description}>
+								+ {template.name}
+							</button>
+						{/each}
+					</div>
+				</div>
+				<div class="library-row">
+					<strong>{i18n.t('ui.extras_panel.stickers_blocks')}</strong>
+					<div class="chips">
+						{#each REUSABLE_ELEMENTS_LIBRARY as element}
+							<span class="chip {element.kind}">{element.name}</span>
+						{/each}
+					</div>
+				</div>
+			</div>
+		</details>
+
 		<details ontoggle={handleDetailsToggle}>
 			<summary
 				onclick={(e) => {
@@ -197,7 +320,11 @@
 				</div>
 				<div class="collections">
 					{#each settings.collections as collection, i (collection.id)}
-						<fieldset>
+						<fieldset
+							draggable="true"
+							ondragstart={() => startCollectionDrag(collection.id)}
+							ondragover={(event) => event.preventDefault()}
+							ondrop={() => moveCollectionByDrag(collection.id)}>
 							<div
 								style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
 								<label for="" style="margin: 0;">Collection {i + 1}</label>
@@ -463,6 +590,61 @@
 		&:hover {
 			background: var(--primary);
 			color: white;
+		}
+
+		.product-structure-box {
+			background: var(--surface-2);
+			border: 1px solid var(--outline);
+			border-radius: var(--radius-2);
+			padding: 0.75rem;
+			margin-bottom: 1rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+
+			p {
+				font-size: 0.82rem;
+				opacity: 0.8;
+				margin: 0;
+			}
+		}
+
+		.library-panel-content {
+			padding: 0.75rem 0;
+			display: flex;
+			flex-direction: column;
+			gap: 0.85rem;
+		}
+
+		.library-row {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		.chips {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.35rem;
+		}
+
+		.chip,
+		.chip-action {
+			font-size: 0.75rem;
+			border-radius: 999px;
+			border: 1px solid var(--outline);
+			background: var(--surface);
+			color: var(--text);
+			padding: 0.2rem 0.5rem;
+		}
+
+		.chip-action {
+			cursor: pointer;
+		}
+
+		.chip-action:hover {
+			background: var(--action);
+			color: var(--action-text);
 		}
 	}
 </style>

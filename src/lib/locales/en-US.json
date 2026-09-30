@@ -293,7 +293,9 @@
 	},
 	"print": {
 		"export_success": "Page {index} exported successfully!",
-		"export_error": "Failed to export image."
+		"export_error": "Failed to export image.",
+		"hyperlink_warning": "Detected {broken} missing internal link targets. Some PDF hyperlinks may fail.",
+		"hyperlink_success": "Validated {total} internal hyperlinks for PDF export."
 	},
 	"wizard_export": {
 		"toast_preset_saved": "Custom preset saved!",
@@ -312,6 +314,8 @@
 		"actions": {
 			"print_title": "Print Now",
 			"print_desc": "Generate and print your PDF.",
+			"goodnotes_title": "Goodnotes PDF",
+			"goodnotes_desc": "Apply Goodnotes-safe settings and print with validated links.",
 			"save_title": "Save Preset",
 			"save_desc": "Save as a local custom preset.",
 			"link_title": "Copy Link",
@@ -462,7 +466,12 @@
 			"columns": "Columns",
 			"sync_calendar": "Sync Calendar Events",
 			"calendar_name": "Name",
-			"calendar_url": "ICS URL"
+			"calendar_url": "ICS URL",
+			"product_structure": "Product Structure",
+			"apply_structure": "Apply Structure",
+			"reusable_library": "Reusable Library",
+			"collection_templates": "Collection Templates",
+			"stickers_blocks": "Stickers & Blocks"
 		},
 		"calendar_panel": {
 			"use_24h": "Use 24-hour clock",

@@ -485,7 +485,9 @@
 	},
 	"print": {
 		"export_success": "Página {index} exportada com sucesso!",
-		"export_error": "Falha ao exportar a imagem."
+		"export_error": "Falha ao exportar a imagem.",
+		"hyperlink_warning": "Foram detectados {broken} destinos internos ausentes. Alguns hiperlinks do PDF podem falhar.",
+		"hyperlink_success": "Foram validados {total} hiperlinks internos para exportação em PDF."
 	},
 	"wizard_export": {
 		"toast_preset_saved": "Modelo personalizado salvo!",
@@ -504,6 +506,8 @@
 		"actions": {
 			"print_title": "Imprimir Agora",
 			"print_desc": "Gere e imprima seu PDF.",
+			"goodnotes_title": "PDF para Goodnotes",
+			"goodnotes_desc": "Aplica ajustes seguros para Goodnotes e valida os links internos.",
 			"save_title": "Salvar Modelo",
 			"save_desc": "Salve como um modelo personalizado local.",
 			"link_title": "Copiar Link",
@@ -654,7 +658,12 @@
 			"columns": "Colunas",
 			"sync_calendar": "Sincronizar Eventos de Calendário",
 			"calendar_name": "Nome",
-			"calendar_url": "URL ICS"
+			"calendar_url": "URL ICS",
+			"product_structure": "Estrutura do Produto",
+			"apply_structure": "Aplicar Estrutura",
+			"reusable_library": "Biblioteca Reutilizável",
+			"collection_templates": "Templates de Coleção",
+			"stickers_blocks": "Stickers e Blocos"
 		},
 		"calendar_panel": {
 			"use_24h": "Usar relógio de 24 horas",
