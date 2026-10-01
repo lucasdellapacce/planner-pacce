@@ -1,0 +1,278 @@
+﻿File: src\routes\+error.svelte | Line 27: <h2>Something went wrong</h2>
+File: src\routes\+error.svelte | Line 35: <summary>Diagnostic Details</summary>
+File: src\routes\+error.svelte | Line 41: <a href="/" class="primary-btn">Return to Planner</a>
+File: src\routes\api\calendar\+server.ts | Line 97: if (end > after && start < before) {
+File: src\routes\presets\[[category]]\+page.svelte | Line 43: { id: 'all', name: 'Top Planners', icon: '­ƒöÑ' },
+File: src\routes\presets\[[category]]\+page.svelte | Line 44: { id: 'essentials', name: 'Essentials', icon: 'Ô£¿' },
+File: src\routes\presets\[[category]]\+page.svelte | Line 45: { id: 'work', name: 'Work', icon: '­ƒÆ╝' },
+File: src\routes\presets\[[category]]\+page.svelte | Line 46: { id: 'academic', name: 'Academic', icon: '­ƒÄô' },
+File: src\routes\presets\[[category]]\+page.svelte | Line 47: { id: 'lifestyle', name: 'Lifestyle', icon: '­ƒÅí' },
+File: src\routes\presets\[[category]]\+page.svelte | Line 48: { id: 'wellness', name: 'Wellness', icon: '­ƒºÿ' },
+File: src\routes\presets\[[category]]\+page.svelte | Line 49: { id: 'hobbies', name: 'Hobbies', icon: '­ƒÄ¿' },
+File: src\routes\privacy\+page.svelte | Line 19: <title>Privacy Policy ÔÇö Remarkably Organized</title>
+File: src\routes\privacy\+page.svelte | Line 24: <h1>Privacy Policy</h1>
+File: src\routes\privacy\+page.svelte | Line 25: <p>Last updated: June 2026</p>
+File: src\routes\privacy\+page.svelte | Line 27: <h2>1. Introduction</h2>
+File: src\routes\privacy\+page.svelte | Line 33: <h2>2. Client-Side Processing</h2>
+File: src\routes\privacy\+page.svelte | Line 41: <h2>3. Google Analytics</h2>
+File: src\routes\privacy\+page.svelte | Line 49: <h2>4. Live Activity Tracking</h2>
+File: src\routes\privacy\+page.svelte | Line 59: <h2>5. Device Integration & API Access</h2>
+File: src\routes\privacy\+page.svelte | Line 78: <h2>6. Changes to This Policy</h2>
+File: src\routes\privacy\+page.svelte | Line 84: <a href="/" class="back-link">ÔåÉ Back to Home</a>
+File: src\routes\terms\+page.svelte | Line 19: <title>Terms of Service ÔÇö Remarkably Organized</title>
+File: src\routes\terms\+page.svelte | Line 24: <h1>Terms of Service</h1>
+File: src\routes\terms\+page.svelte | Line 25: <p>Last updated: June 2026</p>
+File: src\routes\terms\+page.svelte | Line 27: <h2>1. Acceptance of Terms</h2>
+File: src\routes\terms\+page.svelte | Line 33: <h2>2. Description of Service</h2>
+File: src\routes\terms\+page.svelte | Line 40: <h2>3. Provided "As-Is" / Limitation of Liability</h2>
+File: src\routes\terms\+page.svelte | Line 57: <h2>4. Third-Party Services & Device Integration</h2>
+File: src\routes\terms\+page.svelte | Line 64: We <strong>do not</strong>
+File: src\routes\terms\+page.svelte | Line 66: <strong>do not</strong>
+File: src\routes\terms\+page.svelte | Line 68: <strong>do not</strong>
+File: src\routes\terms\+page.svelte | Line 76: <h2>5. Copyright & Open Source</h2>
+File: src\routes\terms\+page.svelte | Line 85: <a href="/" class="back-link">ÔåÉ Back to Home</a>
+File: src\routes\[...404]\+page.svelte | Line 2: <title>Page Not Found | Remarkably Organized</title>
+File: src\routes\[...404]\+page.svelte | Line 7: <p>This page doesn't exist.</p>
+File: src\routes\[...404]\+page.svelte | Line 8: <a href="/">Back to Home</a>
+File: src\lib\components\molecules\InteractivePlannerPreview.molecule.svelte | Line 97: if (templateVal === 'collection-index') return 'Collection Index';
+File: src\lib\components\molecules\InteractivePlannerPreview.molecule.svelte | Line 149: <div class="empty-state">Year view disabled</div>
+File: src\lib\components\molecules\InteractivePlannerPreview.molecule.svelte | Line 159: <div class="empty-state">Quarter view disabled</div>
+File: src\lib\components\molecules\InteractivePlannerPreview.molecule.svelte | Line 167: <div class="empty-state">Month view disabled</div>
+File: src\lib\components\molecules\InteractivePlannerPreview.molecule.svelte | Line 180: <div class="empty-state">Week view disabled</div>
+File: src\lib\components\molecules\InteractivePlannerPreview.molecule.svelte | Line 188: <div class="empty-state">Day view disabled</div>
+File: src\lib\components\molecules\InteractivePlannerPreview.molecule.svelte | Line 246: <div class="empty-state">Collections disabled</div>
+File: src\lib\components\molecules\InteractivePlannerPreview.molecule.svelte | Line 249: <div class="empty-state">Unsupported preview page</div>
+File: src\lib\components\molecules\PrintToast.molecule.svelte | Line 20: <Text tag="span">just printed a planner!</Text>
+File: src\lib\components\molecules\ShareFab.molecule.svelte | Line 46: aria-label="Share on Facebook"
+File: src\lib\components\molecules\ShareFab.molecule.svelte | Line 60: aria-label="Share on LinkedIn"
+File: src\lib\components\molecules\ShareFab.molecule.svelte | Line 73: aria-label="Share on X"
+File: src\lib\components\molecules\ShareFab.molecule.svelte | Line 87: aria-label="Copy Link"
+File: src\lib\components\molecules\ShareFab.molecule.svelte | Line 106: aria-label="Share"
+File: src\lib\components\molecules\TemplateThumbnail.molecule.svelte | Line 188: aria-label="Download template image"
+File: src\lib\components\molecules\Toast.molecule.svelte | Line 28: <button class="undo-btn" onclick={() => handleUndo(toast)}>Undo</button>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 97: <label for="{idPrefix}Use24HourClockWeek">Use 24-hour clock</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 100: <label for="{idPrefix}WeekAgendaStartTime">Agenda Start Time</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 122: <label for="{idPrefix}WeekAgendaEndTime">Agenda End Time</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 144: <label for="{idPrefix}WeekAgendaInterval">Agenda Interval</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 149: <option value={60}>1 hour</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 150: <option value={30}>30 minutes</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 151: <option value={15}>15 minutes</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 157: <option value={60}>1 hour</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 158: <option value={30}>30 minutes</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 159: <option value={15}>15 minutes</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 179: <label for="{idPrefix}Use24HourClockDay">Use 24-hour clock</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 182: <label for="{idPrefix}DayAgendaStartTime">Agenda Start Time</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 204: <label for="{idPrefix}DayAgendaEndTime">Agenda End Time</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 226: <label for="{idPrefix}DayAgendaInterval">Agenda Interval</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 231: <option value={60}>1 hour</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 232: <option value={30}>30 minutes</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 233: <option value={15}>15 minutes</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 239: <option value={60}>1 hour</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 240: <option value={30}>30 minutes</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 241: <option value={15}>15 minutes</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 254: <label for="timeframeBasedOnYear">Year</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 265: <option value={0}>Custom Date Range</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 270: <label for="start">Start Date</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 273: placeholder="Start Date"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 281: <label for="end">End Date</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 284: placeholder="End Date"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 297: <label for="startWeekOnSunday">Start Week on Sunday</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 335: <label for="yearPageTemplate">Year Page Template</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 348: aria-label="Select Template from Gallery"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 360: <label for="yearNotePagesAmount">Additional Note Pages</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 363: placeholder="Additional Note Pages"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 371: <label for="yearNotePagesTemplate">Additional Note Pages Template</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 384: aria-label="Select Template from Gallery"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 397: <label for="yearNotePagesColumns">Columns</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 445: <label for="quarterPageTemplate">Quarter Page Template</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 458: aria-label="Select Template from Gallery"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 471: <label for="quarterGoalsColumns">Goals Columns</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 482: <label for="quarterNotePagesAmount">Additional Note Pages</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 485: placeholder="Additional Note Pages"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 493: <label for="quarterNotePagesTemplate">Additional Note Pages Template</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 506: aria-label="Select Template from Gallery"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 520: <label for="quarterNotePagesColumns">Columns</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 568: <label for="monthPageTemplate">Month Page Template</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 581: aria-label="Select Template from Gallery"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 594: <label for="monthPageColumns">Columns</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 604: <label for="monthNotePagesAmount">Additional Note Pages</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 607: placeholder="Additional Note Pages"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 615: <label for="monthNotePagesTemplate">Additional Note Pages Template</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 628: aria-label="Select Template from Gallery"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 641: <label for="monthNotePagesColumns">Columns</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 693: <label for="useWeekSinceYear">Use week number from start of year</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 696: <label for="weekPageTemplate">Week Page Template</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 709: aria-label="Select Template from Gallery"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 722: <span class="label-text">Align Day Text</span>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 760: <label for="weekPageColumns">Columns</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 770: <label for="weekNotePagesAmount">Additional Note Pages</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 773: placeholder="Additional Note Pages"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 781: <label for="weekNotePagesTemplate">Additional Note Pages Template</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 794: aria-label="Select Template from Gallery"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 807: <label for="weekNotePagesColumns">Columns</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 821: <label for="weekSideNavDisplay">Sidebar Display</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 823: <option value="days-this-week">Days of the Week</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 824: <option value="days-this-month">Days of the Month</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 825: <option value="weeks-this-year">Weeks of the Year</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 826: <option value="weeks-this-month">Weeks of the Month</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 827: <option value="months">Months</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 828: <option value="none">None</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 837: <label for="useWeekNumbersInSideNav">Show week numbers in side bar</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 878: <label for="dayPageTemplate">Day Page Template</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 891: aria-label="Select Template from Gallery"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 907: <label for="dayPageColumns">Columns</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 917: <label for="dayNotePagesAmount">Additional Note Pages</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 920: placeholder="Additional Note Pages"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 928: <label for="dayNotePagesTemplate">Additional Note Pages Template</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 941: aria-label="Select Template from Gallery"
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 954: <label for="dayNotePagesColumns">Columns</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 968: <label for="daySideNavDisplay">Sidebar Display</label>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 970: <option value="days-this-week">Days of the Week</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 971: <option value="days-this-month">Days of the Month</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 972: <option value="days-this-year">Days of the Year</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 973: <option value="weeks-this-year">Weeks of the Year</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 974: <option value="weeks-this-month">Weeks of the Month</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 975: <option value="months">Months</option>
+File: src\lib\components\organisms\CalendarPanel.organism.svelte | Line 976: <option value="none">None</option>
+File: src\lib\components\organisms\DesignPanel.organism.svelte | Line 583: placeholder="Cover Page Title"
+File: src\lib\components\organisms\DesignPanel.organism.svelte | Line 591: placeholder="Name"
+File: src\lib\components\organisms\DesignPanel.organism.svelte | Line 656: placeholder="Dashboard" />
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 82: name: 'Notes',
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 191: <strong>Tip:</strong>
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 206: title="Move Up"
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 214: title="Move Down"
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 220: <input type="text" bind:value={collection.name} placeholder="Name" />
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 222: <label for="collection-{collection.id}-type">Page Template</label>
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 235: aria-label="Select Template from Gallery"
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 248: <label for="collection-{collection.id}-columns">Columns</label>
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 251: placeholder="Columns"
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 260: Index Columns <small>(Leave blank for auto)</small>
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 264: placeholder="Auto"
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 276: placeholder="Number of Index Pages"
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 288: placeholder="Number of Items Per Index Page"
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 301: placeholder="Number of Pages Per Item"
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 326: <h3 style="margin: 0;">Sync Calendar Events</h3>
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 331: aria-label="Help with syncing calendars">
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 349: <label for="calendar-{i}-name">Name</label>
+File: src\lib\components\organisms\ExtrasPanel.organism.svelte | Line 357: <label for="calendar-{i}-url">ICS URL</label>
+File: src\lib\components\organisms\GalleryModal.organism.svelte | Line 233: aria-label="Clear search">
+File: src\lib\components\organisms\GalleryModal.organism.svelte | Line 238: <button class="close-btn" aria-label="Close gallery" onclick={onClose}>Ô£ò</button>
+File: src\lib\components\organisms\HelpModal.organism.svelte | Line 205: preset_name: 'Start from Scratch',
+File: src\lib\components\organisms\HeroSection.organism.svelte | Line 46: <Text tag="small"><Text tag="i">Remarkably Organized</Text></Text>
+File: src\lib\components\organisms\PresetsModal.organism.svelte | Line 31: { id: 'essentials', name: 'Essentials', icon: 'Ô£¿' },
+File: src\lib\components\organisms\PresetsModal.organism.svelte | Line 32: { id: 'work', name: 'Work', icon: '­ƒÆ╝' },
+File: src\lib\components\organisms\PresetsModal.organism.svelte | Line 33: { id: 'academic', name: 'Academic', icon: '­ƒÄô' },
+File: src\lib\components\organisms\PresetsModal.organism.svelte | Line 34: { id: 'lifestyle', name: 'Lifestyle', icon: '­ƒÅí' },
+File: src\lib\components\organisms\PresetsModal.organism.svelte | Line 35: { id: 'wellness', name: 'Wellness', icon: '­ƒºÿ' },
+File: src\lib\components\organisms\PresetsModal.organism.svelte | Line 36: { id: 'hobbies', name: 'Hobbies', icon: '­ƒÄ¿' },
+File: src\lib\components\organisms\wizard\WizardCalendarNotes.organism.svelte | Line 25: <Text tag="h3" class="welcome-headline-gradient">Calendar Notes</Text>
+File: src\lib\components\organisms\wizard\WizardCalendarNotes.organism.svelte | Line 34: <span class="col-label">Year Notes</span>
+File: src\lib\components\organisms\wizard\WizardCalendarNotes.organism.svelte | Line 67: <span class="col-label">Quarter Notes</span>
+File: src\lib\components\organisms\wizard\WizardCalendarNotes.organism.svelte | Line 101: <span class="col-label">Month Notes</span>
+File: src\lib\components\organisms\wizard\WizardCalendarNotes.organism.svelte | Line 135: <span class="col-label">Week Notes</span>
+File: src\lib\components\organisms\wizard\WizardCalendarNotes.organism.svelte | Line 168: <span class="col-label">Day Notes</span>
+File: src\lib\components\organisms\wizard\WizardCalendars.organism.svelte | Line 24: <Text tag="h3" class="welcome-headline-gradient">Calendar Views</Text>
+File: src\lib\components\organisms\wizard\WizardCalendars.organism.svelte | Line 25: <Text tag="p">Select templates for each of your primary calendar spreads.</Text>
+File: src\lib\components\organisms\wizard\WizardCollections.organism.svelte | Line 70: <Text tag="h4">New Collection</Text>
+File: src\lib\components\organisms\wizard\WizardCollections.organism.svelte | Line 73: placeholder="Collection name..."
+File: src\lib\components\organisms\wizard\WizardCollections.organism.svelte | Line 106: placeholder="Collection name..."
+File: src\lib\components\organisms\wizard\WizardCollections.organism.svelte | Line 107: title="Edit collection name" />
+File: src\lib\components\organisms\wizard\WizardCollections.organism.svelte | Line 111: aria-label="Delete Collection"
+File: src\lib\components\organisms\wizard\WizardCollections.organism.svelte | Line 112: title="Delete Collection">
+File: src\lib\components\organisms\wizard\WizardCollections.organism.svelte | Line 135: <span>Remove?</span>
+File: src\lib\components\organisms\wizard\WizardCollections.organism.svelte | Line 166: <Text tag="p" class="empty-state">No custom collections yet.</Text>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 16: { id: 'none', label: 'None' },
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 17: { id: 'mesh', label: 'Mesh Gradient' },
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 18: { id: 'waves', label: 'Topographic Waves' },
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 19: { id: 'bauhaus', label: 'Bauhaus Art' },
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 20: { id: 'halftone', label: 'Halftone Pattern' },
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 21: { id: 'glassmorphism', label: 'Glassmorphism' },
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 22: { id: 'flower-of-life', label: 'Flower of Life' },
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 23: { id: 'emoji', label: 'Emoji Pattern' },
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 24: { id: 'fractals', label: 'Fractals' },
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 25: { id: 'platonic', label: 'Platonic Solids' },
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 26: { id: 'pokerface', label: 'Pokerface' },
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 27: { id: 'magician', label: 'Magician' },
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 39: <Text tag="h3" class="welcome-headline-gradient">Cover Page</Text>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 40: <Text tag="p">Personalize your planner with your name, title, and background.</Text>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 47: <span>Enable</span>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 54: <span>Dark Mode</span>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 62: <span>Collection Links</span>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 71: <Text tag="label" for="cover-title">Title</Text>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 79: <span class="label">Font</span>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 97: <Text tag="label" for="cover-name">Owner Name</Text>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 102: placeholder="Your Name" />
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 105: <Text tag="label" for="cover-email">Contact / Email</Text>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 118: <Text tag="label" for="cover-bg-style">Background Style</Text>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 129: <Text tag="label" for="cover-bg-seed">Seed</Text>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 142: aria-label="Shuffle seed">
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 153: <Text tag="label" for="cover-complexity">Complexity</Text>
+File: src\lib\components\organisms\wizard\WizardCover.organism.svelte | Line 188: title="Cover Page Font"
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 37: if (isBody) return 'Body Font';
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 38: if (isDisplay) return 'Display Font';
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 39: if (isCover) return 'Cover Font';
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 40: if (isTopNav) return 'Topbar Font';
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 41: return 'Sidebar Font';
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 144: <!-- <Text tag="label" for="guide-theme-btn">Load Theme</Text> -->
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 154: <Text tag="h3" class="welcome-headline-gradient">Design & Typography</Text>
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 162: <!-- <Text tag="h4">Theme Colors</Text> -->
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 165: <Text tag="label" for="guide-color-bg">Page Background</Text>
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 172: <Text tag="label" for="guide-color-nav">Sidebar</Text>
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 179: <Text tag="label" for="guide-color-text">Text</Text>
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 186: <Text tag="label" for="guide-color-lines">Lines</Text>
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 193: <Text tag="label" for="guide-color-dots">Dots</Text>
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 214: aria-label="Select body font">
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 229: aria-label="Select display font">
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 243: aria-label="Select cover font">
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 257: aria-label="Select top nav font">
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 272: aria-label="Select side nav font">
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 502: <Text tag="h4" style="margin-bottom: 0.5rem;">Language / Idioma</Text>
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 505: <Text tag="label" for="lang-select">Application Language</Text>
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 514: <option value="pt-BR">Portugu├¬s (PT-BR)</option>
+File: src\lib\components\organisms\wizard\WizardDesign.organism.svelte | Line 515: <option value="en-US">English (en-US)</option>
+File: src\lib\components\organisms\wizard\WizardEvents.organism.svelte | Line 70: <Text tag="h3" class="welcome-headline-gradient">Sync Calendar Events</Text>
+File: src\lib\components\organisms\wizard\WizardEvents.organism.svelte | Line 86: <Button class="add-btn" onclick={addCalendar}>Add</Button>
+File: src\lib\components\organisms\wizard\WizardEvents.organism.svelte | Line 103: aria-label="Sync Calendar">
+File: src\lib\components\organisms\wizard\WizardEvents.organism.svelte | Line 113: aria-label="Delete Calendar">
+File: src\lib\components\organisms\wizard\WizardExport.organism.svelte | Line 39: description: 'Custom preset created by you.',
+File: src\lib\components\organisms\wizard\WizardPresets.organism.svelte | Line 27: { id: 'essentials', name: 'Essentials', icon: 'Ô£¿' },
+File: src\lib\components\organisms\wizard\WizardPresets.organism.svelte | Line 28: { id: 'work', name: 'Work', icon: '­ƒÆ╝' },
+File: src\lib\components\organisms\wizard\WizardPresets.organism.svelte | Line 29: { id: 'academic', name: 'Academic', icon: '­ƒÄô' },
+File: src\lib\components\organisms\wizard\WizardPresets.organism.svelte | Line 30: { id: 'lifestyle', name: 'Lifestyle', icon: '­ƒÅí' },
+File: src\lib\components\organisms\wizard\WizardPresets.organism.svelte | Line 31: { id: 'wellness', name: 'Wellness', icon: '­ƒºÿ' },
+File: src\lib\components\organisms\wizard\WizardPresets.organism.svelte | Line 32: { id: 'hobbies', name: 'Hobbies', icon: '­ƒÄ¿' },
+File: src\lib\components\organisms\wizard\WizardPresets.organism.svelte | Line 33: { id: 'my-presets', name: 'My Presets', icon: 'Ô¡É´©Å' },
+File: src\lib\components\organisms\wizard\WizardSpreads.organism.svelte | Line 28: <Text tag="h3" class="welcome-headline-gradient">Spreads</Text>
+File: src\lib\components\organisms\wizard\WizardSpreads.organism.svelte | Line 29: <Text tag="p">Generate highly structured, interlinked chronological spreads.</Text>
+File: src\lib\components\organisms\wizard\WizardSpreads.organism.svelte | Line 31: <Text tag="h4" style="margin-top: 1.5rem;">Date Range</Text>
+File: src\lib\components\organisms\wizard\WizardSpreads.organism.svelte | Line 34: <Text tag="label" for="guide-date-start">Start Date</Text>
+File: src\lib\components\organisms\wizard\WizardSpreads.organism.svelte | Line 43: <Text tag="label" for="guide-date-end">End Date</Text>
+File: src\lib\components\organisms\wizard\WizardSpreads.organism.svelte | Line 53: <!-- <Text tag="h4">Enable Spreads</Text> -->
+File: src\lib\components\organisms\wizard\WizardSpreads.organism.svelte | Line 88: <Text tag="h4" style="margin-top: 1.5rem;">Navigation & Layout</Text>
+File: src\lib\components\organisms\wizard\WizardWelcome.organism.svelte | Line 95: <span class="welcome-headline-gradient">Remarkably Organized</span>
+File: src\lib\components\templates\AgendaDay.template.svelte | Line 40: return eventEndFromMidnight > agendaStartMs && timeFromMidnight < agendaEndMs;
+File: src\lib\components\templates\AgendaDay.template.svelte | Line 78: {:else if hour > 0 && hour < 24}
+File: src\lib\components\templates\AgendaDaySplit.template.svelte | Line 57: eventEndFromMidnight > agendaStartMs && timeFromMidnight < agendaEndMs;
+File: src\lib\components\templates\AgendaDaySplit.template.svelte | Line 87: {@const isStandardHour = hour > 0 && hour < 24}
+File: src\lib\components\templates\AgendaDaySplit.template.svelte | Line 161: {@const isStandardHour = hour > 0 && hour < 24}
+File: src\lib\components\templates\AgendaWeek.template.svelte | Line 67: {:else if hour > 0 && hour < 24}
+File: src\lib\components\templates\AgendaWeek.template.svelte | Line 92: return eventEndFromMidnight > agendaStartMs && timeFromMidnight < agendaEndMs;
+File: src\lib\components\templates\CalendarMonth.template.svelte | Line 40: timed: filteredEvents.filter((e) => e.duration && e.duration < 86400),
+File: src\lib\components\templates\EventPlanner.template.svelte | Line 22: <Checkbox aria-label="Guest list check" />
+File: src\lib\components\templates\EventPlanner.template.svelte | Line 31: <Checkbox aria-label="To do check" />
+File: src\lib\components\templates\GardenPlanner.template.svelte | Line 42: <Checkbox aria-label="Water check" class="box" />
+File: src\lib\components\templates\GardenPlanner.template.svelte | Line 43: <Checkbox aria-label="Water check" class="box" />
+File: src\lib\components\templates\GardenPlanner.template.svelte | Line 44: <Checkbox aria-label="Water check" class="box" />
+File: src\lib\components\templates\GardenPlanner.template.svelte | Line 45: <Checkbox aria-label="Water check" class="box" />
+File: src\lib\components\templates\GardenPlanner.template.svelte | Line 46: <Checkbox aria-label="Water check" class="box" />
+File: src\lib\components\templates\GardenPlanner.template.svelte | Line 47: <Checkbox aria-label="Water check" class="box" />
+File: src\lib\components\templates\GardenPlanner.template.svelte | Line 48: <Checkbox aria-label="Water check" class="box" />
+File: src\lib\components\templates\GratitudePage.template.svelte | Line 42: <Checkbox aria-label="Acts of kindness check" />
+File: src\lib\components\templates\LearningTracker.template.svelte | Line 49: <Checkbox aria-label="Done" />
+File: src\lib\components\templates\MeditationLog.template.svelte | Line 49: <Checkbox aria-label="Goal check" />
+File: src\lib\components\templates\MeditationLog.template.svelte | Line 64: <Checkbox aria-label="Day check" class="check-box" />
+File: src\lib\components\templates\NotesDay.template.svelte | Line 33: return eventEndFromMidnight > agendaStartMs && timeFromMidnight < agendaEndMs;
+File: src\lib\components\templates\NotesDay.template.svelte | Line 49: {:else if hour > 0 && hour < 24}
+File: src\lib\components\templates\PetCare.template.svelte | Line 22: <Checkbox aria-label="Feeding schedule check" />
+File: src\lib\components\templates\SideQuestTracker.template.svelte | Line 62: <Checkbox aria-label="Complete" />
+File: src\lib\components\templates\WordCountTracker.template.svelte | Line 56: <div class="section-label">&nbsp;</div>
