@@ -46,7 +46,7 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 
   if (!elemento) {
     return (
-      <aside className="w-80 bg-white border-l border-slate-200/80 p-5 flex flex-col justify-between h-[calc(100vh-4rem)] select-none">
+      <aside className="w-64 xl:w-80 shrink-0 bg-white border-l border-slate-200/80 p-5 flex flex-col justify-between h-[calc(100vh-4rem)] select-none">
         <div>
           <div className="flex items-center space-x-2 text-xs font-bold text-slate-800 uppercase tracking-wider mb-4">
             <Sliders className="w-4 h-4 text-indigo-600" />
@@ -101,7 +101,7 @@ export const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
   };
 
   return (
-    <aside className="w-80 bg-white border-l border-slate-200/80 p-5 overflow-y-auto h-[calc(100vh-4rem)] select-none space-y-4">
+    <aside className="w-64 xl:w-80 shrink-0 bg-white border-l border-slate-200/80 p-5 overflow-y-auto h-[calc(100vh-4rem)] select-none space-y-4">
       {/* Cabeçalho do Elemento */}
       <div className="flex items-center justify-between pb-3 border-b border-slate-100">
         <div className="flex items-center space-x-2">

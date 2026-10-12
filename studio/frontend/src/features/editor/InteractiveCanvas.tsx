@@ -190,7 +190,7 @@ export const InteractiveCanvas: React.FC<InteractiveCanvasProps> = ({
 
   return (
     <main
-      className="flex-1 bg-slate-100/90 overflow-auto flex flex-col items-center justify-start p-8 relative select-none"
+      className="min-w-0 flex-1 bg-slate-100/90 overflow-auto flex flex-col items-center justify-start p-8 relative select-none"
       onClick={() => {
         onSelecionarElemento(null);
         setEditandoTextoId(null);
@@ -199,7 +199,7 @@ export const InteractiveCanvas: React.FC<InteractiveCanvasProps> = ({
       {/* Barra Superior Flutuante: Ferramentas Rápidas de Inserção */}
       {!modoPrevia && (
         <div
-          className="fixed top-20 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-slate-200/80 shadow-lg flex items-center space-x-1.5 z-20 text-xs text-slate-700 animate-fadeIn"
+          className="sticky top-0 mb-4 shrink-0 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-slate-200/80 shadow-lg flex items-center space-x-1.5 z-20 text-xs text-slate-700 animate-fadeIn"
           onClick={(e) => e.stopPropagation()}
         >
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-1">Inserir:</span>

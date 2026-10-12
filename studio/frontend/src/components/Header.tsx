@@ -51,7 +51,7 @@ export const Header: React.FC<HeaderProps> = ({
   totalPaginas,
 }) => {
   return (
-    <header className="h-16 bg-white/90 backdrop-blur-md border-b border-slate-200/80 px-6 flex items-center justify-between z-20 select-none">
+    <header className="h-16 shrink-0 overflow-x-auto gap-4 whitespace-nowrap bg-white/90 backdrop-blur-md border-b border-slate-200/80 px-6 flex items-center justify-between z-20 select-none">
       {/* Lado Esquerdo: Logo & Navegação Dashboard / Estúdio */}
       <div className="flex items-center space-x-4">
         <div 
@@ -89,8 +89,8 @@ export const Header: React.FC<HeaderProps> = ({
         )}
 
         <div className="flex flex-col">
-          <h1 className="text-sm font-semibold text-slate-800 leading-tight">
-            {nomeProjeto || 'Carregando projeto...'}
+          <h1 className="max-w-48 truncate text-sm font-semibold text-slate-800 leading-tight">
+            {nomeProjeto || 'Nenhum planner aberto'}
           </h1>
           <span className="text-[11px] text-slate-400">
             {totalPaginas > 0 ? `${totalPaginas} páginas catalogadas` : 'Nenhum projeto selecionado'}

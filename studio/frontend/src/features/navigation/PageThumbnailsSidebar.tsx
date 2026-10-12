@@ -92,7 +92,7 @@ export const PageThumbnailsSidebar: React.FC<PageThumbnailsSidebarProps> = ({
   };
 
   return (
-    <aside className="w-76 bg-white border-r border-slate-200/80 flex flex-col h-[calc(100vh-4rem)] select-none">
+    <aside className="w-64 xl:w-80 shrink-0 bg-white border-r border-slate-200/80 flex flex-col h-[calc(100vh-4rem)] select-none">
       {/* Abas e Alternador de Modo de Visualização */}
       <div className="flex items-center justify-between border-b border-slate-100 p-2.5 bg-slate-50/50">
         <div className="flex bg-slate-200/60 p-0.5 rounded-xl text-xs font-semibold">
