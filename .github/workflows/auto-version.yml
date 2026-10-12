@@ -23,4 +23,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Cloudflare Pages Deploy
-        run: curl -X POST "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}"
+        if: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK != '' }}
+        run: curl --fail --show-error --silent -X POST "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}"
