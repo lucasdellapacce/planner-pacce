@@ -1,0 +1,24 @@
+import {loadPyodide} from 'pyodide';
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+const py=await loadPyodide({packageBaseUrl:path.resolve('public/python-runtime'),packageCacheDir:path.resolve('public/python-runtime')});
+const sources=JSON.parse(fs.readFileSync('public/python-sources.json','utf8'));
+for(const [name,source] of Object.entries(sources)) {py.FS.mkdirTree('/home/pyodide/'+name.slice(0,name.lastIndexOf('/')));py.FS.writeFile('/home/pyodide/'+name,source);}
+py.runPython('import sys; sys.path.insert(0,"/home/pyodide"); import json; from pacce_browser import dispatch');
+py.globals.set('payload',JSON.stringify({nome:'Teste Pages — Outubro',data_inicio:'2026-10-01',data_fim:'2026-12-31',formato:'a4_horizontal',secoes:['capa','indice','calendario_mensal','planejamento_semanal','planejamento_diario','habitos','projetos','estudos','leitura','revisoes_mensais','paginas_livres']}));
+const project=JSON.parse(py.runPython("dispatch('create',json.loads(payload))"));
+assert(project.paginas.length>100); console.log('Geradas',project.paginas.length,'páginas');
+py.globals.set('project',JSON.stringify(project));
+const validation=JSON.parse(py.runPython("dispatch('validate',json.loads(project))"));
+assert(validation.aprovado); console.log('Links válidos:',validation.total_validos);
+await py.loadPackage(['pillow','charset-normalizer']);
+py.unpackArchive(new Uint8Array(fs.readFileSync('public/python-wheels/reportlab-4.4.10-py3-none-any.whl')),'zip',{extractDir:'/home/pyodide'});
+const pdf=py.runPython("dispatch('pdf',json.loads(project))");
+const bytes=py.FS.readFile(pdf); assert(Buffer.from(bytes).subarray(0,4).toString()==='%PDF');
+fs.mkdirSync('../logs',{recursive:true});fs.writeFileSync('../logs/pages-browser-test.pdf',bytes);
+console.log('PDF:',bytes.length,'bytes');
+const zip=py.runPython("dispatch('stickers',None)");
+const zipBytes=py.FS.readFile(zip); assert(Buffer.from(zipBytes).subarray(0,2).toString()==='PK');
+console.log('ZIP:',zipBytes.length,'bytes');
+console.log('Motor original validado em WebAssembly.');
